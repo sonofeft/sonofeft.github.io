@@ -1,0 +1,224 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Optimization &#8212; PRISM 1.1.16 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="POV-Ray" href="pov_ray.html" />
+    <link rel="prev" title="Plot Types" href="plots.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pov_ray.html" title="POV-Ray"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="plots.html" title="Plot Types"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_blocks.html">Building Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_models.html">Math Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plot Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-condition">Starting Condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimized-condition">Optimized Condition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensitivity-plot">Sensitivity Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#constraints">Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pov_ray.html">POV-Ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_stage.html">Sample Stage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="many_examples.html">Many Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="massitem_docs.html">Mass Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improvements.html">Future Improvements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="plots.html"
+                        title="previous chapter">Plot Types</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pov_ray.html"
+                        title="next chapter">POV-Ray</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/optimization.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="optimization">
+<h1>Optimization<a class="headerlink" href="#optimization" title="Permalink to this headline">¶</a></h1>
+<p>PRISM has two built-in multivariate optimizers with constraints, fmin_cobyla and MDOT.</p>
+<ol class="arabic simple">
+<li>fmin_cobyla is part of the scipy optimizer suite and will minimize a function using the
+Constrained Optimization BY Linear Approximation (COBYLA) method.
+This method wraps a FORTRAN implementation of the algorithm.
+(see: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cobyla.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cobyla.html</a>)</li>
+<li>MDOT (MicroDOT Optimization Tool Version 1.00) is built from FORTRAN source code.
+(FORTRAN source code and executable are included in prism/fortran subdirectory)</li>
+</ol>
+<p>fmin_cobyla is the default optimizer, however MDOT can be selected when optimization is invoked.</p>
+<p>In a PRISM model, the optimizer is called with the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;eta2Ddiff&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">],</span>
+         <span class="n">findmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">useCOBYLA</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This statement tells the optimizer to find a maximum, <strong>findmin=0</strong> and to use the MDOT optimizer, <strong>useCOBYLA=0</strong>.</p>
+<p>The objective function is called &quot;eta2Ddiff&quot; and the design variables that can be varied are [&quot;thetaAng&quot;,&quot;exitAng&quot;].</p>
+<p>Recall that the range of the design parameters are predefined in statements such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># design vars have:</span>
+<span class="c1">#     name,      value, minVal, maxVal, step, units, description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span>   <span class="mi">35</span><span class="p">,</span>  <span class="mf">25.0</span><span class="p">,</span>  <span class="mf">40.0</span><span class="p">,</span>   <span class="mf">0.5</span><span class="p">,</span>  <span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="s1">&#39;Entrance Angle&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;exitAng&quot;</span><span class="p">,</span>     <span class="mi">9</span><span class="p">,</span>   <span class="mf">3.0</span><span class="p">,</span>  <span class="mf">15.0</span><span class="p">,</span>   <span class="mf">0.5</span><span class="p">,</span>  <span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="s1">&#39;Exit Angle&#39;</span><span class="p">]</span>  <span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="starting-condition">
+<h2>Starting Condition<a class="headerlink" href="#starting-condition" title="Permalink to this headline">¶</a></h2>
+<p>When the optimizer is called, it outputs the initial state of the math model in a table such as that shown below.</p>
+<center><table class="mytable"><th bgcolor="#CCCCCC"> PRIOR TO OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng          35             25          40 Entrance Angle  (deg)
+   exitAng           9              3          15 Exit Angle  (deg)
+ Figure of Merit = 0.001 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+</pre></td></tr></table></center></div>
+<div class="section" id="optimized-condition">
+<h2>Optimized Condition<a class="headerlink" href="#optimized-condition" title="Permalink to this headline">¶</a></h2>
+<p>When the optimization is complete, another similar table is output.</p>
+<center><table class="mytable"><th bgcolor="#CCCCCC"> AFTER OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng      34.3306           25           40 Entrance Angle  (deg)
+   exitAng      8.41057            3           15 Exit Angle  (deg)
+ Figure of Merit = 0.00119947 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+</pre></td></tr></table></center></div>
+<div class="section" id="sensitivity-plot">
+<h2>Sensitivity Plot<a class="headerlink" href="#sensitivity-plot" title="Permalink to this headline">¶</a></h2>
+<p>It is always a good idea to output a sensitivity plot after optimization, in order to help confirm that an optimum has been found.
+The plot can be created with the statement below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">makeSensitivityPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;eta2D&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note that the design points, as indicated by the green bars, align with the peaks of both curves.
+Because these plots are &quot;slices&quot; through the true response surface, they are not, by themselves, an
+indication of the true optimum. However, when coupled with the optimizer, they provide a good confirmation
+of the optimizer's work.</p>
+<a class="reference internal image-reference" href="_images/sensitivity_plot_1.jpg"><img alt="_images/sensitivity_plot_1.jpg" src="_images/sensitivity_plot_1.jpg" style="width: 60%;" /></a>
+</div>
+<div class="section" id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h2>
+<p>Constraints can be placed on result variables when they are defined
+in order to place boundaries on the solution of an optimization.</p>
+<p>In the previous box problem, a W x L rectangular sheet of material
+is made into a box by cutting off an h x h
+square from all four corners and then folding the sides up to make an open box.</p>
+<a class="reference internal image-reference" href="_images/box.jpg"><img alt="_images/box.jpg" src="_images/box.jpg" style="width: 20%;" /></a>
+<p>For the above box, two different optimizations problem statements are made.</p>
+<ol class="arabic simple">
+<li>Find the value of h that maximizes the box volume.</li>
+<li>Find the value of h that maximizes the box volume where the Length / Width of the resulting box is &lt; 2.4</li>
+</ol>
+<p>The only difference in the two problems is setting the constraint on the LoverW variable defined in the PRISM file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unconstrained result variable</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVariable</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LoverW&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Box L/W Ratio&#39;</span><span class="p">)</span>
+
+<span class="c1"># Constrained result variable</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVariable</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LoverW&quot;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Box L/W Ratio&#39;</span><span class="p">,</span> <span class="n">constrCond</span><span class="o">=</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">constrVal</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice how the optimizer does not increase the value of hbox, beyond the constraint value on L/W.</p>
+<p>Since the constraint is for LoverW &lt; 2.4, the violating points are labeled &quot;LoverW &gt; 2.4&quot;.</p>
+<a class="reference internal image-reference" href="_images/box_opt_1.jpg"><img alt="_images/box_opt_1.jpg" src="_images/box_opt_1.jpg" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="_images/box_opt_2.jpg"><img alt="_images/box_opt_2.jpg" src="_images/box_opt_2.jpg" style="width: 45%;" /></a>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pov_ray.html" title="POV-Ray"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="plots.html" title="Plot Types"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Simple Optimization
+   by: C. Taylor
+ date: Friday May 04, 2018
+
+
+PRISM System: Optimization Test
+                type = misc
+======================================
+      name         value        minimum   maximum
+         x          0.1            0            2 
+ Figure of Merit = 0.0998334 = y
+======================================
+======================================
+
+
+
+PRISM System: Optimization Test
+                type = misc
+======================================
+      name         value        minimum   maximum
+         x       1.5708            0            2 
+ Figure of Merit = 1 = y
+======================================
+======================================
+
+

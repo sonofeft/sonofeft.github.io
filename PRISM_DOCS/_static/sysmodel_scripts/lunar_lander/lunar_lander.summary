@@ -1,0 +1,610 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Lunar Lander
+   by: Moon Walker
+ date: Saturday May 05, 2018
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: MON25/MMH solar ILN
+                mass =      217.828 lbm
+                type = bi-propellant
+INERT
+       6.084 lbm Axial Engine w/o Valves
+       2.700 lbm Axial Fuel valve
+       2.700 lbm Axial Ox valve
+       6.041 lbm COPV Helium Tank
+       0.643 lbm Fuel Line
+       7.383 lbm Fuel Tank
+       0.290 lbm Helium line
+       0.643 lbm Ox Line
+       9.531 lbm Ox Tank
+       6.000 lbm R-6D with valves
+PRESSURANT
+       1.008 lbm Helium Pressurant
+PROPELLANT
+     111.240 lbm MON-25
+      63.566 lbm Monomethyl Hydrazine
+======================================
+======================================
+
+============================== Design Variables ===============================
+        NAME VALUE MINIMUM MAXIMUM DESCRIPTION                                 
+     ItotACS  6518    4000    8000 Total Impulse of ACS Engines  (lbf-sec)     
+     mrAxial  1.75     1.5     1.9 Divert Engine Mixture Ratio                 
+     PcAxial   230     150     400 Axial Engine Chamber Pressure  (psia)       
+ ItotDescent 46067   20000   50000 Total Impulse of Descent Engines  (lbf-sec) 
+   LengLimit    13      10      15 Engine Length Limit  (in)                   
+     PmaxGas  4500    4000    6000 Helium Max Bottle Pressure  (psia)          
+===============================================================================
+
+========================== Result Variables ===========================
+            NAME   VALUE DESCRIPTION                            LIMITS 
+        PfinalHe 365.232 Final Helium Pressure  (psia)             --- 
+             Isp 307.567 Engine Specific Impulse  (sec)            --- 
+        feedMass 1.57629 Valve/Line/Regulator Mass  (lbm)          --- 
+          PcFace  241.05 Engine Face Pressure  (psia)              --- 
+       PengineIn     345 Engine Inlet Pressure  (psia)             --- 
+       AreaRatio 94.6974 Descent Nozzle Area Ratio                 --- 
+        dPvlvMax 80.4903 Maximum Valve Pressure Drop  (psid)       --- 
+         engMass 12.0837 Total Engine Mass  (lbm)                  --- 
+          IspACS     280 ACS Engine Specific Impulse  (sec)        --- 
+       dPvlvFuel 41.4356 Fuel Valve Pressure Drop  (psid)          --- 
+ dpBalOrificeACS 56.5406 Balance Orifice Pressure Drop  (psid)     --- 
+        tankMass 22.9368 Total Tankage Mass  (lbm)                 --- 
+          IspEff 307.567 Effective Isp (with cant angle)  (sec)    --- 
+           Ptank 456.541 Propellant Tank Pressure  (psia)          --- 
+      dPinjector     115 Injector Pressure Drop  (psid)            --- 
+         sysMass 217.807 Total System Mass  (lbm)                  --- 
+         dPvlvOx 80.4903 Ox Valve Pressure Drop  (psid)            --- 
+   VolRatioTanks 1.11002 Tank Volume Ratio (Ox/Fuel)               --- 
+         Lengine      13 Engine Length  (in)                       --- 
+=======================================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: MON25/MMH solar ILN
+                mass =      217.807 lbm
+                type = bi-propellant
+
+-------------------------------------
+Bipropellant Engine: Axial Engine w/o Valves
+             mass =        6.084 lbm
+             type = inert
+        Propellants : MON25 / MMH
+        NASA CEA Code for ODE performance 
+        Physical Weight Model 
+        Injector Material is SS
+        Nozzle Material is Cb103
+        Bell Nozzle with Percent Bell = 80
+        Mass is for 3 engines total
+     ==== INPUT ====    
+        Fvac            = 200 lbf
+        Pc              = 230.0 psia
+        eps             = 94.6974 
+        %Bell           = 80.00 %
+        mr              = 1.75 
+        CR              = 2.5 
+        xlnOverLcham    = 0.9 
+        LoverDt         = 2 
+        LchamMin        = 1.250 in
+        cxwInj          = 1 
+        cxwValves       = 0 
+        cxw             = 1 
+        etaERE          = 0.95 
+     ==== OUTPUT ====    
+        Isp             = 307.567 sec
+        Cstar           = 5471.4 ft/sec
+        etaBL           = 0.97415 
+        etaDiv          = 0.992208 
+        etaKin          = 0.975 
+        etaNoz          = 0.942396 
+        effIsp          = 0.895276 
+        IspODE          = 343.545 sec
+        CstarODE        = 5759.4 ft/sec
+        Tc              = 5649.1 degR
+        PcFace          = 241.05 psia
+        Pexit           = 0.135298 psia
+        wdotTot         = 0.650264 lbm/sec
+        wdotOx          = 0.413804 lbm/sec
+        wdotFl          = 0.23646 lbm/sec
+        rhoFl           = 0.0316 lbm/cuin
+        rhoOx           = 0.0501 lbm/cuin
+        volDotOx        = 8.25313 cuin/sec
+        volDotFl        = 7.49128 cuin/sec
+        DFlow           = 0.592 in
+        At              = 0.480793 sqin
+        Dt              = 0.782 in
+        Dcham           = 1.237 in
+        Dexit           = 7.614 in
+        Lcham           = 1.565 in
+        xlc             = 0.156 in
+        xln             = 1.408 in
+        Lnoz            = 10.198 in
+        Lengine         = 13.000 in
+        rhoInj          = 0.280 lbm/cuin
+        rhoNoz          = 0.310 lbm/cuin
+        thkCham         = 0.020 in
+        thkNoz          = 0.020 in
+        WtNoz           = 1.056 lbm
+        WtChamber       = 0.032 lbm
+        WtInj           = 0.504 lbm
+        WtAcoustic      = 0.368 lbm
+        WtValves(2)     = 0.000 lbm
+        WtMisc          = 0.068 lbm
+        wt/Engine       = 2.028 lbm
+        F/W             = 98.623 lbf/lbm
+
+-------------------------------------
+Liquid Valve: Axial Fuel valve (3)
+             mass =        2.700 lbm
+             type = inert
+        fluid : MMH
+        Structural Material : Stainless Steel, Teflon
+        valve: MOOG Spacebus valve, Model 53-203
+        Mass is for 3 valves total
+     ==== INPUT ====    
+        wdot            = 0.23646 lbm/sec
+        cxw             = 1 
+        refWaterWdot    = 0.214 lbm/sec
+        refWaterDP      = 30 psid
+        # Valves        = 3 
+     ==== OUTPUT ====    
+        deltaP          = 42.41 psid
+        Kw              = 0.0390709 in-lb^.5/sec
+        velFluid        = 85.3927 ft/sec
+        CdA             = 0.00739903 sqin
+        fluid rho       = 0.0311875 lbm/cuin
+        fluid D         = 53.892 lbm/cuft
+        fluid visc      = 53.04 1.0E5 * lb/ft-sec
+        wt/Valve        = 0.900 lbm
+
+-------------------------------------
+Liquid Valve: Axial Ox valve (3)
+             mass =        2.700 lbm
+             type = inert
+        fluid : MON25
+        Structural Material : Stainless Steel, Teflon
+        valve: MOOG Spacebus valve, Model 53-203
+        Mass is for 3 valves total
+     ==== INPUT ====    
+        wdot            = 0.413804 lbm/sec
+        cxw             = 1 
+        refWaterWdot    = 0.214 lbm/sec
+        refWaterDP      = 30 psid
+        # Valves        = 3 
+     ==== OUTPUT ====    
+        deltaP          = 82.38 psid
+        Kw              = 0.0390709 in-lb^.5/sec
+        velFluid        = 94.7877 ft/sec
+        CdA             = 0.00739903 sqin
+        fluid rho       = 0.0491685 lbm/cuin
+        fluid D         = 84.9632 lbm/cuft
+        fluid visc      = 26.7 1.0E5 * lb/ft-sec
+        wt/Valve        = 0.900 lbm
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: COPV Helium Tank
+             mass =        6.023 lbm
+             type = inert
+        Composite Tank Algorithm
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 681.375 cuin
+        vfreeTotal      = 681.375 cuin
+        ell             = 1.764 
+        rcyltd          = 1.45 
+        ptank           = 4500 psia
+        sf              = 2 
+        cxw             = 1.25 
+        ithcyl          = 1 
+        kacqui          = 0 no acq. device
+        inpex           = 0 
+        expefi          = 0.99 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.1 lbm/cuin
+        tliner          = 0.040 in
+        rholiner        = 0.1 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 3.915 in
+        dinsid          = 7.829 in
+        OR              = 4.104 in
+        OD              = 8.208 in
+        OH              = 16.216 in
+        hinsid          = 15.790 in
+        SAinsid         = 419.384 sqin
+        cyl             = 11.352 in
+        wacqui          = 0.000 lbm
+        vacqui          = 0 cuin
+        dpacq           = 0 psig
+        pullag          = 4500 psia
+        vresid          = 7.55997 cuin
+        vtank           = 688.935 cuin
+        tming           = 0.050 in
+        thkcyl          = 0.119 in
+        thkend          = 0.143 in
+        thkBladOut      = 0.030 in
+        wliner          = 1.765 lbm
+        wtank(+liner)   = 4.818 lbm
+        rho             = 0.0637 lbm/cuin
+        PmeopVoverW     = 514721 lbf-in/lbm
+        Pburst(est.)    = 9000.0 psia
+        PburstVoverW    = 1.02944e+06 lbf-in/lbm
+
+-------------------------------------
+Liquid Line: Fuel Line
+             mass =        0.643 lbm
+             type = inert
+        fluid : MMH
+        Structural Material : Ti
+     ==== INPUT ====    
+        wdot            = 0.748355 lbm/sec
+        OD              = 0.500 in
+        thkWall         = 0.045 in
+        len_inches      = 50 in
+        Kfactors        = 5 vel heads
+        roughness       = 5e-06 in
+        pLine           = 456.541 psia
+        cxw             = 1.25 
+        # Lines         = 1 
+     ==== OUTPUT ====    
+        dpLine          = 10.05 psid
+        dPperVelHead    = 1.33 psid
+        velFPS          = 15.1457 ft/sec
+        ReNum           = 5.257893E+04 
+        rinsid          = 0.205 in
+        dinsid          = 0.410 in
+        volLine         = 6.60127 cuin
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+                           
+        sf              = 57.2171 
+        tming           = 0.030 in
+        fluid rho       = 0.0311875 lbm/cuin
+        fluid visc      = 53.04 1.0E5 * lb/ft-sec
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: Fuel Tank
+             mass =        7.383 lbm
+             type = inert
+        Metal Tank Algorithm
+        Structural Material : Ti
+        Bladder Thickness is input at 0.030 in
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 2101.21 cuin
+        vfreeTotal      = 2101.21 cuin
+        ell             = 1 
+        rcyltd          = 0 
+        ptank           = 456.541 psia
+        sf              = 1.5 
+        cxw             = 1.5 
+        ithcyl          = 1 
+        kacqui          = 7 elastomeric transverse bladder (dP=0)
+        inpex           = 1 
+        expefi          = 0.98 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.04 lbm/cuin
+        tliner          = 0.000 in
+        rholiner        = 0.04 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 8.028 in
+        dinsid          = 16.055 in
+        OR              = 8.088 in
+        OD              = 16.175 in
+        OH              = 16.175 in
+        hinsid          = 16.055 in
+        SAinsid         = 809.795 sqin
+        cyl             = 0.000 in
+        wacqui          = 0.946 lbm
+        vacqui          = 23.6509 cuin
+        dpacq           = 0 psig
+        pullag          = 504.01 psia
+        vresid          = 42.0242 cuin
+        vtank           = 2166.88 cuin
+        tming           = 0.030 in
+        thkcyl          = 0.030 in (use tming)
+        thkend          = 0.030 in (use tming)
+        thkBladOut      = 0.030 in
+        wtank           = 3.976 lbm
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        e               = 1.5e+07 psi
+        PmeopVoverW     = 133989 lbf-in/lbm
+        Pburst(est.)    = 444.7 psia
+        PburstVoverW    = 130519 lbf-in/lbm
+
+-------------------------------------
+Gas Line: Helium line
+             mass =        0.290 lbm
+             type = inert
+        In: HE T= 320.2 P= 479.0 D=0.5433 E=241.02 H=404.28 S=4.315 Supercrit
+        Out:HE T= 320.4 P= 456.5 D=0.5182 E=241.14 H=404.28 S=4.339 Supercrit
+        fluid : HE
+        Structural Material : Ti
+        Allow Non-Standard wall thickness
+        Using Poutlet to design line
+        Line Diameter is an Input (vel is output)
+     ==== INPUT ====    
+        wdot            = 0.0151911 lbm/sec
+        DiamInp         = 0.250 in
+        thkWallInp      = 0.045 in
+        len_inches      = 50 in
+        Kfactors        = 5 vel heads
+        roughness       = 5e-06 in
+        PgasOutlet      = 456.5 psia
+        sf              = 4 
+        cxw             = 1.25 
+        # Lines         = 1 
+     ==== OUTPUT ====    
+        PgasInlet       = 479.0 psia
+        velFPS          = 209.847 ft/sec
+        velHead         = 2.582 psi
+        dpLine          = 22.48 psig
+        dp due to Line  = 10.48 psig
+        dp due to Ks    = 12.00 psig
+        dp/Pinlet       = 0.0469366 
+        ReNum           = 1.551340E+05 
+        fricfact        = 0.0139809 
+        thkLine         = 0.045 in
+        rinsid          = 0.080 in
+        dinsid          = 0.160 in
+        volLine         = 1.00531 cuin
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        tming           = 0.035 in
+        fluid dens      = 0.543328 lbm/cuft
+        fluid visc      = 9.58486e-06 lb/ft-sec
+        fluid sonicV    = 2640.01 ft/sec
+        fluid Mach      = 0.0794873 
+
+-------------------------------------
+Liquid Line: Ox Line
+             mass =        0.643 lbm
+             type = inert
+        fluid : MON25
+        Structural Material : Ti
+     ==== INPUT ====    
+        wdot            = 1.30962 lbm/sec
+        OD              = 0.500 in
+        thkWall         = 0.045 in
+        len_inches      = 50 in
+        Kfactors        = 5 vel heads
+        roughness       = 5e-06 in
+        pLine           = 456.541 psia
+        cxw             = 1.25 
+        # Lines         = 1 
+     ==== OUTPUT ====    
+        dpLine          = 18.04 psid
+        dPperVelHead    = 2.59 psid
+        velFPS          = 16.812 ft/sec
+        ReNum           = 1.827856E+05 
+        rinsid          = 0.205 in
+        dinsid          = 0.410 in
+        volLine         = 6.60127 cuin
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+                           
+        sf              = 57.2171 
+        tming           = 0.030 in
+        fluid rho       = 0.0491685 lbm/cuin
+        fluid visc      = 26.7 1.0E5 * lb/ft-sec
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: Ox Tank
+             mass =        9.531 lbm
+             type = inert
+        Metal Tank Algorithm
+        Structural Material : Ti
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 2332.39 cuin
+        vfreeTotal      = 2332.39 cuin
+        ell             = 1 
+        rcyltd          = 0 
+        ptank           = 456.541 psia
+        sf              = 1.5 
+        cxw             = 1.5 
+        ithcyl          = 1 
+        kacqui          = 6 capillary device
+        inpex           = 1 
+        expefi          = 0.98 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.16 lbm/cuin
+        tliner          = 0.000 in
+        rholiner        = 0.04 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 8.297 in
+        dinsid          = 16.593 in
+        OR              = 8.357 in
+        OD              = 16.713 in
+        OH              = 16.713 in
+        hinsid          = 16.593 in
+        SAinsid         = 865.003 sqin
+        cyl             = 0.000 in
+        wacqui          = 2.108 lbm
+        vacqui          = 13.1753 cuin
+        dpacq           = 0 psig
+        pullag          = 456.541 psia
+        vresid          = 46.6478 cuin
+        vtank           = 2392.21 cuin
+        tming           = 0.030 in
+        thkcyl          = 0.030 in (use tming)
+        thkend          = 0.030 in (use tming)
+        thkBladOut      = 0.030 in
+        wtank           = 4.246 lbm
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        e               = 1.5e+07 psi
+        PmeopVoverW     = 114594 lbf-in/lbm
+        Pburst(est.)    = 430.3 psia
+        PburstVoverW    = 108006 lbf-in/lbm
+
+-------------------------------------
+Bipropellant Engine: R-6D with valves (6)
+             mass =        6.000 lbm
+             type = inert
+        Propellants : MON25 / MMH
+        NASA CEA Code for ODE performance 
+        Actual Hardware Weight 
+        Bell Nozzle with Percent Bell = 80
+        Mass is for 6 engines total
+     ==== INPUT ====    
+        Pc              = 92.0 psia
+        Dt              = 0.207 in
+        eps             = 100 
+        %Bell           = 80.00 %
+        mr              = 1.75 
+        CR              = 2.5 
+        Lprime          = 3.000 in
+        xlc/xln         = 1 
+        etaERE          = 0.97 
+     ==== OUTPUT ====    
+        Fvac            = 5.00198 lbf
+        Isp             = 280 sec
+        Cstar           = 5554.7 ft/sec
+        etaNoz          = 0.839711 
+        effIsp          = 0.81452 
+        IspODE          = 343.761 sec
+        CstarODE        = 5726.5 ft/sec
+        Tc              = 5512.2 degR
+        wdotTot         = 0.0178642 lbm/sec
+        wdotOx          = 0.0113681 lbm/sec
+        wdotFl          = 0.00649608 lbm/sec
+        rhoFl           = 0.0316 lbm/cuin
+        rhoOx           = 0.0501 lbm/cuin
+        volDotOx        = 0.226732 cuin/sec
+        volDotFl        = 0.205802 cuin/sec
+        At              = 0.0335236 sqin
+        Dcham           = 0.327 in
+        Dexit           = 2.066 in
+        xlc             = 1.500 in
+        xln             = 1.500 in
+        Lcham           = 3.000 in
+        Lnoz            = 2.776 in
+        Lengine         = 6.102 in
+        wt/Engine       = 1.000 lbm
+        F/W             = 5.002 lbf/lbm
+
+-------------------------------------
+Helium Pressurant: Helium Pressurant
+             mass =        1.005 lbm
+             type = pressurant
+        Integrated Heat Transfer
+     ==== INPUT ====    
+        VpropTnk        = 4433.6 cuin
+        PGasTnkMEOP     = 4500 psia
+        PpropNom        = 456.541 psia
+        PfinGasOvPnom   = 0.8 
+        tAction         = 318 sec
+        TminR           = 456.0 degR
+        TmaxR           = 582.0 degR
+     ==== OUTPUT ====    
+        WGasTotal       = 1.005 lbm
+        WtGasResid      = 0.164 lbm
+        WtHeLLACS       = 0.100 lbm
+        WGasNon-Resid   = 0.840 lbm
+        Vbottle         = 681.375 cuin
+        wdotGas         = 0.00264261 lbm/sec
+        compressInit    = 1.13565 
+        PbottleCold     = 3536.96 psia
+        densInitBot     = 2.54803 lbm/cuft
+        densFinalBot    = 0.416857 lbm/cuft
+        densFinalProp   = 0.383685 lbm/cuft
+        gammaIsen       = 1.64101 
+        gamPolyBottle   = 1.1844 
+        gamPolyTank     = 1.02035 
+        fracIsenBottle  = 0.28768 
+        fracIsenTank    = 0.0317405 
+        TfinalPropGas   = 435.8 degR
+        TfinalGasBot    = 320.2 degR
+        PfinalGasBot    = 365.2 psia
+
+-------------------------------------
+Incompressible Liquid: MON-25
+             mass =      111.240 lbm
+             type = propellant
+        MON25 Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 550.0 degR
+        P               = 100.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 475.6 degR
+        Tcrit           = 747.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 2100.0 psia
+        WtMol           = 60.7 
+        RhoRef          = 0.050139 lb/cuin
+        ViscRefFT       = 0.000267 lb/ft-sec
+        CondRefFTHR     = 0.0759456 BTU/ft-hr-R
+        CpRef           = 0.336 BTU/lbm degR
+        Burned Axial    = 95.314 lbm
+        Burned ACS      = 14.814 lbm
+        Margin          = 0.000 lbm
+        Leakage         = 0.000 lbm
+        Residual        = 1.112 lbm
+     ==== OUTPUT ====    
+        D               = 84.963 lbm/cuft
+        rho             = 0.0491685 lbm/cuin (1.36098 SG)
+        Cp              = 0.336 BTU/lbm degR
+        Visc            = 26.7 [1.0E5 * lb/ft-sec]
+        Cond            = 0.0759456 BTU/ft-hr-R
+        SurfTen         = 0.000131139 lbf/in
+        phase           = LIQUID 
+        Pvap            = 99.2407 psia
+        Vcuft           = 1.30927 cuft
+        Volume          = 2262.42 cuin
+
+-------------------------------------
+Incompressible Liquid: Monomethyl Hydrazine
+             mass =       63.566 lbm
+             type = propellant
+        MMH Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 550.0 degR
+        P               = 14.7 psia
+        Tref            = 530.0 degR
+        Tnbp            = 650.0 degR
+        Tcrit           = 1053.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 1195.0 psia
+        WtMol           = 46.07 
+        RhoRef          = 0.0315646 lb/cuin
+        ViscRefFT       = 0.0005304 lb/ft-sec
+        CondRefFTHR     = 0.143294 BTU/ft-hr-R
+        CpRef           = 0.7 BTU/lbm degR
+        Burned Axial    = 54.465 lbm
+        Burned ACS      = 8.465 lbm
+        Margin          = 0.000 lbm
+        Leakage         = 0.000 lbm
+        Residual        = 0.636 lbm
+     ==== OUTPUT ====    
+        D               = 53.892 lbm/cuft
+        rho             = 0.0311875 lbm/cuin (0.863267 SG)
+        Cp              = 0.7 BTU/lbm degR
+        Visc            = 53.04 [1.0E5 * lb/ft-sec]
+        Cond            = 0.143294 BTU/ft-hr-R
+        SurfTen         = 0.000184989 lbf/in
+        phase           = LIQUID 
+        Pvap            = 1.54936 psia
+        Vcuft           = 1.1795 cuft
+        Volume          = 2038.17 cuin

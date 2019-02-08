@@ -1,0 +1,306 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>PRISM (PaRametrIc System Model)</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">PRISM (PaRametrIc System Model)</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> Pump model exercise</span></td>
+<td align="right"><span class="header"> PRISM v1.1.7</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: H.P. Shaft</span></td>
+<td align="right"><span class="header">May 05, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable"><th>System Sensitivity</th><tr><td><img src="./pump_param/pump_param_1__sens_effCalc_vs_wdot_deltaP_eff_rpm.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">    deltaP</td><td align="right" valign="top">         200</td><td nowrap align="left" valign="top">psid</td><td nowrap align="left" valign="top">Pump Pressure Rise  (psid)</td></tr>
+<tr><td align="left" valign="top">       rpm</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">rpm</td><td nowrap align="left" valign="top">Pump Speed  (rpm)</td></tr>
+<tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">       eff</td><td align="right">    0.459228 <br><b>* -----&gt;<b></td><td nowrap align="left"></td><td nowrap align="left">Pump Assumed Efficiency<br>  (eff varies to make effError = 0 )</td><td nowrap align="right"></td><td nowrap align="left">>0.01, <1</td></tr>
+<tr><td align="left">   effCalc</td><td align="right">    0.459228 </td><td nowrap align="left"></td><td nowrap align="left">Pump Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  effError</td><td align="right">-1.55879e-11 </td><td nowrap align="left"></td><td nowrap align="left">Pump Efficiency Error</td><td nowrap align="right"></td><td nowrap align="left">=0</td></tr>
+<tr><td align="left">    effInp</td><td align="right">    0.459228 </td><td nowrap align="left"></td><td nowrap align="left">Assumed Pump Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">        hp</td><td align="right">           0 </td><td nowrap align="left"></td><td nowrap align="left">Pump Horsepower</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     1.98485 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable">
+<th colspan="4" bgcolor="#CCCCCC">Mass Summary </th>
+<tr bgcolor="#CCCCCC"><td>System:<b> Pump model exercise</b></td><td><b>
+                       1.985</b></td><td> <b>lbm</b></td><td><b>
+                Total</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Mass</b></td>
+<td><b>Units</b></td><td><b>Type</b></td></tr>
+<tr><td colspan="4"><b>INERT</b></td><tr>
+<tr><td align="left"> Fuel Pump</td><td align="right">       1.985</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+</table></center><br>
+<center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_2___effCalc_vs_deltaP.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       rpm</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">rpm</td><td nowrap align="left" valign="top">Pump Speed  (rpm)</td></tr>
+<tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_3___effCalc_vs_rpm.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">    deltaP</td><td align="right" valign="top">         200</td><td nowrap align="left" valign="top">psid</td><td nowrap align="left" valign="top">Pump Pressure Rise  (psid)</td></tr>
+<tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_4___effCalc_vs_wdot_deltaP.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       rpm</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">rpm</td><td nowrap align="left" valign="top">Pump Speed  (rpm)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_5___effCalc_vs_wdot_rpm.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">    deltaP</td><td align="right" valign="top">         200</td><td nowrap align="left" valign="top">psid</td><td nowrap align="left" valign="top">Pump Pressure Rise  (psid)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_6___effCalc_vs_deltaP_rpm.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./pump_param/pump_param_7___param_effCalc_vs_deltaP.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">    deltaP</td><td align="right" valign="top">         200</td><td nowrap align="left" valign="top">psid</td><td nowrap align="left" valign="top">Pump Pressure Rise  (psid)</td></tr>
+<tr><td align="left" valign="top">       rpm</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">rpm</td><td nowrap align="left" valign="top">Pump Speed  (rpm)</td></tr>
+<tr><td align="left" valign="top">      wdot</td><td align="right" valign="top">           1</td><td nowrap align="left" valign="top">lbm/sec</td><td nowrap align="left" valign="top">Pump Flow Rate  (lbm/sec)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">       eff</td><td align="right">    0.459228 <br><b>* -----&gt;<b></td><td nowrap align="left"></td><td nowrap align="left">Pump Assumed Efficiency<br>  (eff varies to make effError = 0 )</td><td nowrap align="right"></td><td nowrap align="left">>0.01, <1</td></tr>
+<tr><td align="left">   effCalc</td><td align="right">    0.459228 </td><td nowrap align="left"></td><td nowrap align="left">Pump Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  effError</td><td align="right">-1.55879e-11 </td><td nowrap align="left"></td><td nowrap align="left">Pump Efficiency Error</td><td nowrap align="right"></td><td nowrap align="left">=0</td></tr>
+<tr><td align="left">    effInp</td><td align="right">    0.459228 </td><td nowrap align="left"></td><td nowrap align="left">Assumed Pump Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">        hp</td><td align="right">           0 </td><td nowrap align="left"></td><td nowrap align="left">Pump Horsepower</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     1.98485 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Centrifugal Pump: Fuel Pump</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.985 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Material : Ti</td></tr>
+<tr><td colspan="4" align="left">Pump Fluid Summary:Fuel Pump</td></tr>
+<tr><td colspan="4" align="left">Fuel Pump: hp=2.1 wdot=1.000 dH=1.5 dP=200.0 eff=0.46</td></tr>
+<tr><td colspan="4" align="left">Inlet :MMH T= 530.0 P=  25.0 D=54.5437 rho=0.03156 Q=LIQUID</td></tr>
+<tr><td colspan="4" align="left">constS:MMH T= 530.0 P= 225.0 D=54.5437 rho=0.03156 Q=LIQUID</td></tr>
+<tr><td colspan="4" align="left">Outlet:MMH T= 531.1 P= 225.0 D=54.5065 rho=0.03154 Q=LIQUID</td></tr>
+<tr><td colspan="4" align="left">Pump Design Summary:Fuel Pump</td></tr>
+<tr><td colspan="4" align="left">Pump RPM Limit Summary:Fuel Pump</td></tr>
+<tr><td colspan="4" align="left">  OVERALL RPM LIMIT          114170 rpm </td></tr>
+<tr><td colspan="4" align="left">                              </td></tr>
+<tr><td colspan="4" align="left">Suction SpSpeed Limit        157201 rpm </td></tr>
+<tr><td colspan="4" align="left">    (for Max SSS=           20000.0 )   </td></tr>
+<tr><td colspan="4" align="left">Specific Speed Limit         114170 rpm </td></tr>
+<tr><td colspan="4" align="left">    (for Max SS=             5000.0 )   </td></tr>
+<tr><td colspan="4" align="left">Impeller Tip Speed Limit     178761 rpm </td></tr>
+<tr><td colspan="4" align="left">    (for v Impeller Tip=      2100  fps)</td></tr>
+<tr><td colspan="4" align="left">Inducer Tip Speed Limit      284892 rpm </td></tr>
+<tr><td colspan="4" align="left">    (for v Inducer Tip=       1165  fps)</td></tr>
+<tr><td colspan="4" align="left">DN Limit                    3502202 rpm </td></tr>
+<tr><td colspan="4" align="left">    (for DN Limit=         1500000  )   </td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Pinlet</td><td align="left"> = 25.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">deltaP</td><td align="left"> = 200.0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 1</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">rpm</td><td align="left"> = 10000</td><td align="left"> rpm</td><td></td></tr>
+<tr><td align="left">DtipMn</td><td align="left"> = 0.75</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">vDisMx</td><td align="left"> = 2100</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">vIndMx</td><td align="left"> = 1165</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">spspMx</td><td align="left"> = 5000</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">suctMx</td><td align="left"> = 20000</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">spspMn</td><td align="left"> = 400</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">pStages</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">eff</td><td align="left"> = 0.459228</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">RPM                 </td><td align="left"> =  10000.0  </td><td align="left"> rpm    </td><td></td></tr>
+<tr><td align="left">Specific Speed      </td><td align="left"> =    437.9  </td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Suction Spec Speed  </td><td align="left"> =   1272.3  </td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Efficiency          </td><td align="left"> =      0.459</td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Calc'd Eff          </td><td align="left"> =      0.459</td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Weight Multiplier   </td><td align="left"> =      1.000</td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Pump Weight         </td><td align="left"> =      1.985</td><td align="left"> lbm    </td><td></td></tr>
+<tr><td align="left">Pump Volume         </td><td align="left"> =     18.951</td><td align="left"> cuin   </td><td></td></tr>
+<tr><td align="left">Number of Stages    </td><td align="left"> =       2   </td><td align="left"> (-)    </td><td></td></tr>
+<tr><td align="left">Total Pump Head     </td><td align="left"> =    528.2  </td><td align="left"> ft     </td><td></td></tr>
+<tr><td align="left">Head per Stage      </td><td align="left"> =    264.1  </td><td align="left"> ft     </td><td></td></tr>
+<tr><td align="left">Thermo HP   (eff)   </td><td align="left"> =      2.1  </td><td align="left"> hp     </td><td></td></tr>
+<tr><td align="left">Head HP (calcEff)   </td><td align="left"> =      2.1  </td><td align="left"> hp     </td><td></td></tr>
+<tr><td align="left">Average Density     </td><td align="left"> =     54.525</td><td align="left"> lb/cuft</td><td></td></tr>
+<tr><td align="left">Mass Flowrate       </td><td align="left"> =      1.00 </td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">Volumetric Flowrate </td><td align="left"> =      8.23 </td><td align="left"> gpm    </td><td></td></tr>
+<tr><td align="left">Fluid NPSP          </td><td align="left"> =     24.1  </td><td align="left"> psi    </td><td></td></tr>
+<tr><td align="left">Fluid NPSH          </td><td align="left"> =     63.7  </td><td align="left"> ft     </td><td></td></tr>
+<tr><td align="left">Impeller Tip Speed  </td><td align="left"> =    117.5  </td><td align="left"> ft/sec </td><td></td></tr>
+<tr><td align="left">Inducer Tip Speed   </td><td align="left"> =     40.9  </td><td align="left"> ft/sec </td><td></td></tr>
+<tr><td align="left">SHAFT Design Stress </td><td align="left"> =   40000   </td><td align="left"> psi    </td><td></td></tr>
+<tr><td align="left">min SHAFT Diam      </td><td align="left"> =      3.018</td><td align="left"> mm     </td><td></td></tr>
+<tr><td align="left">DN of SHAFT         </td><td align="left"> =   30180   </td><td align="left"> mm RPM </td><td></td></tr>
+<tr><td align="left">DN limit of SHAFT   </td><td align="left"> = 1500000   </td><td align="left"> mm RPM </td><td></td></tr>
+<tr><td align="left">Inlet Diameter      </td><td align="left"> =      0.94 </td><td align="left"> in     </td><td></td></tr>
+<tr><td align="left">Outlet Diameter     </td><td align="left"> =      0.25 </td><td align="left"> in     </td><td></td></tr>
+<tr><td align="left">Pump Diameter       </td><td align="left"> =      3.8  </td><td align="left"> in     </td><td></td></tr>
+<tr><td align="left">Pump Length         </td><td align="left"> =      3.5  </td><td align="left"> in     </td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>

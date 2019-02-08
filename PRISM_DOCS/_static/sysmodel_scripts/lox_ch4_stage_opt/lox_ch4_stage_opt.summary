@@ -1,0 +1,90 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Stage Example
+   by: M.E. Thane
+ date: Saturday May 05, 2018
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: LOX/CH4 stage optimization
+                mass =    32350.004 lbm
+                type = study
+INERT
+      78.232 lbm Aft Skirt
+     189.602 lbm Engine Hardware
+    5000.000 lbm payload
+    2989.557 lbm Stage Burnout Mass
+PROPELLANT
+   24092.612 lbm Usable Propellant
+======================================
+======================================
+
+===================== Design Variables =====================
+ NAME VALUE MINIMUM MAXIMUM DESCRIPTION                     
+   Pc  2000     500    3000 Engine Chamber Pressure  (psia) 
+ Diam    78      56      84 Stage Diameter  (in)            
+  eps   100      50     200 Engine Area Ratio               
+============================================================
+
+========================== Result Variables ===========================
+     NAME    VALUE DESCRIPTION                                  LIMITS 
+     Fvac  24261.2 Engine Thrust  (lbf)                >10000, <100000 
+         * ----->  (Fvac varies to make FoverWt = 0.75 lbf/lbm) 
+       Wp    24091 Total Usable Propellant  (lbm)      >10000, <100000 
+         * ----->  (Wp varies to make deltaV = 16000 ft/sec) 
+   D/Dmax 0.976574 Minimum L/D Stage Diameter  (in)                 <1 
+   deltaV    16000 Vacuum Delta Velocity  (ft/sec)              =16000 
+      Isp  364.196 Engine Specific Impulse  (sec)                  --- 
+  FoverWt     0.75 Initial Thrust to Weight  (lbf/lbm)           =0.75 
+  sysMass  32348.3 Total System Mass  (lbm)                        --- 
+ sysMassK  32.3483 Total System Mass  (Klbm)                       --- 
+=======================================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: LOX/CH4 stage optimization
+                mass =    32348.280 lbm
+                type = study
+
+-------------------------------------
+Simple Equation Mass: Aft Skirt
+             mass =       78.231 lbm
+             type = inert
+        curve fits from ELES runs
+        Calc Wt from Eqn : 78.2305484545
+
+-------------------------------------
+Simple Equation Mass: Engine Hardware
+             mass =      189.592 lbm
+             type = inert
+        Engine/Mount/Gimbal/Lines
+        Calc Wt from Eqn : 189.592269005
+
+-------------------------------------
+Constant Mass: payload
+             mass =     5000.000 lbm
+             type = inert
+
+-------------------------------------
+Simple Equation Mass: Stage Burnout Mass
+             mass =     2989.496 lbm
+             type = inert
+        curve fits from ELES runs
+        Calc Wt from Eqn : 2989.49602904
+
+-------------------------------------
+Simple Equation Mass: Usable Propellant
+             mass =    24090.961 lbm
+             type = propellant
+        Usable Propellant
+        Calc Wt from Eqn : 24090.9611549

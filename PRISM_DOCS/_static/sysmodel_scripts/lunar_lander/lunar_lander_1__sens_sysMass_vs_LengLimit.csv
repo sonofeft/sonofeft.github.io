@@ -1,0 +1,17 @@
+============================== Design Variables ===============================
+        NAME VALUE MINIMUM MAXIMUM DESCRIPTION                                 
+     ItotACS  6518    4000    8000 Total Impulse of ACS Engines  (lbf-sec)     
+     mrAxial  1.75     1.5     1.9 Divert Engine Mixture Ratio                 
+     PcAxial   230     150     400 Axial Engine Chamber Pressure  (psia)       
+ ItotDescent 46067   20000   50000 Total Impulse of Descent Engines  (lbf-sec) 
+   LengLimit    13      10      15 Engine Length Limit  (in)                   
+     PmaxGas  4500    4000    6000 Helium Max Bottle Pressure  (psia)          
+===============================================================================
+""
+LengLimit,sysMass
+10.0,219.22554298241778
+11.0,218.5205121544541
+12.0,218.0645544190261
+13.0,217.83719911788194
+14.0,217.79779619664936
+15.0,217.92000996378837

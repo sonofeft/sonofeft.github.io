@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Nozzle Optimization Study</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">Nozzle Optimization Study</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> Parabolic Nozzle</span></td>
+<td align="right"><span class="header"> PRISM v1.1.7</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: Skippy Rao</span></td>
+<td align="right"><span class="header">May 05, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable" width="680"><tr><td><p>Finding the optimum parabolic nozzle can be done in two ways within PRISM.</p>
+<ol>
+<li>Call the curve fit within the Huzel routine.</li>
+<li>Use the optimizer to call TDK to find the highest efficiency.</li>
+</ol>
+<p>The parabolic nozzle is defined by the entrance angle and the exit angle.</p>
+<p>This example demonstrates for a nozzle of</p>
+<ul>
+<li>area ratio = 40</li>
+<li>Percent Bell = 80</li>
+</ul>
+<p>the curve fit result is</p>
+<ul>
+<li>entrance angle = 33.4534 deg</li>
+<li>exit angle = 6.30687 deg</li>
+</ul>
+<p>The optimization below performs the TDK approach for comparison.</p>
+<p><strong>NOTICE</strong> the figure of merit in the optimization is not nozzle efficiency, it
+is the <strong>difference</strong> between nozzle efficiency and a reference nozzle efficiency.
+This is done so that the optimizer will see larger percent improvements as it explores the design space.</p>
+<p>Aside from the sensitivity chart that shows how efficiency changes with the two design parameters, there is also
+a contour plot of efficiency that shows the optimizers answer at approximately the center of the optimum "island"
+on the plot.</p>
+</td></tr></table></center><center><table class="mytable"><th bgcolor="#CCCCCC"> PRIOR TO OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng      36.4534           25           40 Entrance Angle  (deg)
+   exitAng      9.30687            3           15 Exit Angle  (deg)
+ Figure of Merit = 0.001 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+</pre></td></tr></table></center><center><table class="mytable"><th bgcolor="#CCCCCC"> AFTER OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng      34.3306           25           40 Entrance Angle  (deg)
+   exitAng      8.41057            3           15 Exit Angle  (deg)
+ Figure of Merit = 0.00119947 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+</pre></td></tr></table></center><center><table border="1" class="mytable"><th>System Sensitivity</th><tr><td><img src="./nozzle_shape_opt/nozzle_shape_opt_1__sens_eta2D_vs_thetaAng_exitAng.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">          40</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Area Ratio</td></tr>
+<tr><td align="left" valign="top">   exitAng</td><td align="right" valign="top">     8.41057</td><td nowrap align="left" valign="top">deg</td><td nowrap align="left" valign="top">Exit Angle  (deg)</td></tr>
+<tr><td align="left" valign="top">    pcBell</td><td align="right" valign="top">          80</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Percent Bell</td></tr>
+<tr><td align="left" valign="top">  thetaAng</td><td align="right" valign="top">     34.3306</td><td nowrap align="left" valign="top">deg</td><td nowrap align="left" valign="top">Entrance Angle  (deg)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">     eta2D</td><td align="right">    0.991562 </td><td nowrap align="left"></td><td nowrap align="left">Nozzle Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> eta2Ddiff</td><td align="right">  0.00119947 </td><td nowrap align="left"></td><td nowrap align="left">Nozzle Efficiency - Ref Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><br>
+<center><table border="1" class="mytable"><tr><td><img src="./nozzle_shape_opt/nozzle_shape_opt_2___eta2D_vs_thetaAng_exitAng.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">          40</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Area Ratio</td></tr>
+<tr><td align="left" valign="top">    pcBell</td><td align="right" valign="top">          80</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Percent Bell</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">          40</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Area Ratio</td></tr>
+<tr><td align="left" valign="top">   exitAng</td><td align="right" valign="top">     8.41057</td><td nowrap align="left" valign="top">deg</td><td nowrap align="left" valign="top">Exit Angle  (deg)</td></tr>
+<tr><td align="left" valign="top">    pcBell</td><td align="right" valign="top">          80</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Percent Bell</td></tr>
+<tr><td align="left" valign="top">  thetaAng</td><td align="right" valign="top">     34.3306</td><td nowrap align="left" valign="top">deg</td><td nowrap align="left" valign="top">Entrance Angle  (deg)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">     eta2D</td><td align="right">    0.991562 </td><td nowrap align="left"></td><td nowrap align="left">Nozzle Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> eta2Ddiff</td><td align="right">  0.00119947 </td><td nowrap align="left"></td><td nowrap align="left">Nozzle Efficiency - Ref Efficiency</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>

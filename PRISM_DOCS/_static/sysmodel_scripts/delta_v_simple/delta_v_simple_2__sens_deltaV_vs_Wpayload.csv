@@ -1,0 +1,21 @@
+======================== Design Variables =========================
+         NAME VALUE MINIMUM MAXIMUM DESCRIPTION                    
+     pcentACS     5       0      10 % ACS Propellant of Total      
+ massFraction   0.5     0.3     0.9 Stage Propellant Mass Fraction 
+          Isp   300     250     350 Engine Specific Impulse  (sec) 
+  WtPropAxial   200     100     500 Burned Axial Propellant  (lbm) 
+     Wpayload   100      50     150 Payload Mass  (lbm)            
+===================================================================
+""
+Wpayload,deltaV
+50.0,5428.865513088134
+60.0,5275.853309466252
+70.0,5131.447332894772
+80.0,4994.9248606582005
+90.0,4865.643504657167
+100.0,4743.030159092119
+110.0,4626.571750635057
+120.0,4515.807452987883
+130.0,4410.322099060706
+140.0,4309.740578695405
+150.0,4213.723052145251

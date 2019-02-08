@@ -1,0 +1,388 @@
+<html><head><title>Line_Liq_inpD.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>Line_Liq_inpD.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="c1"># Applied Python PRISM</span>
+<span class="c1"># (PRISM) PaRametrIc System Model</span>
+<span class="c1">#</span>
+<span class="c1"># Written by Charlie Taylor &lt;cet@appliedpython.com&gt; </span>
+<span class="c1"># Jan 2008</span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">prism.MassItem</span> <span class="kn">import</span> <span class="n">MassItem</span>
+<span class="kn">from</span> <span class="nn">prism.props</span> <span class="kn">import</span> <span class="n">Materials</span>
+<span class="kn">from</span> <span class="nn">prism.Summary</span> <span class="kn">import</span> <span class="n">Summary</span>
+<span class="kn">from</span> <span class="nn">prism.props</span> <span class="kn">import</span> <span class="n">Inc_liquid</span>
+<span class="kn">from</span> <span class="nn">prism.fortran</span> <span class="kn">import</span> <span class="n">orifice</span>
+
+<span class="k">class</span> <span class="nc">Line_Liq_inpD</span><span class="p">(</span> <span class="n">MassItem</span> <span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; wdot=</span><span class="si">%g</span><span class="s1"> lbm/sec&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">wdot</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;liquid line&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> 
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">OD</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">thkWall</span><span class="o">=</span><span class="mf">0.045</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span> <span class="p">):</span>
+            
+        <span class="c1"># default roughness (5.0E-6) is for drawn tubing</span>
+        
+        <span class="n">MassItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;inert&quot;</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="n">mass_lbm</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span> <span class="o">=</span> <span class="n">liqObj</span>
+        <span class="c1">#if (liqObj is not Inc_liquid.Inc_liquid):</span>
+        <span class="c1">#    print &quot;ERROR...&quot;,name,&quot;must have Inc_liquid object input for liqObj&quot;</span>
+        <span class="c1">#    sys.exit(1)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="o">=</span> <span class="n">Number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matlName</span> <span class="o">=</span> <span class="n">matlName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tming</span> <span class="o">=</span> <span class="n">Materials</span><span class="o">.</span><span class="n">getMatlProps</span><span class="p">(</span><span class="n">matlName</span><span class="p">)</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="o">=</span><span class="n">OD</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkWall</span><span class="o">=</span><span class="n">thkWall</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">wdot</span> <span class="o">=</span> <span class="n">wdot</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Kfactors</span> <span class="o">=</span> <span class="n">Kfactors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roughness</span> <span class="o">=</span> <span class="n">roughness</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pLine</span> <span class="o">=</span> <span class="n">pLine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">len_inches</span> <span class="o">=</span> <span class="n">len_inches</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span> <span class="o">=</span> <span class="n">cxw</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">reCalc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autoCalc</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">autoCalc</span> <span class="o">=</span> <span class="n">autoCalc</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">Q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdot</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">rho</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span> <span class="o">-</span> <span class="mf">2.0</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">thkWall</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Ac</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mf">4.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">velFPS</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Q</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Ac</span> <span class="o">*</span> <span class="mf">12.0</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">rinsid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dinsid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ReNum</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">D</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">velFPS</span> <span class="o">*</span> \
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dinsid</span><span class="o">/</span><span class="mf">12.0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">Visc</span><span class="o">/</span><span class="mf">1.0E5</span><span class="p">)</span>  <span class="c1"># liq Visc is in [lb/ft-sec * 1.0E5]</span>
+            
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">volLine</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rinsid</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_inches</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">sf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkWall</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">pLine</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dinsid</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dpLine</span> <span class="o">=</span> <span class="n">orifice</span><span class="o">.</span><span class="n">calcturbulenttubedp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">len_inches</span> <span class="p">,</span>\
+            <span class="bp">self</span><span class="o">.</span><span class="n">Kfactors</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dinsid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdot</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">roughness</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ReNum</span><span class="p">)</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">deltaP</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpLine</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">dPperVelHead</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdot</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="mf">0.27622</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">D</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">rinsid</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">thkWall</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">rinsid</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span>\
+            <span class="bp">self</span><span class="o">.</span><span class="n">len_inches</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span>
+        
+    
+    <span class="k">def</span> <span class="nf">minGaugeStr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">t</span><span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tming</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;Min Gauge&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+        
+    <span class="k">def</span> <span class="nf">buildSummary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="n">summ</span> <span class="o">=</span> <span class="n">Summary</span><span class="p">(</span>  <span class="n">summName</span><span class="o">=</span><span class="s1">&#39;Liquid Line&#39;</span><span class="p">,</span>
+        <span class="n">componentName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;fluid : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">symbol</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Structural Material : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">matlName</span> <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Mass is for </span><span class="si">%i</span><span class="s1"> lines total&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="p">)</span>
+        
+        <span class="c1"># add inputs</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;wdot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdot</span><span class="p">,</span> <span class="s1">&#39;lbm/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span> <span class="s1">&#39;OD&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span> <span class="s1">&#39;thkWall&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkWall</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;len_inches&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">len_inches</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Kfactors&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Kfactors</span><span class="p">,</span> <span class="s1">&#39;vel heads&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;roughness&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">roughness</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;pLine&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pLine</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;cxw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;# Lines&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%i</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># add outputs</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;dpLine&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dpLine</span><span class="p">,</span> <span class="s1">&#39;psid&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;dPperVelHead&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dPperVelHead</span><span class="p">,</span> <span class="s1">&#39;psid&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;velFPS&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">velFPS</span><span class="p">,</span> <span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;ReNum&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ReNum</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%E</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;rinsid&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rinsid</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;dinsid&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dinsid</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;volLine&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volLine</span><span class="p">,</span> <span class="s1">&#39;cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;rho&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;sy&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span> <span class="s1">&#39;psi&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;sf&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sf</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;tming&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tming</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;fluid rho&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;fluid visc&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">liqObj</span><span class="o">.</span><span class="n">Visc</span><span class="p">,</span> <span class="s1">&#39;1.0E5 * lb/ft-sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;wt/Line&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">summ</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1">#self test</span>
+
+
+    <span class="n">Fl</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="o">.</span><span class="n">Inc_liquid</span><span class="p">(</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;MMH&quot;</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">240.0</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+    <span class="n">Ox</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="o">.</span><span class="n">Inc_liquid</span><span class="p">(</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;N2O4&quot;</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">240.0</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+        
+    <span class="n">wdotFl</span> <span class="o">=</span> <span class="mf">7.6</span><span class="o">*.</span><span class="mi">447</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Line_Liq_inpD</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Line&quot;</span><span class="p">,</span><span class="n">wdot</span><span class="o">=</span><span class="n">wdotFl</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="n">Fl</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> 
+        <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">OD</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">thkWall</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+        
+
+    <span class="n">wdotOx</span> <span class="o">=</span> <span class="mf">14.2</span><span class="o">*.</span><span class="mi">3655</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Line_Liq_inpD</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Oxidizer Line&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="n">Ox</span> <span class="p">,</span><span class="n">wdot</span><span class="o">=</span><span class="n">wdotOx</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> 
+        <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">OD</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">thkWall</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+        
+</pre></div>
+</td></tr></table></body></html>

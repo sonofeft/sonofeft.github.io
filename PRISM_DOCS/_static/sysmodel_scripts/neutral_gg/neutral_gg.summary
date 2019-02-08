@@ -1,0 +1,32 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Grain Analysis
+   by: Finney Burns
+ date: Saturday May 05, 2018
+
+=================== Design Variables ===================
+        NAME VALUE MINIMUM MAXIMUM DESCRIPTION          
+         web     2       2       4 Web thickness  (in)  
+          OR     6       5      15 Outside Radius  (in) 
+ pcentBurned     0       0     100 Percent Burned  (%)  
+========================================================
+
+================ Result Variables =================
+    NAME   VALUE DESCRIPTION                LIMITS 
+ sysMass       0 Total System Mass  (lbm)      --- 
+      SA 728.849 Grain Surface Area  (sqin)    --- 
+  Height      24 Grain Height  (in)            --- 
+===================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Neutral Grain
+                type = solid gg

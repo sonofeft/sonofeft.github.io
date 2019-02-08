@@ -1,0 +1,8 @@
+
+.. examples_minStage_wpov
+
+Minstage_Wpov
+=============
+
+.. raw:: html
+   :file: ./_static/minStage_wpov.htm

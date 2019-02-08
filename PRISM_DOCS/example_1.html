@@ -1,0 +1,314 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example_1 &#8212; PRISM 1.1.7 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Copyright" href="copyright.html" />
+    <link rel="prev" title="Plots Types" href="plots.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="plots.html" title="Plots Types"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.7 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plots Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example_1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="plots.html"
+                        title="previous chapter">Plots Types</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="copyright.html"
+                        title="next chapter">Copyright</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/example_1.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="example-1">
+<h1>Example_1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h1>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>PRISM (PaRametrIc System Model)</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">PRISM (PaRametrIc System Model)</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> simple system</span></td>
+<td align="right"><span class="header"> PRISM v1.1.4</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: I.B. Simpleton</span></td>
+<td align="right"><span class="header">May 01, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable"><tr><td><img src="./_static/example_1/example_1_render_front_0_1.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">        3250</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top"></td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./_static/example_1/example_1_1___sysMass_vs_PHe.png"></td></tr><tr><td nowrap></td></tr></table></center><table class="mytable"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.4
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></body>
+</html>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="plots.html" title="Plots Types"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.7 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

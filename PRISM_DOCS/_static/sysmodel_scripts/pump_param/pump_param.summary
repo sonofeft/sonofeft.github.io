@@ -1,0 +1,119 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+PRISM (PaRametrIc System Model)
+   by: H.P. Shaft
+ date: Saturday May 05, 2018
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: Pump model exercise
+                mass =        1.985 lbm
+                type = analysis
+INERT
+       1.985 lbm Fuel Pump
+======================================
+======================================
+
+=================== Design Variables ====================
+   NAME VALUE MINIMUM MAXIMUM DESCRIPTION                
+ deltaP   200     100     500 Pump Pressure Rise  (psid) 
+    rpm 10000   10000   50000 Pump Speed  (rpm)          
+   wdot     1     0.5       3 Pump Flow Rate  (lbm/sec)  
+=========================================================
+
+==================== Result Variables ====================
+     NAME        VALUE DESCRIPTION                 LIMITS 
+      eff     0.459228 Pump Assumed Efficiency  >0.01, <1 
+         * ----->  (eff varies to make effError = 0 ) 
+  sysMass      1.98485 Total System Mass  (lbm)       --- 
+   effInp     0.459228 Assumed Pump Efficiency        --- 
+       hp            0 Pump Horsepower                --- 
+  effCalc     0.459228 Pump Efficiency                --- 
+ effError -1.55879e-11 Pump Efficiency Error           =0 
+==========================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Pump model exercise
+                mass =        1.985 lbm
+                type = analysis
+
+-------------------------------------
+Centrifugal Pump: Fuel Pump
+             mass =        1.985 lbm
+             type = inert
+        Material : Ti
+        Pump Fluid Summary:Fuel Pump
+        Fuel Pump: hp=2.1 wdot=1.000 dH=1.5 dP=200.0 eff=0.46
+        Inlet :MMH T= 530.0 P=  25.0 D=54.5437 rho=0.03156 Q=LIQUID
+        constS:MMH T= 530.0 P= 225.0 D=54.5437 rho=0.03156 Q=LIQUID
+        Outlet:MMH T= 531.1 P= 225.0 D=54.5065 rho=0.03154 Q=LIQUID
+        Pump Design Summary:Fuel Pump
+        Pump RPM Limit Summary:Fuel Pump
+          OVERALL RPM LIMIT          114170 rpm 
+                                      
+        Suction SpSpeed Limit        157201 rpm 
+            (for Max SSS=           20000.0 )   
+        Specific Speed Limit         114170 rpm 
+            (for Max SS=             5000.0 )   
+        Impeller Tip Speed Limit     178761 rpm 
+            (for v Impeller Tip=      2100  fps)
+        Inducer Tip Speed Limit      284892 rpm 
+            (for v Inducer Tip=       1165  fps)
+        DN Limit                    3502202 rpm 
+            (for DN Limit=         1500000  )   
+     ==== INPUT ====    
+        Pinlet          = 25.0 psia
+        deltaP          = 200.0 psig
+        wdot            = 1 lbm/sec
+        rpm             = 10000 rpm
+        DtipMn          = 0.75 in
+        vDisMx          = 2100 ft/sec
+        vIndMx          = 1165 ft/sec
+        spspMx          = 5000 
+        suctMx          = 20000 
+        spspMn          = 400 
+        pStages         = 2 
+        cxw             = 1 
+        eff             = 0.459228 
+     ==== OUTPUT ====    
+        RPM                  =  10000.0   rpm    
+        Specific Speed       =    437.9   (-)    
+        Suction Spec Speed   =   1272.3   (-)    
+        Efficiency           =      0.459 (-)    
+        Calc'd Eff           =      0.459 (-)    
+        Weight Multiplier    =      1.000 (-)    
+        Pump Weight          =      1.985 lbm    
+        Pump Volume          =     18.951 cuin   
+        Number of Stages     =       2    (-)    
+        Total Pump Head      =    528.2   ft     
+        Head per Stage       =    264.1   ft     
+        Thermo HP   (eff)    =      2.1   hp     
+        Head HP (calcEff)    =      2.1   hp     
+        Average Density      =     54.525 lb/cuft
+        Mass Flowrate        =      1.00  lbm/sec
+        Volumetric Flowrate  =      8.23  gpm    
+        Fluid NPSP           =     24.1   psi    
+        Fluid NPSH           =     63.7   ft     
+        Impeller Tip Speed   =    117.5   ft/sec 
+        Inducer Tip Speed    =     40.9   ft/sec 
+        SHAFT Design Stress  =   40000    psi    
+        min SHAFT Diam       =      3.018 mm     
+        DN of SHAFT          =   30180    mm RPM 
+        DN limit of SHAFT    = 1500000    mm RPM 
+        Inlet Diameter       =      0.94  in     
+        Outlet Diameter      =      0.25  in     
+        Pump Diameter        =      3.8   in     
+        Pump Length          =      3.5   in     
+        rho                  = 0.16 lbm/cuin
+        sy                   = 119000 psi

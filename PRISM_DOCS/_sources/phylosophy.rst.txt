@@ -1,0 +1,15 @@
+
+.. philosophy
+
+Philosophy
+==========
+
+The philosophy of PRISM is to aide the user in understanding math models.
+
+Similar to high-end systems such as `ModelCenter<https://en.wikipedia.org/wiki/ModelCenter>`_,
+PRISM aids in the design and optimization of systems. 
+PRISM enables easy optimization, sensitivity study, and visualization. 
+The math model can be as big or as small as desired.
+
+PRISM's origins are in the aerospace, rocket propulsion industry and was created to aide in the understanding of
+those types of models.

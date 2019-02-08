@@ -1,0 +1,66 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Delta V Study
+   by: C Taylor
+ date: Saturday May 05, 2018
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: Mass Fraction Study
+                mass =      520.000 lbm
+                type = analysis
+INERT
+     100.000 lbm Payload Weight
+     210.000 lbm Propulsion system
+PROPELLANT
+     210.000 lbm Propellant
+======================================
+======================================
+
+======================== Design Variables =========================
+         NAME VALUE MINIMUM MAXIMUM DESCRIPTION                    
+     pcentACS     5       0      10 % ACS Propellant of Total      
+ massFraction   0.5     0.3     0.9 Stage Propellant Mass Fraction 
+          Isp   300     250     350 Engine Specific Impulse  (sec) 
+  WtPropAxial   200     100     500 Burned Axial Propellant  (lbm) 
+     Wpayload   100      50     150 Payload Mass  (lbm)            
+===================================================================
+
+================ Result Variables ================
+    NAME   VALUE DESCRIPTION               LIMITS 
+ sysMass     520 Total System Mass  (lbm)     --- 
+    Itot   59850 Total Impulse  (lbf-sec)     --- 
+  deltaV 4743.03 Delta V  (ft/sec)            --- 
+    GLOW     520 Gross Liftoff Mass  (lbm)    --- 
+==================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Mass Fraction Study
+                mass =      520.000 lbm
+                type = analysis
+
+-------------------------------------
+Constant Mass: Payload Weight
+             mass =      100.000 lbm
+             type = inert
+
+-------------------------------------
+Constant Mass: Propulsion system
+             mass =      210.000 lbm
+             type = inert
+
+-------------------------------------
+Constant Mass: Propellant
+             mass =      210.000 lbm
+             type = propellant

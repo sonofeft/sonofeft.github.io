@@ -1,0 +1,342 @@
+<html><head><title>ShellStructure.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>ShellStructure.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="c1"># Applied Python PRISM</span>
+<span class="c1"># (PRISM) PaRametrIc System Model</span>
+<span class="c1">#</span>
+<span class="c1"># Written by Charlie Taylor &lt;cet@appliedpython.com&gt; </span>
+<span class="c1"># Oct,21 2005</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">prism.Summary</span> <span class="kn">import</span> <span class="n">Summary</span>
+<span class="kn">from</span> <span class="nn">prism.MassItem</span> <span class="kn">import</span> <span class="n">MassItem</span>
+
+<span class="kn">from</span> <span class="nn">prism.utils</span> <span class="kn">import</span> <span class="n">Constants</span>
+<span class="kn">from</span> <span class="nn">prism.props</span> <span class="kn">import</span> <span class="n">Materials</span>
+<span class="kn">from</span> <span class="nn">prism.utils.mensuration</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">prism.pov</span> <span class="kn">import</span> <span class="n">POV_Items</span><span class="p">,</span> <span class="n">POV_Basics</span>
+
+<span class="k">class</span> <span class="nc">ShellStructure</span><span class="p">(</span> <span class="n">MassItem</span> <span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>  
+        <span class="n">matlShell</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span> <span class="n">matlFlange</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> 
+        <span class="n">OD</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">Length</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span>
+        <span class="n">thkShell</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">thkFlange</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">widthFlange</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+        
+        <span class="n">MassItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;inert&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">=</span> <span class="n">mass_lbm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matlShell</span> <span class="o">=</span> <span class="n">matlShell</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">matlFlange</span> <span class="o">=</span> <span class="n">matlFlange</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">OD</span> <span class="o">=</span> <span class="n">OD</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Length</span> <span class="o">=</span> <span class="n">Length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span> <span class="o">=</span> <span class="n">thkShell</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span> <span class="o">=</span> <span class="n">thkFlange</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span> <span class="o">=</span> <span class="n">widthFlange</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span> <span class="o">=</span> <span class="n">cxw</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">rhoSh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sySh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eSh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmingSh</span> <span class="o">=</span> <span class="n">Materials</span><span class="o">.</span><span class="n">getMatlProps</span><span class="p">(</span><span class="n">matlShell</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rhoFl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">syFl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eFl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmingFl</span> <span class="o">=</span> <span class="n">Materials</span><span class="o">.</span><span class="n">getMatlProps</span><span class="p">(</span><span class="n">matlFlange</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">calc_thk_for_buckling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ThrustTotal</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">SF</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">tming</span><span class="o">=</span><span class="mf">0.001</span><span class="p">):</span>
+        
+        <span class="n">TaxBuck</span><span class="o">=</span><span class="mf">0.83</span><span class="o">*</span><span class="n">sqrt</span><span class="p">(</span><span class="n">ThrustTotal</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">eSh</span><span class="p">)</span><span class="o">*</span><span class="n">SF</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">TaxBuck</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmingSh</span><span class="p">,</span> <span class="n">tming</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">getPOV_Item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;texture&#39;</span><span class="p">):</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span>
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">POV_Basics</span><span class="o">.</span><span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;White&quot;</span><span class="p">,</span> <span class="n">transmit</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+            
+        <span class="n">shell</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">HollowCylinder</span><span class="p">(</span> <span class="n">OD</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Length</span><span class="p">,</span> <span class="n">texture</span> <span class="o">=</span> <span class="n">texture</span><span class="p">)</span>
+        <span class="n">f1</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">HollowCylinder</span><span class="p">(</span> <span class="n">OD</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span><span class="p">,</span> <span class="n">texture</span> <span class="o">=</span> <span class="n">texture</span><span class="p">)</span>
+        <span class="n">f2</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">HollowCylinder</span><span class="p">(</span> <span class="n">OD</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span><span class="p">,</span> <span class="n">texture</span> <span class="o">=</span> <span class="n">texture</span><span class="p">)</span>
+        <span class="n">f2</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Length</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span><span class="p">,</span><span class="mf">0.</span><span class="p">]</span> <span class="p">)</span>
+        
+        <span class="c1"># start out with CSE_Tank, but override the CSE_Tank itemsL to be shell items.</span>
+        <span class="n">s</span> <span class="o">=</span>  <span class="n">POV_Items</span><span class="o">.</span><span class="n">CSE_Tank</span><span class="p">(</span> <span class="n">radius</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">ellRatio</span><span class="o">=</span><span class="mf">1.414</span><span class="p">,</span> <span class="n">cylLen</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">texture</span><span class="o">=</span><span class="n">texture</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">itemsL</span> <span class="o">=</span> <span class="p">[</span><span class="n">shell</span><span class="p">,</span> <span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">]</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Length</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span>
+        
+        
+        <span class="k">return</span> <span class="n">s</span>
+        
+    <span class="k">def</span> <span class="nf">reCalc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span> <span class="o">-</span> <span class="mf">2.0</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shellVolume</span> <span class="o">=</span> <span class="n">cylVol</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Length</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shellMass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shellVolume</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoSh</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">flangeID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span> <span class="o">-</span> <span class="mf">2.0</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flangeVolume</span> <span class="o">=</span>  <span class="n">cylVol</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeID</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flangeMass</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeVolume</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoFl</span>
+        
+        <span class="c1"># include mass for 2 flages</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shellMass</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeMass</span><span class="o">*</span><span class="mf">2.0</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span>
+
+    <span class="k">def</span> <span class="nf">buildSummary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="n">summ</span> <span class="o">=</span> <span class="n">Summary</span><span class="p">(</span>  <span class="n">summName</span><span class="o">=</span><span class="s1">&#39;Shell Structure&#39;</span><span class="p">,</span>
+            <span class="n">componentName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        
+        <span class="c1"># assumptions</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Structural Material : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">matlShell</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Flange Material : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">matlFlange</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Total Mass includes two (2) flanges&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># inputs</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;OD&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OD</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Length&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Length</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;thkShell&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkShell</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;thkFlange&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkFlange</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;widthFlange&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">widthFlange</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;cxw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="c1"># outputs</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;rho Shell&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoSh</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="c1">#summ.addOutput( &#39;sy Shell&#39;, self.sySh, &#39;psi&#39;, &#39;%g&#39; )</span>
+        <span class="c1">#summ.addOutput( &#39;e Shell&#39;, self.eSh, &#39;psi&#39;, &#39;%g&#39; )</span>
+        <span class="c1">#summ.addOutput( &#39;tming Shell&#39;, self.tmingSh, &#39;in&#39;, &#39;%.3f&#39; )</span>
+        <span class="c1">#summ.addOutput( &#39;&#39;, &#39;&#39;, &#39;&#39;, &#39;%s&#39; )</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;rho Flange&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoFl</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span> <span class="p">)</span>
+        <span class="c1">#summ.addOutput( &#39;sy Flange&#39;, self.syFl, &#39;psi&#39;, &#39;%g&#39; )</span>
+        <span class="c1">#summ.addOutput( &#39;e Flange&#39;, self.eFl, &#39;psi&#39;, &#39;%g&#39; )</span>
+        <span class="c1">#summ.addOutput( &#39;tming Flange&#39;, self.tmingFl, &#39;in&#39;, &#39;%.3f&#39; )</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;flangeID&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeID</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;shellVolume&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shellVolume</span><span class="p">,</span> <span class="s1">&#39;cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;flangeVolume&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeVolume</span><span class="p">,</span> <span class="s1">&#39;cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;shellMass&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shellMass</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;flangeMass&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flangeMass</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">summ</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1">#self test</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ShellStructure</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Stage External Shell&quot;</span><span class="p">,</span>
+        <span class="n">matlShell</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span> <span class="n">matlFlange</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span> 
+        <span class="n">OD</span><span class="o">=</span><span class="mf">33.0</span><span class="p">,</span> <span class="n">Length</span><span class="o">=</span><span class="mf">29.0</span><span class="p">,</span>
+        <span class="n">thkShell</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">thkFlange</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">widthFlange</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+        
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+
+    <span class="k">print</span> <span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">70</span>
+    <span class="n">h</span><span class="o">.</span><span class="n">calc_thk_for_buckling</span><span class="p">(</span><span class="n">ThrustTotal</span><span class="o">=</span><span class="mf">100000.0</span><span class="p">,</span> <span class="n">SF</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">tming</span><span class="o">=</span><span class="mf">0.07</span><span class="p">)</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></body></html>

@@ -1,0 +1,318 @@
+<html><head><title>nozzle_shape_opt.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>nozzle_shape_opt.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">prism</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">prism.isp.tdk</span> <span class="kn">import</span> <span class="n">TDK_Nozzle</span>
+<span class="kn">from</span> <span class="nn">prism.isp.tdk</span> <span class="kn">import</span> <span class="n">Huzel</span>
+
+<span class="n">pc</span><span class="o">=</span><span class="mf">1000.0</span>
+<span class="n">eps</span><span class="o">=</span><span class="mf">40.0</span> 
+<span class="n">pcBell</span> <span class="o">=</span> <span class="mf">80.0</span>
+<span class="n">gam</span> <span class="o">=</span> <span class="mf">1.2</span>
+
+<span class="c1"># Get curve fit estimate of optimum parabolic nozzle shape.</span>
+<span class="n">thAng</span><span class="p">,</span> <span class="n">exAng</span> <span class="o">=</span> <span class="n">Huzel</span><span class="o">.</span><span class="n">getHuzelThetaAlpha</span><span class="p">(</span> <span class="n">eps</span><span class="p">,</span> <span class="n">pcBell</span> <span class="p">)</span>
+
+<span class="n">markdown_desc</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">Finding the optimum parabolic nozzle can be done in two ways within PRISM.</span>
+
+<span class="s2">1. Call the curve fit within the Huzel routine.</span>
+<span class="s2">2. Use the optimizer to call TDK to find the highest efficiency.</span>
+
+<span class="s2">The parabolic nozzle is defined by the entrance angle and the exit angle.</span>
+
+<span class="s2">This example demonstrates for a nozzle of </span>
+
+<span class="s2">* area ratio = {eps:g}</span>
+<span class="s2">* Percent Bell = {pcBell:g}</span>
+
+<span class="s2">the curve fit result is </span>
+
+<span class="s2">* entrance angle = {thAng:g} deg</span>
+<span class="s2">* exit angle = {exAng:g} deg</span>
+
+<span class="s2">The optimization below performs the TDK approach for comparison.</span>
+
+<span class="s2">**NOTICE** the figure of merit in the optimization is not nozzle efficiency, it</span>
+<span class="s2">is the **difference** between nozzle efficiency and a reference nozzle efficiency.</span>
+<span class="s2">This is done so that the optimizer will see larger percent improvements as it explores the design space.</span>
+
+<span class="s2">Aside from the sensitivity chart that shows how efficiency changes with the two design parameters, there is also</span>
+<span class="s2">a contour plot of efficiency that shows the optimizers answer at approximately the center of the optimum &quot;island&quot;</span>
+<span class="s2">on the plot.</span>
+
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;thAng&#39;</span><span class="p">:</span><span class="n">thAng</span><span class="p">,</span> <span class="s1">&#39;exAng&#39;</span><span class="p">:</span><span class="n">exAng</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">:</span><span class="n">eps</span><span class="p">,</span> <span class="s1">&#39;pcBell&#39;</span><span class="p">:</span><span class="n">pcBell</span><span class="p">}</span> <span class="p">)</span>
+    
+
+<span class="n">thAng</span> <span class="o">+=</span> <span class="mf">3.0</span> <span class="c1"># add an offset to see if optimizer brings it back</span>
+<span class="n">exAng</span> <span class="o">+=</span> <span class="mf">3.0</span> <span class="c1"># add an offset to see if optimizer brings it back</span>
+
+
+<span class="c1"># create system object (make sure author is correct... it&#39;s used for report)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">SysModel</span><span class="p">(</span><span class="n">programName</span><span class="o">=</span><span class="s1">&#39;Nozzle Optimization Study&#39;</span><span class="p">,</span>  <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;analysis&quot;</span><span class="p">,</span> 
+             <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Skippy Rao&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Parabolic Nozzle&quot;</span><span class="p">,</span>
+             <span class="n">markdown_desc</span><span class="o">=</span><span class="n">markdown_desc</span><span class="p">)</span>
+
+<span class="c1"># add design variables to the system (these variables may be used to</span>
+<span class="c1"># optimize the system or to create plots)</span>
+<span class="c1"># design vars have: </span>
+<span class="c1">#     name, value, minVal, maxVal, step,  units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="n">thAng</span><span class="p">,</span> <span class="mf">25.0</span><span class="p">,</span> <span class="mf">40.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="s1">&#39;Entrance Angle&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;exitAng&quot;</span><span class="p">,</span>  <span class="n">exAng</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="s1">&#39;Exit Angle&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span>  <span class="n">eps</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span>  <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Area Ratio&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;pcBell&quot;</span><span class="p">,</span> <span class="n">pcBell</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span>  <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Percent Bell&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+<span class="c1"># now add any Result Variables That might be plotted</span>
+<span class="c1"># result variables have: </span>
+<span class="c1">#    name,      units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;eta2D&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Nozzle Efficiency&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;eta2Ddiff&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;Nozzle Efficiency - Ref Efficiency&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+<span class="c1">#    [&quot;Lengine&quot;, &quot;in&quot;, &quot;Axial Engine Length&quot;, &quot;&lt;&quot;, 15.6],</span>
+
+<span class="n">tdk</span> <span class="o">=</span> <span class="n">TDK_Nozzle</span><span class="o">.</span><span class="n">TDK</span><span class="p">(</span>  <span class="n">theta</span><span class="o">=</span><span class="n">thAng</span><span class="p">,</span> <span class="n">exitAngle</span><span class="o">=</span><span class="n">exAng</span> <span class="p">,</span> <span class="n">Rthrt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Pc</span><span class="o">=</span><span class="n">pc</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gam</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">Tc</span><span class="o">=</span><span class="mf">5500.</span><span class="p">,</span> <span class="n">MW</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span>
+                <span class="n">RWTU</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">RWTD</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">Nsegs</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
+                <span class="n">pcentBell</span><span class="o">=</span><span class="n">pcBell</span><span class="p">,</span> <span class="n">saveFile</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                
+<span class="n">eta2Dref</span> <span class="o">=</span> <span class="n">tdk</span><span class="o">.</span><span class="n">IspMOC</span><span class="o">/</span><span class="n">tdk</span><span class="o">.</span><span class="n">IspODE</span>
+
+<span class="c1"># the following control routine ties together the system components</span>
+<span class="c1">#  with the system design variables</span>
+<span class="k">def</span> <span class="nf">myControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="c1"># get current values of design variables    </span>
+    <span class="n">thetaAng</span><span class="p">,</span> <span class="n">exitAng</span> <span class="o">=</span> <span class="n">S</span><span class="p">(</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">exitAng</span> <span class="o">&gt;</span> <span class="n">thetaAng</span><span class="o">-</span><span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">exitAng</span> <span class="o">=</span> <span class="n">thetaAng</span><span class="o">-</span><span class="mf">1.0</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tdk</span> <span class="o">=</span> <span class="n">TDK_Nozzle</span><span class="o">.</span><span class="n">TDK</span><span class="p">(</span>  <span class="n">theta</span><span class="o">=</span><span class="n">thetaAng</span><span class="p">,</span> <span class="n">exitAngle</span><span class="o">=</span><span class="n">exitAng</span> <span class="p">,</span> <span class="n">Rthrt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                <span class="n">Pc</span><span class="o">=</span><span class="n">pc</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gam</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">eps</span><span class="p">,</span> <span class="n">Tc</span><span class="o">=</span><span class="mf">5500.</span><span class="p">,</span> <span class="n">MW</span><span class="o">=</span><span class="mf">20.</span><span class="p">,</span>
+                <span class="n">RWTU</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">RWTD</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">Nsegs</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
+                <span class="n">pcentBell</span><span class="o">=</span><span class="n">pcBell</span><span class="p">,</span> <span class="n">saveFile</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+                
+        <span class="n">eta2D</span> <span class="o">=</span> <span class="n">tdk</span><span class="o">.</span><span class="n">IspMOC</span><span class="o">/</span><span class="n">tdk</span><span class="o">.</span><span class="n">IspODE</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">eta2D</span> <span class="o">=</span> <span class="mf">0.97</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;eta2D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">eta2D</span>
+    
+    <span class="n">etaDiff</span> <span class="o">=</span> <span class="n">eta2D</span> <span class="o">-</span> <span class="n">eta2Dref</span> <span class="o">+</span> <span class="mf">0.001</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;eta2Ddiff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">etaDiff</span>
+    
+
+<span class="c1"># need to tell system the name of the control routine</span>
+<span class="n">S</span><span class="o">.</span><span class="n">setControlRoutine</span><span class="p">(</span><span class="n">myControlRoutine</span><span class="p">)</span> <span class="c1"># calls myControlRoutine as well</span>
+
+<span class="c1"># now optimize the system... it should match up with the carpet plots.</span>
+<span class="n">optimize</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;eta2Ddiff&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">],</span> <span class="n">findmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">useCOBYLA</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">#make2DPlot(S, sysParam=&quot;eta2D&quot;, desVar=&quot;thetaAng&quot;)</span>
+<span class="n">makeSensitivityPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;eta2D&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">])</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">saveShortSummary</span><span class="p">()</span>
+
+<span class="n">makeContourPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">sysParam</span><span class="o">=</span><span class="s2">&quot;eta2D&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;thetaAng&quot;</span><span class="p">,</span><span class="s2">&quot;exitAng&quot;</span><span class="p">],</span> 
+    <span class="n">interval</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span> <span class="n">colorMap</span><span class="o">=</span><span class="s2">&quot;hsv&quot;</span><span class="p">)</span>
+
+<span class="c1"># now save summary of system</span>
+<span class="n">S</span><span class="o">.</span><span class="n">saveFullSummary</span><span class="p">()</span>
+    
+<span class="c1"># Be sure to wrap-up any files</span>
+<span class="n">S</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="s1">&#39;original Huzel theta and exit =&#39;</span><span class="p">,</span><span class="n">Huzel</span><span class="o">.</span><span class="n">getHuzelThetaAlpha</span><span class="p">(</span> <span class="n">eps</span><span class="p">,</span> <span class="n">pcBell</span> <span class="p">)</span>
+</pre></div>
+</td></tr></table></body></html>

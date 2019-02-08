@@ -1,0 +1,52 @@
+
+.. history
+
+
+History
+=======
+
+PRISM Development Log
+---------------------
+
+* 2002 to 2005
+    - (by: Charlie Taylor)
+        - Began wrapping Excel, PowerPoint and Word with python
+          (based on: Python Programming on Win32 by Mark Hammond & Andy Robinson)
+          
+        - Wrote Universal Power Balance Code
+            - wrapped Refprop and CEA)
+            - includes pump and turbine preliminary design
+        - Integrated f2py into FORTRAN support routines
+
+* 2005 to 2009
+    - (by: Charlie Taylor)
+        - Created ParaSol (Parametric Solutions) framework for mathematical models
+        - Placed Parasol on SourceForge
+          (see: http://pyparasol.sourceforge.net/overview.html)
+        
+* July 2016
+    - (by: Charlie Taylor)
+        - Moved Parasol to GitHub
+          (see: http://parasol.readthedocs.io/en/latest/index.html)
+
+* Apr 2018
+    - (by: Charlie Taylor)
+        - Created PRISM (PaRametrIc System Model)
+            - PRISM includes proprietary models in Parasol framework
+        - Added test cases for nose unit testing support (via nosetests)
+            - ./prism/tests directory
+        - Organized example cases
+            - ./prism/examples directory
+        - Added GUI to help organize commercial programs used by PRISM
+          (TDK and Refprop) as well as open source POV-Ray code.
+
+
+
+PyHatch
+-------
+
+PRISM Docs Created by: `PyHatch <http://pyhatch.readthedocs.org/en/latest/>`_ on Apr 18, 2018 
+
+(PyHatch Initializes Files And Directory Structures For New Python Projects.)
+
+See PyHatch Docs at: `<http://pyhatch.readthedocs.org/en/latest/>`_

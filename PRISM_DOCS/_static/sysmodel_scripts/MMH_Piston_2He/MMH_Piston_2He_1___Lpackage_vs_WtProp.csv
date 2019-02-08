@@ -1,0 +1,19 @@
+========================= Design Variables ==========================
+       NAME   VALUE MINIMUM MAXIMUM DESCRIPTION                      
+ pcentWpACS      10       0      10 HLACS Percent of Propellant  (%) 
+  ThrustVac     300     200     400 Engine Vacuum Thrust  (lbf)      
+  pcentBell      80      70     120 Percent Bell Nozzle Contour  (%) 
+        eps       9       2      20 Nozzle Area Ratio                
+        PHe   10000    4000   10000 Helium Tank Pressure  (psia)     
+   Wpayload 33.0693       5      40 Payload Mass  (lbm)              
+         Pc     375     300     500 Engine Chamber Pressure  (psia)  
+=====================================================================
+""
+WtProp,Lpackage
+6.0,8.761140415194578
+7.0,9.454828619892155
+8.0,10.172762718726265
+9.0,10.904039724811742
+10.0,11.642925059776292
+11.0,12.38628950123935
+12.0,13.132816468851601

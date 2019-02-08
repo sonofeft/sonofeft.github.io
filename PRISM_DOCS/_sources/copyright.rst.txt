@@ -1,0 +1,43 @@
+
+.. copyright
+
+Copyright
+=========
+
+PRISM
+Copyright (C) 2005  Applied Python
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see `<http://www.gnu.org/licenses/>`_.
+
+-----------------------
+
+Some Commercial Programs
+------------------------
+
+There are two commercial programs, Refprop and TDK, that are used by PRISM but should not be distributed with PRISM.
+
+Refprop can be obtained from `<www.nist.gov/srd/refprop>`_
+
+Contact your software administrator to obtain a copy of TDK.
+
+.. note::
+
+    TDK is restricted by U.S. export control regulations
+
+
+License
+-------
+
+see `<http://www.gnu.org/licenses/>`_
+      

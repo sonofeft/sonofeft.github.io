@@ -1,0 +1,1571 @@
+.. massitem_docs
+
+Mass Items
+==========
+
+The following is a list of the current MassItem objects in PRISM.
+
+Currently, the best documentation is the code itself.
+
+Each MassItem below has a link to the source code that you can view in the browser.
+
+
+Engines
+-------
+
+
+ColdGasACS
+**********
+
+
+
+`Source Code: ColdGasACS.py <./_static/colorized_massitems/ColdGasACS.html>`_  
+
+.. code:: python
+
+    ColdGasACS( name="Cold Gas ACS", gasSymbol='N2',  mass_lbm=0.0, 
+            MEOP=5000., Pamb=0.0, AreaRatio=8., ThrustAmb=1.0,
+            Vbottle=1000.0,PcRegulated=350.0, dPregFinal=150.0,
+            TminR=500.0,TmaxR=550.0, fracIsentropic=None,
+            gammaPolyMin=1.0, ItotGoal=None,
+            tAction=100., isBell=0, pcentBell=80.0, halfAngDeg=15.0, etaNozInp=None,
+            hcBottleInp=None)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>AreaRatio</td><td>8.0</td><td></td></tr>
+    <tr><td>dPregFinal</td><td>150.0</td><td>psid</td></tr>
+    <tr><td>etaNozInp</td><td>None</td><td></td></tr>
+    <tr><td>fracIsentropic</td><td>None</td><td></td></tr>
+    <tr><td>gammaPolyMin</td><td>1.0</td><td></td></tr>
+    <tr><td>gasSymbol</td><td>N2</td><td></td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>hcBottleInp</td><td>None</td><td></td></tr>
+    <tr><td>isBell</td><td>0</td><td></td></tr>
+    <tr><td>ItotGoal</td><td>None</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>MEOP</td><td>5000.0</td><td>psia</td></tr>
+    <tr><td>name</td><td>Cold Gas ACS</td><td></td></tr>
+    <tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>PcRegulated</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>tAction</td><td>100.0</td><td></td></tr>
+    <tr><td>ThrustAmb</td><td>1.0</td><td>lbf</td></tr>
+    <tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+    <tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+    <tr><td>Vbottle</td><td>1000.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_Ablative
+***************
+
+
+
+`Source Code: Engine_Ablative.py <./_static/colorized_massitems/Engine_Ablative.html>`_  
+
+.. code:: python
+
+    Engine_Ablative( name="engine",  mass_lbm=0.0, oxName='N2O4', fuelName='MMH',
+            tburn = 100.0, hasNozzleExt=1,
+            cxw=1.25, Pc=150.0, Fvac=100.0, WtIgnAssy=0.0,
+            epsNozExt=6.0, eps=50.0, mr=1.6, CR=2.5, LoverDt=4.0, LchamMin=1.5, xlnOverLcham=0.5,
+            etaERE=0.97, etaNoz=0.99,  isBell=1, pcentBell=80.0, etaKinInp=1.0,
+            halfAngDeg=15.0, useFastCEALookup=0, Number=1, 
+            matlInj="SS", cxwInj=1.0, cxwMisc=1.0, cxwValves=1.0,  valveMassInp=0,
+            matlStruct="Ti", calcEtaNoz=1, thkStructMin=0.02, SFstructure=2.0,
+            matlNozExt="Cb103",  thkNozExtMin=0.02,
+            matlAbl="SiPhen_B", SFablative=1.0,
+            refCharCham=0.87, refCharThrt=1.15, refCharNoz=0.087, refCharNozEps=7.5,
+            refCharPc=105.0, refCharTburn=434.0, 
+            thkAblThrtMin=0.030, thkAblChamMin=0.030, thkAblNozMin=0.020,
+            suppressGasWarning=0, InACan=0, Pamb=0.0 )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwMisc</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>epsNozExt</td><td>6.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>MMH</td><td></td></tr>
+    <tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>hasNozzleExt</td><td>1</td><td></td></tr>
+    <tr><td>InACan</td><td>0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    <tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlAbl</td><td>SiPhen_B</td><td></td></tr>
+    <tr><td>matlInj</td><td>SS</td><td></td></tr>
+    <tr><td>matlNozExt</td><td>Cb103</td><td></td></tr>
+    <tr><td>matlStruct</td><td>Ti</td><td></td></tr>
+    <tr><td>mr</td><td>1.6</td><td></td></tr>
+    <tr><td>name</td><td>engine</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>oxName</td><td>N2O4</td><td></td></tr>
+    <tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>refCharCham</td><td>0.87</td><td></td></tr>
+    <tr><td>refCharNoz</td><td>0.087</td><td></td></tr>
+    <tr><td>refCharNozEps</td><td>7.5</td><td></td></tr>
+    <tr><td>refCharPc</td><td>105.0</td><td></td></tr>
+    <tr><td>refCharTburn</td><td>434.0</td><td></td></tr>
+    <tr><td>refCharThrt</td><td>1.15</td><td></td></tr>
+    <tr><td>SFablative</td><td>1.0</td><td></td></tr>
+    <tr><td>SFstructure</td><td>2.0</td><td></td></tr>
+    <tr><td>suppressGasWarning</td><td>0</td><td></td></tr>
+    <tr><td>tburn</td><td>100.0</td><td>sec</td></tr>
+    <tr><td>thkAblChamMin</td><td>0.03</td><td>in</td></tr>
+    <tr><td>thkAblNozMin</td><td>0.02</td><td>in</td></tr>
+    <tr><td>thkAblThrtMin</td><td>0.03</td><td>in</td></tr>
+    <tr><td>thkNozExtMin</td><td>0.02</td><td>in</td></tr>
+    <tr><td>thkStructMin</td><td>0.02</td><td>in</td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    <tr><td>valveMassInp</td><td>0</td><td></td></tr>
+    <tr><td>WtIgnAssy</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_CEA_Scale
+****************
+
+
+
+`Source Code: Engine_CEA_Scale.py <./_static/colorized_massitems/Engine_CEA_Scale.html>`_  
+
+.. code:: python
+
+    Engine_CEA_Scale( name="engine",  mass_lbm=0.0, oxName='N2O4', fuelName='MMH',
+            cxw=1.25, Pc=150.0, Fvac=100.0, eps=50.0, mr=1.6, CR=2.5, LoverDt=4.0,
+            etaERE=0.97, etaNoz=0.99, useFastCEALookup=0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>MMH</td><td></td></tr>
+    <tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>mr</td><td>1.6</td><td></td></tr>
+    <tr><td>name</td><td>engine</td><td></td></tr>
+    <tr><td>oxName</td><td>N2O4</td><td></td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_ColdGas
+**************
+
+
+
+`Source Code: Engine_ColdGas.py <./_static/colorized_massitems/Engine_ColdGas.html>`_  
+
+.. code:: python
+
+    Engine_ColdGas( name="ColdGasEngine",  mass_lbm=0.0, gasSymbol='He', 
+            Tin=530.0, matlBody="SS",
+            cxw=1.0, Pc=150.0, Fvac=1.0, eps=50.0, CR=2.5, LoverDt=4.0,
+            etaCham=0.97, etaNoz=0.99, isBell=1, pcentBell=80.0,
+            halfAngDeg=15.0, Number=1, calcEtaNoz=1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>etaCham</td><td>0.97</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>Fvac</td><td>1.0</td><td>lbf</td></tr>
+    <tr><td>gasSymbol</td><td>He</td><td></td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlBody</td><td>SS</td><td></td></tr>
+    <tr><td>name</td><td>ColdGasEngine</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>Tin</td><td>530.0</td><td>degR</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_FFC
+**********
+
+
+
+`Source Code: Engine_FFC.py <./_static/colorized_massitems/Engine_FFC.html>`_  
+
+.. code:: python
+
+    Engine_FFC( name="engine",  mass_lbm=0.0, oxName='N2O4', fuelName='MMH',
+            cxw=1.25, Pc=150.0, Fvac=100.0, eps=50.0, mr=1.6, DtInp=None,
+            CR=2.5, LoverDt=4.0, LchamMin=1.5, xlnOverLcham=0.5,
+            etaERE=0.97, etaNoz=0.99, matlInj="SS", cxwInj=1.0, cxwValves=1.0, isBell=1, pcentBell=80.0,
+            halfAngDeg=15.0, useFastCEALookup=0, Number=1, etaKinInp=1.0,
+            calcEtaNoz=1, thkNozMin=0.02, matlNoz="Cb103", minBipropValveWt=0.2,
+            inputIspDel=0, IspDel=300.0, valvesMassInput=None, Pamb=0.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+    <tr><td>DtInp</td><td>None</td><td></td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>MMH</td><td></td></tr>
+    <tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>inputIspDel</td><td>0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    <tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+    <tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlInj</td><td>SS</td><td></td></tr>
+    <tr><td>matlNoz</td><td>Cb103</td><td></td></tr>
+    <tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+    <tr><td>mr</td><td>1.6</td><td></td></tr>
+    <tr><td>name</td><td>engine</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>oxName</td><td>N2O4</td><td></td></tr>
+    <tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>thkNozMin</td><td>0.02</td><td></td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    <tr><td>valvesMassInput</td><td>None</td><td>lbm</td></tr>
+    <tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_Fixed_Design
+*******************
+
+
+
+`Source Code: Engine_Fixed_Design.py <./_static/colorized_massitems/Engine_Fixed_Design.html>`_  
+
+.. code:: python
+
+    Engine_Fixed_Design( name="engine",  mass_lbm=10.0, oxName='N2O4', fuelName='MMH',
+            Pc=150.0, Dt=1.0, eps=50.0, mr=1.6, CR=2.5, xlcOxln=1.0, Lprime=4.0,
+            etaERE=0.97, etaNoz=0.99, isBell=1, pcentBell=80.0,
+            halfAngDeg=15.0, useFastCEALookup=0, Number=1, etaKinInp=1.0,
+            calcEtaNoz=1, inputIspDel=0, IspDel=300.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>Dt</td><td>1.0</td><td>in</td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>MMH</td><td></td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>inputIspDel</td><td>0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    <tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Lprime</td><td>4.0</td><td>in</td></tr>
+    <tr><td>mass_lbm</td><td>10.0</td><td>lbm</td></tr>
+    <tr><td>mr</td><td>1.6</td><td></td></tr>
+    <tr><td>name</td><td>engine</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>oxName</td><td>N2O4</td><td></td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    <tr><td>xlcOxln</td><td>1.0</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_GasGas
+*************
+
+
+
+`Source Code: Engine_GasGas.py <./_static/colorized_massitems/Engine_GasGas.html>`_  
+
+.. code:: python
+
+    Engine_GasGas( name="engine",  mass_lbm=0.0, oxName='O2', fuelName='CH4',
+            cxw=1.25, Pc=150.0, Fvac=100.0, eps=50.0, mr=2.5, CR=2.5, LoverDt=4.0, LchamMin=1.5,
+            etaERE=0.97, etaNoz=0.99, 
+            matlInj="SS", cxwInj=1.0, cxwValves=1.0, 
+            matlCham="Cb103(2250F)", cxwCham=1.0, 
+            isBell=1, pcentBell=80.0, WtIgnAssy=6.0,
+            halfAngDeg=15.0, useFastCEALookup=0, Number=1, etaKinInp=1.0,
+            calcEtaNoz=1, thkChamMin=0.2, thkNozMin=0.02, matlNoz="Cb103", minBipropValveWt=0.2)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>cxwCham</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+    <tr><td>eps</td><td>50.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>CH4</td><td></td></tr>
+    <tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    <tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlCham</td><td>Cb103(2250F)</td><td></td></tr>
+    <tr><td>matlInj</td><td>SS</td><td></td></tr>
+    <tr><td>matlNoz</td><td>Cb103</td><td></td></tr>
+    <tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+    <tr><td>mr</td><td>2.5</td><td></td></tr>
+    <tr><td>name</td><td>engine</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>oxName</td><td>O2</td><td></td></tr>
+    <tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>thkChamMin</td><td>0.2</td><td></td></tr>
+    <tr><td>thkNozMin</td><td>0.02</td><td></td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    <tr><td>WtIgnAssy</td><td>6.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Engine_Regen
+************
+
+
+
+`Source Code: Engine_Regen.py <./_static/colorized_massitems/Engine_Regen.html>`_  
+
+.. code:: python
+
+    Engine_Regen( name="regen engine",  mass_lbm=0.0, oxName='LOX', fuelName='Ethanol',
+            cxw=1.25, Pc=550.0, Fvac=10000.0, eps=25.0, mr=1.8, DtInp=None,
+            CR=2.5, LoverDt=4.0, LchamMin=1.5, xlnOverLcham=0.5,
+            etaERE=0.97, etaNoz=0.99, matlInj="SS", cxwInj=1.0, cxwValves=1.0, isBell=1, pcentBell=80.0,
+            halfAngDeg=15.0, useFastCEALookup=0, Number=1, etaKinInp=1.0,
+            calcEtaNoz=1, thkNozExtMin=0.03, matlNozExt="Cb103", minBipropValveWt=0.2,
+            inputIspDel=0, IspDel=300.0, valvesMassInput=None, Pamb=0.0,
+            epsNozExt=6.0, SFcloseout=2.0, matlCloseout='Ni', matlGasWall="CuZr",
+            thkMinCloseout=0.05, thkMinGasWall=0.05, aveLandWidth=0.05, aveChannelWidth=0.05,
+            aveChannelHeight=0.05)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>aveChannelHeight</td><td>0.05</td><td>in</td></tr>
+    <tr><td>aveChannelWidth</td><td>0.05</td><td>in</td></tr>
+    <tr><td>aveLandWidth</td><td>0.05</td><td>in</td></tr>
+    <tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+    <tr><td>CR</td><td>2.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+    <tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+    <tr><td>DtInp</td><td>None</td><td></td></tr>
+    <tr><td>eps</td><td>25.0</td><td></td></tr>
+    <tr><td>epsNozExt</td><td>6.0</td><td></td></tr>
+    <tr><td>etaERE</td><td>0.97</td><td></td></tr>
+    <tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+    <tr><td>fuelName</td><td>Ethanol</td><td></td></tr>
+    <tr><td>Fvac</td><td>10000.0</td><td>lbf</td></tr>
+    <tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+    <tr><td>inputIspDel</td><td>0</td><td></td></tr>
+    <tr><td>isBell</td><td>1</td><td></td></tr>
+    <tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+    <tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+    <tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlCloseout</td><td>Ni</td><td></td></tr>
+    <tr><td>matlGasWall</td><td>CuZr</td><td></td></tr>
+    <tr><td>matlInj</td><td>SS</td><td></td></tr>
+    <tr><td>matlNozExt</td><td>Cb103</td><td></td></tr>
+    <tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+    <tr><td>mr</td><td>1.8</td><td></td></tr>
+    <tr><td>name</td><td>regen engine</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>oxName</td><td>LOX</td><td></td></tr>
+    <tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+    <tr><td>Pc</td><td>550.0</td><td>psia</td></tr>
+    <tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+    <tr><td>SFcloseout</td><td>2.0</td><td></td></tr>
+    <tr><td>thkMinCloseout</td><td>0.05</td><td>in</td></tr>
+    <tr><td>thkMinGasWall</td><td>0.05</td><td>in</td></tr>
+    <tr><td>thkNozExtMin</td><td>0.03</td><td>in</td></tr>
+    <tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+    <tr><td>valvesMassInput</td><td>None</td><td>lbm</td></tr>
+    <tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+ValveFixedDesign
+****************
+
+
+
+`Source Code: ValveFixedDesign.py <./_static/colorized_massitems/ValveFixedDesign.html>`_  
+
+.. code:: python
+
+    ValveFixedDesign( name="liquid valve", liqObj=None,  matlName="Stainless Steel, Teflon", 
+            wdot=0.1, refWaterWdot=0.214, refWaterDP=30.0, refName="MOOG Spacebus valve",  Number=1,
+            mass_lbm=0.9, cxw=1.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>liqObj</td><td>None</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.9</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Stainless Steel, Teflon</td><td></td></tr>
+    <tr><td>name</td><td>liquid valve</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>refName</td><td>MOOG Spacebus valve</td><td></td></tr>
+    <tr><td>refWaterDP</td><td>30.0</td><td>psid</td></tr>
+    <tr><td>refWaterWdot</td><td>0.214</td><td>lbm/sec</td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+ValveScale
+**********
+
+
+
+`Source Code: ValveScale.py <./_static/colorized_massitems/ValveScale.html>`_  
+
+.. code:: python
+
+    ValveScale( name="propellant valve",  ref_lbm=50.0, ref_cuInchPerSec=35000.0,
+            cxw=1.0, cuInchPerSec=35000.0, Number=1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cuInchPerSec</td><td>35000.0</td><td>cuin/sec</td></tr>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>name</td><td>propellant valve</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>ref_cuInchPerSec</td><td>35000.0</td><td>cuin/sec</td></tr>
+    <tr><td>ref_lbm</td><td>50.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+ValveSize
+*********
+
+
+
+`Source Code: ValveSize.py <./_static/colorized_massitems/ValveSize.html>`_  
+
+.. code:: python
+
+    ValveSize( name="liquid valve", liqObj=None,  matlName="Ti", 
+            wdot=0.1, deltaP=20.0, 
+            Kfactors=0.1,  Number=1,
+            cxw=1.15, mass_lbm=0.0, )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.15</td><td></td></tr>
+    <tr><td>deltaP</td><td>20.0</td><td>psig</td></tr>
+    <tr><td>Kfactors</td><td>0.1</td><td>vel heads</td></tr>
+    <tr><td>liqObj</td><td>None</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>liquid valve</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+ValveSolenoid
+*************
+
+
+
+`Source Code: ValveSolenoid.py <./_static/colorized_massitems/ValveSolenoid.html>`_  
+
+.. code:: python
+
+    ValveSolenoid( name="propellant valve",  
+            cxw=1.0, cuInchPerSec=12.0, Number=1, isGas=0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cuInchPerSec</td><td>12.0</td><td>cuin/sec</td></tr>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>isGas</td><td>0</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>name</td><td>propellant valve</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Grains
+------
+
+
+Grain_EndBurn
+*************
+
+
+
+`Source Code: Grain_EndBurn.py <./_static/colorized_massitems/Grain_EndBurn.html>`_  
+
+.. code:: python
+
+    Grain_EndBurn( name="grain(end burner)",  
+            WpropBurned=200.0, propName='ARC448', 
+            cxw=1.0, Pc=500.0, FvacMaxPerGG=300.0, IspVacDel=238.6)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>FvacMaxPerGG</td><td>300.0</td><td>lbf</td></tr>
+    <tr><td>IspVacDel</td><td>238.6</td><td>sec</td></tr>
+    <tr><td>name</td><td>grain(end burner)</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Pc</td><td>500.0</td><td>psia</td></tr>
+    <tr><td>propName</td><td>ARC448</td><td></td></tr>
+    <tr><td>WpropBurned</td><td>200.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Lines
+-----
+
+
+Line_Gas
+********
+
+
+
+`Source Code: Line_Gas.py <./_static/colorized_massitems/Line_Gas.html>`_  
+
+.. code:: python
+
+    Line_Gas( name="gas line", gasSymbol='O2',  matlName="Ti", 
+            calcVelFromDiamInp=1, DiamInp=1.0, thkWallInp=0,
+            wdot=0.1, velFPS=20.0, TgasDegR=530.0, designWithVout=1,
+            usePinlet=0, PgasOutlet=400.0, PgasInlet=400.0, 
+            len_inches=50.0, Kfactors=2.0,  Number=1,
+            sf=4.0, cxw=1.25, roughness=5.0E-6, mass_lbm=0.0 )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>calcVelFromDiamInp</td><td>1</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>designWithVout</td><td>1</td><td></td></tr>
+    <tr><td>DiamInp</td><td>1.0</td><td>in</td></tr>
+    <tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+    <tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+    <tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>gas line</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>PgasInlet</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+    <tr><td>sf</td><td>4.0</td><td></td></tr>
+    <tr><td>TgasDegR</td><td>530.0</td><td>degR</td></tr>
+    <tr><td>thkWallInp</td><td>0</td><td>in</td></tr>
+    <tr><td>usePinlet</td><td>0</td><td></td></tr>
+    <tr><td>velFPS</td><td>20.0</td><td>ft/sec</td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Line_Liq
+********
+
+
+
+`Source Code: Line_Liq.py <./_static/colorized_massitems/Line_Liq.html>`_  
+
+.. code:: python
+
+    Line_Liq( name="liquid line", liqObj=None,  matlName="Ti", 
+            wdot=0.1, velFPS=20.0, pLine=400.0, 
+            len_inches=50.0, Kfactors=2.0,  Number=1,
+            sf=4.0, cxw=1.25, roughness=5.0E-6, mass_lbm=0.0, minID=0.0, thkInp=0.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+    <tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+    <tr><td>liqObj</td><td>None</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>minID</td><td>0.0</td><td></td></tr>
+    <tr><td>name</td><td>liquid line</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>pLine</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+    <tr><td>sf</td><td>4.0</td><td></td></tr>
+    <tr><td>thkInp</td><td>0.0</td><td>in</td></tr>
+    <tr><td>velFPS</td><td>20.0</td><td>ft/sec</td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Line_Liq_inpD
+*************
+
+
+
+`Source Code: Line_Liq_inpD.py <./_static/colorized_massitems/Line_Liq_inpD.html>`_  
+
+.. code:: python
+
+    Line_Liq_inpD( name="liquid line", liqObj=None,  matlName="Ti", 
+            wdot=0.1, pLine=400.0, OD=0.5, thkWall=0.045,
+            len_inches=50.0, Kfactors=2.0,  Number=1,
+            cxw=1.25, roughness=5.0E-6, mass_lbm=0.0 )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+    <tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+    <tr><td>liqObj</td><td>None</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>liquid line</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>OD</td><td>0.5</td><td>in</td></tr>
+    <tr><td>pLine</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+    <tr><td>thkWall</td><td>0.045</td><td>in</td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Misc
+----
+
+
+Misc_Weights
+************
+
+
+
+`Source Code: Misc_Weights.py <./_static/colorized_massitems/Misc_Weights.html>`_  
+
+.. code:: python
+
+    Misc_Weights( name="Misc. Mass Items", type="inert", mass_lbm=0.0):
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>name</td><td>Misc. Mass Items</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>type</td><td>inert</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+ShellStructure
+**************
+
+
+
+`Source Code: ShellStructure.py <./_static/colorized_massitems/ShellStructure.html>`_  
+
+.. code:: python
+
+    ShellStructure( name="shell",  mass_lbm=0.0,  
+            matlShell="grEpox", matlFlange="Al", 
+            OD=20.0, Length=25.0,
+            thkShell=0.1, thkFlange=0.1, widthFlange=0.5, cxw=1.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>Length</td><td>25.0</td><td>in</td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlFlange</td><td>Al</td><td></td></tr>
+    <tr><td>matlShell</td><td>grEpox</td><td></td></tr>
+    <tr><td>name</td><td>shell</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>OD</td><td>20.0</td><td>in</td></tr>
+    <tr><td>thkFlange</td><td>0.1</td><td>in</td></tr>
+    <tr><td>thkShell</td><td>0.1</td><td>in</td></tr>
+    <tr><td>widthFlange</td><td>0.5</td><td>in</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+SimpleEqnMass
+*************
+
+
+
+`Source Code: SimpleEqnMass.py <./_static/colorized_massitems/SimpleEqnMass.html>`_  
+
+.. code:: python
+
+    SimpleEqnMass( name="Simple Mass", type="inert",  mass_lbm=0.0,  eqn="1.2*1.1", desc='mass = simple eqn'):
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>desc</td><td>mass = simple eqn</td><td></td></tr>
+    <tr><td>eqn</td><td>1.2*1.1</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>name</td><td>Simple Mass</td><td></td></tr>
+    <tr><td>type</td><td>inert</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Press
+-----
+
+
+Gas_Orifice
+***********
+
+
+
+`Source Code: Gas_Orifice.py <./_static/colorized_massitems/Gas_Orifice.html>`_  
+
+.. code:: python
+
+    Gas_Orifice( name="gas orifice", gasSymbol='O2',  matlName="Ti", 
+            CdAInp=1.0,
+            wdot=0.1, TgasDegR=530.0,
+            usePinlet=0, PgasOutlet=400.0, PgasInlet=400.0, 
+            Number=1,
+            sf=4.0, cxw=1.25, mass_lbm=0.0 )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>CdAInp</td><td>1.0</td><td>in</td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>gas orifice</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>PgasInlet</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>sf</td><td>4.0</td><td></td></tr>
+    <tr><td>TgasDegR</td><td>530.0</td><td>degR</td></tr>
+    <tr><td>usePinlet</td><td>0</td><td></td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Gas_Regulator
+*************
+
+
+
+`Source Code: Gas_Regulator.py <./_static/colorized_massitems/Gas_Regulator.html>`_  
+
+.. code:: python
+
+    Gas_Regulator( name="gas regulator", gasSymbol='O2',  matlName="Ti", 
+            wdot=0.1, TgasInit=530.0, TgasFinal=400.0,
+            PgasOutlet=400.0, PgasInit=4000.0,  PgasFinal=800.0,
+            Number=1, CdASF=1.5,
+            sf=4.0, cxw=1.25, mass_lbm=0.0, )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>CdASF</td><td>1.5</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>gas regulator</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>PgasFinal</td><td>800.0</td><td>psia</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>PgasInit</td><td>4000.0</td><td>psia</td></tr>
+    <tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+    <tr><td>sf</td><td>4.0</td><td></td></tr>
+    <tr><td>TgasFinal</td><td>400.0</td><td>degR</td></tr>
+    <tr><td>TgasInit</td><td>530.0</td><td>degR</td></tr>
+    <tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+PressurantHe
+************
+
+
+
+`Source Code: PressurantHe.py <./_static/colorized_massitems/PressurantHe.html>`_  
+
+.. code:: python
+
+    PressurantHe( name="tank",  mass_lbm=0.0,
+            VpropTnk=1000.0,PHeTnk=5000.0,PpropNom=350.0,
+            PfinHeOvPnom=1.1, wtHeACS=0.0,
+            tAction=100.0,TminR=500.0,TmaxR=550.0,
+            tPolyCorr=240.0, gamPolyCorr=1.66, gamLimPolyCorr=1.0,
+            gammaPolyInp=None,
+            THeTnkHX=None)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>gamLimPolyCorr</td><td>1.0</td><td></td></tr>
+    <tr><td>gammaPolyInp</td><td>None</td><td></td></tr>
+    <tr><td>gamPolyCorr</td><td>1.66</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    <tr><td>PfinHeOvPnom</td><td>1.1</td><td></td></tr>
+    <tr><td>PHeTnk</td><td>5000.0</td><td>psia</td></tr>
+    <tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+    <tr><td>THeTnkHX</td><td>None</td><td>degR</td></tr>
+    <tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+    <tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+    <tr><td>tPolyCorr</td><td>240.0</td><td>sec</td></tr>
+    <tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+    <tr><td>wtHeACS</td><td>0.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+PressurantInteg
+***************
+
+
+
+`Source Code: PressurantInteg.py <./_static/colorized_massitems/PressurantInteg.html>`_  
+
+.. code:: python
+
+    PressurantInteg( name="tank",  mass_lbm=0.0, gas='HE',
+            timeProfileL=None, pcentLiqExpelledL=None,
+            VpropTnk=1000.0,PGasTnkMEOP=5000.0,PpropNom=350.0,
+            PfinGasOvPnom=1.1, 
+            tAction=100.0,TminR=500.0,TmaxR=550.0, ullageFrac=0.03,
+            PVoW_Bottle=500000., PVoW_Tank=100000.,
+            AccGees=1.0,
+            Nbottle=1, ellBottle=1.0, LcylOvDBottle=0.0, Cp_effBottle=0.15, # Cp Ti=.125, Al=.2, Monel=.1
+            Ntank=2, ellTank=1.414, LcylOvDTank=1.0, Cp_effTank=0.15,
+            CdARegMax=None, dPregulator=25.0, NtimeSteps=400, heatExchangerTout=None,
+            WtHeLLACS=0.0, QexternalIntoBottle=0.0, velMultTank=1.0, adiabatic=None, TbottleMatlConst=None,
+            useDBruns=1, fracExpel=None,  Tullage=None)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>AccGees</td><td>1.0</td><td></td></tr>
+    <tr><td>adiabatic</td><td>None</td><td></td></tr>
+    <tr><td>CdARegMax</td><td>None</td><td></td></tr>
+    <tr><td>Cp_effBottle</td><td>0.15</td><td>BTU/lbm/degR</td></tr>
+    <tr><td>Cp_effTank</td><td>0.15</td><td>BTU/lbm/degR</td></tr>
+    <tr><td>dPregulator</td><td>25.0</td><td></td></tr>
+    <tr><td>ellBottle</td><td>1.0</td><td></td></tr>
+    <tr><td>ellTank</td><td>1.414</td><td></td></tr>
+    <tr><td>fracExpel</td><td>None</td><td></td></tr>
+    <tr><td>gas</td><td>HE</td><td></td></tr>
+    <tr><td>heatExchangerTout</td><td>None</td><td></td></tr>
+    <tr><td>LcylOvDBottle</td><td>0.0</td><td></td></tr>
+    <tr><td>LcylOvDTank</td><td>1.0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    <tr><td>Nbottle</td><td>1</td><td></td></tr>
+    <tr><td>Ntank</td><td>2</td><td></td></tr>
+    <tr><td>NtimeSteps</td><td>400</td><td></td></tr>
+    <tr><td>pcentLiqExpelledL</td><td>None</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>PfinGasOvPnom</td><td>1.1</td><td></td></tr>
+    <tr><td>PGasTnkMEOP</td><td>5000.0</td><td>psia</td></tr>
+    <tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>PVoW_Bottle</td><td>500000.0</td><td></td></tr>
+    <tr><td>PVoW_Tank</td><td>100000.0</td><td></td></tr>
+    <tr><td>QexternalIntoBottle</td><td>0.0</td><td>BTU/sec</td></tr>
+    <tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+    <tr><td>TbottleMatlConst</td><td>None</td><td>degR</td></tr>
+    <tr><td>timeProfileL</td><td>None</td><td></td></tr>
+    <tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+    <tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+    <tr><td>Tullage</td><td>None</td><td></td></tr>
+    <tr><td>ullageFrac</td><td>0.03</td><td></td></tr>
+    <tr><td>useDBruns</td><td>1</td><td></td></tr>
+    <tr><td>velMultTank</td><td>1.0</td><td></td></tr>
+    <tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+    <tr><td>WtHeLLACS</td><td>0.0</td><td>lbm</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Pressurant_Gas
+**************
+
+
+
+`Source Code: Pressurant_Gas.py <./_static/colorized_massitems/Pressurant_Gas.html>`_  
+
+.. code:: python
+
+    Pressurant_Gas( name="tank",  mass_lbm=0.0, symbol="N2",
+            VpropTnk=1000.0,PGasTnk=5000.0,PpropNom=350.0,
+            PfinGasOvPnom=1.1, 
+            tAction=100.0,TminR=500.0,TmaxR=550.0, 
+            ItotLLACSinp=None, etaNoz=.965, AreaRatio=10.0, wtGasACS=0.0,
+            fracIsenBottle=0.5, fracIsenTank=0.1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>AreaRatio</td><td>10.0</td><td></td></tr>
+    <tr><td>etaNoz</td><td>0.965</td><td></td></tr>
+    <tr><td>fracIsenBottle</td><td>0.5</td><td></td></tr>
+    <tr><td>fracIsenTank</td><td>0.1</td><td></td></tr>
+    <tr><td>ItotLLACSinp</td><td>None</td><td>lbf-sec</td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    <tr><td>PfinGasOvPnom</td><td>1.1</td><td></td></tr>
+    <tr><td>PGasTnk</td><td>5000.0</td><td>psia</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>symbol</td><td>N2</td><td></td></tr>
+    <tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+    <tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+    <tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+    <tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+    <tr><td>wtGasACS</td><td>0.0</td><td></td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Props
+-----
+
+
+Inc_liquid
+**********
+
+
+
+`Source Code: Inc_liquid.py <./_static/colorized_massitems/Inc_liquid.html>`_  
+
+.. code:: python
+
+    Inc_liquid(symbol="RP1",T=None,P=None, child=0, mass_lbm=0.0, 
+            suppressGasWarning=0, assumeSaturation=1, minSummary=0 )
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>assumeSaturation</td><td>1</td><td></td></tr>
+    <tr><td>child</td><td>0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>minSummary</td><td>0</td><td></td></tr>
+    <tr><td>P</td><td>None</td><td>psia</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>suppressGasWarning</td><td>0</td><td></td></tr>
+    <tr><td>symbol</td><td>RP1</td><td></td></tr>
+    <tr><td>T</td><td>None</td><td>degR</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tanks
+-----
+
+
+Tank
+****
+
+
+
+`Source Code: Tank.py <./_static/colorized_massitems/Tank.html>`_  
+
+.. code:: python
+
+    Tank( name="tank",  mass_lbm=0.0,
+            makeCompositeTank=0,kalmod=0, matlName="Ti",  Cp_eff=0.15, # Cp Ti=.125, Al=.2, Monel=.1
+            tMinGaugeUser=0.0,
+            vfree=1000.0,ell=1.414,rcyltd=2.0,ptank=350.0,
+            sf=1.5,cxw=1.25,  NumExtraBaffles=0,
+            ithcyl=1,kacqui=0,inpex=0,expefi=0.99, Number=1,
+            inpTblad=1, tblad=0.030,tbond=0.030,ttrspc=0.010,
+            rhobnd=0.04,rhoacq=0.28,tliner=0.0,rholiner=0.1,
+            hasCommonDome=0, deltaPCommonDome=100.0, sf_CommonDome=1.5, matlCommonDome='Ti',
+            maxVolFrac_CommonDome=0.75)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Cp_eff</td><td>0.15</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>deltaPCommonDome</td><td>100.0</td><td></td></tr>
+    <tr><td>ell</td><td>1.414</td><td></td></tr>
+    <tr><td>expefi</td><td>0.99</td><td></td></tr>
+    <tr><td>hasCommonDome</td><td>0</td><td></td></tr>
+    <tr><td>inpex</td><td>0</td><td></td></tr>
+    <tr><td>inpTblad</td><td>1</td><td></td></tr>
+    <tr><td>ithcyl</td><td>1</td><td></td></tr>
+    <tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+    <tr><td>kalmod</td><td>0</td><td></td></tr>
+    <tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlCommonDome</td><td>Ti</td><td></td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>maxVolFrac_CommonDome</td><td>0.75</td><td></td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+    <tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>rcyltd</td><td>2.0</td><td></td></tr>
+    <tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+    <tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+    <tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+    <tr><td>sf</td><td>1.5</td><td></td></tr>
+    <tr><td>sf_CommonDome</td><td>1.5</td><td></td></tr>
+    <tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+    <tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+    <tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+    <tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tank_Conical
+************
+
+
+
+`Source Code: Tank_Conical.py <./_static/colorized_massitems/Tank_Conical.html>`_  
+
+.. code:: python
+
+    Tank_Conical( name="tank",  mass_lbm=0.0, coneAngleDeg=10.0, RbigOvrRsml=1.2,
+            makeCompositeTank=0,kalmod=0, matlName="Ti",  Cp_eff=0.15, # Cp Ti=.125, Al=.2, Monel=.1
+            tMinGaugeUser=0.0,
+            vfree=1000.0,ell=1.414,ptank=350.0,
+            sf=1.5,cxw=1.25,  NumExtraBaffles=0,
+            ithcyl=1,kacqui=0,inpex=0,expefi=0.99, Number=1,
+            inpTblad=1, tblad=0.030,tbond=0.030,ttrspc=0.010,
+            rhobnd=0.04,rhoacq=0.28,tliner=0.0,rholiner=0.1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>coneAngleDeg</td><td>10.0</td><td>deg</td></tr>
+    <tr><td>Cp_eff</td><td>0.15</td><td></td></tr>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>ell</td><td>1.414</td><td></td></tr>
+    <tr><td>expefi</td><td>0.99</td><td></td></tr>
+    <tr><td>inpex</td><td>0</td><td></td></tr>
+    <tr><td>inpTblad</td><td>1</td><td></td></tr>
+    <tr><td>ithcyl</td><td>1</td><td></td></tr>
+    <tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+    <tr><td>kalmod</td><td>0</td><td></td></tr>
+    <tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+    <tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>RbigOvrRsml</td><td>1.2</td><td></td></tr>
+    <tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+    <tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+    <tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+    <tr><td>sf</td><td>1.5</td><td></td></tr>
+    <tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+    <tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+    <tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+    <tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tank_Piston
+***********
+
+
+
+`Source Code: Tank_Piston.py <./_static/colorized_massitems/Tank_Piston.html>`_  
+
+.. code:: python
+
+    Tank_Piston( name="tank",  mass_lbm=0.0,
+            inputLoverD=1, metalName="Ti", overwrapName="grEpox",
+            vfree=4.0,ptank=1400.0,
+            sf=1.5,cxw=1.0,Number=1,
+            inpex=0,expefi=0.99, dPpiston=10.0, LoDpiston=0.45,
+            LoverD=5.0,Dinside=1.0, thkMetal_minG=0.010, thkMetal=None,
+            thkOvInput=None, thkMetalInp=None)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>Dinside</td><td>1.0</td><td></td></tr>
+    <tr><td>dPpiston</td><td>10.0</td><td>psig</td></tr>
+    <tr><td>expefi</td><td>0.99</td><td></td></tr>
+    <tr><td>inpex</td><td>0</td><td></td></tr>
+    <tr><td>inputLoverD</td><td>1</td><td></td></tr>
+    <tr><td>LoDpiston</td><td>0.45</td><td></td></tr>
+    <tr><td>LoverD</td><td>5.0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>metalName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>overwrapName</td><td>grEpox</td><td></td></tr>
+    <tr><td>ptank</td><td>1400.0</td><td>psia</td></tr>
+    <tr><td>sf</td><td>1.5</td><td></td></tr>
+    <tr><td>thkMetal</td><td>None</td><td></td></tr>
+    <tr><td>thkMetal_minG</td><td>0.01</td><td>in</td></tr>
+    <tr><td>thkMetalInp</td><td>None</td><td></td></tr>
+    <tr><td>thkOvInput</td><td>None</td><td></td></tr>
+    <tr><td>vfree</td><td>4.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tank_PVOW
+*********
+
+
+
+`Source Code: Tank_PVOW.py <./_static/colorized_massitems/Tank_PVOW.html>`_  
+
+.. code:: python
+
+    Tank_PVOW( name="tank",  mass_lbm=0.0,
+            PVOW_inp = 0.5E6, MEOP_based=1,
+            vfree=1000.0,ell=1.414,rcyltd=2.0,ptank=350.0,
+            sf=1.5,cxw=1.0,  matlName="Ti",
+            inpex=0,expefi=0.99, Number=1,
+            tliner=0.0,rholiner=0.1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>ell</td><td>1.414</td><td></td></tr>
+    <tr><td>expefi</td><td>0.99</td><td></td></tr>
+    <tr><td>inpex</td><td>0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>MEOP_based</td><td>1</td><td></td></tr>
+    <tr><td>name</td><td>tank</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>PVOW_inp</td><td>500000.0</td><td></td></tr>
+    <tr><td>rcyltd</td><td>2.0</td><td></td></tr>
+    <tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+    <tr><td>sf</td><td>1.5</td><td></td></tr>
+    <tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+    <tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tank_Torus
+**********
+
+
+
+`Source Code: Tank_Torus.py <./_static/colorized_massitems/Tank_Torus.html>`_  
+
+.. code:: python
+
+    Tank_Torus( name="toroidal_tank",  mass_lbm=0.0,
+            makeCompositeTank=0, matlName="Ti",  
+            RmajorOverRminor=3.0, RmajorInput=None, RminorInput=None,
+            tMinGaugeUser=0.0,
+            vfree=1000.0,ptank=350.0,
+            sf=1.5,cxw=1.25,  NumExtraBaffles=0,
+            kacqui=0,inpex=0,expefi=0.99, Number=1,
+            inpTblad=1, tblad=0.030,tbond=0.030,ttrspc=0.010,
+            rhobnd=0.04,rhoacq=0.28,tliner=0.0,rholiner=0.1)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.25</td><td></td></tr>
+    <tr><td>expefi</td><td>0.99</td><td></td></tr>
+    <tr><td>inpex</td><td>0</td><td></td></tr>
+    <tr><td>inpTblad</td><td>1</td><td></td></tr>
+    <tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+    <tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>toroidal_tank</td><td></td></tr>
+    <tr><td>Number</td><td>1</td><td></td></tr>
+    <tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+    <tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+    <tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+    <tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+    <tr><td>RmajorInput</td><td>None</td><td></td></tr>
+    <tr><td>RmajorOverRminor</td><td>3.0</td><td></td></tr>
+    <tr><td>RminorInput</td><td>None</td><td></td></tr>
+    <tr><td>sf</td><td>1.5</td><td></td></tr>
+    <tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+    <tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+    <tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+    <tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+    <tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+    </table>
+    </td>
+    </tr></table>
+
+Tpa
+---
+
+
+Pump
+****
+
+
+
+`Source Code: Pump.py <./_static/colorized_massitems/Pump.html>`_  
+
+.. code:: python
+
+    Pump( name="pump",  fluName="MMH", wdot=1.0,
+            mass_lbm=0.0,  matlName="Ti", Pinlet=25.0, Tinlet=530.0,
+            deltaP=250.0, rpm=20000.0, eff=0.62, cxw=1.0, pStages=1,
+            vDisMx=2100.0, vIndMx=1165.0, spspMx=5000.0,
+            SigShaft = 40000.0, DtipMn=0.75,
+            suctMx=20000.0, spspMn=400.0)
+
+.. raw:: html
+
+
+    <table><tr>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>cxw</td><td>1.0</td><td></td></tr>
+    <tr><td>deltaP</td><td>250.0</td><td>psig</td></tr>
+    <tr><td>DtipMn</td><td>0.75</td><td>in</td></tr>
+    <tr><td>eff</td><td>0.62</td><td></td></tr>
+    <tr><td>fluName</td><td>MMH</td><td></td></tr>
+    <tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+    <tr><td>matlName</td><td>Ti</td><td></td></tr>
+    <tr><td>name</td><td>pump</td><td></td></tr>
+    <tr><td>Pinlet</td><td>25.0</td><td>psia</td></tr>
+    <tr><td>pStages</td><td>1</td><td></td></tr>
+    </table>
+    </td>
+    <td>&nbsp;&nbsp;</td>
+    <td valign="top">
+    <table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+    <tr><td>rpm</td><td>20000.0</td><td>rpm</td></tr>
+    <tr><td>SigShaft</td><td>40000.0</td><td></td></tr>
+    <tr><td>spspMn</td><td>400.0</td><td></td></tr>
+    <tr><td>spspMx</td><td>5000.0</td><td></td></tr>
+    <tr><td>suctMx</td><td>20000.0</td><td></td></tr>
+    <tr><td>Tinlet</td><td>530.0</td><td></td></tr>
+    <tr><td>vDisMx</td><td>2100.0</td><td>ft/sec</td></tr>
+    <tr><td>vIndMx</td><td>1165.0</td><td>ft/sec</td></tr>
+    <tr><td>wdot</td><td>1.0</td><td>lbm/sec</td></tr>
+    </table>
+    </td>
+    </tr></table>

@@ -1,0 +1,112 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Generic N2O4/MMH at MR=1.8, Pc=500
+   by: Percy Bell
+ date: Saturday May 05, 2018
+
+==================== Design Variables =====================
+       NAME VALUE MINIMUM MAXIMUM DESCRIPTION              
+  pcentBell    70      70      90 Percent Bell of Nozzle   
+ LinjToExit     7       6       9 Lprime + Lnoz  (in)      
+         ko 0.035   0.035    0.05 Entrainment Constant     
+         pc   500     300     500 Chamber Pressure  (psia) 
+     Lprime   1.5       1       2 Chamber Length  (in)     
+===========================================================
+
+================ Result Variables =================
+     NAME   VALUE DESCRIPTION               LIMITS 
+  sysMass 9.41589 Total System Mass  (lbm)     --- 
+   IspDel  298.61 Delivered Isp  (sec)         --- 
+      eps 16.6651 Nozzle Area Ratio            --- 
+ pcentFFC 12.9498 Percent Fuel Film Cooling    --- 
+===================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Chamber Length Optimization
+                mass =        9.416 lbm
+                type = liquid
+
+-------------------------------------
+Bipropellant Engine: Est Engine
+             mass =        9.416 lbm
+             type = inert
+        Propellants : N2O4 / MMH
+        NASA CEA Code for ODE performance 
+        Physical Weight Model 
+        Injector Material is SS
+        Nozzle Material is Cb103
+        Bell Nozzle with Percent Bell = 70
+     ==== INPUT ====    
+        Fvac            = 1250 lbf
+        Pc              = 500.0 psia
+        eps             = 16.6651 
+        %Bell           = 70.00 %
+        mr              = 1.8 
+        CR              = 2.5 
+        xlnOverLcham    = 0.5 
+        LoverDt         = 0.01 
+        LchamMin        = 1.500 in
+        cxwInj          = 1 
+        cxwValves       = 1 
+        cxw             = 1.25 
+        etaERE          = 0.955412 
+     ==== OUTPUT ====    
+        Isp             = 291.287 sec
+        Cstar           = 5494.5 ft/sec
+        etaBL           = 0.987771 
+        etaDiv          = 0.981836 
+        etaKin          = 0.978734 
+        etaNoz          = 0.949205 
+        effIsp          = 0.906882 
+        IspODE          = 321.196 sec
+        CstarODE        = 5750.9 ft/sec
+        Tc              = 5809.7 degR
+        PcFace          = 524.022 psia
+        Pexit           = 3.01395 psia
+        wdotTot         = 4.2913 lbm/sec
+        wdotOx          = 2.75869 lbm/sec
+        wdotFl          = 1.53261 lbm/sec
+        rhoFl           = 0.0316 lbm/cuin
+        rhoOx           = 0.0521 lbm/cuin
+        volDotOx        = 52.9745 cuin/sec
+        volDotFl        = 48.5545 cuin/sec
+        DFlow           = 1.499 in
+        At              = 1.46568 sqin
+        Dt              = 1.366 in
+        Dcham           = 2.160 in
+        Dexit           = 5.577 in
+        Lcham           = 1.500 in
+        xlc             = 0.750 in
+        xln             = 0.750 in
+        Lnoz            = 5.500 in
+        Lengine         = 9.160 in
+        rhoInj          = 0.280 lbm/cuin
+        rhoNoz          = 0.310 lbm/cuin
+        thkCham         = 0.044 in
+        thkNoz          = 0.024 in
+        WtNoz           = 0.679 lbm
+        WtChamber       = 0.128 lbm
+        WtInj           = 1.862 lbm
+        WtAcoustic      = 0.658 lbm
+        WtValves(2)     = 4.710 lbm
+        WtMisc          = 0.438 lbm
+        F/W             = 132.754 lbf/lbm
+Solenoid Valve: biprop valves
+             mass =        4.710 lbm
+             type = inert
+        Based on Solenoid Valve Experience
+        Mass is for 2 valves total
+     ==== INPUT ====    
+        cuInchPerSec    = 52.9745 cuin/sec
+        cxw             = 1.000 
+     ==== OUTPUT ====    
+        basemass        = 2.355 lbm

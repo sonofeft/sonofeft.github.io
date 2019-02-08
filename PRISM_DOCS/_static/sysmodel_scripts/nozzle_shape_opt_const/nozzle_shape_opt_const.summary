@@ -1,0 +1,89 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Nozzle Optimization Study
+   by: Skippy Rao
+ date: Saturday May 05, 2018
+
+
+Finding the optimum parabolic nozzle can be done in two ways within PRISM.
+
+1. Call the curve fit within the Huzel routine.
+2. Use the optimizer to call TDK to find the highest efficiency.
+
+The parabolic nozzle is defined by the entrance angle and the exit angle.
+
+This example demonstrates for a nozzle of 
+
+* area ratio = 40
+* Percent Bell = 80
+
+the curve fit result is 
+
+* entrance angle = 33.4534 deg
+* exit angle = 6.30687 deg
+
+The optimization below performs the TDK approach for comparison.
+
+**NOTICE** the figure of merit in the optimization is not nozzle efficiency, it
+is the **difference** between nozzle efficiency and a reference nozzle efficiency.
+This is done so that the optimizer will see larger percent improvements as it explores the design space.
+
+Aside from the sensitivity chart that shows how efficiency changes with the two design parameters, there is also
+a contour plot of efficiency that shows the optimizers answer at approximately the center of the optimum "island"
+on the plot.
+
+
+
+
+PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng      36.4534           25           40 Entrance Angle  (deg)
+   exitAng      9.30687            3           15 Exit Angle  (deg)
+ Figure of Merit = 0.001 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+
+
+
+PRISM System: Parabolic Nozzle
+                type = analysis
+======================================
+      name         value        minimum   maximum
+  thetaAng      33.4591           25           40 Entrance Angle  (deg)
+   exitAng      8.62371            3           15 Exit Angle  (deg)
+ Figure of Merit = 0.0011842 = Nozzle Efficiency - Ref Efficiency (eta2Ddiff)
+======================================
+======================================
+
+
+PRISM System: Parabolic Nozzle
+                type = analysis
+
+=================== Design Variables ===================
+     NAME   VALUE MINIMUM MAXIMUM DESCRIPTION           
+   pcBell      80      60     100 Percent Bell          
+ thetaAng 33.4591      25      40 Entrance Angle  (deg) 
+      eps      40       5     100 Area Ratio            
+  exitAng 8.62371       3      15 Exit Angle  (deg)     
+========================================================
+
+====================== Result Variables =======================
+      NAME     VALUE DESCRIPTION                        LIMITS 
+ eta2Ddiff 0.0011842 Nozzle Efficiency - Ref Efficiency    --- 
+     eta2D  0.991547 Nozzle Efficiency                   >0.99 
+===============================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Parabolic Nozzle
+                type = analysis

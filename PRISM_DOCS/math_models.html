@@ -1,0 +1,353 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Math Model &#8212; PRISM 1.1.16 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Plot Types" href="plots.html" />
+    <link rel="prev" title="Building Blocks" href="building_blocks.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="plots.html" title="Plot Types"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="building_blocks.html" title="Building Blocks"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_blocks.html">Building Blocks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Math Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-object">System Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-variables">Design Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#result-variables">Result Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feasible-variables">Feasible Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mass-items">Mass Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#control-routine">Control Routine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise-model">Exercise Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plot Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pov_ray.html">POV-Ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_stage.html">Sample Stage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="many_examples.html">Many Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="massitem_docs.html">Mass Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improvements.html">Future Improvements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="building_blocks.html"
+                        title="previous chapter">Building Blocks</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="plots.html"
+                        title="next chapter">Plot Types</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/math_models.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="math-model">
+<h1>Math Model<a class="headerlink" href="#math-model" title="Permalink to this headline">¶</a></h1>
+<p>When a more complex model is required than just the straightforward use of a building block,
+a complete math model is constructed.</p>
+<p>A Math Model is Defined by System Level Variables of 3 types; Design, Result and Feasible
+and a control routine to coordinate the variables.</p>
+<p>The flow of the math model is described in the diagram below.</p>
+<img alt="_images/prism_structure.jpg" src="_images/prism_structure.jpg" />
+<p>In practice, the PRISM mass models are typically anchored to either existing hardware or to detailed CAD models.</p>
+<a class="reference internal image-reference" href="_images/anchor_prism.jpg"><img alt="_images/anchor_prism.jpg" src="_images/anchor_prism.jpg" style="width: 45%;" /></a>
+<div class="section" id="system-object">
+<h2>System Object<a class="headerlink" href="#system-object" title="Permalink to this headline">¶</a></h2>
+<p>The PRISM system object <strong>SysModel</strong> is created to coordinate the analysis. It is created as shown below.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="n">SysModel</span><span class="p">(</span><span class="n">programName</span><span class="o">=</span><span class="s1">&#39;Overall Name&#39;</span><span class="p">,</span>  <span class="c1"># title on output, top level name</span>
+             <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Task Name&quot;</span><span class="p">,</span>            <span class="c1"># title on charts, subtitle on output</span>
+             <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;analysis&quot;</span><span class="p">,</span>             <span class="c1"># generic type of task</span>
+             <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Skippy Rao&quot;</span><span class="p">,</span>         <span class="c1"># author&#39;s name is attached to output</span>
+             <span class="n">markdown_desc</span><span class="o">=</span><span class="n">markdown_desc</span><span class="p">,</span> <span class="c1"># creates Markdown documentation in HTML file</span>
+             <span class="n">constraintTolerance</span><span class="o">=</span><span class="mf">0.00001</span><span class="p">)</span> <span class="c1"># tolerance on constraint violations constrVal</span>
+</pre></div>
+</div>
+<p>The <strong>SysModel</strong> object can be called anything. My convention has been to name it capital s, <strong>S</strong>,
+which is assumed for the rest of this page.</p>
+<p>Note that additional documentation can be added to the HTML output through the use of a <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> text string.
+A summary of  <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> is located at  <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Wikipedia Markdown</a> .</p>
+<p>Images can be included in the Markdown to help describe the task;
+look at <a class="reference internal" href="many_examples.html#example-box-link"><span class="std std-ref">Box Example</span></a>
+on the <a class="reference internal" href="many_examples.html#many-examples-link"><span class="std std-ref">Many Examples</span></a> page.</p>
+<p>The image directive is also described on the <a class="reference external" href="https://en.wikipedia.org/wiki/Markdown">Wikipedia Markdown</a> page.</p>
+</div>
+<div class="section" id="design-variables">
+<h2>Design Variables<a class="headerlink" href="#design-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Design Variables: input to the system.</dt>
+<dd><ul class="first last">
+<li>may be a major component design variable</li>
+<li>may be a system level variable</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The python statement(s) to define design variables include an initial design value, parametric range (minVal &amp; maxVal),
+step size for parametric calculations, physical units and a description:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#              name, design value, minVal, maxVal,  step,  units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesVars</span><span class="p">(</span> <span class="p">[</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span>      <span class="mf">5000.0</span><span class="p">,</span> <span class="mf">4000.0</span><span class="p">,</span> <span class="mf">9000.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;Helium Tank Pressure&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s2">&quot;MR&quot;</span><span class="p">,</span>          <span class="mf">2.0</span><span class="p">,</span>    <span class="mf">1.0</span><span class="p">,</span>    <span class="mf">2.4</span><span class="p">,</span>  <span class="mf">0.05</span><span class="p">,</span>     <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Engine Mixture Ratio&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span>        <span class="mf">150.0</span><span class="p">,</span>  <span class="mf">150.0</span><span class="p">,</span>  <span class="mf">500.0</span><span class="p">,</span>  <span class="mf">20.0</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;Engine Chamber Pressure&#39;</span><span class="p">],</span>
+              <span class="p">[</span><span class="s2">&quot;pcentBell&quot;</span><span class="p">,</span>  <span class="mf">80.0</span><span class="p">,</span>   <span class="mf">60.0</span><span class="p">,</span>  <span class="mf">100.0</span><span class="p">,</span>   <span class="mf">5.0</span><span class="p">,</span>     <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;Nozzle Percent Bell&#39;</span><span class="p">],</span>
+              <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="result-variables">
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Result Variables: output from the system</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>may be constrained</dt>
+<dd><ul class="first last">
+<li>(e.g. Total Impulse &gt; 2000 lbf sec)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The python statement(s) to define result variables include a name, physical units and a description.
+The statement may also include a constraint type(<strong>constrCond</strong>) and value(<strong>constrVal</strong>).
+The constraint type is a single character, either &quot;&gt;&quot; or &quot;&lt;&quot;.
+This type of constraint is usually used to constrain the optimizer.
+All plots in PRISM will place markers on locations that violate these constraints.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#                      name, units,     description       constrCond, constrVal</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVars</span><span class="p">(</span> <span class="p">[</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="s2">&quot;lbm&quot;</span><span class="p">,</span>     <span class="s2">&quot;Total System Mass&quot;</span><span class="p">],</span>
+                 <span class="p">[</span>    <span class="s2">&quot;Isp&quot;</span><span class="p">,</span> <span class="s2">&quot;sec&quot;</span><span class="p">,</span>     <span class="s2">&quot;Engine Specific Impulse&quot;</span><span class="p">],</span>
+                 <span class="p">[</span>   <span class="s2">&quot;Itot&quot;</span><span class="p">,</span> <span class="s2">&quot;lbf-sec&quot;</span><span class="p">,</span> <span class="s2">&quot;Total Impulse&quot;</span><span class="p">,</span>      <span class="s2">&quot;&gt;&quot;</span><span class="p">,</span>  <span class="mf">2000.0</span><span class="p">]</span> <span class="c1"># &lt;== Itot Constraint</span>
+                 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="feasible-variables">
+<h2>Feasible Variables<a class="headerlink" href="#feasible-variables" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Feasible Variables: equality-constrained output</dt>
+<dd><ul class="first last">
+<li>an assigned input variable controls output value</li>
+<li><dl class="first docutils">
+<dt>automatically uses an inner loop root solver</dt>
+<dd><ul class="first last">
+<li>(e.g. Propellant Mass varies to make delta V = 1000 ft/sec)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The idea behind a Feasible Variable is to impose an Equality Constraint on a Result Variable</p>
+</div>
+<p>A python Feasible Variable statement actually defines two variables; a Design Variable and a Result Variable.
+Whenever the math model is called, it will solve for the design variable value that gives the desired result variable value.</p>
+<p>For example, you might want to solve for the propellant load that gives the desired delta v,
+or the thrust that gives burnout gees, or the area ratio that gives the desired engine length, etc.</p>
+<p>When solving the control variable value (i.e. the design variable), the allowable range for the root solver
+to explore is given by <strong>cvMinVal</strong> and <strong>cvMaxVal</strong>. If no root can be found, then the routine will fail
+and return a value of <strong>cvFailValue</strong>. It is usually best to define <strong>cvFailValue</strong> to be numerically legal,
+but very poor design such that the optimizer will move back into better design territory after exploring
+into poor territory.</p>
+<p>Examples of Feasible Variables are shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="o">.</span><span class="n">addFeasibleVariable</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Lengine&quot;</span><span class="p">,</span> <span class="n">feasibleVal</span><span class="o">=</span><span class="n">maxLengine</span><span class="p">,</span>
+                       <span class="n">units</span><span class="o">=</span><span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Axial Engine Length&#39;</span><span class="p">,</span>
+                       <span class="n">controlVar</span><span class="o">=</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span> <span class="n">cvMinVal</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cvMaxVal</span><span class="o">=</span><span class="mf">600.0</span><span class="p">,</span>
+                       <span class="n">cvUnits</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cvDesc</span><span class="o">=</span><span class="s1">&#39;Axial Engine Area Ratio&#39;</span><span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">addFeasibleVariable</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span>
+                       <span class="n">feasibleVal</span><span class="o">=</span><span class="n">deltaVReqmt</span> <span class="p">,</span>
+                       <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;Vacuum Delta Velocity&#39;</span><span class="p">,</span>
+                       <span class="n">controlVar</span><span class="o">=</span><span class="s2">&quot;WtPropAxial&quot;</span><span class="p">,</span> <span class="n">cvMinVal</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cvMaxVal</span><span class="o">=</span><span class="mf">600.0</span><span class="p">,</span>
+                       <span class="n">cvUnits</span><span class="o">=</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="n">cvDesc</span><span class="o">=</span><span class="s1">&#39;Total Usable Axial Propellant&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mass-items">
+<h2>Mass Items<a class="headerlink" href="#mass-items" title="Permalink to this headline">¶</a></h2>
+<p>A variety of MassItem objects are available in PRISM for engines, tanks, pressurization, lines, fluids, etc.
+Each of them is created with similar syntax.
+For example a fuel system might contain the following tank, fluid and line which are added to the <strong>SysModel</strong>
+after being instantiated.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create fuel tank</span>
+<span class="n">Fltank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Tank&quot;</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="n">NumberFuelTanks</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>    <span class="n">tMinGaugeUser</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">486.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span>
+        <span class="n">tblad</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
+
+
+<span class="c1"># add propellants</span>
+<span class="n">Fl</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">14.7</span><span class="p">)</span>
+
+<span class="c1"># add main propellant lines</span>
+<span class="n">FlLine</span> <span class="o">=</span> <span class="n">Line_Liq_inpD</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Line&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="n">Fl</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">OD</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">thkWall</span><span class="o">=</span><span class="mf">0.045</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span> <span class="p">)</span>
+
+
+<span class="c1">#=====  after they have been created, add the Mass Items to the system object ====</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="p">[</span> <span class="n">Fltank</span><span class="p">,</span>  <span class="n">Fl</span><span class="p">,</span> <span class="n">FlLine</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="control-routine">
+<h2>Control Routine<a class="headerlink" href="#control-routine" title="Permalink to this headline">¶</a></h2>
+<p>The control routine gets current values of design variables from <strong>SysModel</strong>,
+applies those inputs to the various <strong>MassItem</strong> objects,
+and sets the values of result variables.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following control routine ties together the system components</span>
+<span class="c1">#  with the system design variables</span>
+<span class="k">def</span> <span class="nf">myControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="c1"># get current values of design variables</span>
+    <span class="n">Pc</span><span class="p">,</span><span class="n">PHe</span><span class="p">,</span><span class="n">MR</span> <span class="o">=</span> <span class="n">S</span><span class="p">(</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span> <span class="s2">&quot;MR&quot;</span><span class="p">)</span>
+
+    <span class="c1"># set engine</span>
+    <span class="n">EngineRef</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+    <span class="n">EngineRef</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+    <span class="n">EngineRef</span><span class="o">.</span><span class="n">mr</span> <span class="o">=</span> <span class="n">MR</span>
+
+    <span class="c1"># &lt;YOUR CODE HERE&gt;</span>
+    <span class="c1">#       .</span>
+    <span class="c1">#       .</span>
+    <span class="c1">#       .</span>
+    <span class="c1"># &lt;YOUR CODE HERE&gt;</span>
+
+    <span class="c1"># set result variables</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;Itot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Itot</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;sysMass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;Isp&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">EngineRef</span><span class="o">.</span><span class="n">Isp</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;IspSL&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">EngineRef</span><span class="o">.</span><span class="n">IspAmb</span>
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;Lpackage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Lpackage</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exercise-model">
+<h2>Exercise Model<a class="headerlink" href="#exercise-model" title="Permalink to this headline">¶</a></h2>
+<p>The last step is to add any optimization, plots or documentation.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># need to tell system the name of the control routine</span>
+<span class="n">S</span><span class="o">.</span><span class="n">setControlRoutine</span><span class="p">(</span><span class="n">myControlRoutine</span><span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+
+<span class="c1"># now optimize the system... it should match up with the sensitivity plots.</span>
+<span class="n">optimize</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span><span class="s2">&quot;Pc&quot;</span><span class="p">],</span> <span class="n">findmin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">useCOBYLA</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">makeSensitivityPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;Lengine&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span><span class="s2">&quot;MR&quot;</span><span class="p">])</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">saveShortSummary</span><span class="p">()</span>
+
+<span class="c1"># save full summary of system</span>
+<span class="n">S</span><span class="o">.</span><span class="n">saveFullSummary</span><span class="p">()</span>
+
+<span class="c1"># Be sure to wrap-up any files</span>
+<span class="n">S</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="plots.html" title="Plot Types"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="building_blocks.html" title="Building Blocks"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

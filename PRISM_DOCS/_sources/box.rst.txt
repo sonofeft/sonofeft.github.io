@@ -1,0 +1,8 @@
+
+.. examples_box
+
+Box
+===
+
+.. raw:: html
+   :file: ./_static/box.htm

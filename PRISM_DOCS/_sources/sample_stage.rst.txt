@@ -1,0 +1,21 @@
+
+.. sample_stage
+
+Sample Stage
+============
+
+The following output describes a very simple liquid stage with some constrained optimization for delta v.
+
+The HTML output file is pasted below and the python code that generated it is pasted below that.
+
+HTML Output
+-----------
+
+.. raw:: html
+   :file: ./_static/minStage_wpov.htm
+
+Python Code
+-----------
+
+.. literalinclude:: ./_static/minStage_wpov.py
+

@@ -1,0 +1,1461 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Mass Items &#8212; PRISM 1.1.16 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Future Improvements" href="improvements.html" />
+    <link rel="prev" title="Many Examples" href="many_examples.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="improvements.html" title="Future Improvements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="many_examples.html" title="Many Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_blocks.html">Building Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_models.html">Math Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plot Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pov_ray.html">POV-Ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_stage.html">Sample Stage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="many_examples.html">Many Examples</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mass Items</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#engines">Engines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#coldgasacs">ColdGasACS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-ablative">Engine_Ablative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-cea-scale">Engine_CEA_Scale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-coldgas">Engine_ColdGas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-ffc">Engine_FFC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-fixed-design">Engine_Fixed_Design</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-gasgas">Engine_GasGas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#engine-regen">Engine_Regen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valvefixeddesign">ValveFixedDesign</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valvescale">ValveScale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valvesize">ValveSize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#valvesolenoid">ValveSolenoid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#grains">Grains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#grain-endburn">Grain_EndBurn</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lines">Lines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#line-gas">Line_Gas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-liq">Line_Liq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#line-liq-inpd">Line_Liq_inpD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#misc-weights">Misc_Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shellstructure">ShellStructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simpleeqnmass">SimpleEqnMass</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#press">Press</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gas-orifice">Gas_Orifice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gas-regulator">Gas_Regulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pressuranthe">PressurantHe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pressurantinteg">PressurantInteg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pressurant-gas">Pressurant_Gas</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#props">Props</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#inc-liquid">Inc_liquid</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tanks">Tanks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tank">Tank</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tank-conical">Tank_Conical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tank-piston">Tank_Piston</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tank-pvow">Tank_PVOW</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tank-torus">Tank_Torus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tpa">Tpa</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pump">Pump</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="improvements.html">Future Improvements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="many_examples.html"
+                        title="previous chapter">Many Examples</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="improvements.html"
+                        title="next chapter">Future Improvements</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/massitem_docs.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mass-items">
+<h1>Mass Items<a class="headerlink" href="#mass-items" title="Permalink to this headline">¶</a></h1>
+<p>The following is a list of the current MassItem objects in PRISM.</p>
+<p>Currently, the best documentation is the code itself.</p>
+<p>Each MassItem below has a link to the source code that you can view in the browser.</p>
+<div class="section" id="engines">
+<h2>Engines<a class="headerlink" href="#engines" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="coldgasacs">
+<h3>ColdGasACS<a class="headerlink" href="#coldgasacs" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ColdGasACS.html">Source Code: ColdGasACS.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ColdGasACS</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Cold Gas ACS&quot;</span><span class="p">,</span> <span class="n">gasSymbol</span><span class="o">=</span><span class="s1">&#39;N2&#39;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">MEOP</span><span class="o">=</span><span class="mf">5000.</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">AreaRatio</span><span class="o">=</span><span class="mf">8.</span><span class="p">,</span> <span class="n">ThrustAmb</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">Vbottle</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PcRegulated</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span> <span class="n">dPregFinal</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span>
+        <span class="n">TminR</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span> <span class="n">fracIsentropic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">gammaPolyMin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">ItotGoal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">tAction</span><span class="o">=</span><span class="mf">100.</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span> <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">etaNozInp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">hcBottleInp</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>AreaRatio</td><td>8.0</td><td></td></tr>
+<tr><td>dPregFinal</td><td>150.0</td><td>psid</td></tr>
+<tr><td>etaNozInp</td><td>None</td><td></td></tr>
+<tr><td>fracIsentropic</td><td>None</td><td></td></tr>
+<tr><td>gammaPolyMin</td><td>1.0</td><td></td></tr>
+<tr><td>gasSymbol</td><td>N2</td><td></td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>hcBottleInp</td><td>None</td><td></td></tr>
+<tr><td>isBell</td><td>0</td><td></td></tr>
+<tr><td>ItotGoal</td><td>None</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>MEOP</td><td>5000.0</td><td>psia</td></tr>
+<tr><td>name</td><td>Cold Gas ACS</td><td></td></tr>
+<tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>PcRegulated</td><td>350.0</td><td>psia</td></tr>
+<tr><td>tAction</td><td>100.0</td><td></td></tr>
+<tr><td>ThrustAmb</td><td>1.0</td><td>lbf</td></tr>
+<tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+<tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+<tr><td>Vbottle</td><td>1000.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-ablative">
+<h3>Engine_Ablative<a class="headerlink" href="#engine-ablative" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_Ablative.html">Source Code: Engine_Ablative.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_Ablative</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">tburn</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">hasNozzleExt</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">WtIgnAssy</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">epsNozExt</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>  <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwMisc</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">valveMassInp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">matlStruct</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thkStructMin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">SFstructure</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
+        <span class="n">matlNozExt</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span>  <span class="n">thkNozExtMin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span>
+        <span class="n">matlAbl</span><span class="o">=</span><span class="s2">&quot;SiPhen_B&quot;</span><span class="p">,</span> <span class="n">SFablative</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">refCharCham</span><span class="o">=</span><span class="mf">0.87</span><span class="p">,</span> <span class="n">refCharThrt</span><span class="o">=</span><span class="mf">1.15</span><span class="p">,</span> <span class="n">refCharNoz</span><span class="o">=</span><span class="mf">0.087</span><span class="p">,</span> <span class="n">refCharNozEps</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span>
+        <span class="n">refCharPc</span><span class="o">=</span><span class="mf">105.0</span><span class="p">,</span> <span class="n">refCharTburn</span><span class="o">=</span><span class="mf">434.0</span><span class="p">,</span>
+        <span class="n">thkAblThrtMin</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span> <span class="n">thkAblChamMin</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span> <span class="n">thkAblNozMin</span><span class="o">=</span><span class="mf">0.020</span><span class="p">,</span>
+        <span class="n">suppressGasWarning</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">InACan</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">0.0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+<tr><td>cxwMisc</td><td>1.0</td><td></td></tr>
+<tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>epsNozExt</td><td>6.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>MMH</td><td></td></tr>
+<tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>hasNozzleExt</td><td>1</td><td></td></tr>
+<tr><td>InACan</td><td>0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+<tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlAbl</td><td>SiPhen_B</td><td></td></tr>
+<tr><td>matlInj</td><td>SS</td><td></td></tr>
+<tr><td>matlNozExt</td><td>Cb103</td><td></td></tr>
+<tr><td>matlStruct</td><td>Ti</td><td></td></tr>
+<tr><td>mr</td><td>1.6</td><td></td></tr>
+<tr><td>name</td><td>engine</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>oxName</td><td>N2O4</td><td></td></tr>
+<tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>refCharCham</td><td>0.87</td><td></td></tr>
+<tr><td>refCharNoz</td><td>0.087</td><td></td></tr>
+<tr><td>refCharNozEps</td><td>7.5</td><td></td></tr>
+<tr><td>refCharPc</td><td>105.0</td><td></td></tr>
+<tr><td>refCharTburn</td><td>434.0</td><td></td></tr>
+<tr><td>refCharThrt</td><td>1.15</td><td></td></tr>
+<tr><td>SFablative</td><td>1.0</td><td></td></tr>
+<tr><td>SFstructure</td><td>2.0</td><td></td></tr>
+<tr><td>suppressGasWarning</td><td>0</td><td></td></tr>
+<tr><td>tburn</td><td>100.0</td><td>sec</td></tr>
+<tr><td>thkAblChamMin</td><td>0.03</td><td>in</td></tr>
+<tr><td>thkAblNozMin</td><td>0.02</td><td>in</td></tr>
+<tr><td>thkAblThrtMin</td><td>0.03</td><td>in</td></tr>
+<tr><td>thkNozExtMin</td><td>0.02</td><td>in</td></tr>
+<tr><td>thkStructMin</td><td>0.02</td><td>in</td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+<tr><td>valveMassInp</td><td>0</td><td></td></tr>
+<tr><td>WtIgnAssy</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-cea-scale">
+<h3>Engine_CEA_Scale<a class="headerlink" href="#engine-cea-scale" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_CEA_Scale.html">Source Code: Engine_CEA_Scale.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_CEA_Scale</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>MMH</td><td></td></tr>
+<tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>mr</td><td>1.6</td><td></td></tr>
+<tr><td>name</td><td>engine</td><td></td></tr>
+<tr><td>oxName</td><td>N2O4</td><td></td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-coldgas">
+<h3>Engine_ColdGas<a class="headerlink" href="#engine-coldgas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_ColdGas.html">Source Code: Engine_ColdGas.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_ColdGas</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;ColdGasEngine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">gasSymbol</span><span class="o">=</span><span class="s1">&#39;He&#39;</span><span class="p">,</span>
+        <span class="n">Tin</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span> <span class="n">matlBody</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">etaCham</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>etaCham</td><td>0.97</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>Fvac</td><td>1.0</td><td>lbf</td></tr>
+<tr><td>gasSymbol</td><td>He</td><td></td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlBody</td><td>SS</td><td></td></tr>
+<tr><td>name</td><td>ColdGasEngine</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>Tin</td><td>530.0</td><td>degR</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-ffc">
+<h3>Engine_FFC<a class="headerlink" href="#engine-ffc" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_FFC.html">Source Code: Engine_FFC.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_FFC</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">DtInp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">valvesMassInput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+<tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+<tr><td>DtInp</td><td>None</td><td></td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>MMH</td><td></td></tr>
+<tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>inputIspDel</td><td>0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+<tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+<tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlInj</td><td>SS</td><td></td></tr>
+<tr><td>matlNoz</td><td>Cb103</td><td></td></tr>
+<tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+<tr><td>mr</td><td>1.6</td><td></td></tr>
+<tr><td>name</td><td>engine</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>oxName</td><td>N2O4</td><td></td></tr>
+<tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>thkNozMin</td><td>0.02</td><td></td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+<tr><td>valvesMassInput</td><td>None</td><td>lbm</td></tr>
+<tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-fixed-design">
+<h3>Engine_Fixed_Design<a class="headerlink" href="#engine-fixed-design" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_Fixed_Design.html">Source Code: Engine_Fixed_Design.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_Fixed_Design</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Dt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">xlcOxln</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Lprime</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>Dt</td><td>1.0</td><td>in</td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>MMH</td><td></td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>inputIspDel</td><td>0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+<tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Lprime</td><td>4.0</td><td>in</td></tr>
+<tr><td>mass_lbm</td><td>10.0</td><td>lbm</td></tr>
+<tr><td>mr</td><td>1.6</td><td></td></tr>
+<tr><td>name</td><td>engine</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>oxName</td><td>N2O4</td><td></td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+<tr><td>xlcOxln</td><td>1.0</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-gasgas">
+<h3>Engine_GasGas<a class="headerlink" href="#engine-gasgas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_GasGas.html">Source Code: Engine_GasGas.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_GasGas</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;CH4&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+        <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">matlCham</span><span class="o">=</span><span class="s2">&quot;Cb103(2250F)&quot;</span><span class="p">,</span> <span class="n">cxwCham</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span> <span class="n">WtIgnAssy</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thkChamMin</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>cxwCham</td><td>1.0</td><td></td></tr>
+<tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+<tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+<tr><td>eps</td><td>50.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>CH4</td><td></td></tr>
+<tr><td>Fvac</td><td>100.0</td><td>lbf</td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+<tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlCham</td><td>Cb103(2250F)</td><td></td></tr>
+<tr><td>matlInj</td><td>SS</td><td></td></tr>
+<tr><td>matlNoz</td><td>Cb103</td><td></td></tr>
+<tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+<tr><td>mr</td><td>2.5</td><td></td></tr>
+<tr><td>name</td><td>engine</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>oxName</td><td>O2</td><td></td></tr>
+<tr><td>Pc</td><td>150.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>thkChamMin</td><td>0.2</td><td></td></tr>
+<tr><td>thkNozMin</td><td>0.02</td><td></td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+<tr><td>WtIgnAssy</td><td>6.0</td><td>lbm</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="engine-regen">
+<h3>Engine_Regen<a class="headerlink" href="#engine-regen" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Engine_Regen.html">Source Code: Engine_Regen.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Engine_Regen</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;regen engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;LOX&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;Ethanol&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">10000.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">DtInp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thkNozExtMin</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">matlNozExt</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">valvesMassInput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">epsNozExt</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">SFcloseout</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">matlCloseout</span><span class="o">=</span><span class="s1">&#39;Ni&#39;</span><span class="p">,</span> <span class="n">matlGasWall</span><span class="o">=</span><span class="s2">&quot;CuZr&quot;</span><span class="p">,</span>
+        <span class="n">thkMinCloseout</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">thkMinGasWall</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">aveLandWidth</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">aveChannelWidth</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">aveChannelHeight</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>aveChannelHeight</td><td>0.05</td><td>in</td></tr>
+<tr><td>aveChannelWidth</td><td>0.05</td><td>in</td></tr>
+<tr><td>aveLandWidth</td><td>0.05</td><td>in</td></tr>
+<tr><td>calcEtaNoz</td><td>1</td><td></td></tr>
+<tr><td>CR</td><td>2.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>cxwInj</td><td>1.0</td><td></td></tr>
+<tr><td>cxwValves</td><td>1.0</td><td></td></tr>
+<tr><td>DtInp</td><td>None</td><td></td></tr>
+<tr><td>eps</td><td>25.0</td><td></td></tr>
+<tr><td>epsNozExt</td><td>6.0</td><td></td></tr>
+<tr><td>etaERE</td><td>0.97</td><td></td></tr>
+<tr><td>etaKinInp</td><td>1.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.99</td><td></td></tr>
+<tr><td>fuelName</td><td>Ethanol</td><td></td></tr>
+<tr><td>Fvac</td><td>10000.0</td><td>lbf</td></tr>
+<tr><td>halfAngDeg</td><td>15.0</td><td></td></tr>
+<tr><td>inputIspDel</td><td>0</td><td></td></tr>
+<tr><td>isBell</td><td>1</td><td></td></tr>
+<tr><td>IspDel</td><td>300.0</td><td>sec</td></tr>
+<tr><td>LchamMin</td><td>1.5</td><td>in</td></tr>
+<tr><td>LoverDt</td><td>4.0</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlCloseout</td><td>Ni</td><td></td></tr>
+<tr><td>matlGasWall</td><td>CuZr</td><td></td></tr>
+<tr><td>matlInj</td><td>SS</td><td></td></tr>
+<tr><td>matlNozExt</td><td>Cb103</td><td></td></tr>
+<tr><td>minBipropValveWt</td><td>0.2</td><td></td></tr>
+<tr><td>mr</td><td>1.8</td><td></td></tr>
+<tr><td>name</td><td>regen engine</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>oxName</td><td>LOX</td><td></td></tr>
+<tr><td>Pamb</td><td>0.0</td><td>psia</td></tr>
+<tr><td>Pc</td><td>550.0</td><td>psia</td></tr>
+<tr><td>pcentBell</td><td>80.0</td><td></td></tr>
+<tr><td>SFcloseout</td><td>2.0</td><td></td></tr>
+<tr><td>thkMinCloseout</td><td>0.05</td><td>in</td></tr>
+<tr><td>thkMinGasWall</td><td>0.05</td><td>in</td></tr>
+<tr><td>thkNozExtMin</td><td>0.03</td><td>in</td></tr>
+<tr><td>useFastCEALookup</td><td>0</td><td></td></tr>
+<tr><td>valvesMassInput</td><td>None</td><td>lbm</td></tr>
+<tr><td>xlnOverLcham</td><td>0.5</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="valvefixeddesign">
+<h3>ValveFixedDesign<a class="headerlink" href="#valvefixeddesign" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ValveFixedDesign.html">Source Code: ValveFixedDesign.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ValveFixedDesign</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;liquid valve&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Stainless Steel, Teflon&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">refWaterWdot</span><span class="o">=</span><span class="mf">0.214</span><span class="p">,</span> <span class="n">refWaterDP</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">refName</span><span class="o">=</span><span class="s2">&quot;MOOG Spacebus valve&quot;</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>liqObj</td><td>None</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.9</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Stainless Steel, Teflon</td><td></td></tr>
+<tr><td>name</td><td>liquid valve</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>refName</td><td>MOOG Spacebus valve</td><td></td></tr>
+<tr><td>refWaterDP</td><td>30.0</td><td>psid</td></tr>
+<tr><td>refWaterWdot</td><td>0.214</td><td>lbm/sec</td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="valvescale">
+<h3>ValveScale<a class="headerlink" href="#valvescale" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ValveScale.html">Source Code: ValveScale.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ValveScale</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;propellant valve&quot;</span><span class="p">,</span>  <span class="n">ref_lbm</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">ref_cuInchPerSec</span><span class="o">=</span><span class="mf">35000.0</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cuInchPerSec</span><span class="o">=</span><span class="mf">35000.0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cuInchPerSec</td><td>35000.0</td><td>cuin/sec</td></tr>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>name</td><td>propellant valve</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>ref_cuInchPerSec</td><td>35000.0</td><td>cuin/sec</td></tr>
+<tr><td>ref_lbm</td><td>50.0</td><td>lbm</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="valvesize">
+<h3>ValveSize<a class="headerlink" href="#valvesize" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ValveSize.html">Source Code: ValveSize.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ValveSize</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;liquid valve&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">deltaP</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span>
+        <span class="n">Kfactors</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.15</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.15</td><td></td></tr>
+<tr><td>deltaP</td><td>20.0</td><td>psig</td></tr>
+<tr><td>Kfactors</td><td>0.1</td><td>vel heads</td></tr>
+<tr><td>liqObj</td><td>None</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>liquid valve</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="valvesolenoid">
+<h3>ValveSolenoid<a class="headerlink" href="#valvesolenoid" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ValveSolenoid.html">Source Code: ValveSolenoid.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ValveSolenoid</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;propellant valve&quot;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cuInchPerSec</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">isGas</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cuInchPerSec</td><td>12.0</td><td>cuin/sec</td></tr>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>isGas</td><td>0</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>name</td><td>propellant valve</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="grains">
+<h2>Grains<a class="headerlink" href="#grains" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="grain-endburn">
+<h3>Grain_EndBurn<a class="headerlink" href="#grain-endburn" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Grain_EndBurn.html">Source Code: Grain_EndBurn.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Grain_EndBurn</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grain(end burner)&quot;</span><span class="p">,</span>
+        <span class="n">WpropBurned</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">propName</span><span class="o">=</span><span class="s1">&#39;ARC448&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">FvacMaxPerGG</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">IspVacDel</span><span class="o">=</span><span class="mf">238.6</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>FvacMaxPerGG</td><td>300.0</td><td>lbf</td></tr>
+<tr><td>IspVacDel</td><td>238.6</td><td>sec</td></tr>
+<tr><td>name</td><td>grain(end burner)</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Pc</td><td>500.0</td><td>psia</td></tr>
+<tr><td>propName</td><td>ARC448</td><td></td></tr>
+<tr><td>WpropBurned</td><td>200.0</td><td>lbm</td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="lines">
+<h2>Lines<a class="headerlink" href="#lines" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="line-gas">
+<h3>Line_Gas<a class="headerlink" href="#line-gas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Line_Gas.html">Source Code: Line_Gas.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Line_Gas</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gas line&quot;</span><span class="p">,</span> <span class="n">gasSymbol</span><span class="o">=</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">calcVelFromDiamInp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">DiamInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">thkWallInp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">velFPS</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">TgasDegR</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span> <span class="n">designWithVout</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">usePinlet</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">PgasOutlet</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">PgasInlet</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>calcVelFromDiamInp</td><td>1</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>designWithVout</td><td>1</td><td></td></tr>
+<tr><td>DiamInp</td><td>1.0</td><td>in</td></tr>
+<tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+<tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+<tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>gas line</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>PgasInlet</td><td>400.0</td><td>psia</td></tr>
+<tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+<tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+<tr><td>sf</td><td>4.0</td><td></td></tr>
+<tr><td>TgasDegR</td><td>530.0</td><td>degR</td></tr>
+<tr><td>thkWallInp</td><td>0</td><td>in</td></tr>
+<tr><td>usePinlet</td><td>0</td><td></td></tr>
+<tr><td>velFPS</td><td>20.0</td><td>ft/sec</td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="line-liq">
+<h3>Line_Liq<a class="headerlink" href="#line-liq" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Line_Liq.html">Source Code: Line_Liq.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Line_Liq</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;liquid line&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">velFPS</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">minID</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">thkInp</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+<tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+<tr><td>liqObj</td><td>None</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>minID</td><td>0.0</td><td></td></tr>
+<tr><td>name</td><td>liquid line</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>pLine</td><td>400.0</td><td>psia</td></tr>
+<tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+<tr><td>sf</td><td>4.0</td><td></td></tr>
+<tr><td>thkInp</td><td>0.0</td><td>in</td></tr>
+<tr><td>velFPS</td><td>20.0</td><td>ft/sec</td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="line-liq-inpd">
+<h3>Line_Liq_inpD<a class="headerlink" href="#line-liq-inpd" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Line_Liq_inpD.html">Source Code: Line_Liq_inpD.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Line_Liq_inpD</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;liquid line&quot;</span><span class="p">,</span> <span class="n">liqObj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">pLine</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">OD</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">thkWall</span><span class="o">=</span><span class="mf">0.045</span><span class="p">,</span>
+        <span class="n">len_inches</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">Kfactors</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">roughness</span><span class="o">=</span><span class="mf">5.0E-6</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>Kfactors</td><td>2.0</td><td>vel heads</td></tr>
+<tr><td>len_inches</td><td>50.0</td><td>in</td></tr>
+<tr><td>liqObj</td><td>None</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>liquid line</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>OD</td><td>0.5</td><td>in</td></tr>
+<tr><td>pLine</td><td>400.0</td><td>psia</td></tr>
+<tr><td>roughness</td><td>5e-06</td><td>in</td></tr>
+<tr><td>thkWall</td><td>0.045</td><td>in</td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="misc-weights">
+<h3>Misc_Weights<a class="headerlink" href="#misc-weights" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Misc_Weights.html">Source Code: Misc_Weights.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Misc_Weights</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Misc. Mass Items&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;inert&quot;</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>name</td><td>Misc. Mass Items</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>type</td><td>inert</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="shellstructure">
+<h3>ShellStructure<a class="headerlink" href="#shellstructure" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/ShellStructure.html">Source Code: ShellStructure.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ShellStructure</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">matlShell</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span> <span class="n">matlFlange</span><span class="o">=</span><span class="s2">&quot;Al&quot;</span><span class="p">,</span>
+        <span class="n">OD</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">Length</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span>
+        <span class="n">thkShell</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">thkFlange</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">widthFlange</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>Length</td><td>25.0</td><td>in</td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlFlange</td><td>Al</td><td></td></tr>
+<tr><td>matlShell</td><td>grEpox</td><td></td></tr>
+<tr><td>name</td><td>shell</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>OD</td><td>20.0</td><td>in</td></tr>
+<tr><td>thkFlange</td><td>0.1</td><td>in</td></tr>
+<tr><td>thkShell</td><td>0.1</td><td>in</td></tr>
+<tr><td>widthFlange</td><td>0.5</td><td>in</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="simpleeqnmass">
+<h3>SimpleEqnMass<a class="headerlink" href="#simpleeqnmass" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/SimpleEqnMass.html">Source Code: SimpleEqnMass.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SimpleEqnMass</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Simple Mass&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;inert&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>  <span class="n">eqn</span><span class="o">=</span><span class="s2">&quot;1.2*1.1&quot;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s1">&#39;mass = simple eqn&#39;</span><span class="p">):</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>desc</td><td>mass = simple eqn</td><td></td></tr>
+<tr><td>eqn</td><td>1.2*1.1</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>name</td><td>Simple Mass</td><td></td></tr>
+<tr><td>type</td><td>inert</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="press">
+<h2>Press<a class="headerlink" href="#press" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gas-orifice">
+<h3>Gas_Orifice<a class="headerlink" href="#gas-orifice" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Gas_Orifice.html">Source Code: Gas_Orifice.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gas_Orifice</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gas orifice&quot;</span><span class="p">,</span> <span class="n">gasSymbol</span><span class="o">=</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">CdAInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">TgasDegR</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span>
+        <span class="n">usePinlet</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">PgasOutlet</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">PgasInlet</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span>
+        <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>CdAInp</td><td>1.0</td><td>in</td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>gas orifice</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>PgasInlet</td><td>400.0</td><td>psia</td></tr>
+<tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+<tr><td>sf</td><td>4.0</td><td></td></tr>
+<tr><td>TgasDegR</td><td>530.0</td><td>degR</td></tr>
+<tr><td>usePinlet</td><td>0</td><td></td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="gas-regulator">
+<h3>Gas_Regulator<a class="headerlink" href="#gas-regulator" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Gas_Regulator.html">Source Code: Gas_Regulator.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Gas_Regulator</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gas regulator&quot;</span><span class="p">,</span> <span class="n">gasSymbol</span><span class="o">=</span><span class="s1">&#39;O2&#39;</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">wdot</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">TgasInit</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span> <span class="n">TgasFinal</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span>
+        <span class="n">PgasOutlet</span><span class="o">=</span><span class="mf">400.0</span><span class="p">,</span> <span class="n">PgasInit</span><span class="o">=</span><span class="mf">4000.0</span><span class="p">,</span>  <span class="n">PgasFinal</span><span class="o">=</span><span class="mf">800.0</span><span class="p">,</span>
+        <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">CdASF</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>CdASF</td><td>1.5</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>gasSymbol</td><td>O2</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>gas regulator</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>PgasFinal</td><td>800.0</td><td>psia</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>PgasInit</td><td>4000.0</td><td>psia</td></tr>
+<tr><td>PgasOutlet</td><td>400.0</td><td>psia</td></tr>
+<tr><td>sf</td><td>4.0</td><td></td></tr>
+<tr><td>TgasFinal</td><td>400.0</td><td>degR</td></tr>
+<tr><td>TgasInit</td><td>530.0</td><td>degR</td></tr>
+<tr><td>wdot</td><td>0.1</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="pressuranthe">
+<h3>PressurantHe<a class="headerlink" href="#pressuranthe" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/PressurantHe.html">Source Code: PressurantHe.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PressurantHe</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">VpropTnk</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PHeTnk</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">PfinHeOvPnom</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wtHeACS</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">tAction</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span>
+        <span class="n">tPolyCorr</span><span class="o">=</span><span class="mf">240.0</span><span class="p">,</span> <span class="n">gamPolyCorr</span><span class="o">=</span><span class="mf">1.66</span><span class="p">,</span> <span class="n">gamLimPolyCorr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">gammaPolyInp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">THeTnkHX</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>gamLimPolyCorr</td><td>1.0</td><td></td></tr>
+<tr><td>gammaPolyInp</td><td>None</td><td></td></tr>
+<tr><td>gamPolyCorr</td><td>1.66</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+<tr><td>PfinHeOvPnom</td><td>1.1</td><td></td></tr>
+<tr><td>PHeTnk</td><td>5000.0</td><td>psia</td></tr>
+<tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+<tr><td>THeTnkHX</td><td>None</td><td>degR</td></tr>
+<tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+<tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+<tr><td>tPolyCorr</td><td>240.0</td><td>sec</td></tr>
+<tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+<tr><td>wtHeACS</td><td>0.0</td><td>lbm</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="pressurantinteg">
+<h3>PressurantInteg<a class="headerlink" href="#pressurantinteg" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/PressurantInteg.html">Source Code: PressurantInteg.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PressurantInteg</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">gas</span><span class="o">=</span><span class="s1">&#39;HE&#39;</span><span class="p">,</span>
+        <span class="n">timeProfileL</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pcentLiqExpelledL</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">VpropTnk</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PGasTnkMEOP</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">PfinGasOvPnom</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+        <span class="n">tAction</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span> <span class="n">ullageFrac</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+        <span class="n">PVoW_Bottle</span><span class="o">=</span><span class="mf">500000.</span><span class="p">,</span> <span class="n">PVoW_Tank</span><span class="o">=</span><span class="mf">100000.</span><span class="p">,</span>
+        <span class="n">AccGees</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">Nbottle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ellBottle</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">LcylOvDBottle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">Cp_effBottle</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="c1"># Cp Ti=.125, Al=.2, Monel=.1</span>
+        <span class="n">Ntank</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ellTank</span><span class="o">=</span><span class="mf">1.414</span><span class="p">,</span> <span class="n">LcylOvDTank</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Cp_effTank</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+        <span class="n">CdARegMax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dPregulator</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">NtimeSteps</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">heatExchangerTout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">WtHeLLACS</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">QexternalIntoBottle</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">velMultTank</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">adiabatic</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">TbottleMatlConst</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">useDBruns</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fracExpel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="n">Tullage</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>AccGees</td><td>1.0</td><td></td></tr>
+<tr><td>adiabatic</td><td>None</td><td></td></tr>
+<tr><td>CdARegMax</td><td>None</td><td></td></tr>
+<tr><td>Cp_effBottle</td><td>0.15</td><td>BTU/lbm/degR</td></tr>
+<tr><td>Cp_effTank</td><td>0.15</td><td>BTU/lbm/degR</td></tr>
+<tr><td>dPregulator</td><td>25.0</td><td></td></tr>
+<tr><td>ellBottle</td><td>1.0</td><td></td></tr>
+<tr><td>ellTank</td><td>1.414</td><td></td></tr>
+<tr><td>fracExpel</td><td>None</td><td></td></tr>
+<tr><td>gas</td><td>HE</td><td></td></tr>
+<tr><td>heatExchangerTout</td><td>None</td><td></td></tr>
+<tr><td>LcylOvDBottle</td><td>0.0</td><td></td></tr>
+<tr><td>LcylOvDTank</td><td>1.0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+<tr><td>Nbottle</td><td>1</td><td></td></tr>
+<tr><td>Ntank</td><td>2</td><td></td></tr>
+<tr><td>NtimeSteps</td><td>400</td><td></td></tr>
+<tr><td>pcentLiqExpelledL</td><td>None</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>PfinGasOvPnom</td><td>1.1</td><td></td></tr>
+<tr><td>PGasTnkMEOP</td><td>5000.0</td><td>psia</td></tr>
+<tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+<tr><td>PVoW_Bottle</td><td>500000.0</td><td></td></tr>
+<tr><td>PVoW_Tank</td><td>100000.0</td><td></td></tr>
+<tr><td>QexternalIntoBottle</td><td>0.0</td><td>BTU/sec</td></tr>
+<tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+<tr><td>TbottleMatlConst</td><td>None</td><td>degR</td></tr>
+<tr><td>timeProfileL</td><td>None</td><td></td></tr>
+<tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+<tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+<tr><td>Tullage</td><td>None</td><td></td></tr>
+<tr><td>ullageFrac</td><td>0.03</td><td></td></tr>
+<tr><td>useDBruns</td><td>1</td><td></td></tr>
+<tr><td>velMultTank</td><td>1.0</td><td></td></tr>
+<tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+<tr><td>WtHeLLACS</td><td>0.0</td><td>lbm</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="pressurant-gas">
+<h3>Pressurant_Gas<a class="headerlink" href="#pressurant-gas" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Pressurant_Gas.html">Source Code: Pressurant_Gas.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pressurant_Gas</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;N2&quot;</span><span class="p">,</span>
+        <span class="n">VpropTnk</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PGasTnk</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">PfinGasOvPnom</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+        <span class="n">tAction</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="mf">550.0</span><span class="p">,</span>
+        <span class="n">ItotLLACSinp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=.</span><span class="mi">965</span><span class="p">,</span> <span class="n">AreaRatio</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">wtGasACS</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">fracIsenBottle</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">fracIsenTank</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>AreaRatio</td><td>10.0</td><td></td></tr>
+<tr><td>etaNoz</td><td>0.965</td><td></td></tr>
+<tr><td>fracIsenBottle</td><td>0.5</td><td></td></tr>
+<tr><td>fracIsenTank</td><td>0.1</td><td></td></tr>
+<tr><td>ItotLLACSinp</td><td>None</td><td>lbf-sec</td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+<tr><td>PfinGasOvPnom</td><td>1.1</td><td></td></tr>
+<tr><td>PGasTnk</td><td>5000.0</td><td>psia</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>PpropNom</td><td>350.0</td><td>psia</td></tr>
+<tr><td>symbol</td><td>N2</td><td></td></tr>
+<tr><td>tAction</td><td>100.0</td><td>sec</td></tr>
+<tr><td>TmaxR</td><td>550.0</td><td>degR</td></tr>
+<tr><td>TminR</td><td>500.0</td><td>degR</td></tr>
+<tr><td>VpropTnk</td><td>1000.0</td><td>cuin</td></tr>
+<tr><td>wtGasACS</td><td>0.0</td><td></td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="props">
+<h2>Props<a class="headerlink" href="#props" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="inc-liquid">
+<h3>Inc_liquid<a class="headerlink" href="#inc-liquid" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Inc_liquid.html">Source Code: Inc_liquid.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;RP1&quot;</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">child</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">suppressGasWarning</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">assumeSaturation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">minSummary</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>assumeSaturation</td><td>1</td><td></td></tr>
+<tr><td>child</td><td>0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>minSummary</td><td>0</td><td></td></tr>
+<tr><td>P</td><td>None</td><td>psia</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>suppressGasWarning</td><td>0</td><td></td></tr>
+<tr><td>symbol</td><td>RP1</td><td></td></tr>
+<tr><td>T</td><td>None</td><td>degR</td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="tanks">
+<h2>Tanks<a class="headerlink" href="#tanks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tank">
+<h3>Tank<a class="headerlink" href="#tank" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Tank.html">Source Code: Tank.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tank</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>  <span class="n">Cp_eff</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="c1"># Cp Ti=.125, Al=.2, Monel=.1</span>
+        <span class="n">tMinGaugeUser</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">vfree</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.414</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">ptank</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span>  <span class="n">NumExtraBaffles</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">inpTblad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tblad</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+        <span class="n">hasCommonDome</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">deltaPCommonDome</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">sf_CommonDome</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">matlCommonDome</span><span class="o">=</span><span class="s1">&#39;Ti&#39;</span><span class="p">,</span>
+        <span class="n">maxVolFrac_CommonDome</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Cp_eff</td><td>0.15</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>deltaPCommonDome</td><td>100.0</td><td></td></tr>
+<tr><td>ell</td><td>1.414</td><td></td></tr>
+<tr><td>expefi</td><td>0.99</td><td></td></tr>
+<tr><td>hasCommonDome</td><td>0</td><td></td></tr>
+<tr><td>inpex</td><td>0</td><td></td></tr>
+<tr><td>inpTblad</td><td>1</td><td></td></tr>
+<tr><td>ithcyl</td><td>1</td><td></td></tr>
+<tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+<tr><td>kalmod</td><td>0</td><td></td></tr>
+<tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlCommonDome</td><td>Ti</td><td></td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>maxVolFrac_CommonDome</td><td>0.75</td><td></td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+<tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+<tr><td>rcyltd</td><td>2.0</td><td></td></tr>
+<tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+<tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+<tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+<tr><td>sf</td><td>1.5</td><td></td></tr>
+<tr><td>sf_CommonDome</td><td>1.5</td><td></td></tr>
+<tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+<tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+<tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+<tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+<tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+<tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="tank-conical">
+<h3>Tank_Conical<a class="headerlink" href="#tank-conical" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Tank_Conical.html">Source Code: Tank_Conical.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tank_Conical</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">coneAngleDeg</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">RbigOvrRsml</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>  <span class="n">Cp_eff</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="c1"># Cp Ti=.125, Al=.2, Monel=.1</span>
+        <span class="n">tMinGaugeUser</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">vfree</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.414</span><span class="p">,</span><span class="n">ptank</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span>  <span class="n">NumExtraBaffles</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">inpTblad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tblad</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>coneAngleDeg</td><td>10.0</td><td>deg</td></tr>
+<tr><td>Cp_eff</td><td>0.15</td><td></td></tr>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>ell</td><td>1.414</td><td></td></tr>
+<tr><td>expefi</td><td>0.99</td><td></td></tr>
+<tr><td>inpex</td><td>0</td><td></td></tr>
+<tr><td>inpTblad</td><td>1</td><td></td></tr>
+<tr><td>ithcyl</td><td>1</td><td></td></tr>
+<tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+<tr><td>kalmod</td><td>0</td><td></td></tr>
+<tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+<tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+<tr><td>RbigOvrRsml</td><td>1.2</td><td></td></tr>
+<tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+<tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+<tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+<tr><td>sf</td><td>1.5</td><td></td></tr>
+<tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+<tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+<tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+<tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+<tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+<tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="tank-piston">
+<h3>Tank_Piston<a class="headerlink" href="#tank-piston" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Tank_Piston.html">Source Code: Tank_Piston.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tank_Piston</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">inputLoverD</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metalName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">overwrapName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>
+        <span class="n">vfree</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span><span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">dPpiston</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">LoDpiston</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span>
+        <span class="n">LoverD</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span><span class="n">Dinside</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">thkMetal_minG</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span> <span class="n">thkMetal</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">thkOvInput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">thkMetalInp</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>Dinside</td><td>1.0</td><td></td></tr>
+<tr><td>dPpiston</td><td>10.0</td><td>psig</td></tr>
+<tr><td>expefi</td><td>0.99</td><td></td></tr>
+<tr><td>inpex</td><td>0</td><td></td></tr>
+<tr><td>inputLoverD</td><td>1</td><td></td></tr>
+<tr><td>LoDpiston</td><td>0.45</td><td></td></tr>
+<tr><td>LoverD</td><td>5.0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>metalName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>overwrapName</td><td>grEpox</td><td></td></tr>
+<tr><td>ptank</td><td>1400.0</td><td>psia</td></tr>
+<tr><td>sf</td><td>1.5</td><td></td></tr>
+<tr><td>thkMetal</td><td>None</td><td></td></tr>
+<tr><td>thkMetal_minG</td><td>0.01</td><td>in</td></tr>
+<tr><td>thkMetalInp</td><td>None</td><td></td></tr>
+<tr><td>thkOvInput</td><td>None</td><td></td></tr>
+<tr><td>vfree</td><td>4.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="tank-pvow">
+<h3>Tank_PVOW<a class="headerlink" href="#tank-pvow" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Tank_PVOW.html">Source Code: Tank_PVOW.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tank_PVOW</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">PVOW_inp</span> <span class="o">=</span> <span class="mf">0.5E6</span><span class="p">,</span> <span class="n">MEOP_based</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">vfree</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.414</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">ptank</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">tliner</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>ell</td><td>1.414</td><td></td></tr>
+<tr><td>expefi</td><td>0.99</td><td></td></tr>
+<tr><td>inpex</td><td>0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>MEOP_based</td><td>1</td><td></td></tr>
+<tr><td>name</td><td>tank</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+<tr><td>PVOW_inp</td><td>500000.0</td><td></td></tr>
+<tr><td>rcyltd</td><td>2.0</td><td></td></tr>
+<tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+<tr><td>sf</td><td>1.5</td><td></td></tr>
+<tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+<tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+<div class="section" id="tank-torus">
+<h3>Tank_Torus<a class="headerlink" href="#tank-torus" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Tank_Torus.html">Source Code: Tank_Torus.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tank_Torus</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;toroidal_tank&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+        <span class="n">RmajorOverRminor</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">RmajorInput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">RminorInput</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">tMinGaugeUser</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">vfree</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">ptank</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+        <span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span>  <span class="n">NumExtraBaffles</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">kacqui</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">inpTblad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tblad</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.28</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.25</td><td></td></tr>
+<tr><td>expefi</td><td>0.99</td><td></td></tr>
+<tr><td>inpex</td><td>0</td><td></td></tr>
+<tr><td>inpTblad</td><td>1</td><td></td></tr>
+<tr><td>kacqui</td><td>0</td><td>no acq. device</td></tr>
+<tr><td>makeCompositeTank</td><td>0</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>toroidal_tank</td><td></td></tr>
+<tr><td>Number</td><td>1</td><td></td></tr>
+<tr><td>NumExtraBaffles</td><td>0</td><td></td></tr>
+<tr><td>ptank</td><td>350.0</td><td>psia</td></tr>
+<tr><td>rhoacq</td><td>0.28</td><td>lbm/cuin</td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>rhobnd</td><td>0.04</td><td>lbm/cuin</td></tr>
+<tr><td>rholiner</td><td>0.1</td><td>lbm/cuin</td></tr>
+<tr><td>RmajorInput</td><td>None</td><td></td></tr>
+<tr><td>RmajorOverRminor</td><td>3.0</td><td></td></tr>
+<tr><td>RminorInput</td><td>None</td><td></td></tr>
+<tr><td>sf</td><td>1.5</td><td></td></tr>
+<tr><td>tblad</td><td>0.03</td><td>in</td></tr>
+<tr><td>tbond</td><td>0.03</td><td>in</td></tr>
+<tr><td>tliner</td><td>0.0</td><td>in</td></tr>
+<tr><td>tMinGaugeUser</td><td>0.0</td><td></td></tr>
+<tr><td>ttrspc</td><td>0.01</td><td>in</td></tr>
+<tr><td>vfree</td><td>1000.0</td><td>cuin</td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+<div class="section" id="tpa">
+<h2>Tpa<a class="headerlink" href="#tpa" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="pump">
+<h3>Pump<a class="headerlink" href="#pump" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="./_static/colorized_massitems/Pump.html">Source Code: Pump.py</a></p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Pump</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pump&quot;</span><span class="p">,</span>  <span class="n">fluName</span><span class="o">=</span><span class="s2">&quot;MMH&quot;</span><span class="p">,</span> <span class="n">wdot</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>  <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">Pinlet</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">Tinlet</span><span class="o">=</span><span class="mf">530.0</span><span class="p">,</span>
+        <span class="n">deltaP</span><span class="o">=</span><span class="mf">250.0</span><span class="p">,</span> <span class="n">rpm</span><span class="o">=</span><span class="mf">20000.0</span><span class="p">,</span> <span class="n">eff</span><span class="o">=</span><span class="mf">0.62</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">pStages</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">vDisMx</span><span class="o">=</span><span class="mf">2100.0</span><span class="p">,</span> <span class="n">vIndMx</span><span class="o">=</span><span class="mf">1165.0</span><span class="p">,</span> <span class="n">spspMx</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span>
+        <span class="n">SigShaft</span> <span class="o">=</span> <span class="mf">40000.0</span><span class="p">,</span> <span class="n">DtipMn</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+        <span class="n">suctMx</span><span class="o">=</span><span class="mf">20000.0</span><span class="p">,</span> <span class="n">spspMn</span><span class="o">=</span><span class="mf">400.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<table><tr>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>cxw</td><td>1.0</td><td></td></tr>
+<tr><td>deltaP</td><td>250.0</td><td>psig</td></tr>
+<tr><td>DtipMn</td><td>0.75</td><td>in</td></tr>
+<tr><td>eff</td><td>0.62</td><td></td></tr>
+<tr><td>fluName</td><td>MMH</td><td></td></tr>
+<tr><td>mass_lbm</td><td>0.0</td><td>lbm</td></tr>
+<tr><td>matlName</td><td>Ti</td><td></td></tr>
+<tr><td>name</td><td>pump</td><td></td></tr>
+<tr><td>Pinlet</td><td>25.0</td><td>psia</td></tr>
+<tr><td>pStages</td><td>1</td><td></td></tr>
+</table>
+</td>
+<td>&nbsp;&nbsp;</td>
+<td valign="top">
+<table frame="box"><th>Input</th><th>Default</th><th>Units</th>
+<tr><td>rpm</td><td>20000.0</td><td>rpm</td></tr>
+<tr><td>SigShaft</td><td>40000.0</td><td></td></tr>
+<tr><td>spspMn</td><td>400.0</td><td></td></tr>
+<tr><td>spspMx</td><td>5000.0</td><td></td></tr>
+<tr><td>suctMx</td><td>20000.0</td><td></td></tr>
+<tr><td>Tinlet</td><td>530.0</td><td></td></tr>
+<tr><td>vDisMx</td><td>2100.0</td><td>ft/sec</td></tr>
+<tr><td>vIndMx</td><td>1165.0</td><td>ft/sec</td></tr>
+<tr><td>wdot</td><td>1.0</td><td>lbm/sec</td></tr>
+</table>
+</td>
+</tr></table></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="improvements.html" title="Future Improvements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="many_examples.html" title="Many Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

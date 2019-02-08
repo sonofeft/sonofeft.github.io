@@ -1,0 +1,264 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.16
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Propellant Properties Comparison
+   by: Scooter Rho
+ date: Sunday July 01, 2018
+
+
+When designing the tanks for a liquid propellant system, it is necessary to know the worst-case
+propellant density, (usually max storage temperature) so that the tanks can be large enough at 
+that condition.
+
+There are a number ways to get propellant density in PRISM.
+
+1. correlations from literature in the routind **dsat**
+2. extrapolation from corresponding states (i.e. critical properties) in **prolib**
+3. the open source code **CoolProp** via **EngCoolProp**
+4. the commercial code **Refprop**
+
+Each of the above approaches is constrained to just those propellants included in each of the models.
+
+The graph below uses *dsat* to calculate saturated density for:
+
+* IRFNA
+* N2O4
+* MON15
+* MON25
+* Water (H2O)
+* MMH
+
+Notice that the freezing point is shown for each propellant.
+
+**dsat** continues to estimate density for the frozen condition, even though it is outside the limits of the correlations.
+The code uses an anchored method of corresponding states to do the extrapolation.
+
+If the stage is not intended to experience frozen propellants, that constraint must be imposed by the user.
+
+
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: Propellant Properties Comparison
+                mass =        6.000 lbm
+                type = Liquid
+PROPELLANT
+       1.000 lbm Inhibited Red Fuming Nitric Acid
+       1.000 lbm MON-25
+       1.000 lbm MON15
+       1.000 lbm Monomethyl Hydrazine
+       1.000 lbm Nitrogen Tetroxide
+       1.000 lbm WATER
+======================================
+======================================
+
+======================= Design Variables ========================
+        NAME  VALUE MINIMUM MAXIMUM DESCRIPTION                  
+ Temperature 527.67  384.67  589.67 Temperature of fluid  (degR) 
+=================================================================
+
+=============================== Result Variables ===============================
+    NAME   VALUE DESCRIPTION                                             LIMITS 
+   MON25 86.8308 Density of MON-25  (lbm/cuft)                              --- 
+    N2O4 90.1699 Density of Nitrogen Tetroxide  (lbm/cuft)                  --- 
+   MON15 90.6112 Density of MON-15  (lbm/cuft)                              --- 
+   IRFNA 99.3944 Density of Inhibited Red Fuming Nitric Acid  (lbm/cuft)    --- 
+     H2O 63.8208 Density of Water  (lbm/cuft)                               --- 
+     MMH 54.6196 Density of Monomethyl Hydrazine  (lbm/cuft)                --- 
+ sysMass       0 Total System Mass  (lbm)                                   --- 
+================================================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Propellant Properties Comparison
+                mass =        6.000 lbm
+                type = Liquid
+
+-------------------------------------
+Incompressible Liquid: Inhibited Red Fuming Nitric Acid
+             mass =        1.000 lbm
+             type = propellant
+        IRFNA Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 608.0 degR
+        Tcrit           = 980.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 1286.0 psia
+        WtMol           = 59.7 
+        RhoRef          = 0.056 lb/cuin
+        ViscRefFT       = 6.66e-05 lb/ft-sec
+        CondRefFTHR     = 0.1782 BTU/ft-hr-R
+        CpRef           = 0.41 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 99.394 lbm/cuft
+        rho             = 0.0575199 lbm/cuin (1.59215 SG)
+        Cp              = 0.41 BTU/lbm degR
+        Visc            = 6.75488 [1.0E5 * lb/ft-sec]
+        Cond            = 0.178693 BTU/ft-hr-R
+        SurfTen         = 0.000144117 lbf/in
+        phase           = LIQUID 
+        Pvap            = 2.13039 psia
+        Vcuft           = 0.0100609 cuft
+        Volume          = 17.3853 cuin
+
+-------------------------------------
+Incompressible Liquid: MON-25
+             mass =        1.000 lbm
+             type = propellant
+        MON25 Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 475.6 degR
+        Tcrit           = 747.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 2100.0 psia
+        WtMol           = 60.7 
+        RhoRef          = 0.050139 lb/cuin
+        ViscRefFT       = 0.000267 lb/ft-sec
+        CondRefFTHR     = 0.0759456 BTU/ft-hr-R
+        CpRef           = 0.336 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 86.831 lbm/cuft
+        rho             = 0.0502493 lbm/cuin (1.3909 SG)
+        Cp              = 0.336 BTU/lbm degR
+        Visc            = 26.993 [1.0E5 * lb/ft-sec]
+        Cond            = 0.0762899 BTU/ft-hr-R
+        SurfTen         = 0.000144711 lbf/in
+        phase           = LIQUID 
+        Pvap            = 59.9668 psia
+        Vcuft           = 0.0115166 cuft
+        Volume          = 19.9008 cuin
+
+-------------------------------------
+Incompressible Liquid: MON15
+             mass =        1.000 lbm
+             type = propellant
+        MON15 Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 500.0 degR
+        Tcrit           = 759.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 1836.0 psia
+        WtMol           = 73.2 
+        RhoRef          = 0.0506 lb/cuin
+        ViscRefFT       = 0.000267 lb/ft-sec
+        CondRefFTHR     = 0.0759456 BTU/ft-hr-R
+        CpRef           = 0.353 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 90.611 lbm/cuft
+        rho             = 0.052437 lbm/cuin (1.45145 SG)
+        Cp              = 0.353 BTU/lbm degR
+        Visc            = 26.9769 [1.0E5 * lb/ft-sec]
+        Cond            = 0.0762612 BTU/ft-hr-R
+        SurfTen         = 0.000144401 lbf/in
+        phase           = LIQUID 
+        Pvap            = 32.2177 psia
+        Vcuft           = 0.0110362 cuft
+        Volume          = 19.0705 cuin
+
+-------------------------------------
+Incompressible Liquid: Monomethyl Hydrazine
+             mass =        1.000 lbm
+             type = propellant
+        MMH Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 650.0 degR
+        Tcrit           = 1053.0 degR
+        Pref            = 14.7 psia
+        Pcrit           = 1195.0 psia
+        WtMol           = 46.07 
+        RhoRef          = 0.0315646 lb/cuin
+        ViscRefFT       = 0.0005304 lb/ft-sec
+        CondRefFTHR     = 0.143294 BTU/ft-hr-R
+        CpRef           = 0.7 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 54.620 lbm/cuft
+        rho             = 0.0316086 lbm/cuin (0.874922 SG)
+        Cp              = 0.7 BTU/lbm degR
+        Visc            = 53.0342 [1.0E5 * lb/ft-sec]
+        Cond            = 0.143286 BTU/ft-hr-R
+        SurfTen         = 0.000194159 lbf/in
+        phase           = LIQUID 
+        Pvap            = 0.816501 psia
+        Vcuft           = 0.0183084 cuft
+        Volume          = 31.637 cuin
+
+-------------------------------------
+Incompressible Liquid: Nitrogen Tetroxide
+             mass =        1.000 lbm
+             type = propellant
+        N2O4 Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 529.8 degR
+        Tcrit           = 776.5 degR
+        Pref            = 14.7 psia
+        Pcrit           = 1440.0 psia
+        WtMol           = 92.016 
+        RhoRef          = 0.0520758 lb/cuin
+        ViscRefFT       = 0.0002664 lb/ft-sec
+        CondRefFTHR     = 0.0759456 BTU/ft-hr-R
+        CpRef           = 0.378 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 90.170 lbm/cuft
+        rho             = 0.0521816 lbm/cuin (1.44438 SG)
+        Cp              = 0.378 BTU/lbm degR
+        Visc            = 26.9024 [1.0E5 * lb/ft-sec]
+        Cond            = 0.0762237 BTU/ft-hr-R
+        SurfTen         = 0.000143994 lbf/in
+        phase           = LIQUID 
+        Pvap            = 13.806 psia
+        Vcuft           = 0.0110902 cuft
+        Volume          = 19.1638 cuin
+
+-------------------------------------
+Incompressible Liquid: WATER
+             mass =        1.000 lbm
+             type = propellant
+        WATER Properties Calculated by Method of Corresponding States
+     ==== INPUT ====    
+        T               = 527.7 degR
+        P               = 1000.0 psia
+        Tref            = 530.0 degR
+        Tnbp            = 671.6 degR
+        Tcrit           = 1164.8 degR
+        Pref            = 14.7 psia
+        Pcrit           = 3200.0 psia
+        WtMol           = 18.015 
+        RhoRef          = 0.03605 lb/cuin
+        ViscRefFT       = 0.000652272 lb/ft-sec
+        CondRefFTHR     = 0.347328 BTU/ft-hr-R
+        CpRef           = 0.99981 BTU/lbm degR
+     ==== OUTPUT ====    
+        D               = 63.821 lbm/cuft
+        rho             = 0.0369333 lbm/cuin (1.02231 SG)
+        Cp              = 0.99981 BTU/lbm degR
+        Visc            = 66.5107 [1.0E5 * lb/ft-sec]
+        Cond            = 0.348063 BTU/ft-hr-R
+        SurfTen         = 0.000415781 lbf/in
+        phase           = LIQUID 
+        Pvap            = 0.324841 psia
+        Vcuft           = 0.0156689 cuft
+        Volume          = 27.0758 cuin

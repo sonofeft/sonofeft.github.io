@@ -1,0 +1,238 @@
+<html><head><title>example_1.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>example_1.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">prism</span> <span class="kn">import</span> <span class="o">*</span>
+
+
+<span class="n">vOxTank</span> <span class="o">=</span> <span class="mf">150000.0</span>
+<span class="n">vFlTank</span> <span class="o">=</span> <span class="mf">100000.0</span>
+<span class="n">vPropTanks</span> <span class="o">=</span> <span class="n">vOxTank</span> <span class="o">+</span> <span class="n">vFlTank</span>
+<span class="n">ptank</span> <span class="o">=</span> <span class="mf">300.0</span>
+<span class="n">PHeTnk</span><span class="o">=</span><span class="mf">2000.0</span>
+
+<span class="n">Oxtank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Oxidizer Tank&quot;</span><span class="p">,</span> <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span>
+    <span class="n">kacqui</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tliner</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span> <span class="n">vfree</span><span class="o">=</span><span class="n">vOxTank</span><span class="p">,</span> <span class="n">ptank</span><span class="o">=</span><span class="n">ptank</span><span class="p">)</span>
+<span class="n">Fltank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Tank&quot;</span><span class="p">,</span> <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">kacqui</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tliner</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span> <span class="n">vfree</span><span class="o">=</span><span class="n">vFlTank</span><span class="p">,</span> <span class="n">ptank</span><span class="o">=</span><span class="n">ptank</span><span class="p">)</span>
+
+<span class="n">he</span> <span class="o">=</span> <span class="n">PressurantHe</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Helium Pressurant&quot;</span><span class="p">,</span>
+    <span class="n">VpropTnk</span><span class="o">=</span><span class="n">vPropTanks</span><span class="p">,</span><span class="n">PHeTnk</span><span class="o">=</span><span class="n">PHeTnk</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">159.36</span><span class="p">,</span>
+    <span class="n">PfinHeOvPnom</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+    <span class="n">tAction</span><span class="o">=</span><span class="mf">433.94</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="mf">510.0</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="mf">550.0</span><span class="p">)</span>
+
+<span class="n">Hetank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Helium Tank&quot;</span><span class="p">,</span>  <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+   <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">ptank</span><span class="o">=</span><span class="n">PHeTnk</span><span class="p">,</span>
+    <span class="n">tliner</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span> <span class="n">vfree</span><span class="o">=</span><span class="n">he</span><span class="o">.</span><span class="n">volHeTotal</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">myControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="n">PHe</span>    <span class="o">=</span> <span class="n">S</span><span class="p">(</span><span class="s2">&quot;PHe&quot;</span><span class="p">)</span>
+    <span class="n">he</span><span class="o">.</span><span class="n">PHeTnk</span> <span class="o">=</span>  <span class="n">PHe</span>
+    <span class="n">he</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="n">he</span><span class="o">.</span><span class="n">volHeTotal</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">PHe</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+    
+    <span class="n">S</span><span class="p">[</span><span class="s2">&quot;sysMass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span>
+    
+<span class="n">Hetank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Gray50&quot;</span> <span class="p">)</span>
+<span class="n">Oxtank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Aquamarine&quot;</span> <span class="p">)</span>
+<span class="n">Fltank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Pink&quot;</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">myRenderControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="n">povItemL</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">loc</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">S</span><span class="o">.</span><span class="n">items</span><span class="p">):</span>
+        <span class="n">povItem</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">povItem</span><span class="p">:</span>
+            <span class="n">povItemL</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">povItem</span> <span class="p">)</span>
+        
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">povItemL</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">loc</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">pov_w</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">S</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pov_w</span><span class="o">/</span><span class="mf">2.0</span>
+                <span class="n">povItemL</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+        
+        
+    <span class="k">return</span> <span class="n">povItemL</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="n">SysModel</span><span class="p">(</span><span class="n">author</span><span class="o">=</span><span class="s2">&quot;I.B. Simpleton&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;simple system&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;trial baloon&quot;</span><span class="p">,</span> 
+    <span class="n">controlRoutine</span><span class="o">=</span><span class="n">myControlRoutine</span><span class="p">,</span> <span class="n">renderControlRoutine</span><span class="o">=</span><span class="n">myRenderControlRoutine</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">Oxtank</span> <span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">Fltank</span> <span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">he</span> <span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">Hetank</span> <span class="p">)</span>
+
+<span class="c1"># design vars have: </span>
+<span class="c1">#     name, value, minVal, maxVal, step,  units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesignVariable</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span> <span class="n">InitialVal</span><span class="o">=</span><span class="mf">3250.0</span><span class="p">,</span> <span class="n">minVal</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">maxVal</span><span class="o">=</span><span class="mf">10000.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span>
+                     <span class="n">units</span><span class="o">=</span><span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Helium Tank MEOP&quot;</span><span class="p">)</span>
+
+<span class="c1"># result variables have: </span>
+<span class="c1">#    name,      units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVars</span><span class="p">(</span> <span class="p">[</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="s2">&quot;lbm&quot;</span><span class="p">,</span> <span class="s2">&quot;Total System Mass&quot;</span><span class="p">]</span> <span class="p">)</span>
+
+
+<span class="k">print</span> <span class="n">S</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+<span class="k">print</span>
+<span class="k">print</span> <span class="n">S</span><span class="o">.</span><span class="n">getShortSummary</span><span class="p">()</span>
+<span class="c1">#print Hetank.getSummary()</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+<span class="c1">#optimize(S, figureOfMerit=&quot;mass_lbm&quot;, desVars=[&quot;PHe&quot;])</span>
+<span class="c1">#print S.getShortSummary()</span>
+<span class="c1">#print Hetank.getSummary()</span>
+
+<span class="n">make2DPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">sysParam</span><span class="o">=</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="n">desVar</span><span class="o">=</span><span class="s2">&quot;PHe&quot;</span><span class="p">)</span>
+
+
+<span class="n">S</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></body></html>

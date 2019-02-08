@@ -1,0 +1,930 @@
+.. building_blocks
+
+.. _`building_blocks_link`:
+
+Building Blocks
+===============
+
+
+PRISM was created to conduct "full-up" analyses of propulsion systems, however, by its nature
+it also contains the building blocks to conduct smaller, more focused tasks such as those 
+described below.
+
+
+Look up Fluid Properties
+------------------------
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_refprop.py
+
+Gives Output::
+
+    N2 T=1303.3 P=  50.0 D=0.1000 E=235.32 H=327.91 S=1.771 Q=4.74
+    N2 T= 400.0 P= 500.0 D=3.4128 E= 66.10 H= 93.23 S=1.299 Q=999.00
+    N2 T= 491.3 P=1000.0 D=5.4081 E= 80.12 H=114.36 S=1.299 Q=999.00
+
+
+Look up CEA Isp
+---------------
+
+Bipropellant
+************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_cea.py
+
+Gives Output::
+
+    at Pc=200 psia, MR=1, Area Ratio=10
+    reading cea isp data files for LOX / CH4
+    for propellant = LOX / CH4
+    IspODE=246.205 sec, Cstar=4427.22 ft/sec, Tcomb=2076.43 degR
+
+Monopropellant
+**************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_cea_monoprop.py
+
+Gives Output::
+
+    Config File: C:\Users\Charlie\PRISM.cfg
+    Refprop dll_path = C:/RefProp8/
+    at Pc=200 psia, Area Ratio=10
+    reading cea isp data files for  HAN315
+    for propellant =  HAN315
+    IspODE=241.309 sec, Cstar=4499.55 ft/sec, Tcomb=3731.46 degR
+
+Solid Propellant
+****************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_cea_solid.py
+
+Gives Output::
+
+    Config File: C:\Users\Charlie\PRISM.cfg
+    Refprop dll_path = C:/RefProp8/
+    at Pc=200 psia, Area Ratio=10
+    reading cea isp data files for  ARC448
+    for propellant =  ARC448
+    IspODE=228.243 sec, Cstar=4290.93 ft/sec, Tcomb=3455.97 degR
+
+
+Calculate TDK Isp
+-----------------
+
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_tdk.py
+
+Gives Output::
+
+    tdk.Isp  369.1169
+    tdk.Cstar 6127.79
+    tdk.etaKin1D 0.973964333441
+    tdk.etaKin2D 0.966432474834
+    Pexit= 0.1008
+
+    IspTDK_wBL= 364.932178
+    IspODE= 381.9376
+
+
+Matplotlib Graph of CEA Output
+------------------------------
+
+
+A matplotlib chart of LOX/LH2 CEA data can be created as shown below.
+
+
+.. image:: _static/LOX_LH2_Cstar_matplotlib.jpg
+    :width: 45%
+
+The above chart was created by the following script.
+
+.. literalinclude:: ./_static/example_scripts/plot_cstar.py
+
+
+
+Excel Graph of CEA Output
+-------------------------
+
+An Excel chart of LOX/LH2 CEA data can be created as shown below.
+
+Cstar 
+*****
+
+.. image:: _static/LOX_LH2_Cstar_excel.jpg
+    :width: 45%
+
+The above chart was created by the following script.
+
+.. literalinclude:: ./_static/example_scripts/test_excel.py
+
+Isp
+***
+
+.. image:: _static/LOX_LH2_Isp_excel.jpg
+    :width: 45%
+
+The above chart was created by the following script.
+
+.. literalinclude:: ./_static/example_scripts/test_excel_isp.py
+
+
+TDK Delivered Isp
+*****************
+
+.. image:: _static/example_scripts/IspDel.jpg
+    :width: 45%
+
+The above chart was created by the following script.
+
+.. literalinclude:: ./_static/example_scripts/xlPlot_Lperf_NTO_MMH.py
+
+
+Calculate Friction Factor
+-------------------------
+
+The Colebrook equation is the most standard approach to calculating friction factor.
+
+.. image:: _static/ff_desc.jpg
+
+Because of Colebrook's iterative nature, however, other non-iterative equations are sometimes used::
+
+    Haaland Equation is Non-iterative
+    ffHaaland = (1.0/ (-1.8*log10((eod/3.7)**1.11 + 6.9/ReNum)) )**2
+
+    Buzzelli  Equation is Non-iterative
+    From the "Fluid Power" article for single pass evaluation of colebrook
+    by Dennis Buzzelli June 19, 2008
+
+    Transition from Laminar to Turbulent is at Reynolds Numbers from about 2300 to 4000
+
+
+The following script calculates all three of these approaches.
+
+.. literalinclude:: ./_static/example_scripts/colebrook_haaland.py
+
+Gives Output::
+
+    Colebrook: 0.0188198
+    Buzzelli : 0.0188215 (+0.01 % Error)
+    Haaland  : 0.0186371 (-0.97 % Error)
+
+A graph of the Colebrook equation is created by the following script
+
+.. literalinclude:: ./_static/example_scripts/test_ff2.py
+
+And gives the output:
+
+.. image:: _static/ff_colebrook.jpg
+    :width: 45%
+
+
+Create a Nozzle Profile
+-----------------------
+
+Nozzle contours are generally created as parabolic or Rao.
+Parabolic contours can be just as high performing as Rao, and may have better mechanical properties.
+(i.e. the entrance angle to the nozzle tends to be slightly smaller in parabolic than in Rao)
+
+PRISM contains routines to create a parabolic contour and
+the TDK program has an option to create a Rao nozzle contour.
+
+Parabolic
+*********
+
+A parabolic contour is defined as shown below. There are general guidelines for choosing 
+the entrance and exit angles of the nozzle as shown in the diagram.
+
+.. image:: _static/parabola_diagram.jpg
+    :width: 45%
+.. image:: _static/parabola_angle_chart.jpg
+    :width: 45%
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_parabola.py
+
+Creates an Excel spreadsheet with the following output:
+
+.. image:: _static/parabola_example.jpg
+    :width: 45%
+
+
+Rao
+***
+
+A Rao nozzle is designed by an optimized Method of Characteristics inside the TDK code.
+
+.. image:: _static/rao_moc.jpg
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_rao.py
+
+Creates an Excel spreadsheet with the following output:
+
+.. image:: _static/rao_example.jpg
+    :width: 45%
+
+
+Compare Parabola Rao
+********************
+
+To compare the two nozzle contours, run the following script.
+
+.. literalinclude:: ./_static/example_scripts/test_rao_parab.py
+
+Creates an Excel spreadsheet that compares the two contours:
+
+.. image:: _static/parabola_rao_compare.jpg
+    :width: 45%
+
+
+
+Nozzle Flow Separation
+----------------------
+
+.. image:: _static/noz_flowsep_1.jpg
+    :width: 55%
+
+The following script runs nozzle separation calculations.
+
+.. literalinclude:: ./_static/example_scripts/test_nozsep.py
+
+The script creates an Excel spreadsheet of nozzle separation calculations.
+A table of nozzle conditions is shown in the upper left corner of the image below.
+A graph of ambient pressure vs nozzle Cf ambient divided by Cf vacuum is 
+shown in the bottom right corner of the image below:
+
+.. image:: _static/noz_flowsep_2.jpg
+
+
+Solve Nozzle Exit Diameter
+--------------------------
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_goal.py
+
+Gives Output::
+
+    Find Area Ratio that has Exit Diameter = 5.0 inches
+    Initial AR = 10.0  Dexit = 6.1915743957
+    Area Ratio = 6.30835836802 for Dexit = 5.00000001086
+    
+    Bipropellant Engine: Divert Engine
+                 mass =       49.792 lbm
+                 type = inert
+            Propellants : N2O4 / MMH
+            NASA CEA Code for ODE performance 
+            Physical Weight Model 
+            Injector Material is SS
+            Nozzle Material is Cb103
+            Bell Nozzle with Percent Bell = 80
+            Mass is for 4 engines total
+         ==== INPUT ====    
+            Fvac            = 1000 lbf
+            Pc              = 200.0 psia
+            eps             = 6.30836 
+            %Bell           = 80.00 %
+            mr              = 1.65 
+            CR              = 2.5 
+            xlnOverLcham    = 0.9 
+            LoverDt         = 2 
+            LchamMin        = 1.500 in
+            cxwInj          = 1 
+            cxwValves       = 1 
+            cxw             = 1 
+            etaERE          = 0.97 
+         ==== OUTPUT ====    
+            Isp             = 276.997 sec
+            Cstar           = 5547.8 ft/sec
+            etaBL           = 0.991001 
+            etaDiv          = 0.983664 
+            etaKin          = 0.984052 
+            etaNoz          = 0.959266 
+            effIsp          = 0.930488 
+            IspODE          = 297.69 sec
+            CstarODE        = 5719.4 ft/sec
+            Tc              = 5544.0 degR
+            PcFace          = 209.609 psia
+            Pexit           = 4.44532 psia
+            wdotTot         = 3.61015 lbm/sec
+            wdotOx          = 2.24783 lbm/sec
+            wdotFl          = 1.36232 lbm/sec
+            rhoFl           = 0.0316 lbm/cuin
+            rhoOx           = 0.0521 lbm/cuin
+            volDotOx        = 43.1645 cuin/sec
+            volDotFl        = 43.1597 cuin/sec
+            DFlow           = 1.353 in
+            At              = 3.11253 sqin
+            Dt              = 1.991 in
+            Dcham           = 3.148 in
+            Dexit           = 5.000 in
+            Lcham           = 3.981 in
+            xlc             = 0.398 in
+            xln             = 3.583 in
+            Lnoz            = 4.492 in
+            Lengine         = 11.621 in
+            rhoInj          = 0.280 lbm/cuin
+            rhoNoz          = 0.310 lbm/cuin
+            thkCham         = 0.026 in
+            thkNoz          = 0.021 in
+            WtNoz           = 0.778 lbm
+            WtChamber       = 0.262 lbm
+            WtInj           = 3.954 lbm
+            WtAcoustic      = 2.804 lbm
+            WtValves(2)     = 4.292 lbm
+            WtMisc          = 0.357 lbm
+            wt/Engine       = 12.448 lbm
+            F/W             = 80.334 lbf/lbm
+    Solenoid Valve: biprop valves
+                 mass =        4.292 lbm
+                 type = inert
+            Based on Solenoid Valve Experience
+            Mass is for 2 valves total
+         ==== INPUT ====    
+            cuInchPerSec    = 43.1645 cuin/sec
+            cxw             = 1.000 
+         ==== OUTPUT ====    
+            basemass        = 2.146 lbm
+
+Size a Liquid Engine
+--------------------
+
+
+.. image:: _static/liquid_engine_schematic.jpg
+    :width: 45%
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_engine.py
+
+Gives Output::
+
+    Bipropellant Engine: Divert Engine
+                 mass =       49.186 lbm
+                 type = inert
+            Propellants : N2O4 / MMH
+            NASA CEA Code for ODE performance 
+            Physical Weight Model 
+            Injector Material is SS
+            Nozzle Material is Cb103
+            Bell Nozzle with Percent Bell = 80
+            Mass is for 4 engines total
+         ==== INPUT ====    
+            Fvac            = 1000 lbf
+            Pc              = 200.0 psia
+            eps             = 10 
+            %Bell           = 80.00 %
+            mr              = 1.65 
+            CR              = 2.5 
+            xlnOverLcham    = 0.9 
+            LoverDt         = 2 
+            LchamMin        = 1.500 in
+            cxwInj          = 1 
+            cxwValves       = 1 
+            cxw             = 1 
+            etaERE          = 0.97 
+         ==== OUTPUT ====    
+            Isp             = 286.35 sec
+            Cstar           = 5547.8 ft/sec
+            etaBL           = 0.988751 
+            etaDiv          = 0.987664 
+            etaKin          = 0.980909 
+            etaNoz          = 0.95791 
+            effIsp          = 0.929173 
+            IspODE          = 308.177 sec
+            CstarODE        = 5719.4 ft/sec
+            Tc              = 5544.0 degR
+            PcFace          = 209.609 psia
+            Pexit           = 2.34259 psia
+            wdotTot         = 3.49224 lbm/sec
+            wdotOx          = 2.17441 lbm/sec
+            wdotFl          = 1.31782 lbm/sec
+            rhoFl           = 0.0316 lbm/cuin
+            rhoOx           = 0.0521 lbm/cuin
+            volDotOx        = 41.7547 cuin/sec
+            volDotFl        = 41.75 cuin/sec
+            DFlow           = 1.331 in
+            At              = 3.01087 sqin
+            Dt              = 1.958 in
+            Dcham           = 3.096 in
+            Dexit           = 6.192 in
+            Lcham           = 3.916 in
+            xlc             = 0.392 in
+            xln             = 3.524 in
+            Lnoz            = 6.320 in
+            Lengine         = 13.332 in
+            rhoInj          = 0.280 lbm/cuin
+            rhoNoz          = 0.310 lbm/cuin
+            thkCham         = 0.025 in
+            thkNoz          = 0.021 in
+            WtNoz           = 0.958 lbm
+            WtChamber       = 0.249 lbm
+            WtInj           = 3.825 lbm
+            WtAcoustic      = 2.699 lbm
+            WtValves(2)     = 4.220 lbm
+            WtMisc          = 0.346 lbm
+            wt/Engine       = 12.296 lbm
+            F/W             = 81.325 lbf/lbm
+    Solenoid Valve: biprop valves
+                 mass =        4.220 lbm
+                 type = inert
+            Based on Solenoid Valve Experience
+            Mass is for 2 valves total
+         ==== INPUT ====    
+            cuInchPerSec    = 41.7547 cuin/sec
+            cxw             = 1.000 
+         ==== OUTPUT ====    
+            basemass        = 2.110 lbm
+
+To create an image of an engine like below.
+
+.. image:: _static/engine_sample.png
+    :width: 45%
+
+use the following script.
+
+.. literalinclude:: ./_static/example_scripts/test_pov.py
+
+
+Size a Tank
+-----------
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_tank.py
+
+Gives Output::
+
+    Cylindrical/Spherical/Elliptical Tank: Divert Vehicle Propellant Tank
+                 mass =        3.763 lbm
+                 type = inert
+            Composite Tank Algorithm
+            Bladder Thickness is input at 0.030 in
+            kalmod = 0
+         ==== INPUT ====    
+            vfree           = 486 cuin
+            vfreeTotal      = 486 cuin
+            ell             = 1.767 
+            rcyltd          = 1.445 
+            ptank           = 1400 psia
+            sf              = 1.5 
+            cxw             = 1.5 
+            ithcyl          = 1 
+            kacqui          = 1 transverse collapsing Alum. bladder
+            inpex           = 1 
+            expefi          = 0.98 
+            tblad           = 0.030 in
+            tbond           = 0.030 in
+            ttrspc          = 0.010 in
+            rhobnd          = 0.04 lbm/cuin
+            rhoacq          = 0.098 lbm/cuin
+            tliner          = 0.030 in
+            rholiner        = 0.098 lbm/cuin
+         ==== OUTPUT ====    
+            rinsid          = 3.535 in
+            dinsid          = 7.069 in
+            OR              = 3.618 in
+            OD              = 7.237 in
+            OH              = 14.385 in
+            hinsid          = 14.215 in
+            SAinsid         = 341.045 sqin
+            cyl             = 10.215 in
+            wacqui          = 0.987 lbm
+            vacqui          = 9.87014 cuin
+            dpacq           = 65.9344 psig
+            pullag          = 1465.93 psia
+            vresid          = 9.72 cuin
+            vtank           = 505.59 cuin
+            tming           = 0.008 in
+            thkcyl          = 0.024 in
+            thkend          = 0.025 in
+            thkBladOut      = 0.030 in
+            wliner          = 1.053 lbm
+            wtank(+liner)   = 1.522 lbm
+            rho             = 0.0637 lbm/cuin
+            PmeopVoverW     = 188096 lbf-in/lbm
+            Pburst(est.)    = 2100.0 psia
+            PburstVoverW    = 282143 lbf-in/lbm
+
+
+Size a Liquid Line
+------------------
+
+Input Diameter
+**************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_liqline2.py
+
+Gives Output::
+
+    Liquid Line: Fuel Line
+                 mass =        6.432 lbm
+                 type = inert
+            fluid : N2H4
+            Structural Material : Ti
+            Mass is for 10 lines total
+         ==== INPUT ====    
+            wdot            = 2 lbm/sec
+            OD              = 0.500 in
+            thkWall         = 0.045 in
+            len_inches      = 50 in
+            Kfactors        = 5 vel heads
+            roughness       = 5e-06 in
+            pLine           = 400 psia
+            cxw             = 1.25 
+            # Lines         = 10 
+         ==== OUTPUT ====    
+            dpLine          = 58.05 psid
+            dPperVelHead    = 8.15 psid
+            velFPS          = 34.6998 ft/sec
+            ReNum           = 1.214732E+05 
+            rinsid          = 0.205 in
+            dinsid          = 0.410 in
+            volLine         = 6.60127 cuin
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+                               
+            sf              = 65.3049 
+            tming           = 0.030 in
+            fluid rho       = 0.0363801 lbm/cuin
+            fluid visc      = 61.356 1.0E5 * lb/ft-sec
+            wt/Line         = 0.643 lbm
+
+
+Input Velocity
+**************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_liqline.py
+
+Gives Output::
+
+    Liquid Line: Fuel Line
+                 mass =        3.882 lbm
+                 type = inert
+            fluid : N2H4
+            Structural Material : Ti
+            Allow Non-Standard wall thickness
+            Mass is for 10 lines total
+         ==== INPUT ====    
+            wdot            = 2 lbm/sec
+            velFPS          = 40 ft/sec
+            len_inches      = 50 in
+            Kfactors        = 5 vel heads
+            roughness       = 5e-06 in
+            thkInp          = 0 in
+            pLine           = 400 psia
+            sf              = 4 
+            cxw             = 1.25 
+            # Lines         = 10 
+         ==== OUTPUT ====    
+            dpLine          = 78.53 psig
+            ReNum           = 1.304208E+05 
+            thkLine         = 0.030 in
+            rinsid          = 0.191 in
+            dinsid          = 0.382 in
+            doutside        = 0.442 in
+            volLine         = 5.72658 cuin
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+            tming           = 0.030 in
+            fluid rho       = 0.0363801 lbm/cuin
+            fluid visc      = 61.356 1.0E5 * lb/ft-sec
+            wt/Line         = 0.388 lbm
+
+
+
+Size a Gas Line
+---------------
+
+Input Diameter
+**************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_gasline.py
+
+Gives Output::
+
+    Gas Line: Ox Line
+                 mass =       23.911 lbm
+                 type = inert
+            In: O2 T= 530.0 P=1000.0 D=5.8605 E= 76.25 H=107.85 S=1.255 Supercrit
+            Out:O2 T= 529.9 P= 996.6 D=5.8410 E= 76.25 H=107.85 S=1.256 Supercrit
+            fluid : O2
+            Structural Material : Ti
+            Allow Non-Standard wall thickness
+            Using Pinlet to design line
+            Line Diameter is an Input (vel is output)
+            Mass is for 10 lines total
+         ==== INPUT ====    
+            wdot            = 1 lbm/sec
+            DiamInp         = 1.000 in
+            thkWallInp      = 0.083 in
+            len_inches      = 50 in
+            Kfactors        = 2 vel heads
+            roughness       = 5e-06 in
+            PgasInlet       = 1000.0 psia
+            sf              = 4 
+            cxw             = 1.25 
+            # Lines         = 10 
+         ==== OUTPUT ====    
+            PgasOutlet      = 996.6 psia
+            velFPS          = 45.139 ft/sec
+            velHead         = 1.289 psi
+            dpLine          = 3.45 psig
+            dp due to Line  = 0.89 psig
+            dp due to Ks    = 2.56 psig
+            dp/Pinlet       = 0.00344998 
+            ReNum           = 1.243308E+06 
+            fricfact        = 0.0116279 
+            thkLine         = 0.083 in
+            rinsid          = 0.417 in
+            dinsid          = 0.834 in
+            volLine         = 27.3144 cuin
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+            tming           = 0.035 in
+            fluid dens      = 5.86053 lbm/cuft
+            fluid visc      = 1.47634e-05 lb/ft-sec
+            fluid sonicV    = 1085.38 ft/sec
+            fluid Mach      = 0.0415883 
+            wt/Line         = 2.391 lbm
+
+Input Velocity
+**************
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_gasline2.py
+
+Gives Output::
+
+    Gas Line: Ox Line
+                 mass =       16.892 lbm
+                 type = inert
+            In: O2 T= 530.0 P=1000.0 D=5.8605 E= 76.25 H=107.85 S=1.255 Supercrit
+            Out:O2 T= 529.5 P= 981.9 D=5.7577 E= 76.27 H=107.85 S=1.257 Supercrit
+            fluid : O2
+            Structural Material : Ti
+            Allow Non-Standard wall thickness
+            Using Pinlet to design line
+            Line Velocity is an Input (diam is output)
+            Mass is for 10 lines total
+         ==== INPUT ====    
+            wdot            = 1 lbm/sec
+            velFPS          = 100 ft/sec
+            thkWallInp      = 0.083 in
+            len_inches      = 50 in
+            Kfactors        = 2 vel heads
+            roughness       = 5e-06 in
+            PgasInlet       = 1000.0 psia
+            sf              = 4 
+            cxw             = 1.25 
+            # Lines         = 10 
+         ==== OUTPUT ====    
+            PgasOutlet      = 981.9 psia
+            velHead         = 6.325 psi
+            dpLine          = 18.15 psig
+            dp due to Line  = 5.89 psig
+            dp due to Ks    = 12.26 psig
+            dp/Pinlet       = 0.0181458 
+            ReNum           = 1.851863E+06 
+            fricfact        = 0.0108525 
+            thkLine         = 0.083 in
+            rinsid          = 0.282 in
+            dinsid          = 0.565 in
+            volLine         = 12.5281 cuin
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+            tming           = 0.035 in
+            fluid dens      = 5.86053 lbm/cuft
+            fluid visc      = 1.47634e-05 lb/ft-sec
+            fluid sonicV    = 1085.38 ft/sec
+            fluid Mach      = 0.0921338 
+            wt/Line         = 1.689 lbm
+
+
+
+Size a Gas Orifice
+------------------
+
+Gas orifices are sized using the equations below.
+
+.. image:: _static/zucrow_chart.jpg
+    :width: 45%
+
+An example script to calculate a gas orifice size is:
+
+.. literalinclude:: ./_static/example_scripts/test_gasorifice.py
+
+and give the following output:
+
+Gives Output::
+
+    Gas Orifice: gas orifice
+                 mass =        0.003 lbm
+                 type = inert
+            In: O2 T= 530.0 P= 521.3 D=3.0013 E= 79.18 H=111.34 S=1.301 Supercrit
+            Out:O2 T= 526.1 P= 400.0 D=2.3098 E= 79.28 H=111.34 S=1.317 Supercrit
+            fluid : O2
+            Structural Material : Ti
+            Allow Non-Standard wall thickness
+            Using Poutlet to design Orifice
+            Orifice CdA is an Input
+            Orifice is SUB-SONIC
+         ==== INPUT ====    
+            wdot            = 1.1 lbm/sec
+            SCFM            = 797.491 SCFM
+            CdAInp          = 0.1 in
+            PgasOutlet      = 400.0 psia
+            sf              = 4 
+            cxw             = 1.25 
+            # Orifices      = 1 
+         ==== OUTPUT ====    
+            PgasInlet       = 521.3 psia
+            velFPS          = 527.77 ft/sec
+            dpOrifice       = 121.32 psid
+            dp/Pinlet       = 0.232717 
+            thkWall         = 0.030 in
+            rinsid          = 0.178 in
+            dinsid          = 0.357 in
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+            tming           = 0.030 in
+            fluid dens      = 3.00131 lbm/cuft
+            fluid visc      = 1.41988e-05 lb/ft-sec
+            fluid sonicV    = 1075.42 ft/sec
+            fluid Mach      = 0.490757 
+
+
+Size a Gas Regulator
+--------------------
+
+Similar methods as above are used to size a gas regulator:
+    
+.. literalinclude:: ./_static/example_scripts/test_gasregulator.py
+
+Gives Output::
+
+    Gas Regulator: gas regulator
+                 mass =        0.244 lbm
+                 type = inert
+            Initial:
+            In: O2 T= 530.0 P=4000.0 D=23.2378 E= 59.45 H= 91.32 S=1.143 Supercrit
+            Out:O2 T= 440.1 P= 400.0 D=2.8238 E= 65.09 H= 91.32 S=1.276 Supercrit
+            Final:
+            In: O2 T= 400.0 P= 800.0 D=6.7375 E= 54.27 H= 76.26 S=1.200 Supercrit
+            Out:O2 T= 377.7 P= 400.0 D=3.4004 E= 54.48 H= 76.26 S=1.239 Supercrit
+            fluid : O2
+            Structural Material : Ti
+            Allow Non-Standard wall thickness
+            Final condition is SUB-SONIC
+         ==== INPUT ====    
+            wdot            = 1 lbm/sec
+            SCFM            = 724.992 SCFM
+            TgasInit        = 530.0 degR
+            PgasInit        = 4000.0 psia
+            TgasFinal       = 400.0 degR
+            PgasFinal       = 800.0 psia
+            PgasOutlet      = 400.0 psia
+            CdASF           = 1.5 
+            sf              = 4 
+            cxw             = 1.25 
+            # Regs          = 1 
+         ==== OUTPUT ====    
+            CdAInit         = 0.0094 sqin
+            CdAFinal        = 0.0421 sqin
+            CdA             = 0.0631 sqin
+            dpRegulator     = 400.00 psig
+            dp/Pinlet       = 0.5 
+            rinsid          = 0.142 in
+            dinsid          = 0.284 in
+            rho             = 0.16 lbm/cuin
+            sy              = 119000 psi
+            tming           = 0.030 in
+            fluid dens      = 23.2378 lbm/cuft
+            fluid visc      = 2.08782e-05 lb/ft-sec
+            fluid sonicV    = 1317.98 ft/sec
+
+Helium Pressurization
+---------------------
+
+The sizing of a Helium pressurization system depends on:
+
+* Helium MEOP
+* Propellant Tank Pressure
+* Propellant Tank Volume
+* Helium ACS Requirements
+* Operating Temperature Range
+* Mission Time
+* Regulator Delta P Requirements
+* Average Acceleration 
+* Tankage Mass, Surface Area, Material
+* External Heat Loads
+
+Create Summary
+**************
+
+The following script takes these into consideration.
+
+.. literalinclude:: ./_static/example_scripts/He_Press.py
+
+Gives Output::
+
+    Helium Pressurant: General Test
+                 mass =       24.742 lbm
+                 type = pressurant
+            Integrated Heat Transfer
+         ==== INPUT ====    
+            VpropTnk        = 300000 cuin
+            PGasTnkMEOP     = 4455 psia
+            PpropNom        = 180 psia
+            PfinGasOvPnom   = 0.9 
+            tAction         = 400 sec
+            TminR           = 510.0 degR
+            TmaxR           = 550.0 degR
+         ==== OUTPUT ====    
+            WGasTotal       = 24.742 lbm
+            WtGasResid      = 1.667 lbm
+            WGasNon-Resid   = 23.075 lbm
+            Vbottle         = 16117 cuin
+            wdotGas         = 0.0576869 lbm/sec
+            compressInit    = 1.1403 
+            PbottleCold     = 4135.27 psia
+            densInitBot     = 2.65275 lbm/cuft
+            densFinalBot    = 0.178768 lbm/cuft
+            densFinalProp   = 0.138971 lbm/cuft
+            gammaIsen       = 1.63927 
+            gamPolyBottle   = 1.14896 
+            gamPolyTank     = 1.01908 
+            fracIsenBottle  = 0.233009 
+            fracIsenTank    = 0.0298427 
+            TfinalPropGas   = 480.0 degR
+            TfinalGasBot    = 335.1 degR
+            PfinalGasBot    = 162.0 psia
+
+Show Calculation Details
+************************
+
+
+.. image:: _static/he_press_hc.jpg
+    :width: 45%
+
+.. image:: _static/he_press_T.jpg
+    :width: 45%
+
+.. literalinclude:: ./_static/example_scripts/NII_He_Press.py
+
+
+
+End Burning Solid Grain
+-----------------------
+
+
+.. image:: _static/end_burning_grain.jpg
+    :width: 45%
+
+The following script.
+
+.. literalinclude:: ./_static/example_scripts/test_grain_endburn.py
+
+Gives Output::
+
+    Solid Grain (End Burning): grain(end burner)
+                 mass =      200.000 lbm
+                 type = propellant
+            Propellant : ARC448
+         ==== INPUT ====    
+            WpropBurned     = 200.000 lbm
+            cxw             = 1 
+            FvacMaxPerGG    = 300 lbf
+            Pc              = 500.0 psia
+            IspVacDel       = 238.6 sec
+            refBurnRate     = 0.1200 in/sec
+            refPress        = 500.0 psia
+            BRexp           = 0.6 
+            rho             = 0.0555 lbm/cuin
+         ==== OUTPUT ====    
+            wdotMaxPerGG    = 1.25733 lbm/sec
+            tminBurn        = 159.1 sec
+            BurnRate at Pc  = 0.1200 in/sec
+            Aburn           = 188.789 sqin
+            Dgrain          = 15.504 in
+            Web             = 19.088 in
+            Vgrain          = 3603.604 cuin
+

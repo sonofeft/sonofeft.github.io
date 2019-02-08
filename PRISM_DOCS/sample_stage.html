@@ -1,0 +1,1173 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Sample Stage &#8212; PRISM 1.1.16 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Many Examples" href="many_examples.html" />
+    <link rel="prev" title="POV-Ray" href="pov_ray.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="many_examples.html" title="Many Examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pov_ray.html" title="POV-Ray"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_blocks.html">Building Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_models.html">Math Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plot Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pov_ray.html">POV-Ray</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sample Stage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#html-output">HTML Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-code">Python Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="many_examples.html">Many Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="massitem_docs.html">Mass Items</a></li>
+<li class="toctree-l1"><a class="reference internal" href="improvements.html">Future Improvements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pov_ray.html"
+                        title="previous chapter">POV-Ray</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="many_examples.html"
+                        title="next chapter">Many Examples</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sample_stage.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sample-stage">
+<h1>Sample Stage<a class="headerlink" href="#sample-stage" title="Permalink to this headline">¶</a></h1>
+<p>The following output describes a very simple liquid stage with some constrained optimization for delta v.</p>
+<p>The HTML output file is pasted below and the python code that generated it is pasted below that.</p>
+<div class="section" id="html-output">
+<h2>HTML Output<a class="headerlink" href="#html-output" title="Permalink to this headline">¶</a></h2>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>PRISM Docs</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">PRISM Docs</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> Sample Case</span></td>
+<td align="right"><span class="header"> PRISM v1.1.7</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: Charlie Taylor</span></td>
+<td align="right"><span class="header">May 05, 2018</span></td>
+</tr></table></center>
+<center><table class="mytable"><th bgcolor="#CCCCCC"> PRIOR TO OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Sample Case
+                mass =      137.036 lbm
+                type = liquid
+======================================
+      name         value        minimum   maximum
+        Pc          500          350          650 Chamber Pressure  (psia)
+       PHe         8000         6000        10000 Helium MEOP  (psia)
+WtPropBurned          100           50          200 Burned Propellant Mass  (lbm)
+       eps           10            5           20 Nozzle Area Ratio
+ pcentBell           70           60           90 Nozzle Percent Bell
+ Figure of Merit = 4745.53 = Ideal Delta V, ft/sec (deltaV)
+======================================
+======================================
+</pre></td></tr></table></center><center><table class="mytable"><th bgcolor="#CCCCCC"> AFTER OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Sample Case
+                mass =      149.988 lbm
+                type = liquid
+======================================
+      name         value        minimum   maximum
+        Pc      543.721          350          650 Chamber Pressure  (psia)
+       PHe        10000         6000        10000 Helium MEOP  (psia)
+WtPropBurned      110.761           50          200 Burned Propellant Mass  (lbm)
+       eps      12.1906            5           20 Nozzle Area Ratio
+ pcentBell      67.8192           60           90 Nozzle Percent Bell
+ Figure of Merit = 5124.45 = Ideal Delta V, ft/sec (deltaV)
+======================================
+======================================
+</pre></td></tr></table></center><center><table class="mytable">
+<th colspan="4" bgcolor="#CCCCCC">Mass Summary </th>
+<tr bgcolor="#CCCCCC"><td>System:<b> Sample Case</b></td><td><b>
+                     149.988</b></td><td> <b>lbm</b></td><td><b>
+                Total</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Mass</b></td>
+<td><b>Units</b></td><td><b>Type</b></td></tr>
+<tr><td colspan="4"><b>INERT</b></td><tr>
+<tr><td align="left">ACS Engines</td><td align="right">       1.882</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Axial Engine</td><td align="right">      12.368</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left"> Fuel Tank</td><td align="right">       5.762</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Helium Tank</td><td align="right">      10.757</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Oxidizer Tank</td><td align="right">       6.008</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td colspan="4"><b>PRESSURANT</b></td><tr>
+<tr><td align="left">pressurant helium</td><td align="right">       1.330</td><td nowrap align="left">lbm</td><td nowrap align="left">pressurant</td></tr>
+
+<tr><td colspan="4"><b>PROPELLANT</b></td><tr>
+<tr><td align="left">Monomethyl Hydrazine</td><td align="right">      40.756</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">Nitrogen Tetroxide</td><td align="right">      71.124</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+</table></center><br>
+<center><table border="1" class="mytable"><tr><td><img src="./_static/minStage_wpov/minStage_wpov_render_front_0_1.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">     12.1906</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Area Ratio</td></tr>
+<tr><td align="left" valign="top">        Pc</td><td align="right" valign="top">     543.721</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top"> pcentBell</td><td align="right" valign="top">     67.8192</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Percent Bell</td></tr>
+<tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium MEOP  (psia)</td></tr>
+<tr><td align="left" valign="top">WtPropBurned</td><td align="right" valign="top">     110.761</td><td nowrap align="left" valign="top">lbm</td><td nowrap align="left" valign="top">Burned Propellant Mass  (lbm)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>System Sensitivity</th><tr><td><img src="./_static/minStage_wpov/minStage_wpov_1__sens_deltaV_vs_Pc_PHe_WtPropBurned_eps_pcentBell.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">     12.1906</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Area Ratio</td></tr>
+<tr><td align="left" valign="top">        Pc</td><td align="right" valign="top">     543.721</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top"> pcentBell</td><td align="right" valign="top">     67.8192</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Percent Bell</td></tr>
+<tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium MEOP  (psia)</td></tr>
+<tr><td align="left" valign="top">WtPropBurned</td><td align="right" valign="top">     110.761</td><td nowrap align="left" valign="top">lbm</td><td nowrap align="left" valign="top">Burned Propellant Mass  (lbm)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">    deltaV</td><td align="right">     5124.45 </td><td nowrap align="left">ft/sec</td><td nowrap align="left">Ideal Delta V  (ft/sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     Dexit</td><td align="right">     7.14565 </td><td nowrap align="left">in</td><td nowrap align="left">Nozzle Diameter  (in)</td><td nowrap align="right"></td><td nowrap align="left"><10</td></tr>
+<tr><td align="left">      Itot</td><td align="right">     30140.1 </td><td nowrap align="left">lbf-sec</td><td nowrap align="left">Total Impulse  (lbf-sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    Lstage</td><td align="right">          65 </td><td nowrap align="left">in</td><td nowrap align="left">Stage Length  (in)</td><td nowrap align="right"></td><td nowrap align="left"><65</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     149.988 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./_static/minStage_wpov/minStage_wpov_2___param_deltaV_vs_Pc.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top"> pcentBell</td><td align="right" valign="top">     67.8192</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Percent Bell</td></tr>
+<tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium MEOP  (psia)</td></tr>
+<tr><td align="left" valign="top">WtPropBurned</td><td align="right" valign="top">     110.761</td><td nowrap align="left" valign="top">lbm</td><td nowrap align="left" valign="top">Burned Propellant Mass  (lbm)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       eps</td><td align="right" valign="top">     12.1906</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Area Ratio</td></tr>
+<tr><td align="left" valign="top">        Pc</td><td align="right" valign="top">     543.721</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top"> pcentBell</td><td align="right" valign="top">     67.8192</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Nozzle Percent Bell</td></tr>
+<tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">       10000</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium MEOP  (psia)</td></tr>
+<tr><td align="left" valign="top">WtPropBurned</td><td align="right" valign="top">     110.761</td><td nowrap align="left" valign="top">lbm</td><td nowrap align="left" valign="top">Burned Propellant Mass  (lbm)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">    deltaV</td><td align="right">     5124.45 </td><td nowrap align="left">ft/sec</td><td nowrap align="left">Ideal Delta V  (ft/sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     Dexit</td><td align="right">     7.14565 </td><td nowrap align="left">in</td><td nowrap align="left">Nozzle Diameter  (in)</td><td nowrap align="right"></td><td nowrap align="left"><10</td></tr>
+<tr><td align="left">      Itot</td><td align="right">     30140.1 </td><td nowrap align="left">lbf-sec</td><td nowrap align="left">Total Impulse  (lbf-sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    Lstage</td><td align="right">          65 </td><td nowrap align="left">in</td><td nowrap align="left">Stage Length  (in)</td><td nowrap align="right"></td><td nowrap align="left"><65</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     149.988 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Bipropellant Engine: ACS Engines</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.882 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Propellants : N2O4 / MMH</td></tr>
+<tr><td colspan="4" align="left">NASA CEA Code for ODE performance </td></tr>
+<tr><td colspan="4" align="left">Physical Weight Model </td></tr>
+<tr><td colspan="4" align="left">Injector Material is SS</td></tr>
+<tr><td colspan="4" align="left">Nozzle Material is Cb103</td></tr>
+<tr><td colspan="4" align="left">Bell Nozzle with Percent Bell = 80</td></tr>
+<tr><td colspan="4" align="left">Mass is for 4 engines total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Fvac</td><td align="left"> = 40</td><td align="left"> lbf</td><td></td></tr>
+<tr><td align="left">Pc</td><td align="left"> = 543.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">eps</td><td align="left"> = 10</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">%Bell</td><td align="left"> = 80.00</td><td align="left"> %</td><td></td></tr>
+<tr><td align="left">mr</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">CR</td><td align="left"> = 2.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">xlnOverLcham</td><td align="left"> = 0.9</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LoverDt</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LchamMin</td><td align="left"> = 1.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">cxwInj</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxwValves</td><td align="left"> = 0.33</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaERE</td><td align="left"> = 0.94</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Isp</td><td align="left"> = 259.609</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">Cstar</td><td align="left"> = 5055.6</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">etaBL</td><td align="left"> = 0.985876</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaDiv</td><td align="left"> = 0.987664</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaKin</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaNoz</td><td align="left"> = 0.973714</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">effIsp</td><td align="left"> = 0.915291</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">IspODE</td><td align="left"> = 283.635</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">CstarODE</td><td align="left"> = 5378.3</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">Tc</td><td align="left"> = 4250.3</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PcFace</td><td align="left"> = 569.844</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pexit</td><td align="left"> = 5.63542</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">wdotTot</td><td align="left"> = 0.154078</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotOx </td><td align="left"> = 0.0770391</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotFl</td><td align="left"> = 0.0770391</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">rhoFl</td><td align="left"> = 0.0316</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoOx</td><td align="left"> = 0.0521</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">volDotOx </td><td align="left"> = 1.47936</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">volDotFl</td><td align="left"> = 2.44068</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">DFlow</td><td align="left"> = 0.322</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">At</td><td align="left"> = 0.044528</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">Dt</td><td align="left"> = 0.238</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dcham</td><td align="left"> = 0.376</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dexit</td><td align="left"> = 0.753</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lcham</td><td align="left"> = 1.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xlc</td><td align="left"> = 0.100</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xln</td><td align="left"> = 0.900</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lnoz</td><td align="left"> = 0.769</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lengine</td><td align="left"> = 2.145</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhoInj</td><td align="left"> = 0.280</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoNoz</td><td align="left"> = 0.310</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">thkCham</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkNoz</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">WtNoz</td><td align="left"> = 0.014</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtChamber</td><td align="left"> = 0.007</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtInj</td><td align="left"> = 0.014</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtAcoustic</td><td align="left"> = 0.084</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtValves(2)</td><td align="left"> = 0.332</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtMisc</td><td align="left"> = 0.020</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wt/Engine</td><td align="left"> = 0.471</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">F/W</td><td align="left"> = 84.998</td><td align="left"> lbf/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Solenoid Valve: biprop valves</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        0.332 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Based on Solenoid Valve Experience</td></tr>
+<tr><td colspan="4" align="left">Mass is for 2 valves total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">cuInchPerSec</td><td align="left"> = 2.44068</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 0.330</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">basemass</td><td align="left"> = 0.502</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Bipropellant Engine: Axial Engine</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       12.368 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Propellants : N2O4 / MMH</td></tr>
+<tr><td colspan="4" align="left">NASA CEA Code for ODE performance </td></tr>
+<tr><td colspan="4" align="left">Physical Weight Model </td></tr>
+<tr><td colspan="4" align="left">Injector Material is SS</td></tr>
+<tr><td colspan="4" align="left">Nozzle Material is Cb103</td></tr>
+<tr><td colspan="4" align="left">Bell Nozzle with Percent Bell = 67.8192</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Fvac</td><td align="left"> = 3000</td><td align="left"> lbf</td><td></td></tr>
+<tr><td align="left">Pc</td><td align="left"> = 543.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">eps</td><td align="left"> = 12.1906</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">%Bell</td><td align="left"> = 67.82</td><td align="left"> %</td><td></td></tr>
+<tr><td align="left">mr</td><td align="left"> = 1.8</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">CR</td><td align="left"> = 2.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">xlnOverLcham</td><td align="left"> = 0.9</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LoverDt</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LchamMin</td><td align="left"> = 2.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">cxwInj</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxwValves</td><td align="left"> = 0.33</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaERE</td><td align="left"> = 0.955</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Isp</td><td align="left"> = 286.439</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">Cstar</td><td align="left"> = 5494.7</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">etaBL</td><td align="left"> = 0.990149</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaDiv</td><td align="left"> = 0.977201</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaKin</td><td align="left"> = 0.983097</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaNoz</td><td align="left"> = 0.95122</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">effIsp</td><td align="left"> = 0.908415</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">IspODE</td><td align="left"> = 315.318</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">CstarODE</td><td align="left"> = 5753.6</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">Tc</td><td align="left"> = 5821.8</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PcFace</td><td align="left"> = 569.844</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pexit</td><td align="left"> = 5.00075</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">wdotTot</td><td align="left"> = 10.4734</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotOx </td><td align="left"> = 6.73292</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotFl</td><td align="left"> = 3.74051</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">rhoFl</td><td align="left"> = 0.0316</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoOx</td><td align="left"> = 0.0521</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">volDotOx </td><td align="left"> = 129.291</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">volDotFl</td><td align="left"> = 118.503</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">DFlow</td><td align="left"> = 2.342</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">At</td><td align="left"> = 3.28964</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">Dt</td><td align="left"> = 2.047</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dcham</td><td align="left"> = 3.236</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dexit</td><td align="left"> = 7.146</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lcham</td><td align="left"> = 4.093</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xlc</td><td align="left"> = 0.409</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xln</td><td align="left"> = 3.684</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lnoz</td><td align="left"> = 6.453</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lengine</td><td align="left"> = 13.782</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhoInj</td><td align="left"> = 0.280</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoNoz</td><td align="left"> = 0.310</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">thkCham</td><td align="left"> = 0.071</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkNoz</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">WtNoz</td><td align="left"> = 1.474</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtChamber</td><td align="left"> = 0.787</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtInj</td><td align="left"> = 4.179</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtAcoustic</td><td align="left"> = 2.990</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtValves(2)</td><td align="left"> = 1.867</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtMisc</td><td align="left"> = 1.070</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">F/W</td><td align="left"> = 242.560</td><td align="left"> lbf/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Solenoid Valve: biprop valves</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.867 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Based on Solenoid Valve Experience</td></tr>
+<tr><td colspan="4" align="left">Mass is for 2 valves total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">cuInchPerSec</td><td align="left"> = 129.291</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 0.330</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">basemass</td><td align="left"> = 2.828</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Fuel Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        5.762 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Composite Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 1332.95</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 1332.95</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.6</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 1.3641</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 856.838</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 6</td><td align="left"> capillary device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.098</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.098</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 4.951</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 9.901</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 5.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 10.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 19.794</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 19.694</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 654.772</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 13.506</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 1.101</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 11.2379</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 856.838</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 13.3295</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 1357.52</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.008</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.019</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 2.025</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 2.740</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0637</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 201864</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 1285.3</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 302796</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Helium Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       10.757 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Composite Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 443.102</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 443.102</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.6</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 0.334369</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 10000</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.3746</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 0</td><td align="left"> no acq. device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.28</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.065</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.101</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 4.563</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 9.126</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 5.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 10.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 9.763</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 8.755</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 286.859</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 3.052</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 0</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 10000</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 5.25187</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 448.354</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.008</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.342</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.409</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 2.085</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 7.826</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0637</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 416800</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 20000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 833601</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Oxidizer Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        6.008 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Composite Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 1417.88</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 1417.88</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.6</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 1.47687</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 856.838</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 6</td><td align="left"> capillary device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.098</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.098</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 4.951</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 9.901</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 5.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 10.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 20.911</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 20.811</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 689.502</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 14.623</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 1.119</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 11.4234</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 856.838</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 14.1788</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 1443.49</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.008</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.019</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 2.127</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 2.886</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0637</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 205860</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 1285.3</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 308790</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Helium Pressurant: pressurant helium</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.330 lbm</b>
+             type = pressurant</td></tr>
+<tr><td colspan="4" align="left">Polytropic Heat Transfer</td></tr>
+<tr><td colspan="4" align="left">Heated Helium (Heat Exchanger between source and tank</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">VpropTnk</td><td align="left"> = 2750.84</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">PHeTnk</td><td align="left"> = 10000</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PpropNom</td><td align="left"> = 856.838</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PfinHeOvPnom</td><td align="left"> = 1.1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tAction</td><td align="left"> = 10.0467</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">TminR</td><td align="left"> = 500.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TmaxR</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">tPolyCorr</td><td align="left"> = 750</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">gamPolyCorr</td><td align="left"> = 1.4</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">gamLimPolyCorr</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">THeTnkHX</td><td align="left"> = 490.0</td><td align="left"> degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">WHeTotal</td><td align="left"> = 1.330</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtHeResid</td><td align="left"> = 0.322</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WHeExpended</td><td align="left"> = 1.008</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">volHeTotal</td><td align="left"> = 443.102</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">wdotHe</td><td align="left"> = 0.100312</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">compressInit</td><td align="left"> = 1.31102</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">PinitCold</td><td align="left"> = 9113.27</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">densInitBot</td><td align="left"> = 5.18647</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalBot</td><td align="left"> = 1.25634</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalProp</td><td align="left"> = 0.633074</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">gammaPoly</td><td align="left"> = 1.39598</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">TfinalPropHe</td><td align="left"> = 490.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TfinalHeBot</td><td align="left"> = 262.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PfinalHeBot</td><td align="left"> = 942.5</td><td align="left"> psia</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Monomethyl Hydrazine</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       40.756 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MMH Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 650.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 1053.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1195.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 46.07</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0315646</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.0005304</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.143294</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Burned Axial</td><td align="left"> = 37.580</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Burned RCS</td><td align="left"> = 2.769</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Residual</td><td align="left"> = 0.408</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 53.892</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0311875</td><td align="left"> lbm/cuin (0.863267 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 53.04</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.143294</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000184989</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 1.54936</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.75626</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 1306.82</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Nitrogen Tetroxide</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       71.124 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">N2O4 Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 30.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 529.8</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 776.5</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1440.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 92.016</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0520758</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.0002664</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.378</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Burned Axial</td><td align="left"> = 67.644</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Burned RCS</td><td align="left"> = 2.769</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Residual</td><td align="left"> = 0.711</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 88.413</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0511652</td><td align="left"> lbm/cuin (1.41625 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.378</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 26.64</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000137202</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 25.8289</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.804445</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 1390.08</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>
+</div>
+<div class="section" id="python-code">
+<h2>Python Code<a class="headerlink" href="#python-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+
+<span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">prism</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="c1"># create system object (make sure author is correct... it&#39;s used for report)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">SysModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sample Case&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;liquid&quot;</span><span class="p">,</span> 
+    <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Charlie Taylor&quot;</span><span class="p">,</span> <span class="n">programName</span><span class="o">=</span><span class="s2">&quot;PRISM Docs&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># add design variables to the system (these variables may be used to</span>
+<span class="c1"># optimize the system or to create plots)</span>
+<span class="c1"># design vars have: </span>
+<span class="c1">#     name, value, minVal, maxVal, step,  units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">650</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="s1">&#39;psia&#39;</span><span class="p">,</span><span class="s1">&#39;Chamber Pressure&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;PHe&#39;</span><span class="p">,</span><span class="mi">8000</span><span class="p">,</span><span class="mi">6000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s1">&#39;psia&#39;</span><span class="p">,</span><span class="s1">&#39;Helium MEOP&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span><span class="s1">&#39;Burned Propellant Mass&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;eps&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Area Ratio&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;pcentBell&#39;</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Percent Bell&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># now add any Result Variables That might be plotted</span>
+<span class="c1"># &quot;sysMass&quot; is required</span>
+<span class="c1"># result variables have: </span>
+<span class="c1">#    name,      units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Lstage&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;Stage Length&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="mi">65</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Dexit&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Diameter&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;deltaV&#39;</span><span class="p">,</span><span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span><span class="s1">&#39;Ideal Delta V&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Itot&#39;</span><span class="p">,</span><span class="s1">&#39;lbf-sec&#39;</span><span class="p">,</span><span class="s1">&#39;Total Impulse&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;sysMass&#39;</span><span class="p">,</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span><span class="s1">&#39;Total System Mass&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+
+
+<span class="n">MR</span> <span class="o">=</span> <span class="mf">1.8</span> <span class="c1"># Engine Mixture Ratio</span>
+<span class="n">FAxial</span> <span class="o">=</span> <span class="mf">3000.0</span> <span class="c1"># lbf, Engine Thrust</span>
+<span class="n">Wpayload</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># lbm, Payload Mass</span>
+<span class="n">pcentACS</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># %, Percent of Propellant Used for ACS</span>
+
+<span class="n">oxName</span> <span class="o">=</span> <span class="s1">&#39;N2O4&#39;</span>
+<span class="n">fuelName</span> <span class="o">=</span> <span class="s2">&quot;MMH&quot;</span>
+
+<span class="n">DiamVeh</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1"># in</span>
+<span class="n">clearance</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1"># in</span>
+
+<span class="c1"># mass multipliers</span>
+<span class="n">cxwEngineVlv</span> <span class="o">=</span> <span class="mf">0.33</span>
+<span class="n">cxwPropTank_FFC</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">cxwHeTank</span> <span class="o">=</span>  <span class="mf">6.95</span> <span class="o">/</span> <span class="mf">5.056</span>
+
+<span class="n">TminOperate</span> <span class="o">=</span> <span class="mf">500.0</span> <span class="c1"># degR, The minimum operating temperature</span>
+<span class="n">TmaxOperate</span> <span class="o">=</span> <span class="mf">550.0</span> <span class="c1"># degR, The maximum operating temperature</span>
+<span class="n">expulEffOx</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">expulEffFl</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">ullFracOx</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">ullFracFl</span> <span class="o">=</span> <span class="mf">0.03</span>
+
+<span class="n">etaERE</span> <span class="o">=</span> <span class="mf">0.955</span>
+
+<span class="c1"># stage axial engine</span>
+<span class="n">EngineAxial</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Axial Engine&quot;</span><span class="p">,</span> 
+    <span class="n">oxName</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">4000.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="n">cxwEngineVlv</span><span class="p">,</span>
+    <span class="n">etaERE</span><span class="o">=</span><span class="n">etaERE</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">70.0</span><span class="p">,</span>
+    <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.9</span> <span class="p">)</span>
+
+<span class="c1"># stage ACS engines</span>
+<span class="n">EngineACS</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ACS Engines&quot;</span><span class="p">,</span> 
+    <span class="n">oxName</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="n">cxwEngineVlv</span><span class="p">,</span>
+    <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.94</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+    <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.9</span> <span class="p">)</span>
+
+<span class="c1"># oxidizer tank</span>
+<span class="n">Oxtank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Oxidizer Tank&quot;</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">486.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.445</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwPropTank_FFC</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="n">expulEffOx</span><span class="p">,</span>
+        <span class="n">tblad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.098</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.098</span><span class="p">)</span>
+        
+<span class="c1"># fuel tank</span>
+<span class="n">Fltank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Tank&quot;</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">486.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.445</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwPropTank_FFC</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="n">expulEffFl</span><span class="p">,</span>
+        <span class="n">tblad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.098</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.098</span><span class="p">)</span>
+        
+<span class="c1"># helium tank</span>
+<span class="n">Hetank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Helium Tank&quot;</span><span class="p">,</span> 
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">160.0</span><span class="p">,</span> <span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.142</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwHeTank</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.065</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.101</span><span class="p">)</span>
+        
+        
+<span class="c1"># use Helium as pressurant</span>
+<span class="n">He</span> <span class="o">=</span> <span class="n">PressurantHe</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pressurant helium&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">VpropTnk</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PHeTnk</span><span class="o">=</span><span class="mf">6000.0</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+    <span class="n">PfinHeOvPnom</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wtHeACS</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">tAction</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="n">TminOperate</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span>
+    <span class="n">tPolyCorr</span><span class="o">=</span><span class="mf">750.0</span><span class="p">,</span> <span class="n">gamPolyCorr</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">gamLimPolyCorr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">THeTnkHX</span><span class="o">=</span><span class="mf">490.0</span><span class="p">)</span>
+        
+<span class="c1"># add propellants</span>
+<span class="n">Fl</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">14.7</span><span class="p">)</span>
+<span class="n">Ox</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+
+
+<span class="c1">#=====  after they have been created, add the Mass Items to the system object ====</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">Oxtank</span><span class="p">,</span> <span class="n">Fltank</span><span class="p">,</span>  <span class="n">He</span><span class="p">,</span> <span class="n">Hetank</span><span class="p">,</span>  <span class="n">EngineAxial</span><span class="p">,</span> <span class="n">EngineACS</span><span class="p">,</span> <span class="n">Ox</span><span class="p">,</span> <span class="n">Fl</span> <span class="p">)</span>
+
+
+
+<span class="c1"># the following control routine ties together the system components</span>
+<span class="c1">#  with the system design variables</span>
+<span class="k">def</span> <span class="nf">myControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="c1"># get current values of design variables    </span>
+    <span class="n">Pc</span><span class="p">,</span><span class="n">PHe</span><span class="p">,</span><span class="n">WtPropBurned</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span><span class="n">pcentBell</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">getDesVars</span><span class="p">(</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span><span class="s2">&quot;WtPropBurned&quot;</span><span class="p">,</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span><span class="s2">&quot;pcentBell&quot;</span><span class="p">)</span>
+
+    <span class="c1"># start ENGINEERING logic here (like a PRISM control routine)</span>
+    <span class="c1"># calc axial and acs propellants</span>
+    <span class="n">WpRCS</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">*</span> <span class="n">pcentACS</span> <span class="o">/</span> <span class="mf">100.0</span>
+    <span class="n">WpAxial</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">-</span> <span class="n">WpRCS</span>
+    <span class="c1"># calc Ox and Fuel portions of axial and acs propellants</span>
+    <span class="n">WtOxRCS</span> <span class="o">=</span> <span class="n">WpRCS</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">WtFlRCS</span> <span class="o">=</span> <span class="n">WpRCS</span> <span class="o">-</span> <span class="n">WtOxRCS</span>
+    <span class="n">WtOxAxial</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">*</span> <span class="n">MR</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">MR</span><span class="p">)</span>
+    <span class="n">WtFlAxial</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">-</span> <span class="n">WtOxAxial</span>
+    <span class="c1"># calc residual propellants  (can you explain the eqn?)</span>
+    <span class="n">WtOxResid</span> <span class="o">=</span> <span class="p">(</span><span class="n">WtOxAxial</span> <span class="o">+</span> <span class="n">WtOxRCS</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">expulEffOx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">WtFlResid</span> <span class="o">=</span> <span class="p">(</span><span class="n">WtFlAxial</span> <span class="o">+</span> <span class="n">WtFlRCS</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">expulEffFl</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1"># tell propellant objects about the breakdown</span>
+    <span class="n">Ox</span><span class="o">.</span><span class="n">setMassBreakdown</span><span class="p">(</span> <span class="p">[(</span><span class="s1">&#39;Burned Axial&#39;</span><span class="p">,</span><span class="n">WtOxAxial</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Burned RCS&#39;</span><span class="p">,</span><span class="n">WtOxRCS</span><span class="p">),(</span><span class="s1">&#39;Residual&#39;</span><span class="p">,</span><span class="n">WtOxResid</span><span class="p">)])</span>
+    <span class="n">Fl</span><span class="o">.</span><span class="n">setMassBreakdown</span><span class="p">(</span> <span class="p">[(</span><span class="s1">&#39;Burned Axial&#39;</span><span class="p">,</span><span class="n">WtFlAxial</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Burned RCS&#39;</span><span class="p">,</span><span class="n">WtFlRCS</span><span class="p">),(</span><span class="s1">&#39;Residual&#39;</span><span class="p">,</span><span class="n">WtFlResid</span><span class="p">)])</span>
+    <span class="n">Ox</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+    <span class="n">Fl</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+
+    <span class="c1"># set engine parameters (both axial and acs)</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">mr</span> <span class="o">=</span> <span class="n">MR</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">=</span> <span class="n">FAxial</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">pcentBell</span> <span class="o">=</span> <span class="n">pcentBell</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+
+    <span class="n">EngineACS</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+
+    <span class="n">Itot</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">*</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Isp</span> <span class="c1"># Total Impulse lbf-sec</span>
+    <span class="n">Dexit</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Dexit</span>
+
+    <span class="c1"># inside FORTRAN tank routine...</span>
+    <span class="c1">#  Vtank = Vfree + Vresid + Vacqui + Vliner, so Vfree is...</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="p">(</span><span class="n">ullFracOx</span> <span class="o">+</span> <span class="n">expulEffOx</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ox</span><span class="o">.</span><span class="n">Volume</span> <span class="o">/</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="p">(</span><span class="n">ullFracFl</span> <span class="o">+</span> <span class="n">expulEffFl</span><span class="p">)</span> <span class="o">*</span> <span class="n">Fl</span><span class="o">.</span><span class="n">Volume</span> <span class="o">/</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">Number</span>    
+
+    <span class="c1"># get pressure schedule</span>
+    <span class="n">ptank</span> <span class="o">=</span> <span class="n">Pc</span> <span class="o">*</span> <span class="mf">1.3</span> <span class="o">+</span> <span class="mf">150.0</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">ptank</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">ptank</span>
+
+    <span class="c1"># size tanks to fit diameter envelope</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+
+    <span class="c1"># give pressurization routine what it needs</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">PHeTnk</span> <span class="o">=</span>  <span class="n">PHe</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">PpropNom</span> <span class="o">=</span> <span class="n">ptank</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">VpropTnk</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">vfree</span><span class="o">*</span><span class="n">Oxtank</span><span class="o">.</span><span class="n">Number</span> <span class="o">+</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">vfree</span><span class="o">*</span><span class="n">Fltank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">tAction</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">/</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">wdotTot</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+
+    <span class="c1"># Set helium tank sizes based on helium volume</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="n">He</span><span class="o">.</span><span class="n">volHeTotal</span> <span class="o">/</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">PHe</span>
+    <span class="c1"># size helium tank to fit diameter envelope</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+
+    <span class="n">S</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+
+    <span class="c1"># figure out package Length</span>
+    <span class="n">Lstage</span> <span class="o">=</span>  <span class="n">Fltank</span><span class="o">.</span><span class="n">OH</span> <span class="o">+</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OH</span> <span class="o">+</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">OH</span>  <span class="o">+</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">+</span> <span class="n">clearance</span><span class="o">*</span><span class="mf">3.0</span>
+    <span class="n">MassStage</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span>
+    
+    <span class="n">massFraction</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">/</span> <span class="n">MassStage</span>
+
+    <span class="n">Winit</span> <span class="o">=</span> <span class="n">MassStage</span> <span class="o">+</span> <span class="n">Wpayload</span>
+    <span class="n">Wfinal</span> <span class="o">=</span> <span class="n">MassStage</span> <span class="o">+</span> <span class="n">Wpayload</span> <span class="o">-</span> <span class="n">WtPropBurned</span>
+
+    <span class="n">fracIsp</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">/</span> <span class="n">WtPropBurned</span>
+
+    <span class="n">deltaV</span> <span class="o">=</span> <span class="mf">32.174</span> <span class="o">*</span> <span class="n">fracIsp</span> <span class="o">*</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Isp</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span> <span class="n">Winit</span> <span class="o">/</span> <span class="n">Wfinal</span> <span class="p">)</span>
+
+
+    <span class="c1"># &quot;sysMass&quot; is required</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Lstage&quot;</span><span class="p">,</span> <span class="n">Lstage</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Dexit&quot;</span><span class="p">,</span> <span class="n">Dexit</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">deltaV</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Itot&quot;</span><span class="p">,</span> <span class="n">Itot</span><span class="p">)</span>    
+
+<span class="c1"># need to tell system the name of the control routine</span>
+<span class="n">S</span><span class="o">.</span><span class="n">setControlRoutine</span><span class="p">(</span><span class="n">myControlRoutine</span><span class="p">)</span>
+
+    
+<span class="n">Hetank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Gray50&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+<span class="n">Oxtank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Aquamarine&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+<span class="n">Fltank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Pink&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+
+<span class="c1"># now optimize the system... it should match up with the carpet plots.</span>
+<span class="n">optimize</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span> <span class="s1">&#39;PHe&#39;</span><span class="p">,</span> <span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="s1">&#39;pcentBell&#39;</span><span class="p">],</span> <span class="n">findmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">saveShortSummary</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">myRenderControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+    <span class="n">Lstage</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">getResultVar</span><span class="p">(</span><span class="s2">&quot;Lstage&quot;</span><span class="p">)</span>
+
+    <span class="n">rVeh</span> <span class="o">=</span> <span class="n">DiamVeh</span> <span class="o">/</span> <span class="mf">2.0</span>
+    
+    <span class="n">eng</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">rotate</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">hadj</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">-</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Dcham</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+
+    <span class="c1"># calculate dome and cyl heights</span>
+    <span class="n">hdomeFl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Fltank</span><span class="o">.</span><span class="n">ell</span>    
+    <span class="n">hdomeOx</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Oxtank</span><span class="o">.</span><span class="n">ell</span>    
+    <span class="n">hdomeHe</span> <span class="o">=</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Hetank</span><span class="o">.</span><span class="n">ell</span>    
+    
+    <span class="n">hcylFl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OH</span> <span class="o">-</span> <span class="n">hdomeFl</span><span class="o">*</span><span class="mf">2.</span>
+    <span class="n">hcylOx</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OH</span> <span class="o">-</span> <span class="n">hdomeOx</span><span class="o">*</span><span class="mf">2.</span>
+    
+    <span class="c1"># position all three tanks</span>
+    <span class="n">fl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">domeHt</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Fltank</span><span class="o">.</span><span class="n">ell</span>
+    <span class="n">hadj</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">+</span> <span class="n">domeHt</span>
+    <span class="n">fl</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+    
+    <span class="n">ox</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">hadj</span> <span class="o">+=</span> <span class="n">hdomeFl</span> <span class="o">+</span> <span class="n">hcylFl</span> <span class="o">+</span> <span class="n">hdomeOx</span> <span class="o">+</span> <span class="n">clearance</span>
+    <span class="n">ox</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+
+    <span class="n">he</span> <span class="o">=</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">hadj</span> <span class="o">+=</span> <span class="n">hdomeOx</span> <span class="o">+</span> <span class="n">hcylOx</span> <span class="o">+</span> <span class="n">hdomeHe</span> <span class="o">+</span> <span class="n">clearance</span>
+    <span class="n">he</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+    
+    
+    <span class="n">shell</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">HollowCylinder</span><span class="p">(</span> <span class="n">OD</span><span class="o">=</span><span class="n">DiamVeh</span><span class="o">+</span><span class="n">clearance</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">clearance</span><span class="o">/</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">Lstage</span><span class="p">,</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;White&quot;</span><span class="p">,</span> <span class="n">transmit</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span> <span class="n">eng</span><span class="p">,</span> <span class="n">fl</span><span class="p">,</span> <span class="n">ox</span><span class="p">,</span> <span class="n">he</span><span class="p">,</span> <span class="n">shell</span> <span class="p">]</span>
+    
+    
+<span class="n">S</span><span class="o">.</span><span class="n">setRenderControlRoutine</span><span class="p">(</span><span class="n">myRenderControlRoutine</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="s1">&#39;front&#39;</span><span class="p">)</span>
+
+<span class="n">makeSensitivityPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> 
+    <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span> <span class="s1">&#39;PHe&#39;</span><span class="p">,</span> <span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="s1">&#39;pcentBell&#39;</span><span class="p">],</span>
+    <span class="n">makeHTML</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">make2DParametricPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">sysParam</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVar</span><span class="o">=</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span>
+    <span class="n">paramVar</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">15.</span><span class="p">,</span><span class="mf">20.</span><span class="p">]</span>  <span class="p">,</span><span class="n">makeHTML</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">ptData</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ptLegend</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">logX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">logY</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># now save summary of system</span>
+<span class="n">S</span><span class="o">.</span><span class="n">saveFullSummary</span><span class="p">()</span>
+
+<span class="c1"># Be sure to wrap-up any files</span>
+<span class="n">S</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="many_examples.html" title="Many Examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pov_ray.html" title="POV-Ray"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

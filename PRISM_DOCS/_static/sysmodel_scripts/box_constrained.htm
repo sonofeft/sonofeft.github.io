@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Simple Optimization</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">Simple Optimization</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> Box Design</span></td>
+<td align="right"><span class="header"> PRISM v1.1.9</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: C.N. Tainer</span></td>
+<td align="right"><span class="header">May 06, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable" width="680"><tr><td><p>This example is taken from the <a href="http://parasol.readthedocs.io/en/latest/index.html">ParaSol</a> program's 
+<a href="http://parasol.readthedocs.io/en/latest/example3.html">Example #3</a></p>
+<p>The purpose of this example is to maximize the volume of an open topped box starting with a rectangle of cardboard measuring (10 x 20).</p>
+<p>There is a constraint on the optimization, however, that the final resulting open topped box cannto exceed an L/W of 2.4.</p>
+<p>The image below shows the basic cardboard shape, after the (h x h) squares have been removed from all four corners of the original rectangle.</p>
+<p><img src="data:image/jpg;base64,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" alt="Box Dimensions"></p>
+</td></tr></table></center><center><table class="mytable"><th bgcolor="#CCCCCC"> PRIOR TO OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Box Design
+                mass =        1.320 lbm
+                type = misc
+======================================
+      name         value        minimum   maximum
+      hbox            1          0.2          3.8 Height of Box  (in)
+ Figure of Merit = 144 = Box Volume, cuin (Volume)
+======================================
+======================================
+</pre></td></tr></table></center><center><table class="mytable"><th bgcolor="#CCCCCC"> AFTER OPTIMIZATION </th><tr><td nowrap><pre>PRISM System: Box Design
+                mass =        1.320 lbm
+                type = misc
+======================================
+      name         value        minimum   maximum
+      hbox       1.4285          0.2          3.8 Height of Box  (in)
+ Figure of Merit = 174.923 = Box Volume, cuin (Volume)
+======================================
+======================================
+</pre></td></tr></table></center><center><table border="1" class="mytable"><th>System Sensitivity</th><tr><td><img src="./box_constrained/box_constrained_1__sens_Volume_vs_hbox.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">      hbox</td><td align="right" valign="top">      1.4285</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Height of Box  (in)</td></tr>
+<tr><td align="left" valign="top">     Lmatl</td><td align="right" valign="top">          20</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Length of Material  (in)</td></tr>
+<tr><td align="left" valign="top">     Wmatl</td><td align="right" valign="top">          10</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Width of Material  (in)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">   boxMass</td><td align="right">     191.838 </td><td nowrap align="left">lbm</td><td nowrap align="left">Box Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    LoverW</td><td align="right">     2.39997 </td><td nowrap align="left"></td><td nowrap align="left">Box L/W Ratio</td><td nowrap align="right"></td><td nowrap align="left"><2.4</td></tr>
+<tr><td align="left">    Volume</td><td align="right">     174.923 </td><td nowrap align="left">cuin</td><td nowrap align="left">Box Volume  (cuin)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./box_constrained/box_constrained_2___LoverW_vs_hbox.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">     Lmatl</td><td align="right" valign="top">          20</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Length of Material  (in)</td></tr>
+<tr><td align="left" valign="top">     Wmatl</td><td align="right" valign="top">          10</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Width of Material  (in)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">      hbox</td><td align="right" valign="top">      1.4285</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Height of Box  (in)</td></tr>
+<tr><td align="left" valign="top">     Lmatl</td><td align="right" valign="top">          20</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Length of Material  (in)</td></tr>
+<tr><td align="left" valign="top">     Wmatl</td><td align="right" valign="top">          10</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Width of Material  (in)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">   boxMass</td><td align="right">     191.838 </td><td nowrap align="left">lbm</td><td nowrap align="left">Box Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    LoverW</td><td align="right">     2.39997 </td><td nowrap align="left"></td><td nowrap align="left">Box L/W Ratio</td><td nowrap align="right"></td><td nowrap align="left"><2.4</td></tr>
+<tr><td align="left">    Volume</td><td align="right">     174.923 </td><td nowrap align="left">cuin</td><td nowrap align="left">Box Volume  (cuin)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Simple Equation Mass: Simple Mass</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.320 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">mass = simple eqn</td></tr>
+<tr><td colspan="4" align="left">Calc Wt from Eqn : 1.2*1.1</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.9
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>

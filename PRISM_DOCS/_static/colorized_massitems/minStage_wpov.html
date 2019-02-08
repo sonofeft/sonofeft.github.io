@@ -1,0 +1,630 @@
+<html><head><title>minStage_wpov.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>minStage_wpov.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">prism</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># create system object (make sure author is correct... it&#39;s used for report)</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">SysModel</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sample Case&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;liquid&quot;</span><span class="p">,</span> 
+    <span class="n">author</span><span class="o">=</span><span class="s2">&quot;Charlie Taylor&quot;</span><span class="p">,</span> <span class="n">programName</span><span class="o">=</span><span class="s2">&quot;PRISM Docs&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># add design variables to the system (these variables may be used to</span>
+<span class="c1"># optimize the system or to create plots)</span>
+<span class="c1"># design vars have: </span>
+<span class="c1">#     name, value, minVal, maxVal, step,  units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addDesVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">650</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="s1">&#39;psia&#39;</span><span class="p">,</span><span class="s1">&#39;Chamber Pressure&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;PHe&#39;</span><span class="p">,</span><span class="mi">8000</span><span class="p">,</span><span class="mi">6000</span><span class="p">,</span><span class="mi">10000</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="s1">&#39;psia&#39;</span><span class="p">,</span><span class="s1">&#39;Helium MEOP&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span><span class="s1">&#39;Burned Propellant Mass&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;eps&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Area Ratio&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;pcentBell&#39;</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Percent Bell&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+
+<span class="c1"># now add any Result Variables That might be plotted</span>
+<span class="c1"># &quot;sysMass&quot; is required</span>
+<span class="c1"># result variables have: </span>
+<span class="c1">#    name,      units,  description</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addResultVars</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;Lstage&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;Stage Length&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="mi">65</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Dexit&#39;</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;Nozzle Diameter&#39;</span><span class="p">,</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span><span class="mi">10</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;deltaV&#39;</span><span class="p">,</span><span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span><span class="s1">&#39;Ideal Delta V&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;Itot&#39;</span><span class="p">,</span><span class="s1">&#39;lbf-sec&#39;</span><span class="p">,</span><span class="s1">&#39;Total Impulse&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;sysMass&#39;</span><span class="p">,</span><span class="s1">&#39;lbm&#39;</span><span class="p">,</span><span class="s1">&#39;Total System Mass&#39;</span><span class="p">],</span>
+    <span class="p">)</span>
+
+
+
+<span class="n">MR</span> <span class="o">=</span> <span class="mf">1.8</span> <span class="c1"># Engine Mixture Ratio</span>
+<span class="n">FAxial</span> <span class="o">=</span> <span class="mf">3000.0</span> <span class="c1"># lbf, Engine Thrust</span>
+<span class="n">Wpayload</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># lbm, Payload Mass</span>
+<span class="n">pcentACS</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="c1"># %, Percent of Propellant Used for ACS</span>
+
+<span class="n">oxName</span> <span class="o">=</span> <span class="s1">&#39;N2O4&#39;</span>
+<span class="n">fuelName</span> <span class="o">=</span> <span class="s2">&quot;MMH&quot;</span>
+
+<span class="n">DiamVeh</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="c1"># in</span>
+<span class="n">clearance</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1"># in</span>
+
+<span class="c1"># mass multipliers</span>
+<span class="n">cxwEngineVlv</span> <span class="o">=</span> <span class="mf">0.33</span>
+<span class="n">cxwPropTank_FFC</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">cxwHeTank</span> <span class="o">=</span>  <span class="mf">6.95</span> <span class="o">/</span> <span class="mf">5.056</span>
+
+<span class="n">TminOperate</span> <span class="o">=</span> <span class="mf">500.0</span> <span class="c1"># degR, The minimum operating temperature</span>
+<span class="n">TmaxOperate</span> <span class="o">=</span> <span class="mf">550.0</span> <span class="c1"># degR, The maximum operating temperature</span>
+<span class="n">expulEffOx</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">expulEffFl</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">ullFracOx</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">ullFracFl</span> <span class="o">=</span> <span class="mf">0.03</span>
+
+<span class="n">etaERE</span> <span class="o">=</span> <span class="mf">0.955</span>
+
+<span class="c1"># stage axial engine</span>
+<span class="n">EngineAxial</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Axial Engine&quot;</span><span class="p">,</span> 
+    <span class="n">oxName</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">4000.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="n">cxwEngineVlv</span><span class="p">,</span>
+    <span class="n">etaERE</span><span class="o">=</span><span class="n">etaERE</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">70.0</span><span class="p">,</span>
+    <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.9</span> <span class="p">)</span>
+
+<span class="c1"># stage ACS engines</span>
+<span class="n">EngineACS</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ACS Engines&quot;</span><span class="p">,</span> 
+    <span class="n">oxName</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">cxw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">40.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> 
+    <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="n">cxwEngineVlv</span><span class="p">,</span>
+    <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.94</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+    <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.9</span> <span class="p">)</span>
+
+<span class="c1"># oxidizer tank</span>
+<span class="n">Oxtank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Oxidizer Tank&quot;</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">486.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.445</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwPropTank_FFC</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="n">expulEffOx</span><span class="p">,</span>
+        <span class="n">tblad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.098</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.098</span><span class="p">)</span>
+        
+<span class="c1"># fuel tank</span>
+<span class="n">Fltank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fuel Tank&quot;</span><span class="p">,</span>  <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">486.0</span><span class="p">,</span><span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.445</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">1400.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwPropTank_FFC</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">expefi</span><span class="o">=</span><span class="n">expulEffFl</span><span class="p">,</span>
+        <span class="n">tblad</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">ttrspc</span><span class="o">=</span><span class="mf">0.010</span><span class="p">,</span>
+        <span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">rhoacq</span><span class="o">=</span><span class="mf">0.098</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.098</span><span class="p">)</span>
+        
+<span class="c1"># helium tank</span>
+<span class="n">Hetank</span> <span class="o">=</span> <span class="n">Tank</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Helium Tank&quot;</span><span class="p">,</span> 
+        <span class="n">makeCompositeTank</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kalmod</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>  
+        <span class="n">matlName</span><span class="o">=</span><span class="s2">&quot;grEpox&quot;</span><span class="p">,</span>   <span class="n">vfree</span><span class="o">=</span><span class="mf">160.0</span><span class="p">,</span> <span class="n">ell</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span><span class="n">rcyltd</span><span class="o">=</span><span class="mf">1.142</span><span class="p">,</span>
+        <span class="n">ptank</span><span class="o">=</span><span class="mf">5000.0</span><span class="p">,</span><span class="n">sf</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">cxw</span><span class="o">=</span><span class="n">cxwHeTank</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">ithcyl</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">kacqui</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">inpex</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">tbond</span><span class="o">=</span><span class="mf">0.030</span><span class="p">,</span><span class="n">rhobnd</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span><span class="n">tliner</span><span class="o">=</span><span class="mf">0.065</span><span class="p">,</span><span class="n">rholiner</span><span class="o">=</span><span class="mf">0.101</span><span class="p">)</span>
+        
+        
+<span class="c1"># use Helium as pressurant</span>
+<span class="n">He</span> <span class="o">=</span> <span class="n">PressurantHe</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;pressurant helium&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">VpropTnk</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span><span class="n">PHeTnk</span><span class="o">=</span><span class="mf">6000.0</span><span class="p">,</span><span class="n">PpropNom</span><span class="o">=</span><span class="mf">350.0</span><span class="p">,</span>
+    <span class="n">PfinHeOvPnom</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wtHeACS</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">tAction</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span><span class="n">TminR</span><span class="o">=</span><span class="n">TminOperate</span><span class="p">,</span><span class="n">TmaxR</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span>
+    <span class="n">tPolyCorr</span><span class="o">=</span><span class="mf">750.0</span><span class="p">,</span> <span class="n">gamPolyCorr</span><span class="o">=</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">gamLimPolyCorr</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">THeTnkHX</span><span class="o">=</span><span class="mf">490.0</span><span class="p">)</span>
+        
+<span class="c1"># add propellants</span>
+<span class="n">Fl</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">14.7</span><span class="p">)</span>
+<span class="n">Ox</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">TmaxOperate</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
+
+
+<span class="c1">#=====  after they have been created, add the Mass Items to the system object ====</span>
+<span class="n">S</span><span class="o">.</span><span class="n">addMassItem</span><span class="p">(</span> <span class="n">Oxtank</span><span class="p">,</span> <span class="n">Fltank</span><span class="p">,</span>  <span class="n">He</span><span class="p">,</span> <span class="n">Hetank</span><span class="p">,</span>  <span class="n">EngineAxial</span><span class="p">,</span> <span class="n">EngineACS</span><span class="p">,</span> <span class="n">Ox</span><span class="p">,</span> <span class="n">Fl</span> <span class="p">)</span>
+
+
+
+<span class="c1"># the following control routine ties together the system components</span>
+<span class="c1">#  with the system design variables</span>
+<span class="k">def</span> <span class="nf">myControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="c1"># get current values of design variables    </span>
+    <span class="n">Pc</span><span class="p">,</span><span class="n">PHe</span><span class="p">,</span><span class="n">WtPropBurned</span><span class="p">,</span><span class="n">eps</span><span class="p">,</span><span class="n">pcentBell</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">getDesVars</span><span class="p">(</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span><span class="s2">&quot;PHe&quot;</span><span class="p">,</span><span class="s2">&quot;WtPropBurned&quot;</span><span class="p">,</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span><span class="s2">&quot;pcentBell&quot;</span><span class="p">)</span>
+
+    <span class="c1"># start ENGINEERING logic here (like a PRISM control routine)</span>
+    <span class="c1"># calc axial and acs propellants</span>
+    <span class="n">WpRCS</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">*</span> <span class="n">pcentACS</span> <span class="o">/</span> <span class="mf">100.0</span>
+    <span class="n">WpAxial</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">-</span> <span class="n">WpRCS</span>
+    <span class="c1"># calc Ox and Fuel portions of axial and acs propellants</span>
+    <span class="n">WtOxRCS</span> <span class="o">=</span> <span class="n">WpRCS</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">WtFlRCS</span> <span class="o">=</span> <span class="n">WpRCS</span> <span class="o">-</span> <span class="n">WtOxRCS</span>
+    <span class="n">WtOxAxial</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">*</span> <span class="n">MR</span><span class="o">/</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="n">MR</span><span class="p">)</span>
+    <span class="n">WtFlAxial</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">-</span> <span class="n">WtOxAxial</span>
+    <span class="c1"># calc residual propellants  (can you explain the eqn?)</span>
+    <span class="n">WtOxResid</span> <span class="o">=</span> <span class="p">(</span><span class="n">WtOxAxial</span> <span class="o">+</span> <span class="n">WtOxRCS</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">expulEffOx</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">WtFlResid</span> <span class="o">=</span> <span class="p">(</span><span class="n">WtFlAxial</span> <span class="o">+</span> <span class="n">WtFlRCS</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">expulEffFl</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1"># tell propellant objects about the breakdown</span>
+    <span class="n">Ox</span><span class="o">.</span><span class="n">setMassBreakdown</span><span class="p">(</span> <span class="p">[(</span><span class="s1">&#39;Burned Axial&#39;</span><span class="p">,</span><span class="n">WtOxAxial</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Burned RCS&#39;</span><span class="p">,</span><span class="n">WtOxRCS</span><span class="p">),(</span><span class="s1">&#39;Residual&#39;</span><span class="p">,</span><span class="n">WtOxResid</span><span class="p">)])</span>
+    <span class="n">Fl</span><span class="o">.</span><span class="n">setMassBreakdown</span><span class="p">(</span> <span class="p">[(</span><span class="s1">&#39;Burned Axial&#39;</span><span class="p">,</span><span class="n">WtFlAxial</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;Burned RCS&#39;</span><span class="p">,</span><span class="n">WtFlRCS</span><span class="p">),(</span><span class="s1">&#39;Residual&#39;</span><span class="p">,</span><span class="n">WtFlResid</span><span class="p">)])</span>
+    <span class="n">Ox</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+    <span class="n">Fl</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+
+    <span class="c1"># set engine parameters (both axial and acs)</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">mr</span> <span class="o">=</span> <span class="n">MR</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">=</span> <span class="n">FAxial</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">pcentBell</span> <span class="o">=</span> <span class="n">pcentBell</span>
+    <span class="n">EngineAxial</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>    <span class="c1"># &lt;=== need current values, so reCalc</span>
+
+    <span class="n">EngineACS</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+
+    <span class="n">Itot</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">*</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Isp</span> <span class="c1"># Total Impulse lbf-sec</span>
+    <span class="n">Dexit</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Dexit</span>
+
+    <span class="c1"># inside FORTRAN tank routine...</span>
+    <span class="c1">#  Vtank = Vfree + Vresid + Vacqui + Vliner, so Vfree is...</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="p">(</span><span class="n">ullFracOx</span> <span class="o">+</span> <span class="n">expulEffOx</span><span class="p">)</span> <span class="o">*</span> <span class="n">Ox</span><span class="o">.</span><span class="n">Volume</span> <span class="o">/</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="p">(</span><span class="n">ullFracFl</span> <span class="o">+</span> <span class="n">expulEffFl</span><span class="p">)</span> <span class="o">*</span> <span class="n">Fl</span><span class="o">.</span><span class="n">Volume</span> <span class="o">/</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">Number</span>    
+
+    <span class="c1"># get pressure schedule</span>
+    <span class="n">ptank</span> <span class="o">=</span> <span class="n">Pc</span> <span class="o">*</span> <span class="mf">1.3</span> <span class="o">+</span> <span class="mf">150.0</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">ptank</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">ptank</span>
+
+    <span class="c1"># size tanks to fit diameter envelope</span>
+    <span class="n">Fltank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+    <span class="n">Oxtank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+
+    <span class="c1"># give pressurization routine what it needs</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">PHeTnk</span> <span class="o">=</span>  <span class="n">PHe</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">PpropNom</span> <span class="o">=</span> <span class="n">ptank</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">VpropTnk</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">vfree</span><span class="o">*</span><span class="n">Oxtank</span><span class="o">.</span><span class="n">Number</span> <span class="o">+</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">vfree</span><span class="o">*</span><span class="n">Fltank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">tAction</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">/</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">wdotTot</span>
+    <span class="n">He</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+
+    <span class="c1"># Set helium tank sizes based on helium volume</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">vfree</span> <span class="o">=</span> <span class="n">He</span><span class="o">.</span><span class="n">volHeTotal</span> <span class="o">/</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">Number</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">ptank</span> <span class="o">=</span> <span class="n">PHe</span>
+    <span class="c1"># size helium tank to fit diameter envelope</span>
+    <span class="n">Hetank</span><span class="o">.</span><span class="n">setToMaxOD</span><span class="p">(</span> <span class="n">ODmax</span><span class="o">=</span><span class="n">DiamVeh</span><span class="p">)</span>
+
+    <span class="n">S</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+
+    <span class="c1"># figure out package Length</span>
+    <span class="n">Lstage</span> <span class="o">=</span>  <span class="n">Fltank</span><span class="o">.</span><span class="n">OH</span> <span class="o">+</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OH</span> <span class="o">+</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">OH</span>  <span class="o">+</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">+</span> <span class="n">clearance</span><span class="o">*</span><span class="mf">3.0</span>
+    <span class="n">MassStage</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span>
+    
+    <span class="n">massFraction</span> <span class="o">=</span> <span class="n">WtPropBurned</span> <span class="o">/</span> <span class="n">MassStage</span>
+
+    <span class="n">Winit</span> <span class="o">=</span> <span class="n">MassStage</span> <span class="o">+</span> <span class="n">Wpayload</span>
+    <span class="n">Wfinal</span> <span class="o">=</span> <span class="n">MassStage</span> <span class="o">+</span> <span class="n">Wpayload</span> <span class="o">-</span> <span class="n">WtPropBurned</span>
+
+    <span class="n">fracIsp</span> <span class="o">=</span> <span class="n">WpAxial</span> <span class="o">/</span> <span class="n">WtPropBurned</span>
+
+    <span class="n">deltaV</span> <span class="o">=</span> <span class="mf">32.174</span> <span class="o">*</span> <span class="n">fracIsp</span> <span class="o">*</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Isp</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span> <span class="n">Winit</span> <span class="o">/</span> <span class="n">Wfinal</span> <span class="p">)</span>
+
+
+    <span class="c1"># &quot;sysMass&quot; is required</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;sysMass&quot;</span><span class="p">,</span> <span class="n">S</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Lstage&quot;</span><span class="p">,</span> <span class="n">Lstage</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Dexit&quot;</span><span class="p">,</span> <span class="n">Dexit</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">deltaV</span><span class="p">)</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">setResultVar</span><span class="p">(</span><span class="s2">&quot;Itot&quot;</span><span class="p">,</span> <span class="n">Itot</span><span class="p">)</span>    
+
+<span class="c1"># need to tell system the name of the control routine</span>
+<span class="n">S</span><span class="o">.</span><span class="n">setControlRoutine</span><span class="p">(</span><span class="n">myControlRoutine</span><span class="p">)</span>
+
+    
+<span class="n">Hetank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Gray50&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+<span class="n">Oxtank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Aquamarine&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+<span class="n">Fltank</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Pink&quot;</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+
+<span class="c1"># now optimize the system... it should match up with the carpet plots.</span>
+<span class="n">optimize</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span> <span class="s1">&#39;PHe&#39;</span><span class="p">,</span> <span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="s1">&#39;pcentBell&#39;</span><span class="p">],</span> <span class="n">findmin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">S</span><span class="o">.</span><span class="n">saveShortSummary</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">myRenderControlRoutine</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="n">S</span><span class="o">.</span><span class="n">reCalcItems</span><span class="p">()</span>
+    <span class="n">Lstage</span> <span class="o">=</span> <span class="n">S</span><span class="o">.</span><span class="n">getResultVar</span><span class="p">(</span><span class="s2">&quot;Lstage&quot;</span><span class="p">)</span>
+
+    <span class="n">rVeh</span> <span class="o">=</span> <span class="n">DiamVeh</span> <span class="o">/</span> <span class="mf">2.0</span>
+    
+    <span class="n">eng</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">rotate</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">hadj</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">-</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Dcham</span>
+    <span class="n">eng</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+
+    <span class="c1"># calculate dome and cyl heights</span>
+    <span class="n">hdomeFl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Fltank</span><span class="o">.</span><span class="n">ell</span>    
+    <span class="n">hdomeOx</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Oxtank</span><span class="o">.</span><span class="n">ell</span>    
+    <span class="n">hdomeHe</span> <span class="o">=</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Hetank</span><span class="o">.</span><span class="n">ell</span>    
+    
+    <span class="n">hcylFl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OH</span> <span class="o">-</span> <span class="n">hdomeFl</span><span class="o">*</span><span class="mf">2.</span>
+    <span class="n">hcylOx</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">OH</span> <span class="o">-</span> <span class="n">hdomeOx</span><span class="o">*</span><span class="mf">2.</span>
+    
+    <span class="c1"># position all three tanks</span>
+    <span class="n">fl</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">domeHt</span> <span class="o">=</span> <span class="n">Fltank</span><span class="o">.</span><span class="n">OR</span><span class="o">/</span><span class="n">Fltank</span><span class="o">.</span><span class="n">ell</span>
+    <span class="n">hadj</span> <span class="o">=</span> <span class="n">EngineAxial</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">+</span> <span class="n">domeHt</span>
+    <span class="n">fl</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+    
+    <span class="n">ox</span> <span class="o">=</span> <span class="n">Oxtank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">hadj</span> <span class="o">+=</span> <span class="n">hdomeFl</span> <span class="o">+</span> <span class="n">hcylFl</span> <span class="o">+</span> <span class="n">hdomeOx</span> <span class="o">+</span> <span class="n">clearance</span>
+    <span class="n">ox</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+
+    <span class="n">he</span> <span class="o">=</span> <span class="n">Hetank</span><span class="o">.</span><span class="n">getPOV_Item</span><span class="p">()</span>
+    <span class="n">hadj</span> <span class="o">+=</span> <span class="n">hdomeOx</span> <span class="o">+</span> <span class="n">hcylOx</span> <span class="o">+</span> <span class="n">hdomeHe</span> <span class="o">+</span> <span class="n">clearance</span>
+    <span class="n">he</span><span class="o">.</span><span class="n">translate</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="n">hadj</span><span class="p">,</span><span class="mf">0.</span><span class="p">])</span>
+    
+    
+    <span class="n">shell</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">HollowCylinder</span><span class="p">(</span> <span class="n">OD</span><span class="o">=</span><span class="n">DiamVeh</span><span class="o">+</span><span class="n">clearance</span><span class="p">,</span> <span class="n">thickness</span><span class="o">=</span><span class="n">clearance</span><span class="o">/</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">Lstage</span><span class="p">,</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;White&quot;</span><span class="p">,</span> <span class="n">transmit</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">reflection</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span>    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span> <span class="n">eng</span><span class="p">,</span> <span class="n">fl</span><span class="p">,</span> <span class="n">ox</span><span class="p">,</span> <span class="n">he</span><span class="p">,</span> <span class="n">shell</span> <span class="p">]</span>
+    
+    
+<span class="n">S</span><span class="o">.</span><span class="n">setRenderControlRoutine</span><span class="p">(</span><span class="n">myRenderControlRoutine</span><span class="p">)</span>
+<span class="n">S</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">view</span><span class="o">=</span><span class="s1">&#39;front&#39;</span><span class="p">)</span>
+
+<span class="n">makeSensitivityPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> 
+    <span class="n">figureOfMerit</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span> <span class="s1">&#39;PHe&#39;</span><span class="p">,</span> <span class="s1">&#39;WtPropBurned&#39;</span><span class="p">,</span> <span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="s1">&#39;pcentBell&#39;</span><span class="p">],</span>
+    <span class="n">makeHTML</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">make2DParametricPlot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">sysParam</span><span class="o">=</span><span class="s2">&quot;deltaV&quot;</span><span class="p">,</span> <span class="n">desVar</span><span class="o">=</span><span class="s2">&quot;Pc&quot;</span><span class="p">,</span>
+    <span class="n">paramVar</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;eps&quot;</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">15.</span><span class="p">,</span><span class="mf">20.</span><span class="p">]</span>  <span class="p">,</span><span class="n">makeHTML</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">ptData</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">ptLegend</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">logX</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">logY</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1"># now save summary of system</span>
+<span class="n">S</span><span class="o">.</span><span class="n">saveFullSummary</span><span class="p">()</span>
+
+<span class="c1"># Be sure to wrap-up any files</span>
+<span class="n">S</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></body></html>

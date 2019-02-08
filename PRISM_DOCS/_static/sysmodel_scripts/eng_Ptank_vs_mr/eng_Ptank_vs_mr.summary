@@ -1,0 +1,32 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+PRISM (PaRametrIc System Model)
+   by: O.F. Design
+ date: Saturday May 05, 2018
+
+========================= Design Variables ==========================
+       NAME VALUE MINIMUM MAXIMUM DESCRIPTION                        
+   PengInOx 277.7     250     350 Ox Engine Inlet Pressure  (psia)   
+ PengInFuel   286     250     350 Fuel Engine Inlet Pressure  (psia) 
+=====================================================================
+
+============== Result Variables ===============
+    NAME VALUE DESCRIPTION              LIMITS 
+ sysMass     0 Total System Mass  (lbm)    --- 
+      Pc   150 Chamber Pressure  (psia)    --- 
+    Fvac  7500 Vacuum Thrust  (lbf)        --- 
+      MR  1.85 Mixture Ratio               --- 
+===============================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Engine Pc/MR Study
+                type = analysis

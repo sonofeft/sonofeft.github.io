@@ -1,0 +1,191 @@
+
+
+<!doctype html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Future Improvements &#8212; PRISM 1.1.16 documentation</title>
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Copyright" href="copyright.html" />
+    <link rel="prev" title="Mass Items" href="massitem_docs.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="massitem_docs.html" title="Mass Items"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/prism_logo_210x61.jpg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">QuickStart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="building_blocks.html">Building Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="math_models.html">Math Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plots.html">Plot Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="optimization.html">Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pov_ray.html">POV-Ray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample_stage.html">Sample Stage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="many_examples.html">Many Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="massitem_docs.html">Mass Items</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Future Improvements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#convert-refprop-calls-to-coolprop">Convert RefProp calls to CoolProp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-standard-performance-database">Create Standard Performance Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generic-power-balance">Generic Power Balance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">History</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="massitem_docs.html"
+                        title="previous chapter">Mass Items</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="copyright.html"
+                        title="next chapter">Copyright</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/improvements.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="future-improvements">
+<h1>Future Improvements<a class="headerlink" href="#future-improvements" title="Permalink to this headline">¶</a></h1>
+<p>PRISM currently requires each user to purchase and install the commercial programs
+RefProp and TDK. Aside from the expense and inconvenience of this approach,
+the execution speed of calculating 2D kinetic Isp can cause complex
+PRISM cases to have long run times and RefProp can pose problems when switching back and
+forth between fluids many times. (see: <a class="reference external" href="https://pages.nist.gov/REFPROP-docs/#changing-fluids-and-calling-setup-multiple-times">Changing Fluids and Calling SETUP Multiple Times</a>)</p>
+<p>A better approach would be to use interpolated database lookups for TDK values
+and the open source project <a class="reference external" href="http://www.coolprop.org/index.html">CoolProp</a> as a substitute
+for RefProp.</p>
+<p>In addition to the commercial programs' replacement,
+the generic power balance routines in PRISM need to be reconnected to
+fluid and combustion product libraries to restore their operability.</p>
+<div class="section" id="convert-refprop-calls-to-coolprop">
+<h2>Convert RefProp calls to CoolProp<a class="headerlink" href="#convert-refprop-calls-to-coolprop" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.coolprop.org/index.html">CoolProp</a> is an open source project for calculating fluid properties that
+comes with an interface to python.</p>
+<p><a class="reference external" href="http://www.coolprop.org/index.html">CoolProp</a> can be installed directly from PyPi as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">coolprop</span>
+</pre></div>
+</div>
+<p>It is possible to speed up property calculations by saving tables of properties for interpolation by
+<a class="reference external" href="http://www.coolprop.org/index.html">CoolProp</a>
+(see: <a class="reference external" href="http://www.coolprop.org/coolprop/Tabular.html#more-information">Tabular Interpolation</a>)</p>
+</div>
+<div class="section" id="create-standard-performance-database">
+<h2>Create Standard Performance Database<a class="headerlink" href="#create-standard-performance-database" title="Permalink to this headline">¶</a></h2>
+<p>Currently PRISM runs the Two Dimensional Kinetics(TDK) software program directly.</p>
+<p>It would be highly desirable to place the results of thousands of TDK runs into a standard database
+that could be efficiently read and interpolated.
+It could perhaps be in a standard format like HDF5 so that many languages could access the data
+(FORTRAN, matlab, python, C++, R, etc.) (see: <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">https://en.wikipedia.org/wiki/Hierarchical_Data_Format</a>)</p>
+<p>An Isp database of ODE, ODK or TDK values generated by the TDK program can be
+interpolated to a very high accuracy.
+The chart below shows the interpolation error on IspODK of such a database.
+This is a Monte-Carlo analysis with 10,000 sample points into the database comparing
+actual TDK point runs with database interpolated values.</p>
+<p>Note the standard deviation indicates a 3 sigma error of about 0.1 sec,
+largely driven by very low Pc, very high MR and very big throats.
+Even that small error could be reduced by creating more points in the table at
+those higher error regions.</p>
+<a class="reference internal image-reference" href="_images/N2O4_MMH_monte_IspODKPeakMR.jpg"><img alt="_images/N2O4_MMH_monte_IspODKPeakMR.jpg" src="_images/N2O4_MMH_monte_IspODKPeakMR.jpg" style="width: 70%;" /></a>
+</div>
+<div class="section" id="generic-power-balance">
+<h2>Generic Power Balance<a class="headerlink" href="#generic-power-balance" title="Permalink to this headline">¶</a></h2>
+<p>In the prism/tpa/powerbal subdirectory, there is a Generic Power Balance code
+that can solve for the temperature, pressure and flow rate at all the key points
+of a liquid rocket engine pump-fed engine. It can solve gas generator bleed cycles,
+expander cycles, staged combustion cycles and any other variant for which a flow
+diagram can be defined.</p>
+<p>Since being written in 2003, the interface to the fluid and combustion gas properties
+has changed and needs to be updated.</p>
+<p>The images below show the output schematics of a gg cycle, a staged combustion cycle and an expender cycle.</p>
+<a class="reference internal image-reference" href="_images/lox_rp_gg_cycle.jpg"><img alt="_images/lox_rp_gg_cycle.jpg" src="_images/lox_rp_gg_cycle.jpg" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="_images/ssme_cycle.jpg"><img alt="_images/ssme_cycle.jpg" src="_images/ssme_cycle.jpg" style="width: 30%;" /></a>
+<a class="reference internal image-reference" href="_images/ch4_expander_cycle.jpg"><img alt="_images/ch4_expander_cycle.jpg" src="_images/ch4_expander_cycle.jpg" style="width: 30%;" /></a>
+<p>The Excel spreadsheet output summaries of the above cases can be viewed by clicking the links below.</p>
+<br><a mimetype="application/vnd.ms-excel" href="./_static/gg_RP1.xlsx">LOX/RP1 GG Cycle</a>
+<br><a mimetype="application/vnd.ms-excel" href="./_static/ssme.xlsx">SSME Staged Combustion Cycle</a>
+<br><a mimetype="application/vnd.ms-excel" href="./_static/ch4_exp.xlsx">Methane Expander Cycle</a></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="copyright.html" title="Copyright"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="massitem_docs.html" title="Mass Items"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">PRISM 1.1.16 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2015, Charlie Taylor.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+    </div>
+  </body>
+</html>

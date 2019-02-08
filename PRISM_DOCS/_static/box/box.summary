@@ -1,0 +1,74 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.9
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Simple Optimization
+   by: C.N. Tainer
+ date: Sunday May 06, 2018
+
+
+This example is taken from the [ParaSol](http://parasol.readthedocs.io/en/latest/index.html) program's 
+[Example #3](http://parasol.readthedocs.io/en/latest/example3.html)
+
+The purpose of this example is to maximize the volume of an open topped box starting with a rectangle of cardboard measuring (10 x 20).
+
+The image below shows the basic cardboard shape, after the (h x h) squares have been removed from all four corners of the original rectangle.
+
+![Box Dimensions](./box.jpg)
+
+
+
+PRISM System: Box Design
+                mass =        1.320 lbm
+                type = misc
+======================================
+      name         value        minimum   maximum
+      hbox            1          0.2          3.8 Height of Box  (in)
+ Figure of Merit = 144 = Box Volume, cuin (Volume)
+======================================
+======================================
+
+
+
+PRISM System: Box Design
+                mass =        1.320 lbm
+                type = misc
+======================================
+      name         value        minimum   maximum
+      hbox      2.11325          0.2          3.8 Height of Box  (in)
+ Figure of Merit = 192.45 = Box Volume, cuin (Volume)
+======================================
+======================================
+
+
+=================== Design Variables ===================
+  NAME   VALUE MINIMUM MAXIMUM DESCRIPTION              
+  hbox 2.11325     0.2     3.8 Height of Box  (in)      
+ Wmatl      10       8      12 Width of Material  (in)  
+ Lmatl      20      10      30 Length of Material  (in) 
+========================================================
+
+============ Result Variables =============
+    NAME   VALUE DESCRIPTION        LIMITS 
+  Volume  192.45 Box Volume  (cuin)    --- 
+ boxMass 182.137 Box Mass  (lbm)       --- 
+===========================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Box Design
+                mass =        1.320 lbm
+                type = misc
+
+-------------------------------------
+Simple Equation Mass: Simple Mass
+             mass =        1.320 lbm
+             type = inert
+        mass = simple eqn
+        Calc Wt from Eqn : 1.2*1.1

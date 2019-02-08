@@ -1,0 +1,84 @@
+Config File: C:\Users\Charlie\PRISM.cfg
+Refprop dll_path = C:/RefProp8/
+reading cea isp data files for N2O4 / MMH
+Find Area Ratio that has Exit Diameter = 5.0 inches
+
+Initial AR = 10.0  Dexit = 6.1915743957
+
+Area Ratio = 6.30835836802 for Dexit = 5.00000001086
+Bipropellant Engine: Divert Engine
+             mass =       49.792 lbm
+             type = inert
+        Propellants : N2O4 / MMH
+        NASA CEA Code for ODE performance 
+        Physical Weight Model 
+        Injector Material is SS
+        Nozzle Material is Cb103
+        Bell Nozzle with Percent Bell = 80
+        Mass is for 4 engines total
+     ==== INPUT ====    
+        Fvac            = 1000 lbf
+        Pc              = 200.0 psia
+        eps             = 6.30836 
+        %Bell           = 80.00 %
+        mr              = 1.65 
+        CR              = 2.5 
+        xlnOverLcham    = 0.9 
+        LoverDt         = 2 
+        LchamMin        = 1.500 in
+        cxwInj          = 1 
+        cxwValves       = 1 
+        cxw             = 1 
+        etaERE          = 0.97 
+     ==== OUTPUT ====    
+        Isp             = 276.997 sec
+        Cstar           = 5547.8 ft/sec
+        etaBL           = 0.991001 
+        etaDiv          = 0.983664 
+        etaKin          = 0.984052 
+        etaNoz          = 0.959266 
+        effIsp          = 0.930488 
+        IspODE          = 297.69 sec
+        CstarODE        = 5719.4 ft/sec
+        Tc              = 5544.0 degR
+        PcFace          = 209.609 psia
+        Pexit           = 4.44532 psia
+        wdotTot         = 3.61015 lbm/sec
+        wdotOx          = 2.24783 lbm/sec
+        wdotFl          = 1.36232 lbm/sec
+        rhoFl           = 0.0316 lbm/cuin
+        rhoOx           = 0.0521 lbm/cuin
+        volDotOx        = 43.1645 cuin/sec
+        volDotFl        = 43.1597 cuin/sec
+        DFlow           = 1.353 in
+        At              = 3.11253 sqin
+        Dt              = 1.991 in
+        Dcham           = 3.148 in
+        Dexit           = 5.000 in
+        Lcham           = 3.981 in
+        xlc             = 0.398 in
+        xln             = 3.583 in
+        Lnoz            = 4.492 in
+        Lengine         = 11.621 in
+        rhoInj          = 0.280 lbm/cuin
+        rhoNoz          = 0.310 lbm/cuin
+        thkCham         = 0.026 in
+        thkNoz          = 0.021 in
+        WtNoz           = 0.778 lbm
+        WtChamber       = 0.262 lbm
+        WtInj           = 3.954 lbm
+        WtAcoustic      = 2.804 lbm
+        WtValves(2)     = 4.292 lbm
+        WtMisc          = 0.357 lbm
+        wt/Engine       = 12.448 lbm
+        F/W             = 80.334 lbf/lbm
+Solenoid Valve: biprop valves
+             mass =        4.292 lbm
+             type = inert
+        Based on Solenoid Valve Experience
+        Mass is for 2 valves total
+     ==== INPUT ====    
+        cuInchPerSec    = 43.1645 cuin/sec
+        cxw             = 1.000 
+     ==== OUTPUT ====    
+        basemass        = 2.146 lbm

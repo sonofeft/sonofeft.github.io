@@ -1,0 +1,21 @@
+======================== Design Variables ========================
+        NAME VALUE MINIMUM MAXIMUM DESCRIPTION                    
+ deltaVReqmt  3000    2000    4000 Delta V Requirement  (ft/sec)  
+         Isp   300     250     350 Engine Specific Impulse  (sec) 
+    Wpayload   100      50     150 Payload Mass  (lbm)            
+    pcentACS     5       0      10 % ACS Propellant of Total      
+        GLOW  1000     500    1500 Gross Liftoff Mass  (lbm)      
+==================================================================
+""
+pcentACS,Itot
+0.0,80144.03659197048
+1.0,80024.85998552389
+2.0,79903.5011454962
+3.0,79779.8997773061
+4.0,79653.9933526575
+5.0,79525.71700556106
+6.0,79395.00342252002
+7.0,79261.78272649637
+8.0,79125.98235424614
+9.0,78987.52692657862
+10.0,78846.33811106194

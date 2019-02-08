@@ -1,0 +1,229 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+PRISM (PaRametrIc System Model)
+   by: I.B. Simpleton
+ date: Saturday May 05, 2018
+
+=========== Design Variables ===========
+ NAME VALUE MINIMUM MAXIMUM DESCRIPTION 
+  PHe  3250     500    8000             
+========================================
+
+================== Result Variables ==================
+       NAME   VALUE DESCRIPTION                LIMITS 
+  HePVoverW  226680 Helium Tank PV/W              --- 
+   HeVolume  8.9258 Helium Tank Volume  (cuft)    --- 
+ HeTankMass 335.842 Helium Tank Mass  (lbm)       --- 
+  HeSysMass 353.705 Helium System Mass  (lbm)     --- 
+     HeMass 17.8626 Helium Gas Mass  (lbm)        --- 
+======================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: simple system
+                mass =     1298.812 lbm
+                type = trial baloon
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: Fuel Tank
+             mass =      393.856 lbm
+             type = inert
+        Metal Tank Algorithm
+        Structural Material : Ti
+        Bladder Thickness is input at 0.030 in
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 100000 cuin
+        vfreeTotal      = 100000 cuin
+        ell             = 1.414 
+        rcyltd          = 2 
+        ptank           = 300 psia
+        sf              = 1.5 
+        cxw             = 1.25 
+        ithcyl          = 1 
+        kacqui          = 4 full BRD stainless steel
+        inpex           = 0 
+        expefi          = 0.99 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.28 lbm/cuin
+        tliner          = 0.030 in
+        rholiner        = 0.1 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 18.864 in
+        dinsid          = 37.728 in
+        OR              = 18.995 in
+        OD              = 37.990 in
+        OH              = 102.358 in
+        hinsid          = 102.137 in
+        SAinsid         = 12572.928 sqin
+        cyl             = 75.455 in
+        wacqui          = 129.160 lbm
+        vacqui          = 761.338 cuin
+        dpacq           = 33.8396 psig
+        pullag          = 333.84 psia
+        vresid          = 3100.64 cuin
+        vtank           = 104238 cuin
+        tming           = 0.030 in
+        thkcyl          = 0.071 in
+        thkend          = 0.050 in
+        thkBladOut      = 0.030 in
+        wliner          = 37.719 lbm
+        wtank(+liner)   = 185.925 lbm
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        e               = 1.5e+07 psi
+        PmeopVoverW     = 79398.2 lbf-in/lbm
+        Pburst(est.)    = 450.0 psia
+        PburstVoverW    = 119097 lbf-in/lbm
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: Helium Tank
+             mass =      335.842 lbm
+             type = inert
+        Metal Tank Algorithm
+        Structural Material : Ti
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 15423.8 cuin
+        vfreeTotal      = 15423.8 cuin
+        ell             = 1.414 
+        rcyltd          = 2 
+        ptank           = 3250 psia
+        sf              = 1.5 
+        cxw             = 1.25 
+        ithcyl          = 1 
+        kacqui          = 0 no acq. device
+        inpex           = 0 
+        expefi          = 0.99 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.28 lbm/cuin
+        tliner          = 0.030 in
+        rholiner        = 0.1 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 10.019 in
+        dinsid          = 20.037 in
+        OR              = 10.489 in
+        OD              = 20.978 in
+        OH              = 54.935 in
+        hinsid          = 54.246 in
+        SAinsid         = 3546.507 sqin
+        cyl             = 40.075 in
+        wacqui          = 0.000 lbm
+        vacqui          = 0 cuin
+        dpacq           = 0 psig
+        pullag          = 3250 psia
+        vresid          = 86.4464 cuin
+        vtank           = 15616.1 cuin
+        tming           = 0.030 in
+        thkcyl          = 0.410 in
+        thkend          = 0.285 in
+        thkBladOut      = 0.030 in
+        wliner          = 10.640 lbm
+        wtank(+liner)   = 268.674 lbm
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        e               = 1.5e+07 psi
+        PmeopVoverW     = 151120 lbf-in/lbm
+        Pburst(est.)    = 4875.0 psia
+        PburstVoverW    = 226680 lbf-in/lbm
+
+-------------------------------------
+Cylindrical/Spherical/Elliptical Tank: Oxidizer Tank
+             mass =      551.250 lbm
+             type = inert
+        Metal Tank Algorithm
+        Structural Material : Ti
+        Bladder Thickness is input at 0.030 in
+        kalmod = 0
+     ==== INPUT ====    
+        vfree           = 150000 cuin
+        vfreeTotal      = 150000 cuin
+        ell             = 1.414 
+        rcyltd          = 2 
+        ptank           = 300 psia
+        sf              = 1.5 
+        cxw             = 1.25 
+        ithcyl          = 1 
+        kacqui          = 4 full BRD stainless steel
+        inpex           = 0 
+        expefi          = 0.99 
+        tblad           = 0.030 in
+        tbond           = 0.030 in
+        ttrspc          = 0.010 in
+        rhobnd          = 0.04 lbm/cuin
+        rhoacq          = 0.28 lbm/cuin
+        tliner          = 0.030 in
+        rholiner        = 0.1 lbm/cuin
+     ==== OUTPUT ====    
+        rinsid          = 21.592 in
+        dinsid          = 43.185 in
+        OR              = 21.734 in
+        OD              = 43.468 in
+        OH              = 117.146 in
+        hinsid          = 116.911 in
+        SAinsid         = 16473.204 sqin
+        cyl             = 86.370 in
+        wacqui          = 169.312 lbm
+        vacqui          = 997.911 cuin
+        dpacq           = 32.07 psig
+        pullag          = 332.07 psia
+        vresid          = 4837.95 cuin
+        vtank           = 156329 cuin
+        tming           = 0.030 in
+        thkcyl          = 0.082 in
+        thkend          = 0.058 in
+        thkBladOut      = 0.030 in
+        wliner          = 49.420 lbm
+        wtank(+liner)   = 271.688 lbm
+        rho             = 0.16 lbm/cuin
+        sy              = 119000 psi
+        e               = 1.5e+07 psi
+        PmeopVoverW     = 85077 lbf-in/lbm
+        Pburst(est.)    = 450.0 psia
+        PburstVoverW    = 127615 lbf-in/lbm
+
+-------------------------------------
+Helium Pressurant: Helium Pressurant
+             mass =       17.863 lbm
+             type = pressurant
+        Polytropic Heat Transfer
+     ==== INPUT ====    
+        VpropTnk        = 250000 cuin
+        PHeTnk          = 3250 psia
+        PpropNom        = 159.36 psia
+        PfinHeOvPnom    = 1 
+        tAction         = 433.94 sec
+        TminR           = 510.0 degR
+        TmaxR           = 550.0 degR
+        tPolyCorr       = 240 sec
+        gamPolyCorr     = 1.66 
+        gamLimPolyCorr  = 1 
+     ==== OUTPUT ====    
+        WHeTotal        = 17.863 lbm
+        WtHeResid       = 1.038 lbm
+        WHeExpended     = 16.825 lbm
+        volHeTotal      = 15423.8 cuin
+        wdotHe          = 0.0387718 lbm/sec
+        compressInit    = 1.10244 
+        PinitCold       = 3016.06 psia
+        densInitBot     = 2.0012 lbm/cuft
+        densFinalBot    = 0.11629 lbm/cuft
+        densFinalProp   = 0.116292 lbm/cuft
+        gammaPoly       = 1.00108 
+        TfinalPropHe    = 508.4 degR
+        TfinalHeBot     = 508.4 degR
+        PfinalHeBot     = 159.4 psia

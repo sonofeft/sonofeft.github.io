@@ -1,0 +1,84 @@
+
+.. philosophy
+
+Philosophy
+==========
+
+The philosophy of PRISM is to aide the user in understanding their own math models.
+
+Math models can be small or large, and PRISM acts to parametrically drive them
+in order to reveal their properties.
+
+Similar to high-end systems such as `ModelCenter <https://en.wikipedia.org/wiki/ModelCenter>`_,
+PRISM aids in the design and optimization of systems. 
+PRISM enables easy optimization, sensitivity study, and visualization. 
+
+A problem is defined by input and output parameters and those parameters are 
+connected to the overall math model.
+
+Results are presented as an assortment of graphs, charts, 
+and images that convey insight into system trends, sensitivities, variations, and characteristics. 
+
+Output is generated in plain text, HTML, and native Microsoft Suite files (Excel, Word and PowerPoint).
+All of the above formats support conversion to PDF.
+
+While PRISM can work with math models of any scientific or engineering discipline,
+its origins are in the aerospace, rocket propulsion industry and was originally created to aide in the understanding of
+those types of models.  It operates with some aerospace standard support codes such as:
+
+* CEA - Chemical Equilibrium With Applications 
+* RPA - Rocket Propulsion Analysis
+* TDK - Two-Dimensional Kinetics Nozzle Performance (commercial)
+* RefProp - Reference Fluid Thermodynamic and Transport Properties (commercial)
+
+PRISM is written in the open source programming language `python 2.7 <https://www.python.org/>`_ 
+and includes other open source codes
+
+* POV-Ray - Persistence Of Vision Ray Tracing Program
+* SciPy - Scientific Computing Library
+* numpy - Numerical Python N-dimensional array package
+* matplotlib - Comprehensive 2D Plotting
+
+PRISM includes methods taken from `ELES (Expanded Liquid Engine Simulation Computer Code) <./_static/ELES_Paper_AIAA-85-1385.pdf>`_ 
+ created for AFRPL in 1985 under contract AFRPL-TR-85-055:
+
+- `ELES Technical Information Manual <./_static/ELES_Technical_Information_Manual.pdf>`_
+- `ELES New Users Manual <./_static/ELES_New_Users_Manual.pdf>`_
+- `ELES Advanced Users Manual <./_static/ELES_Advance_Users_Manual.pdf>`_
+- `ELES Solid GG Design Guide <./_static/ELES_Solid_GG_Tech_Vol.pdf>`_
+- `ELES Programmers Manual <./_static/ELES_Programmer_Manual.pdf>`_
+
+
+Building Blocks
+---------------
+
+PRISM was created to conduct "full-up" analyses of propulsion systems, however, by its nature
+it also contains the building blocks to conduct smaller, more focused tasks.
+
+Those building blocks are available to:
+
+* Calculate Isp (TDK, CEA or RPA)
+* Use Gas or Liquid Properties (RefProp, 1st Principles)
+* Interpolate Data (linear, quadratic, cubic, other)
+* Calculate Pressure Drops (Moody Chart)
+* Optimize Something (Isp, Delta V, Mass, etc.)
+* Solve ODE Initial Value (Hover Test, Detailed Pressurization)
+* Size Engines, Tanks, Lines, Blowdown etc.
+* Visualize Design Space
+* Create Publication-Quality Results
+* Convince Others That We Did Something Right
+
+
+A number of small scripts are provided to to illustrate these tasks on the `Building Blocks <./building_blocks.html>`_ page of this document.
+
+Math Models
+-----------
+
+When a more complex model is required than just the straightforward use of a building block,
+a complete math model is constructed. The flow of the math model is described in the diagram below.
+
+The `Math Model <./math_models.html>`_ page of this document, describes the steps required to build a math model.
+
+.. image:: _static/prism_structure.jpg
+
+

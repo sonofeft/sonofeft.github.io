@@ -1,0 +1,1034 @@
+<html><head><title>Engine_FFC.py</title></head><body>
+<style type="text/css">.default .hll { background-color: #ffffcc }
+.default  { background: #f8f8f8; font-family: Courier New, monospace; font-size: 16px; }
+.linenos { width: 40px;  font-family: Courier New, monospace; font-size: 16px; }
+.default .c { color: #408080; font-style: italic } /* Comment */
+.default .err { border: 1px solid #FF0000 } /* Error */
+.default .k { color: #008000; font-weight: bold } /* Keyword */
+.default .o { color: #666666 } /* Operator */
+.default .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.default .cp { color: #BC7A00 } /* Comment.Preproc */
+.default .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.default .cs { color: #408080; font-style: italic } /* Comment.Special */
+.default .gd { color: #A00000 } /* Generic.Deleted */
+.default .ge { font-style: italic } /* Generic.Emph */
+.default .gr { color: #FF0000 } /* Generic.Error */
+.default .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.default .gi { color: #00A000 } /* Generic.Inserted */
+.default .go { color: #808080 } /* Generic.Output */
+.default .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.default .gs { font-weight: bold } /* Generic.Strong */
+.default .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.default .gt { color: #0040D0 } /* Generic.Traceback */
+.default .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.default .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.default .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.default .kp { color: #008000 } /* Keyword.Pseudo */
+.default .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.default .kt { color: #B00040 } /* Keyword.Type */
+.default .m { color: #666666 } /* Literal.Number */
+.default .s { color: #BA2121 } /* Literal.String */
+.default .na { color: #7D9029 } /* Name.Attribute */
+.default .nb { color: #008000 } /* Name.Builtin */
+.default .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.default .no { color: #880000 } /* Name.Constant */
+.default .nd { color: #AA22FF } /* Name.Decorator */
+.default .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.default .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.default .nf { color: #0000FF } /* Name.Function */
+.default .nl { color: #A0A000 } /* Name.Label */
+.default .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.default .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.default .nv { color: #19177C } /* Name.Variable */
+.default .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.default .w { color: #bbbbbb } /* Text.Whitespace */
+.default .mf { color: #666666 } /* Literal.Number.Float */
+.default .mh { color: #666666 } /* Literal.Number.Hex */
+.default .mi { color: #666666 } /* Literal.Number.Integer */
+.default .mo { color: #666666 } /* Literal.Number.Oct */
+.default .sb { color: #BA2121 } /* Literal.String.Backtick */
+.default .sc { color: #BA2121 } /* Literal.String.Char */
+.default .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.default .s2 { color: #BA2121 } /* Literal.String.Double */
+.default .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.default .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.default .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.default .sx { color: #008000 } /* Literal.String.Other */
+.default .sr { color: #BB6688 } /* Literal.String.Regex */
+.default .s1 { color: #BA2121 } /* Literal.String.Single */
+.default .ss { color: #19177C } /* Literal.String.Symbol */
+.default .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.default .vc { color: #19177C } /* Name.Variable.Class */
+.default .vg { color: #19177C } /* Name.Variable.Global */
+.default .vi { color: #19177C } /* Name.Variable.Instance */
+.default .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<h2>Engine_FFC.py</h2>
+<table class="defaulttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484</pre></div></td><td class="code"><div class="default"><pre><span></span><span class="c1"># Applied Python PRISM</span>
+<span class="c1"># (PRISM) PaRametrIc System Model</span>
+<span class="c1">#</span>
+<span class="c1"># Written by Charlie Taylor &lt;cet@appliedpython.com&gt; </span>
+<span class="c1"># Oct,21 2005</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">prism.MassItem</span> <span class="kn">import</span> <span class="n">MassItem</span>
+<span class="kn">from</span> <span class="nn">prism.isp.cea</span> <span class="kn">import</span> <span class="n">CEA_Isp</span>
+<span class="kn">from</span> <span class="nn">prism.utils</span> <span class="kn">import</span> <span class="n">Constants</span>
+<span class="kn">from</span> <span class="nn">prism.Summary</span> <span class="kn">import</span> <span class="n">Summary</span>
+<span class="kn">from</span> <span class="nn">prism.props</span> <span class="kn">import</span> <span class="n">Materials</span>
+<span class="kn">from</span> <span class="nn">prism.isp</span> <span class="kn">import</span> <span class="n">Nozzle_Eff</span>
+<span class="kn">from</span> <span class="nn">prism.utils</span> <span class="kn">import</span> <span class="n">mensuration</span>
+<span class="kn">from</span> <span class="nn">prism.props</span> <span class="kn">import</span> <span class="n">Inc_liquid</span>
+<span class="kn">from</span> <span class="nn">prism.engines</span> <span class="kn">import</span> <span class="n">ValveSolenoid</span>
+<span class="kn">from</span> <span class="nn">prism.isp</span> <span class="kn">import</span> <span class="n">separated_Cf</span>
+<span class="kn">from</span> <span class="nn">prism.pov</span> <span class="kn">import</span> <span class="n">POV_Items</span><span class="p">,</span> <span class="n">POV_Basics</span>
+
+<span class="k">class</span> <span class="nc">Engine_FFC</span><span class="p">(</span> <span class="n">MassItem</span> <span class="p">):</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">150.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">DtInp</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+        <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">xlnOverLcham</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cxwValves</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+        <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">valvesMassInput</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        
+        <span class="n">MassItem</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;inert&quot;</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="o">=</span> <span class="n">Number</span> <span class="c1"># number of engines</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">oxName</span> <span class="o">=</span> <span class="n">oxName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fuelName</span> <span class="o">=</span> <span class="n">fuelName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iprop</span> <span class="o">=</span> <span class="n">oxName</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">fuelName</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">=</span> <span class="n">Fvac</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span> <span class="o">=</span> <span class="n">DtInp</span>  <span class="c1"># if DtInp is input, then Fvac is calculated</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span> <span class="o">=</span> <span class="n">Pc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mr</span> <span class="o">=</span> <span class="n">mr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">CR</span> <span class="o">=</span> <span class="n">CR</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xlnOverLcham</span> <span class="o">=</span> <span class="n">xlnOverLcham</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LoverDt</span> <span class="o">=</span> <span class="n">LoverDt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">LchamMin</span> <span class="o">=</span> <span class="n">LchamMin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span> <span class="o">=</span> <span class="n">cxw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxwValves</span> <span class="o">=</span> <span class="n">cxwValves</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">minBipropValveWt</span> <span class="o">=</span> <span class="n">minBipropValveWt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etaERE</span> <span class="o">=</span> <span class="n">etaERE</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etaKinInp</span> <span class="o">=</span> <span class="n">etaKinInp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">=</span> <span class="n">Pamb</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">inputIspDel</span> <span class="o">=</span> <span class="n">inputIspDel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">IspDel</span> <span class="o">=</span> <span class="n">IspDel</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">isBell</span> <span class="o">=</span> <span class="n">isBell</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span> <span class="o">=</span> <span class="n">pcentBell</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span> <span class="o">=</span> <span class="n">halfAngDeg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span> <span class="o">=</span> <span class="n">etaNoz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calcEtaNoz</span> <span class="o">=</span> <span class="n">calcEtaNoz</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">matlInj</span> <span class="o">=</span> <span class="n">matlInj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkNozMin</span> <span class="o">=</span> <span class="n">thkNozMin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cxwInj</span> <span class="o">=</span> <span class="n">cxwInj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rhoInj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">syInj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eInj</span><span class="p">,</span> <span class="n">tmingInj</span> <span class="o">=</span> <span class="n">Materials</span><span class="o">.</span><span class="n">getMatlProps</span><span class="p">(</span><span class="n">matlInj</span><span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">matlNoz</span> <span class="o">=</span> <span class="n">matlNoz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rhoNoz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">syNoz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eNoz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tmingNoz</span> <span class="o">=</span> <span class="n">Materials</span><span class="o">.</span><span class="n">getMatlProps</span><span class="p">(</span><span class="n">matlNoz</span><span class="p">)</span>
+        
+        <span class="c1"># assume storable liquids for the FFC engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">FlObj</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="o">.</span><span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">Pc</span><span class="o">*</span><span class="mf">1.5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">OxObj</span> <span class="o">=</span> <span class="n">Inc_liquid</span><span class="o">.</span><span class="n">Inc_liquid</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="n">Pc</span><span class="o">*</span><span class="mf">1.5</span><span class="p">)</span>
+        
+        <span class="c1"># assume identical ox and fuel valves</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">valvesMassInput</span> <span class="o">=</span> <span class="n">valvesMassInput</span> <span class="c1"># if input, then do NOT calculate</span>
+        <span class="k">if</span> <span class="n">valvesMassInput</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span> <span class="o">=</span> <span class="n">ValveSolenoid</span><span class="o">.</span><span class="n">ValveSolenoid</span><span class="p">(</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;biprop valves&#39;</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cxw</span><span class="o">=</span><span class="n">cxwValves</span> <span class="p">)</span>
+        
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">ispObj</span> <span class="o">=</span> <span class="n">CEA_Isp</span><span class="o">.</span><span class="n">CEA_Isp</span><span class="p">(</span> <span class="n">oxName</span><span class="o">=</span><span class="n">oxName</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="n">fuelName</span><span class="p">,</span> <span class="n">useFastLookup</span><span class="o">=</span><span class="n">useFastCEALookup</span> <span class="p">)</span> <span class="c1"># create isp calculating object</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">getPOV_Item</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># be sure to include pov_h, pov_w, and pov_d calcs in reCalc</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span> <span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;texture&#39;</span><span class="p">):</span>
+            <span class="n">texture</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span>
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="n">texture</span> <span class="o">=</span> <span class="n">POV_Basics</span><span class="o">.</span><span class="n">Texture</span><span class="p">(</span> <span class="n">colorName</span><span class="o">=</span><span class="s2">&quot;Coral&quot;</span> <span class="p">)</span>
+        
+        <span class="n">s</span> <span class="o">=</span> <span class="n">POV_Items</span><span class="o">.</span><span class="n">TCA_Bell</span><span class="p">(</span> <span class="n">xlc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xlc</span> <span class="p">,</span> <span class="n">xln</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">xln</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">CR</span><span class="p">,</span> 
+            <span class="n">Rt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">/</span><span class="mf">2.</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span>  <span class="n">pcentBell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="p">,</span>  <span class="n">texture</span><span class="o">=</span><span class="n">texture</span><span class="p">,</span>
+            <span class="n">isBell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">isBell</span><span class="p">,</span> <span class="n">halfAngDeg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">s</span>
+        
+    <span class="k">def</span> <span class="nf">reCalc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autoCalc</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">autoCalc</span> <span class="o">=</span> <span class="n">autoCalc</span>
+        <span class="c1"># set design variables</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.0</span> <span class="c1"># used in calcNozzleEfficiency</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">=</span> <span class="bp">None</span> <span class="c1"># used in calcNozzleEfficiency</span>
+        
+        <span class="c1">#self.IspODE,self.CstarODE,self.Tc = \</span>
+        <span class="c1">#    self.ispObj.get_IvacCstrTc(Pc=self.Pc, MR=self.mr, eps=self.eps)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">IspODE</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">CstarODE</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">Tc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mw</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gam</span> <span class="o">=</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">ispObj</span><span class="o">.</span><span class="n">get_IvacCstrTc_ThtMwGam</span><span class="p">(</span> <span class="n">Pc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="n">MR</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">PcOvPexit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ispObj</span><span class="o">.</span><span class="n">get_PcOvPe</span><span class="p">(</span><span class="n">Pc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="n">MR</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">PcOvPexit</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEtaNoz</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBell</span><span class="p">:</span>
+                <span class="n">isConical</span><span class="o">=</span><span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">isConical</span><span class="o">=</span><span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">etaBL</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">etaDiv</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">etaKin</span><span class="p">,</span> <span class="n">etaCf</span> <span class="o">=</span> \
+                <span class="n">Nozzle_Eff</span><span class="o">.</span><span class="n">calcNozzleEfficiency</span><span class="p">(</span><span class="n">Pc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="n">At</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">At</span><span class="p">,</span>
+                <span class="n">epsAtt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="n">isConical</span><span class="o">=</span><span class="n">isConical</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="p">,</span> <span class="n">halfAngleDeg</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span><span class="p">,</span>
+                <span class="n">iprop</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">iprop</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">,</span> <span class="n">etaKinInp</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">etaKinInp</span><span class="p">,</span>
+                <span class="n">adjBL</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">adjKin</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">adjDiv</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isRegenCham</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">isRegenNoz</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaKinInp</span> <span class="o">!=</span> <span class="mf">1.0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">etaKin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaKinInp</span>
+                <span class="n">etaCf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaBL</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaDiv</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaKin</span>
+                
+            <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span> <span class="o">=</span> <span class="n">etaCf</span>
+        
+        <span class="c1"># if isp delivered is input, correct etaNoz to reflect that input</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIspDel</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspDel</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">effIsp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspODE</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">effIsp</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaERE</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">effIsp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaERE</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspODE</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">effIsp</span>
+            
+        <span class="c1"># even if Isp is input, use CEA cstar to calculate throat diameter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CstarODE</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaERE</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">*</span> <span class="mf">32.174</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span><span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span> <span class="o">/</span> <span class="n">Constants</span><span class="o">.</span><span class="n">gc</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">At</span> <span class="o">/</span> <span class="n">pi</span> <span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">wdotOx</span>  <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mr</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wdotFl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotOx</span> 
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">volDotOx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotOx</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">OxObj</span><span class="o">.</span><span class="n">rho</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">volDotFl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotFl</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">FlObj</span><span class="o">.</span><span class="n">rho</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="o">.</span><span class="n">cuInchPerSec</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotOx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotFl</span> <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="o">.</span><span class="n">reCalc</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">WtValves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="o">.</span><span class="n">mass_lbm</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">WtValves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">valvesMassInput</span>
+        
+        <span class="n">ftPerSec</span> <span class="o">=</span> <span class="mf">30.0</span> <span class="c1"># through valve</span>
+        <span class="n">dCharFl</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotFl</span><span class="o">/</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">ftPerSec</span><span class="p">)</span> 
+        <span class="n">dCharOx</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotOx</span> <span class="o">/</span> <span class="n">pi</span> <span class="o">/</span> <span class="n">ftPerSec</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dChar</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="n">dCharFl</span><span class="p">,</span> <span class="n">dCharOx</span><span class="p">)</span>
+        
+        <span class="c1"># weight of two identical valves</span>
+        <span class="c1">#self.WtValves = 2.0 * 0.268 * (self.dChar/1.279)**2</span>
+        <span class="c1">#if self.WtValves &lt; self.minBipropValveWt: # minimum of 45 (0.2 lbm) grams per valve (90 total)</span>
+        <span class="c1">#    self.WtValves = self.minBipropValveWt</span>
+        <span class="c1">#self.WtValves *= self.cxwValves</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">WtMisc</span> <span class="o">=</span> <span class="mf">0.319</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dChar</span><span class="o">/</span><span class="mf">1.279</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># scale miscellaneous like valve</span>
+        <span class="c1">#if self.WtMisc &lt; 0.1:</span>
+        <span class="c1">#    self.WtMisc = 0.1</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">CR</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">LoverDt</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">LchamMin</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">LchamMin</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Dexit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="p">)</span>
+        
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBell</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lnoz</span> <span class="o">=</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span><span class="o">/</span><span class="mf">100.0</span><span class="o">/</span><span class="n">tan</span><span class="p">(</span><span class="mf">15.0</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span><span class="p">)</span>
+            <span class="c1"># curve fit of ratio to minimum length rao nozzle</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ratmlr</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1612.1</span><span class="o">/</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">+</span> <span class="mf">1009.0</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SAnoz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">4.</span><span class="o">*</span><span class="p">(</span><span class="mf">3.368</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="o">+</span><span class="mf">10.875</span><span class="p">)</span><span class="o">**</span><span class="mf">1.2606</span> <span class="o">+</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ratmlr</span><span class="o">-</span><span class="mf">1.25</span><span class="p">)</span><span class="o">*</span><span class="mf">10.75</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Lnoz</span> <span class="o">=</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">/</span><span class="mf">2.0</span><span class="p">)</span><span class="o">/</span><span class="n">tan</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span><span class="p">)</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="o">/</span><span class="mf">2.0</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dexit</span><span class="o">/</span><span class="mf">2.0</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">SAnoz</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">r1</span><span class="o">-</span><span class="n">r2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lnoz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r1</span><span class="o">+</span><span class="n">r2</span><span class="p">)</span>
+            
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span> <span class="o">=</span> <span class="mf">0.06</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="o">/</span><span class="mf">1000.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="o">/</span><span class="mf">1.48</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNozMin</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNozMin</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">thkNoz</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span><span class="o">*</span><span class="mf">0.9</span> <span class="o">+</span> <span class="mf">3.5</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">tmingNoz</span><span class="p">)</span> <span class="o">/</span> <span class="mf">4.5</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNoz</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNozMin</span><span class="p">:</span> 
+            <span class="bp">self</span><span class="o">.</span><span class="n">thkNoz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNozMin</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">WtNoz</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNoz</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">SAnoz</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoNoz</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">xln</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xlnOverLcham</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">xlc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">xln</span>
+        
+        <span class="n">VolChamber</span> <span class="o">=</span> <span class="n">mensuration</span><span class="o">.</span><span class="n">cylVol</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xlc</span> <span class="p">)</span> <span class="o">+</span> \
+                     <span class="n">mensuration</span><span class="o">.</span><span class="n">coneVol</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xln</span> <span class="p">)</span>
+                     
+        <span class="bp">self</span><span class="o">.</span><span class="n">WtChamber</span> <span class="o">=</span> <span class="n">VolChamber</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoNoz</span> <span class="c1"># chamber is made of same matl as nozzle</span>
+        
+        <span class="n">thkMultAcc</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="o">+</span> <span class="mf">0.25</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span>
+        <span class="n">VolAccustic</span> <span class="o">=</span> <span class="n">mensuration</span><span class="o">.</span><span class="n">cylVol</span><span class="p">(</span> <span class="n">thkMultAcc</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span><span class="o">/</span><span class="mf">2.0</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">WtAcoustic</span> <span class="o">=</span> <span class="n">VolAccustic</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoNoz</span>
+        
+        <span class="c1"># the injector ht also gets smaller with increased Dcham</span>
+        <span class="n">htMultDCham</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">)</span>
+        
+        <span class="n">htInj</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="o">*</span><span class="n">htMultDCham</span>
+        <span class="n">VolInj</span> <span class="o">=</span> <span class="n">mensuration</span><span class="o">.</span><span class="n">solidCylVol</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="o">*</span><span class="mf">1.1</span> <span class="p">,</span> <span class="n">htInj</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">WtInj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoInj</span> <span class="o">*</span> <span class="n">VolInj</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxwInj</span>
+           
+        <span class="bp">self</span><span class="o">.</span><span class="n">Lengine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lnoz</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span>  <span class="c1"># use Dcham as an inj face fwd length</span>
+
+        
+        <span class="c1"># add up parts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtNoz</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtChamber</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtInj</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtAcoustic</span>  <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtMisc</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="o">*</span> <span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span>   <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtValves</span> <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">FtoW</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">pov_h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lengine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pov_w</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dexit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span> <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pov_d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pov_w</span>
+        
+        <span class="c1"># get sea level performance</span>
+        <span class="c1">#CfSL, CfOverCfvacSL, modeSL = separated_Cf.ambientCf(gam=self.gam, epsTot=self.eps, Pc=self.pc, Pamb=14.7)</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">Cfvac</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span> <span class="o">*</span> <span class="mf">32.174</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">CfOvCfvacAtEsep</span><span class="p">,</span> <span class="n">CfOvCfvac</span><span class="p">,</span> <span class="n">Cfsep</span><span class="p">,</span> <span class="n">CfiVac</span><span class="p">,</span> <span class="n">CfiAmbSimple</span><span class="p">,</span> <span class="n">CfVac</span><span class="p">,</span> <span class="n">epsSep</span><span class="p">,</span> <span class="n">Psep</span> <span class="o">=</span> \
+                <span class="n">separated_Cf</span><span class="o">.</span><span class="n">sepNozzleCf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gam</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span><span class="p">)</span>
+    
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span> <span class="o">&gt;</span> <span class="n">Psep</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="o">/</span><span class="mf">32.174</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">CfAmb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span> <span class="o">*</span> <span class="mf">32.174</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">IspODEepsSep</span><span class="p">,</span><span class="n">CstarODE</span><span class="p">,</span><span class="n">Tc</span> <span class="o">=</span> \
+                    <span class="bp">self</span><span class="o">.</span><span class="n">ispObj</span><span class="o">.</span><span class="n">get_IvacCstrTc</span><span class="p">(</span><span class="n">Pc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="n">MR</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">epsSep</span><span class="p">)</span>
+                    
+                <span class="n">CfvacAtEsep</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cfvac</span> <span class="o">*</span> <span class="n">IspODEepsSep</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspODE</span>
+                
+                <span class="bp">self</span><span class="o">.</span><span class="n">CfAmb</span> <span class="o">=</span> <span class="n">CfvacAtEsep</span> <span class="o">*</span> <span class="n">CfOvCfvacAtEsep</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CfAmb</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span> <span class="o">/</span> <span class="mf">32.174</span>
+            
+            <span class="c1"># figure out mode of nozzle operation</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span> <span class="o">&gt;</span> <span class="n">Psep</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">+</span> <span class="mf">0.05</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;UnderExpanded (Pe=</span><span class="si">%g</span><span class="s1">)&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">-</span> <span class="mf">0.05</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;OverExpanded (Pe=</span><span class="si">%g</span><span class="s1">)&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;Pexit = </span><span class="si">%g</span><span class="s1">&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;Separated (Psep=</span><span class="si">%g</span><span class="s1">, epsSep=</span><span class="si">%g</span><span class="s1">)&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">Psep</span><span class="p">,</span><span class="n">epsSep</span><span class="p">)</span>
+            
+            <span class="c1"># calc ambient thrust</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Famb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Famb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">PfaceOvPc</span> <span class="o">=</span><span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="o">.</span><span class="mi">25</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">CR</span><span class="o">**</span><span class="mf">1.8</span><span class="p">)</span>  <span class="c1"># multiply time Pc to get PcFace</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">PcFace</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">PfaceOvPc</span>
+
+
+    <span class="k">def</span> <span class="nf">buildSummary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        
+        <span class="n">summList</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">summ</span> <span class="o">=</span> <span class="n">Summary</span><span class="p">(</span>  <span class="n">summName</span><span class="o">=</span><span class="s1">&#39;Bipropellant Engine&#39;</span><span class="p">,</span>
+        <span class="n">componentName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">mass_lbm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Propellants : &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">oxName</span> <span class="o">+</span> <span class="s1">&#39; / &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">fuelName</span> <span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;NASA CEA Code for ODE performance &#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Physical Weight Model &#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Injector Material is &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">matlInj</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Nozzle Material is &#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">matlNoz</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBell</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Bell Nozzle with Percent Bell = </span><span class="si">%g</span><span class="s1">&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Conical Nozzle with Half Angle = </span><span class="si">%g</span><span class="s1"> deg&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span> <span class="p">)</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addAssumption</span><span class="p">(</span> <span class="s1">&#39;Mass is for </span><span class="si">%i</span><span class="s1"> engines total&#39;</span><span class="o">%</span><span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="p">)</span>
+
+
+        <span class="c1">#summ.addInput(self, label=&#39;generic param&#39;, value=0.0, units=&#39;&#39;, format=&#39;%g&#39;)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Dt&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Fvac&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span><span class="p">,</span> <span class="s1">&#39;lbf&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Pc&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pc</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;eps&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isBell</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;%Bell&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pcentBell</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;halfAngDeg&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">halfAngDeg</span><span class="p">,</span> <span class="s1">&#39;deg&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;mr&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mr</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;CR&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">CR</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;xlnOverLcham&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xlnOverLcham</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;LoverDt&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">LoverDt</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;LchamMin&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">LchamMin</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;cxwInj&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxwInj</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;cxwValves&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxwValves</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;cxw&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cxw</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;etaERE&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaERE</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEtaNoz</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;etaNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addInput</span><span class="p">(</span><span class="s1">&#39;Pamb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+
+
+        <span class="c1"># outputs</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Fvac&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span><span class="p">,</span> <span class="s1">&#39;lbf&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Isp&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Isp</span><span class="p">,</span> <span class="s1">&#39;sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Cstar&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Cstar</span><span class="p">,</span> <span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputIspDel</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;etaNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">calcEtaNoz</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;etaBL&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaBL</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;etaDiv&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaDiv</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;etaKin&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaKin</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;etaNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">etaNoz</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;effIsp&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">effIsp</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;IspODE&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspODE</span><span class="p">,</span> <span class="s1">&#39;sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;CstarODE&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">CstarODE</span><span class="p">,</span> <span class="s1">&#39;ft/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Tc&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Tc</span><span class="p">,</span> <span class="s1">&#39;degR&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;PcFace&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">PcFace</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Pexit&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pexit</span><span class="p">,</span> <span class="s1">&#39;psia&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;wdotTot&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotTot</span><span class="p">,</span> <span class="s1">&#39;lbm/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;wdotOx &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotOx</span> <span class="p">,</span> <span class="s1">&#39;lbm/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;wdotFl&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wdotFl</span><span class="p">,</span> <span class="s1">&#39;lbm/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;rhoFl&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">FlObj</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;rhoOx&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">OxObj</span><span class="o">.</span><span class="n">rho</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;volDotOx &#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotOx</span> <span class="p">,</span> <span class="s1">&#39;cuin/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;volDotFl&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">volDotFl</span><span class="p">,</span> <span class="s1">&#39;cuin/sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;DFlow&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">dChar</span><span class="p">,</span><span class="s1">&#39;in&#39;</span><span class="p">,</span><span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;At&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">At</span><span class="p">,</span> <span class="s1">&#39;sqin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">DtInp</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Dt&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dt</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+            
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Dcham&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dcham</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Dexit&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Dexit</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Lcham&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lcham</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;xlc&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xlc</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;xln&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xln</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Lnoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lnoz</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Lengine&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Lengine</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;rhoInj&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoInj</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;rhoNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rhoNoz</span><span class="p">,</span> <span class="s1">&#39;lbm/cuin&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;thkCham&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkCham</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;thkNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">thkNoz</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtNoz&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtNoz</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtChamber&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtChamber</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtInj&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">WtInj</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtAcoustic&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">WtAcoustic</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtValves(2)&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;WtMisc&#39;</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">WtMisc</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span> <span class="s1">&#39;wt/Engine&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">Number</span><span class="p">,</span> <span class="s1">&#39;lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;F/W&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Number</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">,</span> <span class="s1">&#39;lbf/lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;F/W&#39;</span><span class="p">,</span>  <span class="bp">self</span><span class="o">.</span><span class="n">Fvac</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">mass_lbm</span><span class="p">,</span> <span class="s1">&#39;lbf/lbm&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%.3f</span><span class="s1">&#39;</span><span class="p">)</span>
+            
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Pamb</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;IspAmb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">IspAmb</span><span class="p">,</span> <span class="s1">&#39;sec&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;Famb&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Famb</span><span class="p">,</span> <span class="s1">&#39;lbf&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%g</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="n">summ</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span><span class="s1">&#39;nozzle condition&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">summList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">summ</span> <span class="p">)</span>
+        
+        <span class="c1"># ======== now valves</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="p">:</span>
+            <span class="n">summList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="bp">self</span><span class="o">.</span><span class="n">Valves</span><span class="o">.</span><span class="n">buildSummary</span><span class="p">()</span> <span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">summList</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>  <span class="c1">#self test</span>
+
+    <span class="k">print</span> <span class="s2">&quot;Actual IR&amp;D Style Engine =&quot;</span><span class="p">,</span> <span class="mf">2.071</span><span class="p">,</span><span class="s2">&quot;lbm (1.815 w/o valves)&quot;</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Ref Axial Engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.27</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">714.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">17.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.08</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.06</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">84.58</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Calculated =   &quot;</span><span class="p">,</span><span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;w/o valves= </span><span class="si">%.3f</span><span class="s2"> lbm&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">-</span> <span class="n">h</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,)</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+
+    <span class="k">print</span>
+
+    <span class="k">print</span> <span class="s2">&quot;Actual R-1E 25 lbf Engine =&quot;</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span><span class="s2">&quot;lbm (2.4 w/o valves)&quot;</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;R-1E 25 lbf Engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">2.7</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">106.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">25.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.65</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.06</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span>  <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+        <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Calculated =   &quot;</span><span class="p">,</span><span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;w/o valves= </span><span class="si">%.3f</span><span class="s2"> lbm&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">-</span> <span class="n">h</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,)</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+    
+    <span class="k">print</span>
+    
+
+    <span class="k">print</span> <span class="s2">&quot;Actual R4-D Engine =&quot;</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span><span class="s2">&quot;lbm (5.5 w/o valves)&quot;</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;R4-D Engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;MMH&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">2.63</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">108.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">110.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">44.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.65</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.06</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+        <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Calculated =   &quot;</span><span class="p">,</span><span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;w/o valves= </span><span class="si">%.3f</span><span class="s2"> lbm&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">-</span> <span class="n">h</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,)</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+
+    
+
+    <span class="k">print</span> <span class="s2">&quot;MKV-R ACS Engine&quot;</span>
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ACS Engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;N2H4&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">2.63</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">800.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">LchamMin</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;SS&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">80.0</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  
+        <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">thkNozMin</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">minBipropValveWt</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">inputIspDel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">IspDel</span><span class="o">=</span><span class="mf">300.0</span><span class="p">,</span> <span class="n">valvesMassInput</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Calculated =   &quot;</span><span class="p">,</span><span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;w/o valves= </span><span class="si">%.3f</span><span class="s2"> lbm&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">-</span> <span class="n">h</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,)</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="n">Engine_FFC</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Phoenix AKV Engine&quot;</span><span class="p">,</span>  <span class="n">mass_lbm</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">oxName</span><span class="o">=</span><span class="s1">&#39;N2O4&#39;</span><span class="p">,</span> <span class="n">fuelName</span><span class="o">=</span><span class="s1">&#39;M20_NH3&#39;</span><span class="p">,</span>
+        <span class="n">cxw</span><span class="o">=</span><span class="mf">1.27</span><span class="p">,</span> <span class="n">Pc</span><span class="o">=</span><span class="mf">500.0</span><span class="p">,</span> <span class="n">Fvac</span><span class="o">=</span><span class="mf">714.0</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">17.0</span><span class="p">,</span> <span class="n">mr</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">CR</span><span class="o">=</span><span class="mf">2.06</span><span class="p">,</span> <span class="n">LoverDt</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span>
+        <span class="n">etaERE</span><span class="o">=</span><span class="mf">0.97</span><span class="p">,</span> <span class="n">etaNoz</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">matlInj</span><span class="o">=</span><span class="s2">&quot;Ti&quot;</span><span class="p">,</span> <span class="n">cxwInj</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">isBell</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pcentBell</span><span class="o">=</span><span class="mf">84.58</span><span class="p">,</span>
+        <span class="n">halfAngDeg</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">useFastCEALookup</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">Number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">calcEtaNoz</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="n">matlNoz</span><span class="o">=</span><span class="s2">&quot;Cb103&quot;</span><span class="p">,</span> <span class="n">Pamb</span><span class="o">=</span><span class="mf">14.7</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s2">&quot;Calculated =   &quot;</span><span class="p">,</span><span class="n">h</span><span class="o">.</span><span class="n">getMassStr</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">&quot;w/o valves= </span><span class="si">%.3f</span><span class="s2"> lbm&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">h</span><span class="o">.</span><span class="n">mass_lbm</span> <span class="o">-</span> <span class="n">h</span><span class="o">.</span><span class="n">WtValves</span><span class="p">,)</span>
+    <span class="k">print</span>
+    <span class="k">print</span> <span class="n">h</span><span class="o">.</span><span class="n">getSummary</span><span class="p">()</span>
+
+    <span class="k">print</span>
+</pre></div>
+</td></tr></table></body></html>

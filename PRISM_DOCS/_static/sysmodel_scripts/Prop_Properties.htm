@@ -1,0 +1,462 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Propellant Properties Comparison</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">Propellant Properties Comparison</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> Propellant Properties Comparison</span></td>
+<td align="right"><span class="header"> PRISM v1.1.16</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: Scooter Rho</span></td>
+<td align="right"><span class="header">July 01, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable" width="680"><tr><td><p>When designing the tanks for a liquid propellant system, it is necessary to know the worst-case
+propellant density, (usually max storage temperature) so that the tanks can be large enough at 
+that condition.</p>
+<p>There are a number ways to get propellant density in PRISM.</p>
+<ol>
+<li>correlations from literature in the routind <strong>dsat</strong></li>
+<li>extrapolation from corresponding states (i.e. critical properties) in <strong>prolib</strong></li>
+<li>the open source code <strong>CoolProp</strong> via <strong>EngCoolProp</strong></li>
+<li>the commercial code <strong>Refprop</strong></li>
+</ol>
+<p>Each of the above approaches is constrained to just those propellants included in each of the models.</p>
+<p>The graph below uses <em>dsat</em> to calculate saturated density for:</p>
+<ul>
+<li>IRFNA</li>
+<li>N2O4</li>
+<li>MON15</li>
+<li>MON25</li>
+<li>Water (H2O)</li>
+<li>MMH</li>
+</ul>
+<p>Notice that the freezing point is shown for each propellant.</p>
+<p><strong>dsat</strong> continues to estimate density for the frozen condition, even though it is outside the limits of the correlations.
+The code uses an anchored method of corresponding states to do the extrapolation.</p>
+<p>If the stage is not intended to experience frozen propellants, that constraint must be imposed by the user.</p>
+</td></tr></table></center><center><table class="mytable">
+<th colspan="4" bgcolor="#CCCCCC">Mass Summary </th>
+<tr bgcolor="#CCCCCC"><td>System:<b> Propellant Properties Comparison</b></td><td><b>
+                       6.000</b></td><td> <b>lbm</b></td><td><b>
+                Total</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Mass</b></td>
+<td><b>Units</b></td><td><b>Type</b></td></tr>
+<tr><td colspan="4"><b>PROPELLANT</b></td><tr>
+<tr><td align="left">Inhibited Red Fuming Nitric Acid</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">    MON-25</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">     MON15</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">Monomethyl Hydrazine</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">Nitrogen Tetroxide</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">     WATER</td><td align="right">       1.000</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+</table></center><br>
+<center><table border="1" class="mytable"><tr><td><img src="./Prop_Properties/Prop_Properties_1___IRFNA_N2O4_MON15_MON25_H2O_MMH_vs_Temperature.png"></td></tr><tr><td nowrap></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">Temperature</td><td align="right" valign="top">      527.67</td><td nowrap align="left" valign="top">degR</td><td nowrap align="left" valign="top">Temperature of fluid  (degR)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">       H2O</td><td align="right">     63.8208 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of Water  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     IRFNA</td><td align="right">     99.3944 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of Inhibited Red Fuming Nitric Acid  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">       MMH</td><td align="right">     54.6196 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of Monomethyl Hydrazine  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     MON15</td><td align="right">     90.6112 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of MON-15  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     MON25</td><td align="right">     86.8308 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of MON-25  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">      N2O4</td><td align="right">     90.1699 </td><td nowrap align="left">lbm/cuft</td><td nowrap align="left">Density of Nitrogen Tetroxide  (lbm/cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">           0 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Inhibited Red Fuming Nitric Acid</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">IRFNA Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 608.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 980.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1286.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 59.7</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.056</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 6.66e-05</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.1782</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.41</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 99.394</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0575199</td><td align="left"> lbm/cuin (1.59215 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.41</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 6.75488</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.178693</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000144117</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 2.13039</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0100609</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 17.3853</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: MON-25</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MON25 Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 475.6</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 747.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 2100.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 60.7</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.050139</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.000267</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.336</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 86.831</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0502493</td><td align="left"> lbm/cuin (1.3909 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.336</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 26.993</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.0762899</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000144711</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 59.9668</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0115166</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 19.9008</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: MON15</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MON15 Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 500.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 759.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1836.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 73.2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0506</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.000267</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.353</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 90.611</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.052437</td><td align="left"> lbm/cuin (1.45145 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.353</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 26.9769</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.0762612</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000144401</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 32.2177</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0110362</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 19.0705</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Monomethyl Hydrazine</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MMH Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 650.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 1053.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1195.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 46.07</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0315646</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.0005304</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.143294</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 54.620</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0316086</td><td align="left"> lbm/cuin (0.874922 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 53.0342</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.143286</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000194159</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 0.816501</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0183084</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 31.637</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Nitrogen Tetroxide</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">N2O4 Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 529.8</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 776.5</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1440.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 92.016</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0520758</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.0002664</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.378</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 90.170</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0521816</td><td align="left"> lbm/cuin (1.44438 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.378</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 26.9024</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.0762237</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000143994</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 13.806</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0110902</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 19.1638</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: WATER</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.000 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">WATER Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 527.7</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 1000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 671.6</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 1164.8</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 3200.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 18.015</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.03605</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.000652272</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.347328</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.99981</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 63.821</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0369333</td><td align="left"> lbm/cuin (1.02231 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.99981</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 66.5107</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.348063</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000415781</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 0.324841</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 0.0156689</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 27.0758</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.16
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>

@@ -1,0 +1,70 @@
+------------------------------------------------------------
+(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+------------------------------------------------------------
+
+Delta V Study
+   by: C Taylor
+ date: Saturday May 05, 2018
+
+
+======================================
+==========SYSTEM MASS SUMMARY=========
+======================================
+PRISM System: Mass Fraction Study
+                mass =      900.000 lbm
+                type = analysis
+INERT
+     300.000 lbm Payload Weight
+     348.866 lbm Propulsion system
+PROPELLANT
+     251.134 lbm Propellant
+======================================
+======================================
+
+======================== Design Variables ========================
+        NAME VALUE MINIMUM MAXIMUM DESCRIPTION                    
+ deltaVReqmt  3000    2000    4000 Delta V Requirement  (ft/sec)  
+         Isp   300     250     350 Engine Specific Impulse  (sec) 
+    Wpayload   300     250     450 Payload Mass  (lbm)            
+    pcentACS     5       0      10 % ACS Propellant of Total      
+        GLOW   900     600    1200 Gross Liftoff Mass  (lbm)      
+==================================================================
+
+========================== Result Variables ==========================
+         NAME    VALUE DESCRIPTION                             LIMITS 
+  stgPropFrac 0.418557 Stage Propellant Mass Fraction >0.0001, <0.999 
+             * ----->  (stgPropFrac varies to make deltaV_FOM = 1 ) 
+ massFraction 0.418557 Stage Propellant Mass Fraction           <0.45 
+       deltaV     3000 Delta V Requirement  (ft/sec)              --- 
+         Itot  71573.2 Total Impulse  (lbf-sec)                   --- 
+      sysMass      900 Total System Mass  (lbm)                   --- 
+   deltaV_FOM        1 deltaV figure of merit                      =1 
+  WtPropAxial  238.577 Burned Axial Propellant  (lbm)             --- 
+======================================================================
+
+
+
+
+======================================
+=======FULL SYSTEM MASS SUMMARY=======
+======================================
+PRISM System: Mass Fraction Study
+                mass =      900.000 lbm
+                type = analysis
+
+-------------------------------------
+Constant Mass: Payload Weight
+             mass =      300.000 lbm
+             type = inert
+
+-------------------------------------
+Constant Mass: Propulsion system
+             mass =      348.866 lbm
+             type = inert
+
+-------------------------------------
+Constant Mass: Propellant
+             mass =      251.134 lbm
+             type = propellant

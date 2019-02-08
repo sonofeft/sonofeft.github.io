@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>PRISM (PaRametrIc System Model)</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">PRISM (PaRametrIc System Model)</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> simple system</span></td>
+<td align="right"><span class="header"> PRISM v1.1.7</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: I.B. Simpleton</span></td>
+<td align="right"><span class="header">May 05, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable"><tr><td><img src="./example_2/example_2_1___HePVoverW_vs_PHe.png"></td></tr><tr><td nowrap></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./example_2/example_2_2___HeVolume_vs_PHe.png"></td></tr><tr><td nowrap></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./example_2/example_2_3___HeMass_HeTankMass_HeSysMass_vs_PHe.png"></td></tr><tr><td nowrap></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./example_2/example_2_4__item_sens_PHe.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">        3250</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top"></td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">       PHe</td><td align="right" valign="top">        3250</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top"></td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left">    HeMass</td><td align="right">     17.8626 </td><td nowrap align="left">lbm</td><td nowrap align="left">Helium Gas Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> HePVoverW</td><td align="right">      226680 </td><td nowrap align="left"></td><td nowrap align="left">Helium Tank PV/W</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> HeSysMass</td><td align="right">     353.705 </td><td nowrap align="left">lbm</td><td nowrap align="left">Helium System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">HeTankMass</td><td align="right">     335.842 </td><td nowrap align="left">lbm</td><td nowrap align="left">Helium Tank Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  HeVolume</td><td align="right">      8.9258 </td><td nowrap align="left">cuft</td><td nowrap align="left">Helium Tank Volume  (cuft)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Fuel Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =      393.856 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Metal Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">Bladder Thickness is input at 0.030 in</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 100000</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 100000</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.414</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 300</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 4</td><td align="left"> full BRD stainless steel</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.28</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.1</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 18.864</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 37.728</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 18.995</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 37.990</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 102.358</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 102.137</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 12572.928</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 75.455</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 129.160</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 761.338</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 33.8396</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 333.84</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 3100.64</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 104238</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.071</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.050</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 37.719</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 185.925</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">e</td><td align="left"> = 1.5e+07</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 79398.2</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 450.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 119097</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Helium Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =      335.842 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Metal Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 15423.8</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 15423.8</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.414</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 3250</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 0</td><td align="left"> no acq. device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.28</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.1</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 10.019</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 20.037</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 10.489</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 20.978</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 54.935</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 54.246</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 3546.507</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 40.075</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 0</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 3250</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 86.4464</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 15616.1</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.410</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.285</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 10.640</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 268.674</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">e</td><td align="left"> = 1.5e+07</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 151120</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 4875.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 226680</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Oxidizer Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =      551.250 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Metal Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">Bladder Thickness is input at 0.030 in</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 150000</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 150000</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.414</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 300</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 4</td><td align="left"> full BRD stainless steel</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.28</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.1</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 21.592</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 43.185</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 21.734</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 43.468</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 117.146</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 116.911</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 16473.204</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 86.370</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 169.312</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 997.911</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 32.07</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 332.07</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 4837.95</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 156329</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.082</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.058</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 49.420</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 271.688</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">e</td><td align="left"> = 1.5e+07</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 85077</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 450.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 127615</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Helium Pressurant: Helium Pressurant</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       17.863 lbm</b>
+             type = pressurant</td></tr>
+<tr><td colspan="4" align="left">Polytropic Heat Transfer</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">VpropTnk</td><td align="left"> = 250000</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">PHeTnk</td><td align="left"> = 3250</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PpropNom</td><td align="left"> = 159.36</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PfinHeOvPnom</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tAction</td><td align="left"> = 433.94</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">TminR</td><td align="left"> = 510.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TmaxR</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">tPolyCorr</td><td align="left"> = 240</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">gamPolyCorr</td><td align="left"> = 1.66</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">gamLimPolyCorr</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">WHeTotal</td><td align="left"> = 17.863</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtHeResid</td><td align="left"> = 1.038</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WHeExpended</td><td align="left"> = 16.825</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">volHeTotal</td><td align="left"> = 15423.8</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">wdotHe</td><td align="left"> = 0.0387718</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">compressInit</td><td align="left"> = 1.10244</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">PinitCold</td><td align="left"> = 3016.06</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">densInitBot</td><td align="left"> = 2.0012</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalBot</td><td align="left"> = 0.11629</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalProp</td><td align="left"> = 0.116292</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">gammaPoly</td><td align="left"> = 1.00108</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">TfinalPropHe</td><td align="left"> = 508.4</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TfinalHeBot</td><td align="left"> = 508.4</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PfinalHeBot</td><td align="left"> = 159.4</td><td align="left"> psia</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>

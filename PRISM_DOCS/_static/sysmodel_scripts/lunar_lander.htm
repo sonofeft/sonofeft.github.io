@@ -1,0 +1,933 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+		"http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title>Lunar Lander</title>
+<style type="text/css">
+BODY	{ 
+	background-color: #55607B;  
+	
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+.mytable	{ 
+    page-break-inside: avoid;
+	background-color: #FFFFFF;  
+	margin-bottom: 0px;  
+	margin-top: 0px; 
+    font-size : 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+}
+
+td, p, .p		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+}
+
+.header {
+	font-size: 14px;
+	color: #A62F24;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 8px;
+}
+
+.subhead  {
+ font-size : 12px;
+ line-height: 125%;
+ font-weight: bold;
+ color: #A62F24;
+} 
+  
+.hometext  {
+	font-size: 12px;
+	line-height: 140%;
+	font-weight: bold;
+	color: #666666;
+} 
+ 
+.topnav		{
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ font-weight : bold;
+ color: #FFFFFF;
+ text-decoration: none;
+ padding-bottom: 1px;
+}				
+a.topnav:hover		{
+ color: #D0D0D0;
+}				
+a.p  {
+ color:#666666;	
+}
+a.p:hover  {
+ color: #A62F24;
+}	
+a.p:visited  {
+ color: #999999;
+}
+
+.small  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 110%;	
+}
+a.small  {
+ color:#666666;	
+}
+a.small:hover  {
+ color: #A62F24;
+}	
+a.small:visited  {
+ color: #999999;
+}
+
+a.formlink  {
+ color:#333333;
+ text-decoration: none;	
+}
+a.formlink:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+a.formlink:visited  {
+ color: #999999;
+ text-decoration: underline;
+}
+
+.breadcrumb  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ color:#999999;
+ text-decoration: none;
+}
+.breadcrumb:hover  {
+ color: #A62F24;
+ text-decoration: underline;
+}	
+
+.supplierlink  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 10px;
+ line-height: 140%;
+ color:#A62F24;
+ text-decoration: none;
+}
+.supplierlink:hover  {
+ color: #333333;
+ text-decoration: underline;
+}	
+
+a.loclink		{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	line-height: 125%;
+ color: #A62F24;
+}
+a.loclink:hover  {
+ color: #666666;
+}	
+
+
+.red  {
+ color: #A62F24;
+}
+
+.x  {
+ font-family: Verdana, Arial, Helvetica, sans-serif;
+ font-size : 14px;
+ font-weight: bold;
+ color: #008000;
+}
+
+.footer		{
+ font-size : 10px;
+ color: #CDCCCC;
+ text-decoration: none;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}	
+.footer:hover  {
+ color: #FFFFFF;
+} 			
+
+form, input, select, option{
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	padding-bottom : 0px;
+	padding-left : 0px;
+	padding-right : 0px;
+	padding-top : 0px;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	height : 14px;
+	border-bottom: 1px;
+	border-color: #CCCCCC;
+}
+
+
+</style>
+
+
+
+</head>
+<body>
+<center><table bgcolor="#FFFFFF" width="680"><tr><td colspan="2" nowrap align="center">
+<h3 class="header">Lunar Lander</h3></td></tr>
+<tr>
+<td align="left"><span class="header"> MON25/MMH solar ILN</span></td>
+<td align="right"><span class="header"> PRISM v1.1.7</span></td></tr>
+<tr>
+<td align="left"><span class="header">by: Moon Walker</span></td>
+<td align="right"><span class="header">May 05, 2018</span></td>
+</tr></table></center>
+<center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_render_30_30_None_1.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PcAxial</td><td align="right" valign="top">         230</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Axial Engine Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>System Sensitivity</th><tr><td><img src="./lunar_lander/lunar_lander_1__sens_sysMass_vs_PcAxial_LengLimit_PmaxGas.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PcAxial</td><td align="right" valign="top">         230</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Axial Engine Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left"> AreaRatio</td><td align="right">     94.6974 </td><td nowrap align="left"></td><td nowrap align="left">Descent Nozzle Area Ratio</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">dpBalOrificeACS</td><td align="right">     58.4333 </td><td nowrap align="left">psid</td><td nowrap align="left">Balance Orifice Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">dPinjector</td><td align="right">         115 </td><td nowrap align="left">psid</td><td nowrap align="left">Injector Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> dPvlvFuel</td><td align="right">       42.41 </td><td nowrap align="left">psid</td><td nowrap align="left">Fuel Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  dPvlvMax</td><td align="right">      82.383 </td><td nowrap align="left">psid</td><td nowrap align="left">Maximum Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   dPvlvOx</td><td align="right">      82.383 </td><td nowrap align="left">psid</td><td nowrap align="left">Ox Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   engMass</td><td align="right">     12.0837 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total Engine Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  feedMass</td><td align="right">     1.57629 </td><td nowrap align="left">lbm</td><td nowrap align="left">Valve/Line/Regulator Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">       Isp</td><td align="right">     307.567 </td><td nowrap align="left">sec</td><td nowrap align="left">Engine Specific Impulse  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    IspACS</td><td align="right">         280 </td><td nowrap align="left">sec</td><td nowrap align="left">ACS Engine Specific Impulse  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    IspEff</td><td align="right">     307.567 </td><td nowrap align="left">sec</td><td nowrap align="left">Effective Isp (with cant angle)  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   Lengine</td><td align="right">          13 </td><td nowrap align="left">in</td><td nowrap align="left">Engine Length  (in)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    PcFace</td><td align="right">      241.05 </td><td nowrap align="left">psia</td><td nowrap align="left">Engine Face Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> PengineIn</td><td align="right">         345 </td><td nowrap align="left">psia</td><td nowrap align="left">Engine Inlet Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  PfinalHe</td><td align="right">     366.747 </td><td nowrap align="left">psia</td><td nowrap align="left">Final Helium Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     Ptank</td><td align="right">     458.433 </td><td nowrap align="left">psia</td><td nowrap align="left">Propellant Tank Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     217.828 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  tankMass</td><td align="right">     22.9551 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total Tankage Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">VolRatioTanks</td><td align="right">     1.11002 </td><td nowrap align="left"></td><td nowrap align="left">Tank Volume Ratio (Ox/Fuel)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable">
+<th colspan="4" bgcolor="#CCCCCC">Mass Summary </th>
+<tr bgcolor="#CCCCCC"><td>System:<b> MON25/MMH solar ILN</b></td><td><b>
+                     217.828</b></td><td> <b>lbm</b></td><td><b>
+                Total</b></td></tr>
+<tr><td><b>Name</b></td><td><b>Mass</b></td>
+<td><b>Units</b></td><td><b>Type</b></td></tr>
+<tr><td colspan="4"><b>INERT</b></td><tr>
+<tr><td align="left">Axial Engine w/o Valves</td><td align="right">       6.084</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Axial Fuel valve</td><td align="right">       2.700</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Axial Ox valve</td><td align="right">       2.700</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">COPV Helium Tank</td><td align="right">       6.041</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left"> Fuel Line</td><td align="right">       0.643</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left"> Fuel Tank</td><td align="right">       7.383</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">Helium line</td><td align="right">       0.290</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">   Ox Line</td><td align="right">       0.643</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">   Ox Tank</td><td align="right">       9.531</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td align="left">R-6D with valves</td><td align="right">       6.000</td><td nowrap align="left">lbm</td><td nowrap align="left">inert</td></tr>
+
+<tr><td colspan="4"><b>PRESSURANT</b></td><tr>
+<tr><td align="left">Helium Pressurant</td><td align="right">       1.008</td><td nowrap align="left">lbm</td><td nowrap align="left">pressurant</td></tr>
+
+<tr><td colspan="4"><b>PROPELLANT</b></td><tr>
+<tr><td align="left">    MON-25</td><td align="right">     111.240</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+<tr><td align="left">Monomethyl Hydrazine</td><td align="right">      63.566</td><td nowrap align="left">lbm</td><td nowrap align="left">propellant</td></tr>
+
+</table></center><br>
+<center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_2__item_sens_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PcAxial</td><td align="right" valign="top">         230</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Axial Engine Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_3__item_sens_PcAxial_diff.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PcAxial</td><td align="right" valign="top">         230</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Axial Engine Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_4___AreaRatio_vs_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_5___Isp_IspEff_vs_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_6___feedMass_engMass_tankMass_vs_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_7___PfinalHe_Ptank_PengineIn_PcFace_vs_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><tr><td><img src="./lunar_lander/lunar_lander_8___dPinjector_dPvlvOx_dPvlvFuel_dpBalOrificeACS_vs_PcAxial.png"></td></tr><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table></td></tr></table></center><center><table border="1" class="mytable"><th>Design Variable Summary</th><tr><td nowrap><table class="mytable"><th colspan="4" bgcolor="#CCCCCC">Design Variables (nominal values)</th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td></tr><tr><td align="left" valign="top">   ItotACS</td><td align="right" valign="top">        6518</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of ACS Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top">ItotDescent</td><td align="right" valign="top">       46067</td><td nowrap align="left" valign="top">lbf-sec</td><td nowrap align="left" valign="top">Total Impulse of Descent Engines  (lbf-sec)</td></tr>
+<tr><td align="left" valign="top"> LengLimit</td><td align="right" valign="top">          13</td><td nowrap align="left" valign="top">in</td><td nowrap align="left" valign="top">Engine Length Limit  (in)</td></tr>
+<tr><td align="left" valign="top">   mrAxial</td><td align="right" valign="top">        1.75</td><td nowrap align="left" valign="top"></td><td nowrap align="left" valign="top">Divert Engine Mixture Ratio</td></tr>
+<tr><td align="left" valign="top">   PcAxial</td><td align="right" valign="top">         230</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Axial Engine Chamber Pressure  (psia)</td></tr>
+<tr><td align="left" valign="top">   PmaxGas</td><td align="right" valign="top">        4500</td><td nowrap align="left" valign="top">psia</td><td nowrap align="left" valign="top">Helium Max Bottle Pressure  (psia)</td></tr>
+</table><table class="mytable"><th colspan="6" bgcolor="#CCCCCC">Result Variables </th><tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b>Description</b></td><td><b>Constrain</b></td><td><b>Limit</b></td></tr><tr><td align="left"> AreaRatio</td><td align="right">     94.6974 </td><td nowrap align="left"></td><td nowrap align="left">Descent Nozzle Area Ratio</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">dpBalOrificeACS</td><td align="right">     56.5406 </td><td nowrap align="left">psid</td><td nowrap align="left">Balance Orifice Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">dPinjector</td><td align="right">         115 </td><td nowrap align="left">psid</td><td nowrap align="left">Injector Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> dPvlvFuel</td><td align="right">     41.4356 </td><td nowrap align="left">psid</td><td nowrap align="left">Fuel Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  dPvlvMax</td><td align="right">     80.4903 </td><td nowrap align="left">psid</td><td nowrap align="left">Maximum Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   dPvlvOx</td><td align="right">     80.4903 </td><td nowrap align="left">psid</td><td nowrap align="left">Ox Valve Pressure Drop  (psid)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   engMass</td><td align="right">     12.0837 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total Engine Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  feedMass</td><td align="right">     1.57629 </td><td nowrap align="left">lbm</td><td nowrap align="left">Valve/Line/Regulator Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">       Isp</td><td align="right">     307.567 </td><td nowrap align="left">sec</td><td nowrap align="left">Engine Specific Impulse  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    IspACS</td><td align="right">         280 </td><td nowrap align="left">sec</td><td nowrap align="left">ACS Engine Specific Impulse  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    IspEff</td><td align="right">     307.567 </td><td nowrap align="left">sec</td><td nowrap align="left">Effective Isp (with cant angle)  (sec)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   Lengine</td><td align="right">          13 </td><td nowrap align="left">in</td><td nowrap align="left">Engine Length  (in)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">    PcFace</td><td align="right">      241.05 </td><td nowrap align="left">psia</td><td nowrap align="left">Engine Face Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left"> PengineIn</td><td align="right">         345 </td><td nowrap align="left">psia</td><td nowrap align="left">Engine Inlet Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  PfinalHe</td><td align="right">     365.232 </td><td nowrap align="left">psia</td><td nowrap align="left">Final Helium Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">     Ptank</td><td align="right">     456.541 </td><td nowrap align="left">psia</td><td nowrap align="left">Propellant Tank Pressure  (psia)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">   sysMass</td><td align="right">     217.807 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total System Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">  tankMass</td><td align="right">     22.9368 </td><td nowrap align="left">lbm</td><td nowrap align="left">Total Tankage Mass  (lbm)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+<tr><td align="left">VolRatioTanks</td><td align="right">     1.11002 </td><td nowrap align="left"></td><td nowrap align="left">Tank Volume Ratio (Ox/Fuel)</td><td nowrap align="right"></td><td nowrap align="left">---</td></tr>
+</table></td></tr></table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Bipropellant Engine: Axial Engine w/o Valves</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        6.084 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Propellants : MON25 / MMH</td></tr>
+<tr><td colspan="4" align="left">NASA CEA Code for ODE performance </td></tr>
+<tr><td colspan="4" align="left">Physical Weight Model </td></tr>
+<tr><td colspan="4" align="left">Injector Material is SS</td></tr>
+<tr><td colspan="4" align="left">Nozzle Material is Cb103</td></tr>
+<tr><td colspan="4" align="left">Bell Nozzle with Percent Bell = 80</td></tr>
+<tr><td colspan="4" align="left">Mass is for 3 engines total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Fvac</td><td align="left"> = 200</td><td align="left"> lbf</td><td></td></tr>
+<tr><td align="left">Pc</td><td align="left"> = 230.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">eps</td><td align="left"> = 94.6974</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">%Bell</td><td align="left"> = 80.00</td><td align="left"> %</td><td></td></tr>
+<tr><td align="left">mr</td><td align="left"> = 1.75</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">CR</td><td align="left"> = 2.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">xlnOverLcham</td><td align="left"> = 0.9</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LoverDt</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">LchamMin</td><td align="left"> = 1.250</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">cxwInj</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxwValves</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaERE</td><td align="left"> = 0.95</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Isp</td><td align="left"> = 307.567</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">Cstar</td><td align="left"> = 5471.4</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">etaBL</td><td align="left"> = 0.97415</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaDiv</td><td align="left"> = 0.992208</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaKin</td><td align="left"> = 0.975</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaNoz</td><td align="left"> = 0.942396</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">effIsp</td><td align="left"> = 0.895276</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">IspODE</td><td align="left"> = 343.545</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">CstarODE</td><td align="left"> = 5759.4</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">Tc</td><td align="left"> = 5649.1</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PcFace</td><td align="left"> = 241.05</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pexit</td><td align="left"> = 0.135298</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">wdotTot</td><td align="left"> = 0.650264</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotOx </td><td align="left"> = 0.413804</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotFl</td><td align="left"> = 0.23646</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">rhoFl</td><td align="left"> = 0.0316</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoOx</td><td align="left"> = 0.0501</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">volDotOx </td><td align="left"> = 8.25313</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">volDotFl</td><td align="left"> = 7.49128</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">DFlow</td><td align="left"> = 0.592</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">At</td><td align="left"> = 0.480793</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">Dt</td><td align="left"> = 0.782</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dcham</td><td align="left"> = 1.237</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dexit</td><td align="left"> = 7.614</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lcham</td><td align="left"> = 1.565</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xlc</td><td align="left"> = 0.156</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xln</td><td align="left"> = 1.408</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lnoz</td><td align="left"> = 10.198</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lengine</td><td align="left"> = 13.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhoInj</td><td align="left"> = 0.280</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoNoz</td><td align="left"> = 0.310</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">thkCham</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkNoz</td><td align="left"> = 0.020</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">WtNoz</td><td align="left"> = 1.056</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtChamber</td><td align="left"> = 0.032</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtInj</td><td align="left"> = 0.504</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtAcoustic</td><td align="left"> = 0.368</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtValves(2)</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtMisc</td><td align="left"> = 0.068</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wt/Engine</td><td align="left"> = 2.028</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">F/W</td><td align="left"> = 98.623</td><td align="left"> lbf/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Liquid Valve: Axial Fuel valve (3)</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        2.700 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">fluid : MMH</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Stainless Steel, Teflon</td></tr>
+<tr><td colspan="4" align="left">valve: MOOG Spacebus valve, Model 53-203</td></tr>
+<tr><td colspan="4" align="left">Mass is for 3 valves total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 0.23646</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">refWaterWdot</td><td align="left"> = 0.214</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">refWaterDP</td><td align="left"> = 30</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left"># Valves</td><td align="left"> = 3</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">deltaP</td><td align="left"> = 42.41</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">Kw</td><td align="left"> = 0.0390709</td><td align="left"> in-lb^.5/sec</td><td></td></tr>
+<tr><td align="left">velFluid</td><td align="left"> = 85.3927</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">CdA</td><td align="left"> = 0.00739903</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">fluid rho</td><td align="left"> = 0.0311875</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">fluid D</td><td align="left"> = 53.892</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">fluid visc</td><td align="left"> = 53.04</td><td align="left"> 1.0E5 * lb/ft-sec</td><td></td></tr>
+<tr><td align="left">wt/Valve</td><td align="left"> = 0.900</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Liquid Valve: Axial Ox valve (3)</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        2.700 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">fluid : MON25</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Stainless Steel, Teflon</td></tr>
+<tr><td colspan="4" align="left">valve: MOOG Spacebus valve, Model 53-203</td></tr>
+<tr><td colspan="4" align="left">Mass is for 3 valves total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 0.413804</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">refWaterWdot</td><td align="left"> = 0.214</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">refWaterDP</td><td align="left"> = 30</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left"># Valves</td><td align="left"> = 3</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">deltaP</td><td align="left"> = 82.38</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">Kw</td><td align="left"> = 0.0390709</td><td align="left"> in-lb^.5/sec</td><td></td></tr>
+<tr><td align="left">velFluid</td><td align="left"> = 94.7877</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">CdA</td><td align="left"> = 0.00739903</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">fluid rho</td><td align="left"> = 0.0491685</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">fluid D</td><td align="left"> = 84.9632</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">fluid visc</td><td align="left"> = 26.7</td><td align="left"> 1.0E5 * lb/ft-sec</td><td></td></tr>
+<tr><td align="left">wt/Valve</td><td align="left"> = 0.900</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: COPV Helium Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        6.023 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Composite Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 681.375</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 681.375</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1.764</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 1.45</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 4500</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 2</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 0</td><td align="left"> no acq. device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.99</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.1</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.040</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.1</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 3.915</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 7.829</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 4.104</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 8.208</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 16.216</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 15.790</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 419.384</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 11.352</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 0</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 4500</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 7.55997</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 688.935</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.050</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.119</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.143</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wliner</td><td align="left"> = 1.765</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">wtank(+liner)</td><td align="left"> = 4.818</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0637</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 514721</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 9000.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 1.02944e+06</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Liquid Line: Fuel Line</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        0.643 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">fluid : MMH</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 0.748355</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 0.500</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkWall</td><td align="left"> = 0.045</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">len_inches</td><td align="left"> = 50</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Kfactors</td><td align="left"> = 5</td><td align="left"> vel heads</td><td></td></tr>
+<tr><td align="left">roughness</td><td align="left"> = 5e-06</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">pLine</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left"># Lines</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">dpLine</td><td align="left"> = 10.05</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">dPperVelHead</td><td align="left"> = 1.33</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">velFPS</td><td align="left"> = 15.1457</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">ReNum</td><td align="left"> = 5.257893E+04</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 0.205</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 0.410</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">volLine</td><td align="left"> = 6.60127</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left"></td><td align="left">  &nbsp; </td><td align="left"> </td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 57.2171</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">fluid rho</td><td align="left"> = 0.0311875</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">fluid visc</td><td align="left"> = 53.04</td><td align="left"> 1.0E5 * lb/ft-sec</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Fuel Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        7.383 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Metal Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">Bladder Thickness is input at 0.030 in</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 2101.21</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 2101.21</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 7</td><td align="left"> elastomeric transverse bladder (dP=0)</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.98</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 8.028</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 16.055</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 8.088</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 16.175</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 16.175</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 16.055</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 809.795</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 0.946</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 23.6509</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 504.01</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 42.0242</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 2166.88</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.030</td><td align="left"> in (use tming)</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.030</td><td align="left"> in (use tming)</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wtank</td><td align="left"> = 3.976</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">e</td><td align="left"> = 1.5e+07</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 133989</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 444.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 130519</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Gas Line: Helium line</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        0.290 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">In: HE T= 320.2 P= 479.0 D=0.5433 E=241.02 H=404.28 S=4.315 Supercrit</td></tr>
+<tr><td colspan="4" align="left">Out:HE T= 320.4 P= 456.5 D=0.5182 E=241.14 H=404.28 S=4.339 Supercrit</td></tr>
+<tr><td colspan="4" align="left">fluid : HE</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">Allow Non-Standard wall thickness</td></tr>
+<tr><td colspan="4" align="left">Using Poutlet to design line</td></tr>
+<tr><td colspan="4" align="left">Line Diameter is an Input (vel is output)</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 0.0151911</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">DiamInp</td><td align="left"> = 0.250</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkWallInp</td><td align="left"> = 0.045</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">len_inches</td><td align="left"> = 50</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Kfactors</td><td align="left"> = 5</td><td align="left"> vel heads</td><td></td></tr>
+<tr><td align="left">roughness</td><td align="left"> = 5e-06</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">PgasOutlet</td><td align="left"> = 456.5</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 4</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left"># Lines</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">PgasInlet</td><td align="left"> = 479.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">velFPS</td><td align="left"> = 209.847</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">velHead</td><td align="left"> = 2.582</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">dpLine</td><td align="left"> = 22.48</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">dp due to Line</td><td align="left"> = 10.48</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">dp due to Ks</td><td align="left"> = 12.00</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">dp/Pinlet</td><td align="left"> = 0.0469366</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ReNum</td><td align="left"> = 1.551340E+05</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">fricfact</td><td align="left"> = 0.0139809</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">thkLine</td><td align="left"> = 0.045</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 0.080</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 0.160</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">volLine</td><td align="left"> = 1.00531</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.035</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">fluid dens</td><td align="left"> = 0.543328</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">fluid visc</td><td align="left"> = 9.58486e-06</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">fluid sonicV</td><td align="left"> = 2640.01</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">fluid Mach</td><td align="left"> = 0.0794873</td><td align="left"> </td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Liquid Line: Ox Line</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        0.643 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">fluid : MON25</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">wdot</td><td align="left"> = 1.30962</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 0.500</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkWall</td><td align="left"> = 0.045</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">len_inches</td><td align="left"> = 50</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Kfactors</td><td align="left"> = 5</td><td align="left"> vel heads</td><td></td></tr>
+<tr><td align="left">roughness</td><td align="left"> = 5e-06</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">pLine</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.25</td><td align="left"> </td><td></td></tr>
+<tr><td align="left"># Lines</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">dpLine</td><td align="left"> = 18.04</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">dPperVelHead</td><td align="left"> = 2.59</td><td align="left"> psid</td><td></td></tr>
+<tr><td align="left">velFPS</td><td align="left"> = 16.812</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">ReNum</td><td align="left"> = 1.827856E+05</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 0.205</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 0.410</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">volLine</td><td align="left"> = 6.60127</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left"></td><td align="left">  &nbsp; </td><td align="left"> </td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 57.2171</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">fluid rho</td><td align="left"> = 0.0491685</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">fluid visc</td><td align="left"> = 26.7</td><td align="left"> 1.0E5 * lb/ft-sec</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Cylindrical/Spherical/Elliptical Tank: Ox Tank</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        9.531 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Metal Tank Algorithm</td></tr>
+<tr><td colspan="4" align="left">Structural Material : Ti</td></tr>
+<tr><td colspan="4" align="left">kalmod = 0</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">vfree</td><td align="left"> = 2332.39</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vfreeTotal</td><td align="left"> = 2332.39</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">ell</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">rcyltd</td><td align="left"> = 0</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ptank</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">sf</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">cxw</td><td align="left"> = 1.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">ithcyl</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">kacqui</td><td align="left"> = 6</td><td align="left"> capillary device</td><td></td></tr>
+<tr><td align="left">inpex</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">expefi</td><td align="left"> = 0.98</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tblad</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">tbond</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">ttrspc</td><td align="left"> = 0.010</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rhobnd</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoacq</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">tliner</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">rholiner</td><td align="left"> = 0.04</td><td align="left"> lbm/cuin</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">rinsid</td><td align="left"> = 8.297</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">dinsid</td><td align="left"> = 16.593</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OR</td><td align="left"> = 8.357</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OD</td><td align="left"> = 16.713</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">OH</td><td align="left"> = 16.713</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">hinsid</td><td align="left"> = 16.593</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">SAinsid</td><td align="left"> = 865.003</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">cyl</td><td align="left"> = 0.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wacqui</td><td align="left"> = 2.108</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">vacqui</td><td align="left"> = 13.1753</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">dpacq</td><td align="left"> = 0</td><td align="left"> psig</td><td></td></tr>
+<tr><td align="left">pullag</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">vresid</td><td align="left"> = 46.6478</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">vtank</td><td align="left"> = 2392.21</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">tming</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">thkcyl</td><td align="left"> = 0.030</td><td align="left"> in (use tming)</td><td></td></tr>
+<tr><td align="left">thkend</td><td align="left"> = 0.030</td><td align="left"> in (use tming)</td><td></td></tr>
+<tr><td align="left">thkBladOut</td><td align="left"> = 0.030</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wtank</td><td align="left"> = 4.246</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.16</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">sy</td><td align="left"> = 119000</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">e</td><td align="left"> = 1.5e+07</td><td align="left"> psi</td><td></td></tr>
+<tr><td align="left">PmeopVoverW</td><td align="left"> = 114594</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+<tr><td align="left">Pburst(est.)</td><td align="left"> = 430.3</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PburstVoverW</td><td align="left"> = 108006</td><td align="left"> lbf-in/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Bipropellant Engine: R-6D with valves (6)</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        6.000 lbm</b>
+             type = inert</td></tr>
+<tr><td colspan="4" align="left">Propellants : MON25 / MMH</td></tr>
+<tr><td colspan="4" align="left">NASA CEA Code for ODE performance </td></tr>
+<tr><td colspan="4" align="left">Actual Hardware Weight </td></tr>
+<tr><td colspan="4" align="left">Bell Nozzle with Percent Bell = 80</td></tr>
+<tr><td colspan="4" align="left">Mass is for 6 engines total</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Pc</td><td align="left"> = 92.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Dt</td><td align="left"> = 0.207</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">eps</td><td align="left"> = 100</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">%Bell</td><td align="left"> = 80.00</td><td align="left"> %</td><td></td></tr>
+<tr><td align="left">mr</td><td align="left"> = 1.75</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">CR</td><td align="left"> = 2.5</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Lprime</td><td align="left"> = 3.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xlc/xln</td><td align="left"> = 1</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">etaERE</td><td align="left"> = 0.97</td><td align="left"> </td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">Fvac</td><td align="left"> = 5.00198</td><td align="left"> lbf</td><td></td></tr>
+<tr><td align="left">Isp</td><td align="left"> = 280</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">Cstar</td><td align="left"> = 5554.7</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">etaNoz</td><td align="left"> = 0.839711</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">effIsp</td><td align="left"> = 0.81452</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">IspODE</td><td align="left"> = 343.761</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">CstarODE</td><td align="left"> = 5726.5</td><td align="left"> ft/sec</td><td></td></tr>
+<tr><td align="left">Tc</td><td align="left"> = 5512.2</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">wdotTot</td><td align="left"> = 0.0178642</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotOx </td><td align="left"> = 0.0113681</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">wdotFl</td><td align="left"> = 0.00649608</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">rhoFl</td><td align="left"> = 0.0316</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">rhoOx</td><td align="left"> = 0.0501</td><td align="left"> lbm/cuin</td><td></td></tr>
+<tr><td align="left">volDotOx </td><td align="left"> = 0.226732</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">volDotFl</td><td align="left"> = 0.205802</td><td align="left"> cuin/sec</td><td></td></tr>
+<tr><td align="left">At</td><td align="left"> = 0.0335236</td><td align="left"> sqin</td><td></td></tr>
+<tr><td align="left">Dcham</td><td align="left"> = 0.327</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Dexit</td><td align="left"> = 2.066</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xlc</td><td align="left"> = 1.500</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">xln</td><td align="left"> = 1.500</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lcham</td><td align="left"> = 3.000</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lnoz</td><td align="left"> = 2.776</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">Lengine</td><td align="left"> = 6.102</td><td align="left"> in</td><td></td></tr>
+<tr><td align="left">wt/Engine</td><td align="left"> = 1.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">F/W</td><td align="left"> = 5.002</td><td align="left"> lbf/lbm</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Helium Pressurant: Helium Pressurant</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =        1.005 lbm</b>
+             type = pressurant</td></tr>
+<tr><td colspan="4" align="left">Integrated Heat Transfer</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">VpropTnk</td><td align="left"> = 4433.6</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">PGasTnkMEOP</td><td align="left"> = 4500</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PpropNom</td><td align="left"> = 456.541</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">PfinGasOvPnom</td><td align="left"> = 0.8</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">tAction</td><td align="left"> = 318</td><td align="left"> sec</td><td></td></tr>
+<tr><td align="left">TminR</td><td align="left"> = 456.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TmaxR</td><td align="left"> = 582.0</td><td align="left"> degR</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">WGasTotal</td><td align="left"> = 1.005</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtGasResid</td><td align="left"> = 0.164</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WtHeLLACS</td><td align="left"> = 0.100</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">WGasNon-Resid</td><td align="left"> = 0.840</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Vbottle</td><td align="left"> = 681.375</td><td align="left"> cuin</td><td></td></tr>
+<tr><td align="left">wdotGas</td><td align="left"> = 0.00264261</td><td align="left"> lbm/sec</td><td></td></tr>
+<tr><td align="left">compressInit</td><td align="left"> = 1.13565</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">PbottleCold</td><td align="left"> = 3536.96</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">densInitBot</td><td align="left"> = 2.54803</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalBot</td><td align="left"> = 0.416857</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">densFinalProp</td><td align="left"> = 0.383685</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">gammaIsen</td><td align="left"> = 1.64101</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">gamPolyBottle</td><td align="left"> = 1.1844</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">gamPolyTank</td><td align="left"> = 1.02035</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">fracIsenBottle</td><td align="left"> = 0.28768</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">fracIsenTank</td><td align="left"> = 0.0317405</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">TfinalPropGas</td><td align="left"> = 435.8</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">TfinalGasBot</td><td align="left"> = 320.2</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">PfinalGasBot</td><td align="left"> = 365.2</td><td align="left"> psia</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: MON-25</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =      111.240 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MON25 Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 100.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 475.6</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 747.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 2100.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 60.7</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.050139</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.000267</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.336</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Burned Axial</td><td align="left"> = 95.314</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Burned ACS</td><td align="left"> = 14.814</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Margin</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Leakage</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Residual</td><td align="left"> = 1.112</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 84.963</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0491685</td><td align="left"> lbm/cuin (1.36098 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.336</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 26.7</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.0759456</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000131139</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 99.2407</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 1.30927</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 2262.42</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><center><table class="mytable" width="680"><th colspan="4" bgcolor="#BBBBBB" align="left">
+Incompressible Liquid: Monomethyl Hydrazine</th>
+<tr><td bgcolor="#DDDDDD" colspan="4" align="left"><b>mass =       63.566 lbm</b>
+             type = propellant</td></tr>
+<tr><td colspan="4" align="left">MMH Properties Calculated by Method of Corresponding States</td></tr>
+<tr><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== INPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">T</td><td align="left"> = 550.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">P</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Tref</td><td align="left"> = 530.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tnbp</td><td align="left"> = 650.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Tcrit</td><td align="left"> = 1053.0</td><td align="left"> degR</td><td></td></tr>
+<tr><td align="left">Pref</td><td align="left"> = 14.7</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Pcrit</td><td align="left"> = 1195.0</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">WtMol</td><td align="left"> = 46.07</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">RhoRef</td><td align="left"> = 0.0315646</td><td align="left"> lb/cuin</td><td></td></tr>
+<tr><td align="left">ViscRefFT</td><td align="left"> = 0.0005304</td><td align="left"> lb/ft-sec</td><td></td></tr>
+<tr><td align="left">CondRefFTHR</td><td align="left"> = 0.143294</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">CpRef</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Burned Axial</td><td align="left"> = 54.465</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Burned ACS</td><td align="left"> = 8.465</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Margin</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Leakage</td><td align="left"> = 0.000</td><td align="left"> lbm</td><td></td></tr>
+<tr><td align="left">Residual</td><td align="left"> = 0.636</td><td align="left"> lbm</td><td></td></tr>
+</table>
+</td><td colspan="2" valign="top">
+<table class="mytable" ><tr><td colspan="4" align="center">==== OUTPUT ====</td></tr>
+<tr><td><b>Name</b></td><td><b>Value</b></td><td><b>Units</b></td><td><b> </b></td></tr>
+<tr><td align="left">D</td><td align="left"> = 53.892</td><td align="left"> lbm/cuft</td><td></td></tr>
+<tr><td align="left">rho</td><td align="left"> = 0.0311875</td><td align="left"> lbm/cuin (0.863267 SG)</td><td></td></tr>
+<tr><td align="left">Cp</td><td align="left"> = 0.7</td><td align="left"> BTU/lbm degR</td><td></td></tr>
+<tr><td align="left">Visc</td><td align="left"> = 53.04</td><td align="left"> [1.0E5 * lb/ft-sec]</td><td></td></tr>
+<tr><td align="left">Cond</td><td align="left"> = 0.143294</td><td align="left"> BTU/ft-hr-R</td><td></td></tr>
+<tr><td align="left">SurfTen</td><td align="left"> = 0.000184989</td><td align="left"> lbf/in</td><td></td></tr>
+<tr><td align="left">phase</td><td align="left"> = LIQUID</td><td align="left"> </td><td></td></tr>
+<tr><td align="left">Pvap</td><td align="left"> = 1.54936</td><td align="left"> psia</td><td></td></tr>
+<tr><td align="left">Vcuft</td><td align="left"> = 1.1795</td><td align="left"> cuft</td><td></td></tr>
+<tr><td align="left">Volume</td><td align="left"> = 2038.17</td><td align="left"> cuin</td><td></td></tr>
+</table>
+</td></tr>
+</table></center><br>
+<center><table class="mytable" width="100%"><tr><td nowrap><pre>(PRISM) PaRametrIc System Model
+PRISM v1.1.7
+contact: C. Taylor, cet@appliedpython.com
+</pre></td><td width="90%">&nbsp;</td></tr></table></center></body>
+</html>
