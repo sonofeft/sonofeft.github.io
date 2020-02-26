@@ -66,7 +66,7 @@ tr:hover, td:hover { background-color: #ffffff;}
 
 <div  Class="Content">
 <TABLE width="100%">
-<TR><TH colspan="3">Study Pages Sorted by Date</TH></TR>
+<TR><TH colspan="2">Study Pages Sorted by Date</TH></TR>
 """
 
 bottom = """
