@@ -1,0 +1,275 @@
+<HTML>
+<HEAD>
+<STYLE>
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+tr:nth-child(even) {background-color: #E3E8EA}
+tr:nth-child(odd) {background-color: #F6F7F8}
+
+tr:hover, td:hover { background-color: #ffffff;}
+
+
+.prompt {
+    font-size: 18px;
+    color: #123945;
+    background-color: #ECF0F1;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.topbtns {
+    font-size: 18px;
+    color: #10323E;
+    background-color: #E8ECED;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.oompf {
+    font-size: 18px;
+    color: #10323E;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+@media print
+ {
+    table {width: 100%;}
+    td.col_one { width: 50%; }
+    td.col_two { width: 50%; }
+    .col_one { width: 50%; }
+    .col_two { width: 50%; }
+    
+    img { max-width:3.0in !important;} 
+    tr    { page-break-inside:avoid; page-break-after:auto }    
+    
+ }
+
+.Header
+{
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;}
+  
+.Content
+{
+    top: 30px;
+    background-color: #ffffff;
+    overflow-y:auto;
+    padding-top: 30px;
+}
+
+
+</STYLE><SCRIPT>
+function toggleAnswer(id) {
+    if (document.getElementById(id).style.display == 'none'){
+        document.getElementById(id).style.display = 'block';
+    } else {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+
+function hideAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'none';
+    }
+}
+
+function showAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'block';
+    }
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<div  Class="Header"><BUTTON Class="topbtns" onclick="showAllAnswers( 40 );">Show All Answers</BUTTON><BUTTON Class="topbtns" onclick="hideAllAnswers( 40 );">Hide All Answers</BUTTON></div><br>
+<div  Class="Content"><TABLE width="100%">
+<TR>
+<TD Class="oompf">
+<CENTER><H3>PyForResearch</H3>
+</CENTER></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer1');" Class="row">
+<TD align="left" Class="col_one" tabindex="1">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer1');">LEGB</BUTTON><SPAN Class="oompf" id="answer1" style="display: none;">Local, Enclosing Func, Global, BuiltIn<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer2');" Class="row">
+<TD align="left" Class="col_one" tabindex="2">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer2');">get numpy column</BUTTON><SPAN Class="oompf" id="answer2" style="display: none;">X[:,0] returns first column<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer3');" Class="row">
+<TD align="left" Class="col_one" tabindex="3">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer3');">get numpy row</BUTTON><SPAN Class="oompf" id="answer3" style="display: none;">X[1,:] gets 2nd row (also X[1] works)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer4');" Class="row">
+<TD align="left" Class="col_one" tabindex="4">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer4');">list index into np.array</BUTTON><SPAN Class="oompf" id="answer4" style="display: none;">x[ind]  where ind=[0,2,3]<br>returns array of multiple index values<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer5');" Class="row">
+<TD align="left" Class="col_one" tabindex="5">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer5');">array index into np.array</BUTTON><SPAN Class="oompf" id="answer5" style="display: none;">x[arr] where arr=np.array([0,2,3])<br>works like index array<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer6');" Class="row">
+<TD align="left" Class="col_one" tabindex="6">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer6');">create boolean array</BUTTON><SPAN Class="oompf" id="answer6" style="display: none;">z > 6   creates boolean array<br>True if z>6 else False<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer7');" Class="row">
+<TD align="left" Class="col_one" tabindex="7">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer7');">boolean index into np.array</BUTTON><SPAN Class="oompf" id="answer7" style="display: none;">x[ x>6 ]  returns a new array of values > 6<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer8');" Class="row">
+<TD align="left" Class="col_one" tabindex="8">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer8');">indirect boolean index into np.array</BUTTON><SPAN Class="oompf" id="answer8" style="display: none;">Z[ x>6 ]  returns Z elements where x elements > 6<br>could set ind = x > 6, then Z[ind]</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer9');" Class="row">
+<TD align="left" Class="col_one" tabindex="9">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer9');">slice as view</BUTTON><SPAN Class="oompf" id="answer9" style="display: none;">changes to slice will change original<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer10');" Class="row">
+<TD align="left" Class="col_one" tabindex="10">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer10');">index as copy</BUTTON><SPAN Class="oompf" id="answer10" style="display: none;">unlike slice, index returns a copy<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer11');" Class="row">
+<TD align="left" Class="col_one" tabindex="11">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer11');">linspace</BUTTON><SPAN Class="oompf" id="answer11" style="display: none;">np.linspace(1,6,3) gives [1,3.5,6]<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer12');" Class="row">
+<TD align="left" Class="col_one" tabindex="12">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer12');">logspace</BUTTON><SPAN Class="oompf" id="answer12" style="display: none;">np.logspace(1,2,3) gives [10,31.6,100]<br>also:  np.logspace( log10(250), log10(500), 5 )</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer13');" Class="row">
+<TD align="left" Class="col_one" tabindex="13">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer13');">shape</BUTTON><SPAN Class="oompf" id="answer13" style="display: none;">X.shape<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer14');" Class="row">
+<TD align="left" Class="col_one" tabindex="14">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer14');">size</BUTTON><SPAN Class="oompf" id="answer14" style="display: none;">X.size<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer15');" Class="row">
+<TD align="left" Class="col_one" tabindex="15">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer15');">random</BUTTON><SPAN Class="oompf" id="answer15" style="display: none;">x = np.random.random(10)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer16');" Class="row">
+<TD align="left" Class="col_one" tabindex="16">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer16');">any or all</BUTTON><SPAN Class="oompf" id="answer16" style="display: none;">np.any( x > 0.9 )<br>np.all( x >= 0.1)<br>return either True or False (i.e. single value)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer17');" Class="row">
+<TD align="left" Class="col_one" tabindex="17">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer17');">Pyplot</BUTTON><SPAN Class="oompf" id="answer17" style="display: none;">import matplotlib.pyplot as plt<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer18');" Class="row">
+<TD align="left" Class="col_one" tabindex="18">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer18');">line vs xy plot</BUTTON><SPAN Class="oompf" id="answer18" style="display: none;">plt.plot( y )<br>x axis can be index of y<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer19');" Class="row">
+<TD align="left" Class="col_one" tabindex="19">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer19');">customize plots</BUTTON><SPAN Class="oompf" id="answer19" style="display: none;">legend, axis, xlabel, ylabel, savefig<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer20');" Class="row">
+<TD align="left" Class="col_one" tabindex="20">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer20');">LaTeX labels</BUTTON><SPAN Class="oompf" id="answer20" style="display: none;">"$X$" instead of "X"<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer21');" Class="row">
+<TD align="left" Class="col_one" tabindex="21">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer21');">specify range</BUTTON><SPAN Class="oompf" id="answer21" style="display: none;">plt.axis( [xmin, xmax, ymin, ymax] )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer22');" Class="row">
+<TD align="left" Class="col_one" tabindex="22">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer22');">legend</BUTTON><SPAN Class="oompf" id="answer22" style="display: none;">put label="Name" and then plt.legend(loc="best")<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer23');" Class="row">
+<TD align="left" Class="col_one" tabindex="23">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer23');">save PDF</BUTTON><SPAN Class="oompf" id="answer23" style="display: none;">plt.savefig("name.pdf")<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer24');" Class="row">
+<TD align="left" Class="col_one" tabindex="24">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer24');">log axes</BUTTON><SPAN Class="oompf" id="answer24" style="display: none;">semilogx, semilogy, loglog<br>use: x=np.logspace(0,1,10) </SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer25');" Class="row">
+<TD align="left" Class="col_one" tabindex="25">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer25');">histogram</BUTTON><SPAN Class="oompf" id="answer25" style="display: none;">plt.hist( x )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer26');" Class="row">
+<TD align="left" Class="col_one" tabindex="26">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer26');">normal distribution</BUTTON><SPAN Class="oompf" id="answer26" style="display: none;">np.random.normal( size=1000 )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer27');" Class="row">
+<TD align="left" Class="col_one" tabindex="27">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer27');">normalized histogram</BUTTON><SPAN Class="oompf" id="answer27" style="display: none;">plt.hist( x, normed=True )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer28');" Class="row">
+<TD align="left" Class="col_one" tabindex="28">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer28');">specify bins in histogram</BUTTON><SPAN Class="oompf" id="answer28" style="display: none;">plt.hist( x, bins=linspace(-5,5,21) )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer29');" Class="row">
+<TD align="left" Class="col_one" tabindex="29">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer29');">subplot</BUTTON><SPAN Class="oompf" id="answer29" style="display: none;">subplot( nrows, ncols, plot_number )<br>plt.subplot( 221 )... 222... 223... 224<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer30');" Class="row">
+<TD align="left" Class="col_one" tabindex="30">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer30');">cumulative histogram</BUTTON><SPAN Class="oompf" id="answer30" style="display: none;">hist(x, cumulative=True)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer31');" Class="row">
+<TD align="left" Class="col_one" tabindex="31">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer31');">step histogram</BUTTON><SPAN Class="oompf" id="answer31" style="display: none;">plt.hist(x, histype="step")<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer32');" Class="row">
+<TD align="left" Class="col_one" tabindex="32">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer32');">random choice</BUTTON><SPAN Class="oompf" id="answer32" style="display: none;">random.choice( ["Heads","Tails"] )<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer33');" Class="row">
+<TD align="left" Class="col_one" tabindex="33">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer33');">central limit theorm</BUTTON><SPAN Class="oompf" id="answer33" style="display: none;">sum of any distribution tends to normal distribution<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer34');" Class="row">
+<TD align="left" Class="col_one" tabindex="34">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer34');">numpy random numbers</BUTTON><SPAN Class="oompf" id="answer34" style="display: none;">fast with many distributions<br>np.random.random(5) gives a 1D array with 5 members<br>np.random.random( (5,3) ) gives 5 rows, 3 cols<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer35');" Class="row">
+<TD align="left" Class="col_one" tabindex="35">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer35');">numpy standard normal</BUTTON><SPAN Class="oompf" id="answer35" style="display: none;">np.random.normal( 0, 1 ) gives a single number mean 0, sd 1<br>np.random.normal( 0, 1, 5 ) gives 5 values<br>np.random.normal( 0, 1, (5,3) ) gives 2D answer<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer36');" Class="row">
+<TD align="left" Class="col_one" tabindex="36">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer36');">randint</BUTTON><SPAN Class="oompf" id="answer36" style="display: none;">randint(1,7, (10,3)) gives 10x3 matrix of 1-6<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer37');" Class="row">
+<TD align="left" Class="col_one" tabindex="37">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer37');">np.sum</BUTTON><SPAN Class="oompf" id="answer37" style="display: none;">np.sum(X, axis=0) sums over all rows<br>np.sum(X, axis=1) sums over all cols<br><br>sum(randint(1,7,(100,10)), axis=0) gives dim=10 answer</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer38');" Class="row">
+<TD align="left" Class="col_one" tabindex="38">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer38');">time.clock</BUTTON><SPAN Class="oompf" id="answer38" style="display: none;">gives cpu time (on linux)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer39');" Class="row">
+<TD align="left" Class="col_one" tabindex="39">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer39');">cumulative sum</BUTTON><SPAN Class="oompf" id="answer39" style="display: none;">np.cumsum( x )<br>cumsum( [1,2,3] ) gives [1,3,6]<br>np.cumsum( x, axis=0 ) for multi dimension<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer40');" Class="row">
+<TD align="left" Class="col_one" tabindex="40">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer40');">concatenate</BUTTON><SPAN Class="oompf" id="answer40" style="display: none;">np.concatenate( (a1, a2) , axis=0 )<br></SPAN></TD>
+</TR>
+</TABLE>
+</div></BODY>
+</HTML>

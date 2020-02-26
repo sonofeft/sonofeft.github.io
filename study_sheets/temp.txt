@@ -1,0 +1,368 @@
+ Volume in drive D is DATA
+ Volume Serial Number is 502B-F885
+
+
+ Directory of D:\2020_py_proj\FlashList
+
+11/06/2018  08:19 AM            13,078 Decision_Trees.flash.zip
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+01/18/2020  02:37 AM           396,662 Peg Memory Visuals.flash.zip
+01/18/2020  12:02 AM         3,069,129 US State Capitals.flash.zip
+               4 File(s)      3,636,540 bytes
+
+ Directory of D:\2020_py_proj\FlashList\US_Capitals
+
+01/17/2017  02:31 PM         3,162,635 US State Capitals.flash.zip
+               1 File(s)      3,162,635 bytes
+
+ Directory of D:\2020_py_proj\RocketCEA\backup
+
+10/20/2018  07:51 PM           449,920 RocketCEA Install.flash.zip
+               1 File(s)        449,920 bytes
+
+ Directory of D:\Charlie\Documents
+
+05/15/2017  08:43 AM             3,717 SleepApnea.flash.zip
+05/15/2017  08:43 AM             1,990 SleepApnea_v2.flash.zip
+               2 File(s)          5,707 bytes
+
+ Directory of D:\freecad_dwgs\NewtonCradle\linear_actuator
+
+12/14/2019  02:18 PM         1,303,245 gear_info.flash.zip
+               1 File(s)      1,303,245 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj
+
+11/13/2018  11:18 AM           873,170 Paint Program Interfaces.flash.zip
+               1 File(s)        873,170 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj\FlashList
+
+11/06/2018  08:19 AM            13,078 Decision_Trees.flash.zip
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+09/17/2018  06:33 AM           220,168 Peg Memory Visuals.flash.zip
+11/05/2018  12:25 PM         3,069,233 US State Capitals.flash.zip
+               4 File(s)      3,460,150 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj\FlashList\US_Capitals
+
+01/17/2017  02:31 PM         3,162,635 US State Capitals.flash.zip
+               1 File(s)      3,162,635 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj\IgnorantRL\docs
+
+11/30/2018  08:09 AM           165,203 IgnorantRL.flash.zip
+12/03/2018  07:13 PM         1,634,225 Multi_Agent Logic.flash.zip
+02/07/2019  01:13 PM         1,592,021 Summary of RL Equations.flash.zip
+11/23/2018  11:44 AM           184,529 UML Diagrams.flash.zip
+               4 File(s)      3,575,978 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj\RocketCEA\backup
+
+10/20/2018  07:51 PM           449,920 RocketCEA Install.flash.zip
+10/20/2018  03:05 PM           242,300 RocketCEA Install_old2.flash.zip
+10/20/2018  03:53 PM           273,475 RocketCEA Install_old3.flash.zip
+10/20/2018  04:01 PM           344,506 RocketCEA Install_old4.flash.zip
+10/20/2018  04:18 PM           449,248 RocketCEA Install_old5.flash.zip
+10/20/2018  07:51 PM           449,920 RocketCEA Install_old6.flash.zip
+               6 File(s)      2,209,369 bytes
+
+ Directory of D:\GoogleDrive\2018_py_proj\TwoPlayer
+
+11/07/2018  11:54 PM         1,536,600 alpha_beta.flash.zip
+               1 File(s)      1,536,600 bytes
+
+ Directory of D:\GoogleDrive\2019_py_proj
+
+12/01/2019  10:15 PM            40,850 Raymond Hettinger.flash.zip
+               1 File(s)         40,850 bytes
+
+ Directory of D:\GoogleDrive\2019_py_proj\cython
+
+03/24/2019  10:24 PM            22,889 Conda Environments.flash.zip
+03/27/2019  12:06 AM           301,000 cython SciPy 2017.flash.zip
+03/27/2019  01:38 AM           283,042 cython Stefan Behnel.flash.zip
+04/21/2019  12:54 AM         1,063,334 cython.flash.zip
+03/24/2019  12:13 AM            17,295 EasyWinsWithCython.flash.zip
+03/30/2019  03:00 PM           189,049 Numba.flash.zip
+               6 File(s)      1,876,609 bytes
+
+ Directory of D:\GoogleDrive\2019_py_proj\IntroRL_notes
+
+02/28/2019  10:29 AM           808,874 18a Linear Approximation.flash.zip
+03/01/2019  12:48 PM           607,671 20a Control w Approx.flash.zip
+04/09/2019  09:56 AM         1,959,386 21a Temporal Abstraction.flash.zip
+04/11/2019  11:19 PM           465,766 MDP Solutions.flash.zip
+04/09/2019  03:57 PM           674,771 Udacity Game Theory.flash.zip
+               5 File(s)      4,516,468 bytes
+
+ Directory of D:\GoogleDrive\2019_py_proj\IntroRL_notes\MonteCarloTreeSearch
+
+02/05/2020  01:52 PM         1,127,608 MonteCarloTreeSearch.flash.zip
+               1 File(s)      1,127,608 bytes
+
+ Directory of D:\GoogleDrive\2020_py_proj\FlashList
+
+11/06/2018  08:19 AM            13,078 Decision_Trees.flash.zip
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+01/18/2020  02:37 AM           396,662 Peg Memory Visuals.flash.zip
+01/18/2020  12:02 AM         3,069,129 US State Capitals.flash.zip
+               4 File(s)      3,636,540 bytes
+
+ Directory of D:\GoogleDrive\2020_py_proj\FlashList\US_Capitals
+
+01/17/2017  02:31 PM         3,162,635 US State Capitals.flash.zip
+               1 File(s)      3,162,635 bytes
+
+ Directory of D:\GoogleDrive\AI_Classes
+
+01/18/2020  03:19 AM         1,099,061 Julia Language.flash.zip
+11/27/2018  03:39 PM         1,339,601 Key Concepts.flash.zip
+02/05/2020  01:53 PM         1,180,156 RL_Sutton.flash.zip
+               3 File(s)      3,618,818 bytes
+
+ Directory of D:\GoogleDrive\AI_Classes\GoogleCrashCourse
+
+09/09/2018  09:05 AM            93,287 Embeddings.flash.zip
+09/05/2018  03:01 PM             9,008 Feature Engineering.flash.zip
+09/04/2018  01:41 PM            41,351 Framing.flash.zip
+09/07/2018  12:12 PM           395,671 LogisticRegression.flash.zip
+09/08/2018  11:21 AM            41,858 MultiClass Classification.flash.zip
+09/08/2018  08:54 AM            64,300 Neural Network.flash.zip
+09/05/2018  03:36 PM            72,004 Regularization.flash.zip
+09/09/2018  11:06 AM            27,897 Static vs Dynamic.flash.zip
+               8 File(s)        745,376 bytes
+
+ Directory of D:\GoogleDrive\AI_Classes\UDEMY\RL_Aug_Ran_Search
+
+11/14/2018  07:21 PM            62,684 1_Introduction.flash.zip
+11/14/2018  08:27 PM         1,077,153 2_Intuition.flash.zip
+11/16/2018  07:42 PM           542,450 2_Practical.flash.zip
+               3 File(s)      1,682,287 bytes
+
+ Directory of D:\GoogleDrive\AI_Classes\UDEMY\RL_Deep_Learning
+
+09/16/2018  10:01 AM           289,281 1_Intro.flash.zip
+09/16/2018  11:06 AM         1,631,363 2_Review.flash.zip
+09/22/2018  11:00 AM         1,419,825 3_OpenAI_Gym.flash.zip
+09/22/2018  02:38 PM           619,972 4_TD_Lambda.flash.zip
+09/23/2018  12:27 PM           872,464 5_Policy_Gradients.flash.zip
+09/23/2018  10:46 PM         1,210,304 6_Deep_QLearning.flash.zip
+09/20/2018  09:37 AM           190,126 Inner Product.flash.zip
+               7 File(s)      6,233,335 bytes
+
+ Directory of D:\GoogleDrive\AI_Classes\UDEMY\RL_Intro
+
+09/11/2018  12:49 PM           146,923 1_Define_RL.flash.zip
+09/14/2018  09:53 AM         1,276,189 2_MultiArmedBandit.flash.zip
+09/11/2018  04:53 PM           965,492 3_TicTacToe.flash.zip
+09/12/2018  08:47 PM         1,692,685 4_Markov.flash.zip
+09/13/2018  08:28 PM           849,599 5_Dynamic_Programming.flash.zip
+09/13/2018  04:09 PM           831,759 6_Monte_Carlo.flash.zip
+09/20/2018  04:41 PM           875,025 7_Temporal_Difference_Learning.flash.zip
+09/15/2018  06:17 PM           948,235 8_Approximation.flash.zip
+09/20/2018  05:31 PM           494,693 9_Appendix.flash.zip
+               9 File(s)      8,080,600 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\CSMM101_ArtificialIntelligence\Flash_Cards
+
+01/20/2017  02:04 AM            29,480 AI_Intelligent_Agents.flash.zip
+02/19/2017  11:28 PM            40,668 Ensemble_Methods.flash.zip
+02/19/2017  09:42 PM            50,912 logistic_regression.flash.zip
+02/19/2017  09:42 PM             4,109 logistic_regression_v2.flash.zip
+02/19/2017  10:59 PM            76,719 Naive_Bayes.flash.zip
+02/19/2017  10:14 PM            78,155 Tree_Classifier.flash.zip
+               6 File(s)        280,043 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\CSMM101_ArtificialIntelligence\Project_2048
+
+02/07/2017  12:33 AM           131,549 adversarial_search.flash.zip
+               1 File(s)        131,549 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\CSMM102x_MachineLearning\Flash_Cards
+
+02/20/2017  09:20 PM            67,287 Bayes_Classifier.flash.zip
+02/20/2017  04:42 PM            64,890 Boot_Strap.flash.zip
+02/20/2017  04:19 PM            56,420 Decision_Trees.flash.zip
+02/11/2017  03:06 PM            29,259 Generative_Model.flash.zip
+01/30/2017  03:37 PM           193,369 Lecture4.flash.zip
+01/31/2017  05:17 PM            55,845 Lecture5.flash.zip
+01/20/2017  02:55 PM            55,264 MatrixOps.flash.zip
+02/20/2017  01:54 PM           202,959 Maximum_Margin_Classifiers.flash.zip
+01/20/2017  02:33 PM           158,239 ML_Week_1.flash.zip
+01/30/2017  09:42 AM            18,323 MysteryMath.flash.zip
+01/20/2017  10:15 AM            82,429 Probability.flash.zip
+              11 File(s)        984,284 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\EdX_PythonForDataScience\Flash_Cards
+
+04/20/2017  12:22 AM            95,583 Confusion_Matrix.flash.zip
+04/20/2017  10:10 PM            34,524 Cross_Validation.flash.zip
+04/18/2017  04:03 PM             7,082 decision_tree.flash.zip
+03/31/2017  10:11 PM            35,872 Features.flash.zip
+04/01/2017  04:19 PM             3,124 featurize_text.flash.zip
+04/20/2017  11:07 PM            60,274 Grid_Search_CV.flash.zip
+04/10/2017  08:08 PM            29,915 K_Means.flash.zip
+04/10/2017  10:39 PM             4,952 K_Nearest_Neighbors.flash.zip
+04/10/2017  10:27 PM            12,873 learning_class.flash.zip
+04/16/2017  09:13 AM             5,358 linear_regression.flash.zip
+04/02/2017  04:14 PM            46,071 matplotlib_in_pandas.flash.zip
+04/05/2017  11:52 PM             7,789 missing_data.flash.zip
+04/06/2017  10:37 AM            56,126 pandas.flash.zip
+04/06/2017  11:03 AM            36,986 PCA.flash.zip
+04/18/2017  09:28 PM             9,406 Random_Forest.flash.zip
+04/18/2017  08:14 PM             6,539 Random_Forest_v2.flash.zip
+04/18/2017  09:28 PM             9,406 Random_Forest_v3.flash.zip
+04/10/2017  05:51 PM             3,651 scaling.flash.zip
+04/01/2017  04:33 PM             3,653 SciPy_Image.flash.zip
+04/19/2017  07:01 AM            15,845 SupportVectorMachines.flash.zip
+04/02/2017  02:19 PM               221 template.flash.zip
+              21 File(s)        485,250 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\EdX_Tensorflow
+
+11/02/2018  12:21 AM           174,776 M1V1 Intro to TensorFlow.flash.zip
+11/02/2018  12:21 AM            72,055 M1V1 Intro to TensorFlow_old2.flash.zip
+               2 File(s)        246,831 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\Graph_Algorithms
+
+11/24/2018  12:41 AM           387,919 Connectivity.flash.zip
+11/24/2018  01:00 AM           677,370 Directed Graphs.flash.zip
+               2 File(s)      1,065,289 bytes
+
+ Directory of D:\GoogleDrive\edX_Classes\Microsoft_RL_Class
+
+11/18/2018  05:23 PM         1,800,960 4_Temporal Difference.flash.zip
+11/18/2018  05:44 PM            38,032 5_Model_Free_RL.flash.zip
+11/20/2018  07:28 AM           841,013 6_Function_Approximation.flash.zip
+11/20/2018  08:36 AM         1,560,756 7_Policy_Gradient_Actor_Critic.flash.zip
+11/12/2018  12:21 PM           963,794 Bandits.flash.zip
+11/13/2018  12:54 AM           507,282 Dynamic Programming.flash.zip
+11/12/2018  01:15 PM           765,067 Temporal Credit Assignment.flash.zip
+               7 File(s)      6,476,904 bytes
+
+ Directory of D:\GoogleDrive\Electronic_Kits
+
+11/28/2019  01:57 PM         1,158,437 Servo Motor Control.flash.zip
+               1 File(s)      1,158,437 bytes
+
+ Directory of D:\GoogleDrive\py_proj_2016\FlashList
+
+02/20/2017  02:27 PM            13,242 Decision_Trees.flash.zip
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+04/07/2016  08:55 PM         3,162,635 US State Capitals.flash.zip
+               3 File(s)      3,333,548 bytes
+
+ Directory of D:\GoogleDrive\py_proj_2016\FlashList\US_Capitals
+
+01/17/2017  02:31 PM         3,162,635 US State Capitals.flash.zip
+               1 File(s)      3,162,635 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\Algorithms
+
+02/07/2018  03:26 PM            41,205 BigO.flash.zip
+               1 File(s)         41,205 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\Coursera\coursera_ai_ml_bd
+
+02/05/2020  01:50 PM           780,434 Week 1 Applied AI with Deep Learning.flash.zip
+02/08/2020  06:58 PM            11,844 Week 2 Applied AI with Deep Learning.flash.zip
+               2 File(s)        792,278 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\Coursera\Julia_Scientific_Programming
+
+01/08/2020  10:21 AM           687,828 Julia_Coursera.flash.zip
+               1 File(s)        687,828 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\DanKlein_UCB_RL
+
+10/16/2018  10:42 PM           620,892 Lecture_11_RL_II.flash.zip
+               1 File(s)        620,892 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\MachineLearningFundamentals
+
+03/30/2018  03:33 PM         2,573,337 Classification.flash.zip
+04/11/2018  12:50 AM           564,178 Gaussian Generative Models.flash.zip
+03/30/2018  11:24 PM           447,913 Generative Modeling.flash.zip
+03/30/2018  11:24 PM           447,913 Generative Modeling_old2.flash.zip
+04/07/2018  08:37 PM           973,517 Linear Algegra.flash.zip
+04/08/2018  11:43 AM           378,293 Multivariate Gaussian.flash.zip
+               6 File(s)      5,385,151 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\PyForDataScience
+
+06/06/2017  09:58 AM             4,839 Analyze_Data.flash.zip
+               1 File(s)          4,839 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\PyForResearch
+
+05/31/2017  12:40 PM            23,001 PyForResearch.flash.zip
+               1 File(s)         23,001 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\Robotics
+
+03/18/2018  09:05 PM           516,657 Cartesian Control.flash.zip
+04/01/2018  09:59 PM           511,731 Conclusion and Review.flash.zip
+01/30/2018  12:49 AM             6,617 Define Robots.flash.zip
+02/26/2018  01:48 PM           766,205 Differential Kinematics.flash.zip
+02/18/2018  09:45 PM           240,955 Inverse Kinematics.flash.zip
+02/13/2018  08:49 PM           497,921 Kinematic Chains.flash.zip
+03/25/2018  11:12 PM         1,860,730 Motion Planning.flash.zip
+01/31/2018  01:24 PM            15,224 ROS.flash.zip
+02/18/2018  11:22 PM            96,215 Spherical Robot.flash.zip
+02/11/2018  09:57 PM            99,008 TF_Library_TF2.flash.zip
+02/08/2018  01:30 AM           612,268 Transforms.flash.zip
+              11 File(s)      5,223,531 bytes
+
+ Directory of D:\GoogleDrive\_OnLineClasses\Udacity\AI_for_Robotics
+
+03/03/2018  11:13 AM           714,325 Lesson1.flash.zip
+03/24/2018  03:24 PM            32,643 Lesson4_KalmanFilters.flash.zip
+03/24/2018  03:24 PM            18,953 Lesson4_KalmanFilters_old2.flash.zip
+               3 File(s)        765,921 bytes
+
+ Directory of D:\GoProj
+
+02/25/2020  11:40 AM           296,180 Coursera Golang Funcs and Methods.flash.zip
+02/25/2020  11:40 AM           789,264 Coursera Golang.flash.zip
+02/05/2020  01:49 PM           124,497 GoLang.flash.zip
+               3 File(s)      1,209,941 bytes
+
+ Directory of D:\py_proj_2016\FlashList
+
+02/20/2017  02:27 PM            13,242 Decision_Trees.flash.zip
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+09/17/2018  06:33 AM           220,168 Peg Memory Visuals.flash.zip
+09/17/2018  06:29 AM           104,733 Peg Memory Visuals_old2.flash.zip
+09/17/2018  06:33 AM           130,409 Peg Memory Visuals_old3.flash.zip
+04/07/2016  08:55 PM         3,162,635 US State Capitals.flash.zip
+               6 File(s)      3,788,858 bytes
+
+ Directory of D:\py_proj_2016\FlashList\US_Capitals
+
+01/17/2017  02:31 PM         3,162,635 US State Capitals.flash.zip
+               1 File(s)      3,162,635 bytes
+
+ Directory of D:\Rust
+
+11/18/2019  07:36 AM           319,569 Rust_Crash_Course.flash.zip
+11/18/2019  12:14 PM           154,555 Rust_Prog_Techniques.flash.zip
+               2 File(s)        474,124 bytes
+
+ Directory of D:\temp
+
+01/08/2020  12:48 AM           180,371 Chromebook Review.flash.zip
+01/20/2017  01:43 AM            27,174 flash_test.flash.zip
+09/05/2018  03:43 PM            45,288 LogisticRegression.flash.zip
+09/09/2018  09:37 AM             2,621 Static vs Dynamic.flash.zip
+               4 File(s)        255,454 bytes
+
+ Directory of D:\tmp\tmp
+
+01/19/2017  12:27 AM           157,671 MachineLearning.flash.zip
+               1 File(s)        157,671 bytes
+
+     Total Files Listed:
+             215 File(s)    122,965,771 bytes
+               0 Dir(s)  1,255,874,748,416 bytes free

@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<STYLE>
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+tr:nth-child(even) {background-color: #E3E8EA}
+tr:nth-child(odd) {background-color: #F6F7F8}
+
+tr:hover, td:hover { background-color: #ffffff;}
+
+
+.prompt {
+    font-size: 18px;
+    color: #123945;
+    background-color: #ECF0F1;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.topbtns {
+    font-size: 18px;
+    color: #10323E;
+    background-color: #E8ECED;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.oompf {
+    font-size: 18px;
+    color: #10323E;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+@media print
+ {
+    table {width: 100%;}
+    td.col_one { width: 50%; }
+    td.col_two { width: 50%; }
+    .col_one { width: 50%; }
+    .col_two { width: 50%; }
+    
+    img { max-width:3.0in !important;} 
+    tr    { page-break-inside:avoid; page-break-after:auto }    
+    
+ }
+
+.Header
+{
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;}
+  
+.Content
+{
+    top: 30px;
+    background-color: #ffffff;
+    overflow-y:auto;
+    padding-top: 30px;
+}
+
+
+</STYLE><SCRIPT>
+function toggleAnswer(id) {
+    if (document.getElementById(id).style.display == 'none'){
+        document.getElementById(id).style.display = 'block';
+    } else {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+
+function hideAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'none';
+    }
+}
+
+function showAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'block';
+    }
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<div  Class="Header"><BUTTON Class="topbtns" onclick="showAllAnswers( 11 );">Show All Answers</BUTTON><BUTTON Class="topbtns" onclick="hideAllAnswers( 11 );">Hide All Answers</BUTTON></div><br>
+<div  Class="Content"><TABLE width="100%">
+<TR>
+<TD Class="oompf">
+<CENTER><H3>Define Robots</H3>
+</CENTER></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer1');" Class="row">
+<TD align="left" Class="col_one" tabindex="1">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer1');">What are typical robot jobs</BUTTON><SPAN Class="oompf" id="answer1" style="display: none;">Manipulation - autonomous and directed<br>Mobility - self driving cars<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer2');" Class="row">
+<TD align="left" Class="col_one" tabindex="2">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer2');">Semantic Perception</BUTTON><SPAN Class="oompf" id="answer2" style="display: none;">Is it a car a pedestrian etc.<br>sensing requirements<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer3');" Class="row">
+<TD align="left" Class="col_one" tabindex="3">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer3');">Logistics</BUTTON><SPAN Class="oompf" id="answer3" style="display: none;">eg. Kiva Warehouse Fullfillment<br>Hospital item transport<br>Hotel Room Service<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer4');" Class="row">
+<TD align="left" Class="col_one" tabindex="4">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer4');">Legged Robots</BUTTON><SPAN Class="oompf" id="answer4" style="display: none;">Boston Dynamics good examples<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer5');" Class="row">
+<TD align="left" Class="col_one" tabindex="5">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer5');">Aerial and Underwater Robots</BUTTON><SPAN Class="oompf" id="answer5" style="display: none;">remote delivery<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer6');" Class="row">
+<TD align="left" Class="col_one" tabindex="6">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer6');">define a robot</BUTTON><SPAN Class="oompf" id="answer6" style="display: none;">Sense, plan and act<br>self powered and effects physical change<br>no universal definition<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer7');" Class="row">
+<TD align="left" Class="col_one" tabindex="7">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer7');">software and hardware</BUTTON><SPAN Class="oompf" id="answer7" style="display: none;">mind and body<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer8');" Class="row">
+<TD align="left" Class="col_one" tabindex="8">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer8');">Robotics and AI</BUTTON><SPAN Class="oompf" id="answer8" style="display: none;">Unstructured Environments<br>sense, react, plan<br>Exact instructions can not be provided.<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer9');" Class="row">
+<TD align="left" Class="col_one" tabindex="9">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer9');">What is AI</BUTTON><SPAN Class="oompf" id="answer9" style="display: none;">ability to react appropriately to unforseen situations.<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer10');" Class="row">
+<TD align="left" Class="col_one" tabindex="10">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer10');">Class course</BUTTON><SPAN Class="oompf" id="answer10" style="display: none;">3D space and transforms<br>Robot Arms<br>Mobility modeling<br>Motion Planning</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer11');" Class="row">
+<TD align="left" Class="col_one" tabindex="11">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer11');">ROS</BUTTON><SPAN Class="oompf" id="answer11" style="display: none;">Robot Operating System<br></SPAN></TD>
+</TR>
+</TABLE>
+</div></BODY>
+</HTML>

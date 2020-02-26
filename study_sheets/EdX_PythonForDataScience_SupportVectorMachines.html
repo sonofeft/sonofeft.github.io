@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<STYLE>
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+tr:nth-child(even) {background-color: #E3E8EA}
+tr:nth-child(odd) {background-color: #F6F7F8}
+
+tr:hover, td:hover { background-color: #ffffff;}
+
+
+.prompt {
+    font-size: 18px;
+    color: #123945;
+    background-color: #ECF0F1;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.topbtns {
+    font-size: 18px;
+    color: #10323E;
+    background-color: #E8ECED;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.oompf {
+    font-size: 18px;
+    color: #10323E;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+@media print
+ {
+    table {width: 100%;}
+    td.col_one { width: 50%; }
+    td.col_two { width: 50%; }
+    .col_one { width: 50%; }
+    .col_two { width: 50%; }
+    
+    img { max-width:3.0in !important;} 
+    tr    { page-break-inside:avoid; page-break-after:auto }    
+    
+ }
+
+.Header
+{
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;}
+  
+.Content
+{
+    top: 30px;
+    background-color: #ffffff;
+    overflow-y:auto;
+    padding-top: 30px;
+}
+
+
+</STYLE><SCRIPT>
+function toggleAnswer(id) {
+    if (document.getElementById(id).style.display == 'none'){
+        document.getElementById(id).style.display = 'block';
+    } else {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+
+function hideAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'none';
+    }
+}
+
+function showAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'block';
+    }
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<div  Class="Header"><BUTTON Class="topbtns" onclick="showAllAnswers( 27 );">Show All Answers</BUTTON><BUTTON Class="topbtns" onclick="hideAllAnswers( 27 );">Hide All Answers</BUTTON></div><br>
+<div  Class="Content"><TABLE width="100%">
+<TR>
+<TD Class="oompf">
+<CENTER><H3>SupportVectorMachines</H3>
+</CENTER></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer1');" Class="row">
+<TD align="left" Class="col_one" tabindex="1">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer1');">Basic Premise</BUTTON><SPAN Class="oompf" id="answer1" style="display: none;">Max Distance Class Separation<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer2');" Class="row">
+<TD align="left" Class="col_one" tabindex="2">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer2');">Strong Point</BUTTON><SPAN Class="oompf" id="answer2" style="display: none;">Based on small subset of data close to decision boundary<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer3');" Class="row">
+<TD align="left" Class="col_one" tabindex="3">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer3');">Support Vector Classifier</BUTTON><SPAN Class="oompf" id="answer3" style="display: none;">A common SVM classifier<br>Doesn't care about the easily identified class data points<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer4');" Class="row">
+<TD align="left" Class="col_one" tabindex="4">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer4');">Scaling Recommended?</BUTTON><SPAN Class="oompf" id="answer4" style="display: none;">Yes... Highly Recommended<br>0to1 OR -1to1 OR 0mean1var<br>Scale all by same method<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer5');" Class="row">
+<TD align="left" Class="col_one" tabindex="5">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer5');">Overfitting</BUTTON><SPAN Class="oompf" id="answer5" style="display: none;">Is a concern<br>highly configurable model<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer6');" Class="row">
+<TD align="left" Class="col_one" tabindex="6">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer6');">Kernel Trick</BUTTON><SPAN Class="oompf" id="answer6" style="display: none;">Transform Data into Higher Dimension<br>Classes Seperable in Higher Dimensions<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer7');" Class="row">
+<TD align="left" Class="col_one" tabindex="7">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer7');">Example Kernel</BUTTON><SPAN Class="oompf" id="answer7" style="display: none;">f(s) = (s1*s1,  s1*s2,  s1*s3,
+        s2*s1,  s2*s2,  s2*s3,
+        s3*s1,  s3*s2,  s3*s3)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer8');" Class="row">
+<TD align="left" Class="col_one" tabindex="8">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer8');">SVM Analogy</BUTTON><SPAN Class="oompf" id="answer8" style="display: none;">Pool Table... balls in the air<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer9');" Class="row">
+<TD align="left" Class="col_one" tabindex="9">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer9');">High D Distance</BUTTON><SPAN Class="oompf" id="answer9" style="display: none;">Dot Product in High D Vector<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer10');" Class="row">
+<TD align="left" Class="col_one" tabindex="10">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer10');">SVC</BUTTON><SPAN Class="oompf" id="answer10" style="display: none;">Support Vector Classifier<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer11');" Class="row">
+<TD align="left" Class="col_one" tabindex="11">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer11');">SVC vs KNN Speed</BUTTON><SPAN Class="oompf" id="answer11" style="display: none;">Slower to train, Faster to evaluate<br>Classification Speed Good<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer12');" Class="row">
+<TD align="left" Class="col_one" tabindex="12">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer12');">Support Vectors</BUTTON><SPAN Class="oompf" id="answer12" style="display: none;">Close to Decision Boundary<br>Most of dataset doesn't even matter<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer13');" Class="row">
+<TD align="left" Class="col_one" tabindex="13">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer13');">Training Set Size</BUTTON><SPAN Class="oompf" id="answer13" style="display: none;">Can be reduced by eliminating non-support vectors<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer14');" Class="row">
+<TD align="left" Class="col_one" tabindex="14">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer14');">Nfeatures > Nsamples</BUTTON><SPAN Class="oompf" id="answer14" style="display: none;">SVC is fine with that<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer15');" Class="row">
+<TD align="left" Class="col_one" tabindex="15">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer15');">Non-Probabalistic</BUTTON><SPAN Class="oompf" id="answer15" style="display: none;">Simply based on geometry<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer16');" Class="row">
+<TD align="left" Class="col_one" tabindex="16">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer16');">Parameters</BUTTON><SPAN Class="oompf" id="answer16" style="display: none;">C - float penalty on errors<br>kernel - big subject<br>gamma - affects decision boundary<br>class_weight - can affect false +/-</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer17');" Class="row">
+<TD align="left" Class="col_one" tabindex="17">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer17');">kernel</BUTTON><SPAN Class="oompf" id="answer17" style="display: none;">rbf - radial basis function = default<br>linear, poly, sigmoid, precomputed, rbf<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer18');" Class="row">
+<TD align="left" Class="col_one" tabindex="18">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer18');">kernel shape</BUTTON><SPAN Class="oompf" id="answer18" style="display: none;">[n_samples, n_samples]<br>e.g. for user defined<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer19');" Class="row">
+<TD align="left" Class="col_one" tabindex="19">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer19');">C</BUTTON><SPAN Class="oompf" id="answer19" style="display: none;">penalty param. for error term<br>low C = smoother boundary<br>large C = wiggly<br>C=1 is reasonable. If data is noisy, decrease it.</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer20');" Class="row">
+<TD align="left" Class="col_one" tabindex="20">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer20');">gamma</BUTTON><SPAN Class="oompf" id="answer20" style="display: none;">sample extent of influence<br>large gamma = local effects only<br>small gamma = larger area of influence<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer21');" Class="row">
+<TD align="left" Class="col_one" tabindex="21">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer21');">deterministic results</BUTTON><SPAN Class="oompf" id="answer21" style="display: none;">In theory only in sklearn<br>set random seed to get deterministic result<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer22');" Class="row">
+<TD align="left" Class="col_one" tabindex="22">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer22');">support_</BUTTON><SPAN Class="oompf" id="answer22" style="display: none;">array of the indices belonging to the selected support vectors<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer23');" Class="row">
+<TD align="left" Class="col_one" tabindex="23">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer23');">support_vectors_</BUTTON><SPAN Class="oompf" id="answer23" style="display: none;">The actual samples chosen as the support vectors<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer24');" Class="row">
+<TD align="left" Class="col_one" tabindex="24">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer24');">intercept_</BUTTON><SPAN Class="oompf" id="answer24" style="display: none;">The constants of the decision function<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer25');" Class="row">
+<TD align="left" Class="col_one" tabindex="25">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer25');">dual_coef_</BUTTON><SPAN Class="oompf" id="answer25" style="display: none;">Each support vector's contribution to the decision function, on a per classification basis.<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer26');" Class="row">
+<TD align="left" Class="col_one" tabindex="26">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer26');">Kernel Cache Size</BUTTON><SPAN Class="oompf" id="answer26" style="display: none;">Set higher if RAM allows (e.g. 1000M)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer27');" Class="row">
+<TD align="left" Class="col_one" tabindex="27">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer27');">Unbalanced Data</BUTTON><SPAN Class="oompf" id="answer27" style="display: none;">set class_weight='balanced'<br>perhaps try different C value<br><br></SPAN></TD>
+</TR>
+</TABLE>
+</div></BODY>
+</HTML>

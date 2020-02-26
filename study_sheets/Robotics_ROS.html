@@ -1,0 +1,222 @@
+<HTML>
+<HEAD>
+<STYLE>
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+tr:nth-child(even) {background-color: #E3E8EA}
+tr:nth-child(odd) {background-color: #F6F7F8}
+
+tr:hover, td:hover { background-color: #ffffff;}
+
+
+.prompt {
+    font-size: 18px;
+    color: #123945;
+    background-color: #ECF0F1;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.topbtns {
+    font-size: 18px;
+    color: #10323E;
+    background-color: #E8ECED;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+.oompf {
+    font-size: 18px;
+    color: #10323E;
+    font-weight: bold;
+    line-height: 18px;
+    margin-bottom: 8px;
+}
+
+@media print
+ {
+    table {width: 100%;}
+    td.col_one { width: 50%; }
+    td.col_two { width: 50%; }
+    .col_one { width: 50%; }
+    .col_two { width: 50%; }
+    
+    img { max-width:3.0in !important;} 
+    tr    { page-break-inside:avoid; page-break-after:auto }    
+    
+ }
+
+.Header
+{
+  position: fixed;
+  background-color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;}
+  
+.Content
+{
+    top: 30px;
+    background-color: #ffffff;
+    overflow-y:auto;
+    padding-top: 30px;
+}
+
+
+</STYLE><SCRIPT>
+function toggleAnswer(id) {
+    if (document.getElementById(id).style.display == 'none'){
+        document.getElementById(id).style.display = 'block';
+    } else {
+        document.getElementById(id).style.display = 'none';
+    }
+}
+
+function hideAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'none';
+    }
+}
+
+function showAllAnswers( N ){
+
+    for(i = 1; i <= N; i++)
+    {
+        document.getElementById( "answer" + i ).style.display = 'block';
+    }
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<div  Class="Header"><BUTTON Class="topbtns" onclick="showAllAnswers( 26 );">Show All Answers</BUTTON><BUTTON Class="topbtns" onclick="hideAllAnswers( 26 );">Hide All Answers</BUTTON></div><br>
+<div  Class="Content"><TABLE width="100%">
+<TR>
+<TD Class="oompf">
+<CENTER><H3>ROS</H3>
+</CENTER></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer1');" Class="row">
+<TD align="left" Class="col_one" tabindex="1">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer1');">www.ros.org</BUTTON><SPAN Class="oompf" id="answer1" style="display: none;">collection of software<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer2');" Class="row">
+<TD align="left" Class="col_one" tabindex="2">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer2');">Workspaces</BUTTON><SPAN Class="oompf" id="answer2" style="display: none;">organize code<br>kinematic visualization<br>component inter-communication<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer3');" Class="row">
+<TD align="left" Class="col_one" tabindex="3">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer3');">Nodes</BUTTON><SPAN Class="oompf" id="answer3" style="display: none;">eg. Laser Range finder or Localization logic<br>Path Planner<br>Motor Drivers<br>Camera</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer4');" Class="row">
+<TD align="left" Class="col_one" tabindex="4">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer4');">Data Types</BUTTON><SPAN Class="oompf" id="answer4" style="display: none;">Laser Data, Location, Goals, Motor commands<br>VGA image<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer5');" Class="row">
+<TD align="left" Class="col_one" tabindex="5">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer5');">Communication Channels</BUTTON><SPAN Class="oompf" id="answer5" style="display: none;">ROS provides for many different data types<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer6');" Class="row">
+<TD align="left" Class="col_one" tabindex="6">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer6');">Pub/Sub</BUTTON><SPAN Class="oompf" id="answer6" style="display: none;">Publish/Subscribe communication<br>Nodes can run on different machines<br>Protocols - UDP, TCP, etc.<br>Nodes can have different programming languages</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer7');" Class="row">
+<TD align="left" Class="col_one" tabindex="7">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer7');">Install locally on Ubuntu</BUTTON><SPAN Class="oompf" id="answer7" style="display: none;">Web interface at EdX<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer8');" Class="row">
+<TD align="left" Class="col_one" tabindex="8">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer8');">Tools</BUTTON><SPAN Class="oompf" id="answer8" style="display: none;">Introspection, Visualization<br>Manipulation (e.g. arm motion planning)<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer9');" Class="row">
+<TD align="left" Class="col_one" tabindex="9">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer9');">Ecosystem</BUTTON><SPAN Class="oompf" id="answer9" style="display: none;">Large user base<br>Support forums<br>Conferences and events (e.g. ROSCon)<br>Research support</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer10');" Class="row">
+<TD align="left" Class="col_one" tabindex="10">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer10');">wiki.ros.org/ROS/Tutorials</BUTTON><SPAN Class="oompf" id="answer10" style="display: none;">beginner tutorials 1-6 and 11-13<br>catkin workspace<br>create a package<br>publish and subscribe</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer11');" Class="row">
+<TD align="left" Class="col_one" tabindex="11">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer11');">printenv | grep ROS</BUTTON><SPAN Class="oompf" id="answer11" style="display: none;">check environment vars<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer12');" Class="row">
+<TD align="left" Class="col_one" tabindex="12">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer12');">catkin</BUTTON><SPAN Class="oompf" id="answer12" style="display: none;">organize and build ROS code<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer13');" Class="row">
+<TD align="left" Class="col_one" tabindex="13">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer13');">source   /opt/ros/lunar/setup.bash</BUTTON><SPAN Class="oompf" id="answer13" style="display: none;">run on every new shell<br>to access ROS commands<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer14');" Class="row">
+<TD align="left" Class="col_one" tabindex="14">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer14');">catkin "devel" folder</BUTTON><SPAN Class="oompf" id="answer14" style="display: none;">source devel/setup.bash<br>echo $ROS_PACKAGE_PATH
+<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer15');" Class="row">
+<TD align="left" Class="col_one" tabindex="15">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer15');">catkin_make</BUTTON><SPAN Class="oompf" id="answer15" style="display: none;">makes "build" and "devel" folders<br>mkdir -p ~/catkin_ws/src <br>cd ~/catkin_ws/<br>catkin_make</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer16');" Class="row">
+<TD align="left" Class="col_one" tabindex="16">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer16');">package</BUTTON><SPAN Class="oompf" id="answer16" style="display: none;">A unit of ROS code<br>my_package/
+  CMakeLists.txt
+  package.xml</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer17');" Class="row">
+<TD align="left" Class="col_one" tabindex="17">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer17');">manifests</BUTTON><SPAN Class="oompf" id="answer17" style="display: none;">package.xml<br>description of package<br><br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer18');" Class="row">
+<TD align="left" Class="col_one" tabindex="18">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer18');">rospack</BUTTON><SPAN Class="oompf" id="answer18" style="display: none;">get info about packages<br>rospack find <package name><br>only finds if ROS_PACKAGE_PATH contains it<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer19');" Class="row">
+<TD align="left" Class="col_one" tabindex="19">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer19');">roscd</BUTTON><SPAN Class="oompf" id="answer19" style="display: none;">change ROS directory to a package or stack<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer20');" Class="row">
+<TD align="left" Class="col_one" tabindex="20">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer20');">roscd log</BUTTON><SPAN Class="oompf" id="answer20" style="display: none;">goes to log folder<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer21');" Class="row">
+<TD align="left" Class="col_one" tabindex="21">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer21');">rosls <package name></BUTTON><SPAN Class="oompf" id="answer21" style="display: none;">does ls of package<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer22');" Class="row">
+<TD align="left" Class="col_one" tabindex="22">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer22');">tab completion</BUTTON><SPAN Class="oompf" id="answer22" style="display: none;">works with rosxxx commands<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer23');" Class="row">
+<TD align="left" Class="col_one" tabindex="23">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer23');">rospack depends1 <package name></BUTTON><SPAN Class="oompf" id="answer23" style="display: none;">shows First Order dependencies<br>rospack depends <package name><br>shows All dependencies<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer24');" Class="row">
+<TD align="left" Class="col_one" tabindex="24">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer24');">catkin_create_pkg</BUTTON><SPAN Class="oompf" id="answer24" style="display: none;">catkin_create_pkg beginner_tutorials std_msgs rospy roscpp<br>creates "beginner_tutorials" with dependencies shown<br><br>catkin_create_pkg <package_name> [depend1] [depend2] [depend3]</SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer25');" Class="row">
+<TD align="left" Class="col_one" tabindex="25">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer25');">catkin_make</BUTTON><SPAN Class="oompf" id="answer25" style="display: none;">run in workspace (e.g. ~/catkin_ws/)<br></SPAN></TD>
+</TR>
+<TR onkeypress="toggleAnswer('answer26');" Class="row">
+<TD align="left" Class="col_one" tabindex="26">
+<BUTTON Class="prompt" onclick="toggleAnswer('answer26');">"source" the generated setup file</BUTTON><SPAN Class="oompf" id="answer26" style="display: none;">. ~/catkin_ws/devel/setup.bash<br></SPAN></TD>
+</TR>
+</TABLE>
+</div></BODY>
+</HTML>
