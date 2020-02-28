@@ -98,7 +98,7 @@ with open('_study_sheet.csv', 'wt', newline='') as f:
         dir_name, zip_name = os.path.split( full_path )
         
         row = [ float(file_date), dir_name, zip_name ]
-        print( row )
+        #print( row )
         csv_writer.writerow(row)
         
         index_htmlL.append( row )
