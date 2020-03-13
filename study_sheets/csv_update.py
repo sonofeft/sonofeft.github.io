@@ -5,8 +5,9 @@ from build_html_study_file import BuildHTML
 from win32_setctime import setctime
 from datetime import datetime
 from index_template import top, bottom
+import stat
 
-RF = RecentFiles()
+RF = RecentFiles() # C:\Users\Charlie\FlashList.cfg
 
 study_sheet_dir = r'D:\GoogleDrive\2018_py_proj\GitHub_Blog\study_sheets'
 
@@ -25,23 +26,29 @@ with open('_study_sheet.csv', 'rt', newline='') as f:
         # ignore any zip files that no longer exist
         if os.path.isfile( full_path ):
             csv_date_nameL.append( row )
+        else:
+            print('StudySheet Missing:', full_path)
 
 # ============= see if recent files have changed from CSV ===========
 csv_replacementD = {} # index=full_path: value=c_time  # used to recreate CSV with current info
 for (file_date, dir_name, zip_name) in csv_date_nameL:
     full_path = os.path.join( dir_name, zip_name )
     
-    csv_replacementD[ full_path ] = file_date
+    csv_replacementD[ full_path ] = file_date # save whether csv entry in recent or not
     if full_path in RF.recent_fileL:
         #print( 'Recent:', full_path )
 
-        c_time_now = os.path.getctime( full_path )
+        #c_time_now = os.path.getctime( full_path )
+        stats = os.stat ( full_path )
+        m_time_now  = stats[stat.ST_MTIME]
+        
         c_time_csv = float( file_date )
-        if c_time_now != c_time_csv:
-            #print('    ', c_time_now, c_time_csv, c_time_now - c_time_csv)
+        if m_time_now != c_time_csv:
+            #print('    ', m_time_now, c_time_csv, m_time_now - c_time_csv)
             
             # recent is newer than CSV, so add it to needs_updateD dictionary
             needs_updateD[ zip_name ] = dir_name
+            print('New Timestamp on:', os.path.join( dir_name, zip_name ))
 
 # ============== check that HTML files exist =============
 # if CSV zip file has no HTML file add it to needs_updateD dictionary
@@ -49,6 +56,7 @@ for (file_date, dir_name, zip_name) in csv_date_nameL:
     html_fname = os.path.join( study_sheet_dir, zip_name.split('.')[0] + '.html')
     if not os.path.isfile( html_fname ):
         needs_updateD[ zip_name ] = dir_name
+        print('CSV entry needs HTML:', os.path.join( dir_name, zip_name ))
         
 # if Recent zip file has no HTML file add it to needs_updateD dictionary
 for full_path in RF.recent_fileL:
@@ -59,6 +67,7 @@ for full_path in RF.recent_fileL:
         html_fname = os.path.join( study_sheet_dir, zip_name.split('.')[0] + '.html')
         if not os.path.isfile( html_fname ):
             needs_updateD[ zip_name ] = dir_name
+            print('Recent file needs HTML:', full_path)
 
 # =========== start building new pages ==============
 def build_html_file( dir_name, zip_name ):
@@ -72,12 +81,14 @@ def build_html_file( dir_name, zip_name ):
     BH.launch_web_browser_study_sheet( html_file_name, single_column=True, 
                                        launch_browser=False )
 
-    c_time_now = os.path.getctime( full_path )
+    #c_time_now = os.path.getctime( full_path )
+    stats = os.stat ( full_path )
+    m_time_now  = stats[stat.ST_MTIME]
     
-    os.utime( html_file_name, (c_time_now, c_time_now) )
-    setctime( html_file_name,  c_time_now )
+    os.utime( html_file_name, (m_time_now, m_time_now) )
+    setctime( html_file_name,  m_time_now )
     
-    csv_replacementD[ full_path ] = c_time_now
+    csv_replacementD[ full_path ] = m_time_now
         
     
 
